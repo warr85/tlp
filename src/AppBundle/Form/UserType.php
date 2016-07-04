@@ -8,11 +8,16 @@
 
 namespace AppBundle\Form;
 
+
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -21,35 +26,62 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('idRolInstitucion', EntityType::class, array(
-                // query choices from this entity
-                'class' => 'AppBundle:RolInstitucion',
-
-                // use the User.username property as the visible option string
-                'choice_label' => 'id',
-
+            ->add('fecha_ingreso', BirthdayType::class, array(
+                'label' => 'Fecha de Ingreso UBV',
             ))
-            ->add('rol', EntityType::class, array(
-                // query choices from this entity
-                'class' => 'AppBundle:Role',
-
-                // use the User.username property as the visible option string
-                'choice_label' => 'id',
-
+            ->add('trabajo', FileType::class, array('label' => 'Digital Constancia Trabajo'))
+            ->add('oposicion', CheckboxType::class, array(
+                'label'         => '¿Tiene Concurso de Oposición?',
+                'required' => false,
             ))
-            ->add('username', TextType::class)
-            ->add('plainPassword', RepeatedType::class, array(
-                    'type' => PasswordType::class,
-                    'first_options'  => array('label' => 'Password'),
-                    'second_options' => array('label' => 'Repeat Password'),
+            ->add('escalafones', EntityType::class, array(
+                'label'         => false,
+                'placeholder' => 'Seleccione escala a la que concurso',
+                'attr' => array(
+                    'class' =>  'esc_oposicion'
+                ),
+                'class' => 'AppBundle:Escalafones',
+                'choice_label' => 'getNombre',
+            ))
+            ->add('fecha_oposicion', BirthdayType::class, array(
+                'label' => 'fecha Concurso',
+                'label_attr'    => array( 'class' => 'esc_oposicion'),
+                'attr' => array(
+                    'class' =>  'esc_oposicion'
                 )
-            );
+            ))
+            ->add('documento_oposicion', FileType::class, array(
+                'label' => 'Digital Documento Oposición',
+                'label_attr'    => array( 'class' => 'esc_oposicion'),
+                'attr' => array(
+                    'style' => 'display:none;',
+                    'class' =>  'esc_oposicion'
+                )
+            ))
+            ->add('area_investigacion', EntityType::class, array(
+                'label'         => false,
+                'attr' => array(
+                    'class' =>  'esc_oposicion'
+                ),
+                'placeholder' => 'Seleccione Area de Investigacion',
+                'class' => 'AppBundle:AreasInvestigacion',
+                'choice_label' => 'getNombre',
+            ))
+            ->add('ascenso', CheckboxType::class, array(
+                'label'    => '¿Ha tenido Ascenso luego del Concurso?',
+                'label_attr'    => array( 'class' => 'esc_oposicion'),
+                'required' => false,
+                'attr' => array(
+                    'class' =>  'esc_oposicion'
+                )
+            ))
+
+
+
+        ;
+
+
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Usuarios',
-        ));
-    }
+
 }

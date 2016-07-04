@@ -1,11 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
+    {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
 
-<button type="submit">Register!</button>
-{{ form_end(form) }}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .esc_oposicion{
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+
+{% block javascripts  %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $('#user_oposicion').click(function() {
+            $('.esc_oposicion')[this.checked ? "show" : "hide"]();
+        });
+
+        $('#user_ascenso').click(function() {
+            $('.esc_ascenso')[this.checked ? "show" : "hide"]();
+        });
+    </script>
 {% endblock %}

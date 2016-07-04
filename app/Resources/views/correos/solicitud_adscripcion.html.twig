@@ -1,0 +1,13 @@
+<h3>Bienvido al CEA@UBV {{ nombres  }}, {{ apellidos }} A continuación sus datos de ingreso</h3>
+
+{# example, assuming you have a route named "login" #}
+<p>
+    usuario : {{ usuario }}<br>
+    contraseña: {{ contra }}
+</p>
+Para hacer login dirigete simplemente a la página de ingreso del Portal del Centro de Estudios Avanzados: <a href="{{ url('login') }}">Login</a>.
+
+
+
+{# Makes an absolute URL to the /images/logo.png file #}
+<img src="{{ absolute_url(asset('bundles/framework/images/portal/logo_ubv.png')) }}">
