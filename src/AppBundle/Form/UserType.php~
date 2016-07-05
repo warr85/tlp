@@ -48,7 +48,7 @@ class UserType extends AbstractType
             ))
             ->add('fecha_oposicion', BirthdayType::class, array(
                 'label' => 'fecha Concurso',
-                //'label_attr'    => array( 'class' => 'esc_oposicion'),
+                'label_attr'    => array( 'class' => 'esc_oposicion'),
                 'required' => false,
                /* 'attr' => array(
                     'class' =>  'esc_oposicion'

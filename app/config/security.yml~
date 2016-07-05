@@ -35,6 +35,5 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, roles: ROLE_DOCENTE }
         - { path: ^/admin, roles: ROLE_ADMINISTRADOR }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

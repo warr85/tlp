@@ -35,8 +35,8 @@
         
         
         $('#user_ascenso2').click(function() {
-        		
-        		if($("#user_escalafones").val() == 1)
+        		alert($('.esc_asistente').val());
+        		if($("#user_escalafones").val() == 2)
             		$('.esc_agregado')[this.checked ? "show" : "hide"]();
         });
         

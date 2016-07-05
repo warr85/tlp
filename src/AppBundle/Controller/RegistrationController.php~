@@ -69,7 +69,6 @@ class RegistrationController extends Controller
             $adscripcion->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
             $escala->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
             $escala->setFechaEscala($form->get('fecha_oposicion')->getData());
-            $escala->setIdEscala($form->get('escala')->getData());
            
             
             

@@ -20,7 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="usuarios", uniqueConstraints={@ORM\UniqueConstraint(name="usuarios_id_rol_institucion_key", columns={"id_rol_institucion"})})
  * @ORM\Entity(repositoryClass="UsuariosRepository")
- * @UniqueEntity(fields="username", message="Nombre de usuario ya Existe")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
 class Usuarios implements UserInterface, \Serializable
 {
