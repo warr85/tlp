@@ -1,31 +1,113 @@
 {% extends 'base.html.twig' %}
 
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/vendor/AppBundle/login.css') }}">
+{% endblock %}
+
 {% block body %}
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
-<div class="container">
-    <form action="{{ path('login') }}" method="post" role="form">
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" />
+    {% block navegacion %}
+
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        Centro de Estudios Ambientales UBV
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('homepage') }}">Regresar al Portal</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+    {% endblock %}
+
+
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">Acceso al sistema CEA@UBV</h4>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="col-md-4">
+                        <img src="{{ asset('bundles/framework/images/portal/logo_ubv.png') }}" />
+                    </div>
+
+                    <div class="col-md-8">
+                    {% if error %}
+                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <form action="{{ path('login') }}" method="post" role="form">
+                        <div class="form-group">
+                            <label for="username">Nombre de Usuario:</label>
+                            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" name="_password" />
+                        </div>
+
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+
+
+                        <input type="hidden" name="_target_path" value="{{ path('user_roles') }}" />
+
+
+
+                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-user"></span>&nbsp;Ingresar</button>
+                    </form>
+                    <hr />
+                        </div>
+                </div>
+                <div class="col-md-5">
+
+                    <div class="alert alert-success">
+                        <strong> ¿Ingresa por Primera Vez? Aquí unas breves instrucciones:</strong>
+                        <ul>
+                            <li>
+                                A su dirección de Correo deben haber llegado las credenciales de Acceso luego de haber solicitado Adscripción
+                            </li>
+                            <li>
+                                Una vez dentro, realizará el proceso de solicitud de adscripción al CEA
+                            </li>
+                            <li>
+                                Para este proceso debe tener en digital los siguientes documentos:
+                                <ol>
+                                    <li>Digital de la Constancia de Trabajo (*)</li>
+                                    <li>Digital del Título de Pregrado (*)</li>
+                                    <li>Digital del Título de Postgrado mas reciente</li>
+                                    <li>Digital de la Constancia de Aprobación de Concurso de Oposición</li>
+                                    <li>Digital de la Constancia de Aprobación de Ascensos</li>
+
+                                </ol>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="_password" />
-        </div>
-
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-
-
-        <input type="hidden" name="_target_path" value="{{ path('user_roles') }}" />
-
-
-
-        <button type="submit">login</button>
-    </form>
-</div>
 {% endblock %}

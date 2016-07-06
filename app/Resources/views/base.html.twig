@@ -12,7 +12,45 @@
     <body data-spy="scroll" data-offset="20" data-target="#navbar">
 
         {% block body %}
-            {% block navegacion %} {% endblock %}
+            {% block navegacion %}
+
+
+
+                <!-- Nav Menu Section -->
+                <div class="logo-menu">
+                    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="50">
+                        <div class="container">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header col-md-3">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#home"><i class="fa fa-briefcase"></i> CEA@UBV</a>
+                            </div>
+
+                            <div class="collapse navbar-collapse" id="navbar">
+                                <ul class="nav navbar-nav col-md-9 pull-right">
+                                    <li class="active"><a data-scroll href="#area-principal"><i class="fa fa-home"></i> Inicio</a></li>
+                                    <li><a data-scroll href="#servicios"><i class="fa fa-cogs"></i> Servicios</a></li>
+                                    <li><a data-scroll href="#actividades"><i class="fa fa-flask"></i> Foto</a></li>
+                                    <li><a data-scroll href="#descarga"><i class="fa fa-puzzle-piece"></i> Descargas</a></li>
+                                    <li><a data-scroll href="#about"><i class="fa fa-info"></i> El CEA</a></li>
+                                    <li><a data-scroll href="#adscripcion"><i class="fa fa-envelope"></i> Adscripción</a></li>
+                                    {% if app.user %}
+                                        <li><a href="{{ path('logout') }}"><i class="fa fa-close"></i> logout</a></li>
+                                    {% else %}
+                                        <li><a href="{{ path('login') }}"><i class="fa fa-user"></i> Ingresar</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+            {% endblock %}
             {% block principal %} {% endblock %}
 
         {% endblock %}

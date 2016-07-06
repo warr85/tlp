@@ -1,0 +1,32 @@
+body{ background: url('../../../bundles/framework/images/portal/body-bg.png'); color:#838383; font: 13px/1.7em 'Open Sans';}
+
+.page-head-line {
+    font-weight: 900;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #0b5e3e;
+    text-transform: uppercase;
+    color: #0b5e3e;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+/*------------------------------------------------------------------
+[2. Navbar / .navbar]
+*/
+
+.navbar-default{
+    background-color: #3b8341;
+    border-color: transparent;
+    border-radius: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-default .navbar-brand{
+    color: white;
+    font-size: 25px;
+}
+
+.navbar-default .navbar-nav>li>a{
+    color: white;
+    font-size: 18px;
+}
