@@ -2,8 +2,10 @@
 
 {% block body %}
     {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+    <div class="container">
     {{ form_start(form) }}
     {{ form_widget(form) }}
+    </div>
 
 
 {% endblock %}
@@ -11,7 +13,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        .esc_oposicion, .esc_asistente, .esc_agregado{
+        .esc_oposicion, .esc_asistente, .esc_agregado, .esc_asociado, .esc_titular{
             display: none;
         }
     </style>
@@ -23,21 +25,50 @@
     <script type="text/javascript">
         $('#user_oposicion').click(function() {
             $('.esc_oposicion')[this.checked ? "show" : "hide"]();
+            $("#user_escala").prop('required', $(this).prop("checked"));
+            $("#user_fecha_oposicion_day").prop('required', $(this).prop("checked"));
+            $("#user_fecha_oposicion_month").prop('required', $(this).prop("checked"));
+            $("#user_fecha_oposicion_year").prop('required', $(this).prop("checked"));
+            $("#user_documento_oposicion").prop('required', $(this).prop("checked"));
         });
 
         $('#user_ascenso').click(function() {
-        		//alert($("#user_escalafones").val());
-        		if($("#user_escalafones").val() == 1)
-            		$('.esc_asistente')[this.checked ? "show" : "hide"]();
-            	if($("#user_escalafones").val() == 2)
-            		$('.esc_agregado')[this.checked ? "show" : "hide"]();
+        		alert($("#user_escala").val());
+        	if($("#user_escala").val() == 1)
+           		$('.esc_asistente')[this.checked ? "show" : "hide"]();
+          	if($("#user_escala").val() == 2)
+           		$('.esc_asociado')[this.checked ? "show" : "hide"]();
+            if($("#user_escala").val() == 3)
+                $('.esc_agregado')[this.checked ? "show" : "hide"]();
+            if($("#user_escala").val() == 4)
+                $('.esc_titular')[this.checked ? "show" : "hide"]();
+
+
         });
         
         
         $('#user_ascenso2').click(function() {
-        		
-        		if($("#user_escalafones").val() == 1)
-            		$('.esc_agregado')[this.checked ? "show" : "hide"]();
+                alert($("#user_escala").val());
+            	$('.esc_asociado')[this.checked ? "show" : "hide"]();
+
+        });
+
+        $('#user_ascenso3').click(function() {
+
+                $('.esc_agregado')[this.checked ? "show" : "hide"]();
+
+        });
+
+        $('#user_ascenso4').click(function() {
+
+                $('.esc_titular')[this.checked ? "show" : "hide"]();
+        });
+
+
+        $('#user_escala').change(function(){
+            alert($('#user_escala').val())
+            if ($('#user_escala').val() >= 1) $('#user_oposicion').attr('disabled',true);
+            else $('#user_oposicion').attr('disabled',false);
         });
         
     </script>

@@ -51,6 +51,16 @@ class DocenteEscala
      * })
      */
     protected $idEscala;
+
+    /**
+     * @var \AppBundle\Entity\TipoAscenso
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TipoAscenso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_escala", referencedColumnName="id", nullable=false)
+     * })
+     */
+    protected $idTipoEscala;
     
         
     
@@ -70,7 +80,7 @@ class DocenteEscala
      * Set idEscala
      *
      * @param \AppBundle\Entity\Escalafones $idEscala
-     * @return Usuarios
+     * @return Escalafones
      */
     public function setidEscala(\AppBundle\Entity\Escalafones $idEscala = null)
     {
@@ -87,6 +97,31 @@ class DocenteEscala
     public function getidEscala()
     {
         return $this->idEscala;
+    }
+
+
+
+    /**
+     * Set idTipoEscala
+     *
+     * @param \AppBundle\Entity\TipoAscenso $idTipoEscala
+     * @return Usuarios
+     */
+    public function setIdTipoEscala(\AppBundle\Entity\TipoAscenso $idTipoEscala = null)
+    {
+        $this->idTipoEscala = $idTipoEscala;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoEscala
+     *
+     * @return \AppBundle\Entity\TipoAscenso
+     */
+    public function getIdTipoEscala()
+    {
+        return $this->idTipoEscala;
     }
     
     /**

@@ -44,6 +44,17 @@ class Adscripcion
      */
     protected $idRolInstitucion;
 
+
+    /**
+     * @var \AppBundle\Entity\LineasInvestigacion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LineasInvestigacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_linea_investigacion", referencedColumnName="id", nullable=true)
+     * })
+     */
+    protected $idLineaInvestigacion;
+
     
     /**
      * @ORM\Column(type="string", nullable=false, options={"comment" = "ubicacion de la constancia de trabajo"})
@@ -70,8 +81,58 @@ class Adscripcion
      * @Assert\File(mimeTypes={ "application/pdf" })
      */
     private $postgrado;
-    
-    
+
+    /**
+     * @ORM\Column(type="string", nullable=true, options={"comment" = "digital del documento de aprobación del concurso de oposicion"})
+     *
+     *
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $oposicion;
+
+    /**
+     * @ORM\Column(type="string", nullable=true, options={"comment" = "digital del documento de ascenso de Asistente"})
+     *
+     *
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $asistente;
+
+    /**
+     * @ORM\Column(type="string", nullable=true, options={"comment" = "digital del documento de ascenso de Asociado"})
+     *
+     *
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $asociado;
+
+
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true, options={"comment" = "digital del documento de ascenso de agregado"})
+     *
+     *
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $agreado;
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true, options={"comment" = "digital del documento de ascenso de titular"})
+     *
+     *
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $titular;
+
+
+
+    /**
+     * @ORM\Column(name="titulo_trabajo", type="string", nullable=true, options={"comment" = "titulo del trabajo de investigacion"})
+     */
+    private $tituloTrabajo;
+
     
     /** @ORM\Column(type="datetime", nullable=false, options={"comment" = "Fecha de creación de la solicitud"})
     
@@ -126,7 +187,81 @@ class Adscripcion
         return $this;
     }
 
-    
+    public function getAsistente()
+    {
+        return $this->asistente;
+    }
+
+    public function setAsistente($asistente)
+    {
+        $this->asistente = $asistente;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOposicion()
+    {
+        return $this->oposicion;
+    }
+
+    /**
+     * @param mixed $oposicion
+     */
+    public function setOposicion($oposicion)
+    {
+        $this->oposicion = $oposicion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAsociado()
+    {
+        return $this->asociado;
+    }
+
+    /**
+     * @param mixed $asociado
+     */
+    public function setAsociado($asociado)
+    {
+        $this->asociado = $asociado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgreado()
+    {
+        return $this->agreado;
+    }
+
+    /**
+     * @param mixed $agreado
+     */
+    public function setAgreado($agreado)
+    {
+        $this->agreado = $agreado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitular()
+    {
+        return $this->titular;
+    }
+
+    /**
+     * @param mixed $titular
+     */
+    public function setTitular($titular)
+    {
+        $this->titular = $titular;
+    }
 
     /**
      * Get id
@@ -138,16 +273,7 @@ class Adscripcion
         return $this->id;
     }
 
-    /**
-     * Get nombre
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->trabajo;
-    }
-    
+
      /**
      * Set idRolInstitucion
      *
@@ -170,7 +296,34 @@ class Adscripcion
     {
         return $this->idRolInstitucion;
     }
-    
+
+
+
+    /**
+     * Set idLineaInvestigacion
+     *
+     * @param \AppBundle\Entity\LineasInvestigacion $idLineaInvestigacion
+     * @return LineasInvestigacion
+     */
+    public function setIdLineaInvestigacion(\AppBundle\Entity\LineasInvestigacion $idLineaInvestigacion = null)
+    {
+        $this->idLineaInvestigacion = $idLineaInvestigacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idLineaIvestigacion
+     *
+     * @return \AppBundle\Entity\LineasInvestigacion
+     */
+    public function getIdLineaInvestigacion()
+    {
+        return $this->idLineaInvestigacion;
+    }
+
+
+
    /**
    * @ORM\PrePersist
    */
@@ -187,10 +340,25 @@ class Adscripcion
     {
         $this->fecha_utlima_actualizacion = new \DateTime();
     }
-    
-    
-       
-    
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getTituloTrabajo()
+    {
+        return $this->tituloTrabajo;
+    }
+
+
+    /**
+     * @param mixed $tituloTrabajo
+     */
+        public function setTituloTrabajo($tituloTrabajo)
+        {
+            $this->tituloTrabajo = $tituloTrabajo;
+        }
     
     
 

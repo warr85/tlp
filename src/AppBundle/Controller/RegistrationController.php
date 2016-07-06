@@ -9,7 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\UserType;
-use AppBundle\Entity\Usuarios;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,16 +24,22 @@ class RegistrationController extends Controller
     public function registerAction(Request $request)
     {
         
-	   $adscripcion = new Adscripcion();
-	   $escala = new DocenteEscala();
+	    $adscripcion = new Adscripcion();
+	    $escala = new DocenteEscala();
+
+        /** @var TYPE_NAME $form */
         $form = $this->createForm('AppBundle\Form\UserType');
-	   $form->handleRequest($request);
-        
+	    $form->handleRequest($request);
+
+        $form->get('escala')->getData();
+
         if ($form->isSubmitted() && $form->isValid()) {
-        	  //var_dump($user = $this->getUser()->getIdRolInstitucion()->getId()); exit;
+        	  //var_dump($form->get('lineas_investigacion')->getData()); exit;
+
 		 // $file stores the uploaded PDF file
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            /** @var UploadedFile $constanciaTrabajo */
             $constanciaTrabajo = $form->get('trabajo')->getData();
+            /** @var UploadedFile $constanciaPregrado */
             $constanciaPregrado = $form->get('pregrado')->getData();
             
             
@@ -54,28 +60,124 @@ class RegistrationController extends Controller
             );
             
             if($form->get('postgrado')->getData()) {
+                /** @var UploadedFile $constanciaPostgrado */
             	$constanciaPostgrado = $form->get('postgrado')->getData();
-            	$nombrePostgrado = md5(uniqid()).'.'.$constanciaPregrado->guessExtension();
+            	$nombrePostgrado = md5(uniqid()).'.'.$constanciaPostgrado->guessExtension();
             	$constanciaPostgrado->move(
                 	$this->container->getParameter('adscripcion_directory'),
                 	$nombrePostgrado
             	);
+                $adscripcion->setPostgrado($nombrePostgrado);
             }
+            $em = $this->getDoctrine()->getManager();
 
-            // Update the 'brochure' property to store the PDF file name
-            // instead of its contents
             $adscripcion->setTrabajo($nombreTrabajo);
             $adscripcion->setPregrado($nombrePregrado);            
             $adscripcion->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
-            $escala->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
-            $escala->setFechaEscala($form->get('fecha_oposicion')->getData());
-            $escala->setIdEscala($form->get('escala')->getData());
-           
-            
-            
-            $em = $this->getDoctrine()->getManager();
+
+
+            if ($form->get('escala')->getData()){
+                $escala->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+                $escala->setFechaEscala($form->get('fecha_oposicion')->getData());
+                $escala->setIdEscala($form->get('escala')->getData());
+                $escala->setIdTipoEscala($this->getDoctrine()->getRepository('AppBundle:TipoAscenso')->findOneById(1));
+                $em->persist($escala);
+
+                if($form->get('documento_oposicion')->getData()) {
+                    $constanciaOposicion = $form->get('documento_oposicion')->getData();
+                    $nombreOposicion = md5(uniqid()).'.'.$constanciaOposicion->guessExtension();
+                    $constanciaOposicion->move(
+                        $this->container->getParameter('adscripcion_directory'),
+                        $nombreOposicion
+                    );
+                    $adscripcion->setOposicion($nombreOposicion);
+                    $adscripcion->setIdLineaInvestigacion($form->get('lineas_investigacion')->getData());
+                    $adscripcion->setTituloTrabajo($form->get('titulo_trabajo')->getData());
+                }
+
+
+
+
+                if ($form->get('documento_asistente')->getData()) {
+                    $escala2 = new DocenteEscala();
+                    $asistente = $this->getDoctrine()->getRepository('AppBundle:Escalafones')->findOneById(2);
+                    $escala2->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+                    $escala2->setFechaEscala($form->get('fecha_ascenso_asistente')->getData());
+                    $escala2->setIdEscala($asistente);
+                    $escala2->setIdTipoEscala($this->getDoctrine()->getRepository('AppBundle:TipoAscenso')->findOneById(2));
+                    $em->persist($escala2);
+
+                    $constanciaAsistente = $form->get('documento_asistente')->getData();
+                    $nombreAsistente = md5(uniqid()).'.'.$constanciaAsistente->guessExtension();
+                    $constanciaAsistente->move(
+                        $this->container->getParameter('adscripcion_directory'),
+                        $nombreAsistente
+                    );
+                    $adscripcion->setAsistente($nombreAsistente);
+
+
+                }
+
+               if ($form->get('documento_asociado')->getData()) {
+                    $escala3 = new DocenteEscala();
+                    $asociado = $this->getDoctrine()->getRepository('AppBundle:Escalafones')->findOneById(3);
+                    $escala3->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+                    $escala3->setFechaEscala($form->get('fecha_ascenso_asociado')->getData());
+                    $escala3->setIdEscala($asociado);
+                    $escala3->setIdTipoEscala($this->getDoctrine()->getRepository('AppBundle:TipoAscenso')->findOneById(2));
+                    $em->persist($escala3);
+
+                   $constanciaAsociado = $form->get('documento_asociado')->getData();
+                   $nombreAsociado = md5(uniqid()).'.'.$constanciaAsociado->guessExtension();
+                   $constanciaAsociado->move(
+                       $this->container->getParameter('adscripcion_directory'),
+                       $nombreAsociado
+                   );
+                   $adscripcion->setAsociado($nombreAsociado);
+                }
+
+
+                if ($form->get('documento_agregado')->getData()) {
+                    $escala4 = new DocenteEscala();
+                    $agregado = $this->getDoctrine()->getRepository('AppBundle:Escalafones')->findOneById(4);
+                    $escala4->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+                    $escala4->setFechaEscala($form->get('fecha_ascenso_agregado')->getData());
+                    $escala4->setIdEscala($agregado);
+                    $escala4->setIdTipoEscala($this->getDoctrine()->getRepository('AppBundle:TipoAscenso')->findOneById(2));
+                    $em->persist($escala4);
+
+                    $constanciaAgregado = $form->get('documento_agregado')->getData();
+                    $nombreAgregado = md5(uniqid()).'.'.$constanciaAgregado->guessExtension();
+                    $constanciaAgregado->move(
+                        $this->container->getParameter('adscripcion_directory'),
+                        $nombreAgregado
+                    );
+                    $adscripcion->setAgreado($nombreAgregado);
+                }
+
+
+                if ($form->get('documento_titular')->getData()) {
+                    $escala5 = new DocenteEscala();
+                    $titular = $this->getDoctrine()->getRepository('AppBundle:Escalafones')->findOneById(5);
+                    $escala5->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+                    $escala5->setFechaEscala($form->get('fecha_ascenso_titular')->getData());
+                    $escala5->setIdEscala($titular);
+                    $escala5->setIdTipoEscala($this->getDoctrine()->getRepository('AppBundle:TipoAscenso')->findOneById(2));
+                    $em->persist($escala5);
+
+                    $constanciaTitular = $form->get('documento_titular')->getData();
+                    $nombreTitular = md5(uniqid()).'.'.$constanciaTitular->guessExtension();
+                    $constanciaTitular->move(
+                        $this->container->getParameter('adscripcion_directory'),
+                        $nombreTitular
+                    );
+                    $adscripcion->setTitular($nombreTitular);
+                }
+
+            }
+
             $em->persist($adscripcion);
-            $em->persist($escala);
+
             
             $em->flush(); //guarda en la base de datos
             
