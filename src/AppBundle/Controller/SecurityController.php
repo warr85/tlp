@@ -37,4 +37,19 @@ class SecurityController extends Controller
             )
         );
     }
+
+    /**
+     * @Route("/verificar", name="user_roles")
+     */
+    public function verificarAction(Request $request)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('login'));
+        }
+
+
+        if($this->isGranted('ROLE_DOCENTE')){
+            return $this->redirect($this->generateUrl('user_registration'));
+        }
+    }
 }

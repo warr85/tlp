@@ -23,7 +23,12 @@ class RegistrationController extends Controller
      */
     public function registerAction(Request $request)
     {
-        
+        //si ya se adscribió redirigirlo
+        if($this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneByIdRolInstitucion($this->getUser()->getIdRolInstitucion()->getId())){
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+
 	    $adscripcion = new Adscripcion();
 	    $escala = new DocenteEscala();
 

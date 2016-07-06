@@ -259,6 +259,11 @@ class Usuarios implements UserInterface, \Serializable
         $this->plainPassword = $password;
     }
 
+    public function isGranted($rol)
+    {
+        return in_array($rol, $this->getRoles());
+    }
+
 
     /**
      * Returns the salt that was originally used to encode the password.

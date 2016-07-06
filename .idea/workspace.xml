@@ -2,255 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5cb32f38-0c9f-4717-964b-38fbcbcb548a" name="Default" comment="Creado el formulario para enviar correo con bootstrap y validacion">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/00ce2284ab00ed345b3d187c9252a3ec.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/00fd8ca8663ff42e0bd176140c548f95.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/020712fede34253a888f1c88e0532479.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/02f5ff861183993bcbee23e65a5ada69.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/030d0fb202847304d35baf8272d77449.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/031458a184f55bdf220c6c5eee16c10e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/03aed797ddb67a971a4b640bdcafe705.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0408c4ed6556fa7cefa9c97e41684f6c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/044e31082562e454578bffd25a01773a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/05e7da86aa2b7d9b99a37c9c07cc5d47.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/07458617794fec3fe0c6f4b992fe50f1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0859a88aa2f37d5d2b20d3f0ff20e2f6.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/085b0242202472f3e8f4aa787a7eb603.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0b63a63438620c4bd86395561894cb51.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0ca14ce865c294181c11b769ada25206.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0def27e138177f107ba7633b955ecf74.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0e844deef4e7de28ef6ec3160591c853.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0ea90716ba87919bd54e39cc1ccdd295.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0eee5ec537c26f7d416faf18ae1d151e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0f3879e0bf63d3112fdee418e386dfb8.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0f73622d80d47d2b14626adb569b6ce4.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/0fbf332625a21b398693a1f35a20c7b2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/104985eddce142f16732e8480b8815da.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/110a8372eba197bed6604e7600e010ba.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/11d1b0a07f36c782deb252d24b313da2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/12337336e8c735cc8f29734ef4266450.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/1261b4f717c9853f987c650f7ac047c4.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/12c4be362e78b8b635f6720db51a45e1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/142542acd54b5e79e9840277386925ca.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/15a7e7909c48f05bbf407ea57b87b0e0.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/176bbc1c985e3179e067f88501b78ba3.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/1882d72e7960774cce8583c35ebb6493.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/198fa154809c8cb036d6425468020679.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/19d01e2a89f2fc2eda4ba9cde2ec7305.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/1a8ec5432878c5f77f1a471a3e851cd6.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/1cb74424d712716d42a86c140a2e1f93.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/1d12f932352b05f3f78360d86b0c5436.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/1d371e584fb96eaf274173e90857ca23.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/1d8afcdf7a451342153141bf6fa7254e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/1f367020b9f5fd4e7cb95a5f5d97349e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/2054318c3563b3207f85054f61193f58.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/2105a065902ca6d9d493c79e4c9b9f7a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/210c7cfe0a59ee91870830b95774447e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/21197011eb8a64d3dc90344a8fd1dfd9.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/2442a814497b4b6585de0b5674e5efc9.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/24e3faf3ddf4bfbfa8126eb79fa8d238.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/253a96db37ae1da2f90a11637f0df920.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/272c38f8ae45950d92c0124ba5fad4ba.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/27472e00ecf4ba2e7aece559a53d2c68.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/294f88884249e05c2d9c5fa68aeb3502.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/2a2578f85e118e441da4059b0bd358dc.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/2c3b25a7c4e628cd5445d476d8aeb55b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/2da796b97c8f24b1a86dedff8cc1914d.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/2fef6772c9a262c874f449de327c0cc3.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/31968e6e2796e4417a588de639dea780.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/331224dab12d86503d1e1aa2dedae041.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/37f647319365e53bdfa64a490a618fb5.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/38d7186747ddc0e93776d624c1e2a8d2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/3a6f490753ea2963e6290e04da6cd41f.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/3adfcbba58e7cfa0928871c723ef8e4f.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/3b1a4745c7ab49c5330b2524b527b2f1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/3b8e05a1cfd645d552b25270cee65641.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/3e39f443f15568d1709a8e89886f51f3.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/41f5fdb6d7c48876058bf820b371894a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/426a7ccaeb766aa1045427673ea481c3.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/428d9262f4aa0d910d84a62390ab17e8.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/42caab1bfed04f9766a64bba88bcdc1e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/42cbd00193b4e7d4023f415574e733ee.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/4383e745f3a065c9efa76ca9519e9b7a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/451de9379073ed4a29174f7ccde3a4d5.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/454de8ae8f61f166cb938249bf605c6e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/45c8140b8ecd694e20abec44e932b826.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/45e70b657c71ef3282c0443477cde0f7.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/46e71fc0ff1c228c445d38debbddb3a3.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/48ea9e6b16711dc1d828ef68c677fd3f.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/49c0848eb41c67c14873e2736cc10505.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/4a9bb2b7df4594b67895f68d9b96b2fe.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/4c40528799a1cfac3a8caa9928685f1d.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/4ca3b16ebcf678c5382baed66968979c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/4d4e0875367292f992bfc662db7e431c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/4e1cc4b2a90dacdd7714cca2768383fc.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/5085600cc64d213c57e826f85ac63244.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/52987800c3a8f6f690740281fd323872.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/53f89b4c1bef645528229382113d1e82.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/54c4d07a04b3271558024b19c313e663.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/55b65cfc5cd306c965b37630031958e2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/56561126128285a94f9df23d1fedcd59.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/57574e49041ce478648331d0fecc1247.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/5894e3557f2d708c72ed9e670f49994e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/5ac0a2726b2e09c340a79ac71b494013.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/5b50b37c002cccdd0075b056d7d50b32.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/5d96d036e4af9b992e557c64d1d3b09c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/5ea5b5d3aaae4c58d4e7956ac12c54b0.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/603af11305b1d8127fcbedeeea0cc27d.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/60cd036a28c42c987c58c8eab58d42ad.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/6136ca9e761a3599b2a77ebee65c8b2a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/6154bce071e2e12078187a0a246e9b3e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/6275f4fd319726b8d68f2451e72514b9.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/648f2c2cabbbe5e7d4b04e97bdb502bb.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/65cd8490990846534a4e8d9c56d0837f.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/660efad7a2b380265f1a93496b313443.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/66ce0aea996d7f23a0aeac45d9e098c3.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/687aabbde5e972c02802783090bc4489.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/68ab75d993a1be8460b6e3c0272488da.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/695ec3bc4bc8c6393b20fda8b312606c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/698c787617bc0af8c7795743503e8511.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/699e531a22c27f812ae217e69ebd2cac.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/6a4bc8b6c1dedf61e936b69714f503d1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/6af4d5381e89c3b16ca0d7f8386393f6.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/6be30d750f7de644f4e7d8f8952f4c5b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/6edd1e63d8a8cd5375e5be63bdb0ff5a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/712c281484adbb80791ffdfa89d78b73.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/71bde87d3d51faa33aa1e6d80ba2691b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7253858858626e3c37c6490a64f3f59c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/731b5d6426a7a28f4d7138e8a6db1da8.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/73f2336e52b5701b531520f2cda9f202.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7461a1cc72c888f4386d5bdd8d0c1ada.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/76c3be5862528f6059a5c3b7a383b233.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/76f326feb837eb076a27f6896c7d74e0.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/77aaed1f1acf31546a7d0bd9a2792297.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7ae48f11f622612a6e2dd2b7b874b007.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7c0a55c3fd1113ec06f6e07cd903a2de.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7c5b9fac201abfa7960dff245736ebe2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7e0f2e309f66f48b1995e3a98c3f318a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7e77fe97c173d570440236be0e6a3b92.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7f6f976975691cad24b4f4decca4f2a1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/7f7136fc7f337e0f4de8f9e404df1b82.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/805dbfffbf19bb29ee607b7998824e9d.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/80954b8c9cc17ba2c090494d5e3525ff.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/81b82dae5bc95a7c59db5c7d4fefe429.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/81ce8e7ff53de74f8c8dee257890d537.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/835c8c19f97f8e374817fb54eea9101e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/836e6f6c995e5944511ef07bb1945a84.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/84929816efc4dec56cc333a7eb660f8b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/86ec220cb2a3b17310c9798bf2457e6e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/88519fc9dbca6eac58fb719e002a4fe8.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/88af06066c9dcc5a0252aa74d8554287.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/89bce2c58eabca4c3e253c7346eeff78.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/8bdd84b9a054c88bb24d4211e8a8d486.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/8c950955bd236e465e905833e69599f5.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/8d93a666bfd4f6ac5521a46948030b19.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/8f658207a7468adaaff8c6fc5c21efd6.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9007bb003810abe080bb8cf37a3aad51.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9051a8ee5b417f6349cc34ef4d08562e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/91477c90ef95b28b66594f93e730890f.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9155081ee6ed15056f4997e26adb7d8e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/920babca0207748af57e8fde17156748.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/94bd938a3b2ea3c2496dda01bf9a6e6d.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/94e7536f47983b27df4dc9c106a72bf6.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/95115f66b4db4c45ca75f6938b850095.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/979ad858b8c191453c6b4db7a57fe71b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/97ecf5f0d26feb8aacdcaebf9e4e4034.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/982b662240948b81dbec75b0272d1331.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9923e2d5fe60a226a67ef1d2d7cfc312.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/99b56d37e2077d94aa3165349d487231.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9b24d1196362b695bd731c947a9836dc.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9b3ebc7003f6122a03862c969b4c64f0.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9b97df48777920f54dcbddfd62827c1b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9bb486c2b644d47e6bbe835af4120cdb.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9d3dda0863dc5c69cd9c24c0a9c01678.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/9db44c6ea8ccb2f2b2e207224c332b85.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a57e186f24e8a84588577abbacc66c34.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a5e8ad2e3de1047421ad8dc38da80bff.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a61529662f8adddc82956792cdc797ee.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a65907b4da602ede4d2319e23e58d6d8.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a65be02413a73c0a8378651966176b71.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a6f47d769f2b61cfdbbf96e9a521b04a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a7037026b2cac9733b9ccaeed1b55f73.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a7654a30f5b64d400645fef6f67eeec5.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a9c11b312159680829c91ceca900d1bc.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/a9e7a4b2ae95fe59bafb1814fe860228.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/aa6650c0116007760e14014c512f4b23.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/af5393460dcb721102a05196704868e4.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b0349f488227080c27bada32530ba9e9.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b1cf47e424b14c21358b93b543b14acd.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b2dd40f225ea0f7b7b37e67da8adc092.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b33b3a683de24ed88886ce9e992fb2cb.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b41d7939b6a56341aa91bb89109575de.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b699d5396e71f634800f06f0c47e7f4d.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b72551c1ac0227cf65762cb72a5566e9.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b7a5a5d83272a1878883600c1f1cfdbd.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/b7ac4d5e8fb05be4de4397210dd0e0b2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/bbad9ba25b4b4adf1491ac1dcd3036cb.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/bce2c64eb611e92181d740b823370b38.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/bed9fc6e5165af150373fc1060a37325.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/bffd7c1eb6b394fc320d9f6bb5f555fb.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/c063ef2c9c7f68251602ea4e85cfad41.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/c115a8ec1ed106c968c2767cdf07c9fc.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/c201a03256b7c80ddc83edc186bbedde.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/c3edfe4f1078d07c177bc5cb022d761d.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/c488ab2c49011fc89cfeab42531f7e74.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/c4c12eebd5c7fcff50d0f431b154c923.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/c58ef7b2a55983d6c6af89b221877b64.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/c6578e362013e32607654c9f506e5a73.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/cc883f4a4220a3ee136708b7d40a8c89.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/cd1a7805a937f2af511ff783b6139b8c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/cfa0d685397551d9380b2056626349a2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d037e95867db59f7cd1429a281e12837.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d06e46541fa903ca5c55d2abc8065001.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d0d7c46065087e99e8e272d85fb80982.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d12e05bc5d7f8202bc8574b01a49a026.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d2cd6f584504ef4edb37430db155f73c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d30fd1846e36287249e6c63a3b0edf9f.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d3df71e25bc2685e09b659289dd1f481.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d49a6c1f40ee194825e0d3b16fcdd28b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d4b1c025edd71e5fe772feda79210de1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d6781514eea259a488592763d71ed757.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d67eeffa94889c5c4c0bb62158e20c68.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/d7f1caafa95830e23b9394e40a197ab1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/da38b0a0175ef087726b90840107cc32.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/db07ca82441023fa6de4efcd7db7af1b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/de6c19702e1f5ff74623c294325a578a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/de964806358e3e02b1ebe82b4d964daf.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/df4015cb08fec6ad99e67deb625dbf44.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e0644d9b13592eb78ae7c3048c6ca5b3.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e330dcc75ac8f7272c2c2a5928103626.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e368295d84924b1576f0003a2412f65b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e37e63a6481ae911a815c9e155597fb2.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e480078548e958e0594136b876f22528.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e5ba55ffce5b94b12a3c5cdc18838398.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e69f3eb4cf3778ecd3ccb6648695ed6c.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e71889ab1905bab53dfb6aaf89c86948.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/e8a0c1a3e6ccc2caf0f716b2d98e4b6f.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/eb5ef5d96b89a7ab065e35f121b720e8.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/ebcd6e192f570116ea6cebe7e458b6f7.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/ec9d0cf9157571c7d4d9d9ed2bdbe04b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/edda22e78c7c2df7cdd7b3d0cfe48b72.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/ede687fedd481e2a5250264739cb7082.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/eec356950002fdac5272c609c87bed26.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/ef9b6bfc40e2023e6ab1766954b68b94.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f07a6d96246ecc95595f58b8350563e0.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f2c87274dd650a69e791c1763c49940e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f42e6cac2fc9804ac17ff4da814a17d6.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f47fad44c1c2eb4b0c27583d8d5c7f9e.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f510f5d477c24e6706a6943a28caed09.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f54cc789d4c740ff8ae82c3506ca8229.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f641da7f176c1fef78c07b4bc86200c5.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f703385077eeee85ff26f627d8b9306b.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/f717c1a0075791693cf33ef342fdf716.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/fa33b87746abe8f37944de40840aebdf.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/fb2e9ee9e2fbd982b68d537ce69fc354.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/fb429e31f64067b9c51ee875a744bca5.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/fb8279cb76602dbe7cc57e9709cf590a.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/fd450e8e5524fc549acd3a12465597e0.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/fdf418f4eb96f40d346962a035a0dad6.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/fe3f9acc04628f989a361ec32f9b92b9.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/uploads/adscripcion/ffa341924faa4a312785b1416cb9ed10.pdf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/sessions/sess_86jfvdk9490d7f1h5m3efgubc1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/sessions/sess_b7cg3j7u2h7vmm5hs6fpq885p6" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/security/login.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/security/login.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Usuarios.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Usuarios.php" />
     </list>
     <ignored path="sym_cea.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -275,86 +33,70 @@
       <file leaf-file-name="RegistrationController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.827586">
-              <caret line="163" column="28" selection-start-line="163" selection-start-column="28" selection-end-line="163" selection-end-column="28" />
+            <state vertical-scroll-proportion="-7.7586207">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="e#127#155#0#PHP" expanded="true" />
-                <element signature="e#3148#3171#1#PHP" expanded="true" />
-                <element signature="e#4153#4176#1#PHP" expanded="true" />
-                <element signature="e#4520#4543#1#PHP" expanded="true" />
-                <element signature="e#5260#5283#1#PHP" expanded="true" />
-                <element signature="e#5625#5648#1#PHP" expanded="true" />
-                <element signature="e#6350#6373#1#PHP" expanded="true" />
-                <element signature="e#6715#6738#1#PHP" expanded="true" />
-                <element signature="e#7444#7467#1#PHP" expanded="true" />
-                <element signature="e#7807#7830#1#PHP" expanded="true" />
-                <element signature="e#8627#8660#0#PHP" expanded="true" />
+                <element signature="e#713#736#1#PHP" expanded="true" />
+                <element signature="e#871#881#1#PHP" expanded="true" />
+                <element signature="e#3411#3434#1#PHP" expanded="true" />
+                <element signature="e#4416#4439#1#PHP" expanded="true" />
+                <element signature="e#4783#4806#1#PHP" expanded="true" />
+                <element signature="e#5523#5546#1#PHP" expanded="true" />
+                <element signature="e#5888#5911#1#PHP" expanded="true" />
+                <element signature="e#6613#6636#1#PHP" expanded="true" />
+                <element signature="e#6978#7001#1#PHP" expanded="true" />
+                <element signature="e#7707#7730#1#PHP" expanded="true" />
+                <element signature="e#8070#8093#1#PHP" expanded="true" />
+                <element signature="e#8890#8923#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Genero.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Genero.php">
+      <file leaf-file-name="SecurityController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.259259">
-              <caret line="67" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/registration/register.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.592592">
-              <caret line="70" column="59" selection-start-line="70" selection-start-column="59" selection-end-line="70" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/UserType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="10.666667">
-              <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
+            <state vertical-scroll-proportion="-14.925926">
+              <caret line="41" column="25" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="25" />
               <folding>
-                <element signature="e#121#170#0#PHP" expanded="true" />
+                <element signature="e#1346#1353#1#PHP" expanded="true" />
+                <element signature="e#1469#1488#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Adscripcion.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Adscripcion.php">
+      <file leaf-file-name="login.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/security/login.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.413793">
-              <caret line="52" column="96" selection-start-line="52" selection-start-column="96" selection-end-line="52" selection-end-column="96" />
+            <state vertical-scroll-proportion="-20.0">
+              <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
               <folding>
-                <element signature="e#6#97#0#PHP" expanded="true" />
+                <element signature="e#828#838#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="Usuarios.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Usuarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="9.103448">
+              <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.925926">
-              <caret line="49" column="97" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="97" />
+            <state vertical-scroll-proportion="0.70067114">
+              <caret line="38" column="98" selection-start-line="38" selection-start-column="98" selection-end-line="38" selection-end-column="98" />
               <folding>
-                <element signature="e#40#99#0#PHP" expanded="true" />
+                <element signature="e#2407#2412#0#Twig" expanded="true" />
+                <element signature="e#12661#12700#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -373,7 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/TipoPersona.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Estatus.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/RolInstitucion.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Institucion.php" />
@@ -384,8 +125,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Estado.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Municipio.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationFormController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Usuarios.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/UsuariosType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
@@ -407,9 +146,7 @@
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/web/assets/vendor/smooth-scroll/smooth-scroll.js" />
         <option value="$PROJECT_DIR$/bower.json" />
-        <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/security/login.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Escalafones.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/CentroEstudios.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/AreasConcurso.php" />
@@ -420,10 +157,15 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/TipoAscenso.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/DocenteEscala.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/registration/register.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Adscripcion.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Security/Authentication/Handler/LoginSuccessHandler.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Usuarios.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/security/login.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
       </list>
     </option>
   </component>
@@ -497,6 +239,166 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sym_cea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cea_sym" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sym_cea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cea_sym" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sym_cea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cea_sym" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sym_cea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cea_sym" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sym_cea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cea_sym" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sym_cea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cea_sym" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="security" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sym_cea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cea_sym" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sym_cea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cea_sym" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -673,14 +575,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.666667">
-          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/bundles/framework/css/body.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -840,20 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4590604">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/security/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5315436">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8134715">
@@ -964,14 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5758389">
-          <caret line="233" column="90" selection-start-line="233" selection-start-column="42" selection-end-line="233" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.925926">
@@ -986,14 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.89127517">
           <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Genero.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.259259">
-          <caret line="67" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1014,37 +878,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/registration/register.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Adscripcion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.592592">
-          <caret line="70" column="59" selection-start-line="70" selection-start-column="59" selection-end-line="70" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.827586">
-          <caret line="163" column="28" selection-start-line="163" selection-start-column="28" selection-end-line="163" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.27731094">
+          <caret line="52" column="96" selection-start-line="52" selection-start-column="96" selection-end-line="52" selection-end-column="96" />
           <folding>
-            <element signature="e#127#155#0#PHP" expanded="true" />
-            <element signature="e#3148#3171#1#PHP" expanded="true" />
-            <element signature="e#4153#4176#1#PHP" expanded="true" />
-            <element signature="e#4520#4543#1#PHP" expanded="true" />
-            <element signature="e#5260#5283#1#PHP" expanded="true" />
-            <element signature="e#5625#5648#1#PHP" expanded="true" />
-            <element signature="e#6350#6373#1#PHP" expanded="true" />
-            <element signature="e#6715#6738#1#PHP" expanded="true" />
-            <element signature="e#7444#7467#1#PHP" expanded="true" />
-            <element signature="e#7807#7830#1#PHP" expanded="true" />
-            <element signature="e#8627#8660#0#PHP" expanded="true" />
+            <element signature="e#6#97#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/UserType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="10.666667">
+        <state vertical-scroll-proportion="-0.3865772">
           <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
           <folding>
             <element signature="e#121#170#0#PHP" expanded="true" />
@@ -1052,13 +898,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Adscripcion.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/registration/register.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.413793">
-          <caret line="52" column="96" selection-start-line="52" selection-start-column="96" selection-end-line="52" selection-end-column="96" />
-          <folding>
-            <element signature="e#6#97#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.78255033">
+          <caret line="70" column="59" selection-start-line="70" selection-start-column="59" selection-end-line="70" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Genero.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4805369">
+          <caret line="67" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,6 +919,68 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.925926">
+          <caret line="41" column="25" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="25" />
+          <folding>
+            <element signature="e#1346#1353#1#PHP" expanded="true" />
+            <element signature="e#1469#1488#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.7586207">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#127#155#0#PHP" expanded="true" />
+            <element signature="e#713#736#1#PHP" expanded="true" />
+            <element signature="e#871#881#1#PHP" expanded="true" />
+            <element signature="e#3411#3434#1#PHP" expanded="true" />
+            <element signature="e#4416#4439#1#PHP" expanded="true" />
+            <element signature="e#4783#4806#1#PHP" expanded="true" />
+            <element signature="e#5523#5546#1#PHP" expanded="true" />
+            <element signature="e#5888#5911#1#PHP" expanded="true" />
+            <element signature="e#6613#6636#1#PHP" expanded="true" />
+            <element signature="e#6978#7001#1#PHP" expanded="true" />
+            <element signature="e#7707#7730#1#PHP" expanded="true" />
+            <element signature="e#8070#8093#1#PHP" expanded="true" />
+            <element signature="e#8890#8923#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/security/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.0">
+          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+          <folding>
+            <element signature="e#828#838#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.103448">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70067114">
+          <caret line="38" column="98" selection-start-line="38" selection-start-column="98" selection-end-line="38" selection-end-column="98" />
+          <folding>
+            <element signature="e#2407#2412#0#Twig" expanded="true" />
+            <element signature="e#12661#12700#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
