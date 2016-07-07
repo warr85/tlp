@@ -79,6 +79,7 @@ class RegistrationController extends Controller
             $adscripcion->setTrabajo($nombreTrabajo);
             $adscripcion->setPregrado($nombrePregrado);            
             $adscripcion->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+            $adscripcion->setFechaIngreso($form->get('fecha_ingreso')->getData());
 
 
             if ($form->get('escala')->getData()){

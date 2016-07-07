@@ -43,6 +43,12 @@ class Adscripcion
      * })
      */
     protected $idRolInstitucion;
+    
+    /** @ORM\Column(type="date", nullable=false, options={"comment" = "Fecha de de Ingreso a la Institucion"})  
+     /**
+     * @Assert\Date()
+     */      
+    private $fecha_ingreso;
 
 
     /**
@@ -361,6 +367,28 @@ class Adscripcion
         }
     
     
+        /**
+        * Set fecha_escala
+        *
+        * @param \DateTime $fecha_escala
+        * @return Comment
+        */
+       public function setFechaIngreso($fecha_ingreso)
+       {
+           $this->fecha_ingreso = $fecha_ingreso;
+
+           return $this;
+       }
+
+       /**
+        * Get fecha_escala
+        *
+        * @return \DateTime
+        */
+       public function getFechaIngreso()
+       {
+           return $this->fecha_ingreso;
+       }
 
 
 }

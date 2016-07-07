@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: ubv-cipee
+ * Created by Netbeans.
+ * User: Wilmer Ramones
  * Date: 29/06/16
  * Time: 09:07 AM
+ * Modificado: 07/07/2016
  */
 
 namespace AppBundle\Form;
@@ -28,9 +29,9 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-           /* ->add('fecha_ingreso', BirthdayType::class, array(
+            ->add('fecha_ingreso', BirthdayType::class, array(
                 'label' => 'Fecha de Ingreso UBV',                
-            ))*/
+            ))
             ->add('trabajo', FileType::class, array(
                 'label' => 'Digital Constancia Trabajo',
                'constraints' => array(

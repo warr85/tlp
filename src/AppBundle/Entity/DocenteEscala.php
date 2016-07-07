@@ -42,6 +42,7 @@ class DocenteEscala
      */
     protected $idRolInstitucion;
     
+        
     /**
      * @var \AppBundle\Entity\Escalafones
      *
@@ -144,6 +145,17 @@ class DocenteEscala
     }
     
     /**
+ * Get fecha_creacion
+ *
+ * @return \DateTime
+ */
+public function getFechaCreacion()
+{
+    return $this->fecha_creacion;
+}
+
+    
+    /**
  * Set fecha_escala
  *
  * @param \DateTime $fecha_escala
@@ -163,8 +175,9 @@ public function setFechaEscala($fecha_escala)
  */
 public function getFechaEscala()
 {
-    return $this->postedon;
+    return $this->fecha_escala;
 }
+
 
  /**
      * Set idRolInstitucion
