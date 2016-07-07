@@ -10,6 +10,8 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 /**
  * Description of DocenteController
@@ -48,12 +50,16 @@ class DocenteController extends Controller {
      *
      * @Route("/solicitudes", name="cea_solicitudes")
      * @Method("GET")
+     * @Security("has_role('ROLE_COORDINADOR_NACIONAL')")
      */
     public function SolicitudesAction()
     {
-  
         
-        return $this->render('cea/solicitudes.html.twig');
+        $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findBy(array('idEstatus' => 2));
+        
+        return $this->render('cea/solicitudes.html.twig', array(
+            'adscripciones' => $adscripciones
+        ));
     }
     
 }
