@@ -43,4 +43,17 @@ class DocenteController extends Controller {
         ));
     }
     
+    /**
+     * Pagina principal de inicio de la session Docente.
+     *
+     * @Route("/solicitudes", name="cea_solicitudes")
+     * @Method("GET")
+     */
+    public function SolicitudesAction()
+    {
+  
+        
+        return $this->render('cea/solicitudes.html.twig');
+    }
+    
 }
