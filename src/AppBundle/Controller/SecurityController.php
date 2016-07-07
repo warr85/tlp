@@ -49,7 +49,7 @@ class SecurityController extends Controller
 
 
         if($this->isGranted('ROLE_DOCENTE')){
-            return $this->redirect($this->generateUrl('user_registration'));
+            return $this->redirect($this->generateUrl('solicitud_adscripcion'));
         }
     }
 }

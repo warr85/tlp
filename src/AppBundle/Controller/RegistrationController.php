@@ -19,13 +19,13 @@ use AppBundle\Entity\DocenteEscala;
 class RegistrationController extends Controller
 {
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/register", name="solicitud_adscripcion")
      */
     public function registerAction(Request $request)
     {
-        //si ya se adscribió redirigirlo
+        //si ya se adscribió redirigirlo a la página principal del sistema
         if($this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneByIdRolInstitucion($this->getUser()->getIdRolInstitucion()->getId())){
-            return $this->redirect($this->generateUrl('homepage'));
+            return $this->redirect($this->generateUrl('cea_index'));
         }
 
 
@@ -80,6 +80,7 @@ class RegistrationController extends Controller
             $adscripcion->setPregrado($nombrePregrado);            
             $adscripcion->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
             $adscripcion->setFechaIngreso($form->get('fecha_ingreso')->getData());
+            $adscripcion->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(2));
 
 
             if ($form->get('escala')->getData()){
@@ -190,7 +191,7 @@ class RegistrationController extends Controller
 
             
 
-            //return $this->redirect($this->generateUrl('app_product_list'));	
+            return $this->redirect($this->generateUrl('cea_index'));	
         }
 
         return $this->render(

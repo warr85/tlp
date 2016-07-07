@@ -153,6 +153,16 @@ class Adscripcion
     
     private $fecha_ultima_actualizacion;
     
+     /**
+     * @var \AppBundle\Entity\Estatus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estatus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_estatus", referencedColumnName="id", nullable=false)
+     * })
+     */
+    protected $idEstatus;
+    
        
     
     
@@ -326,6 +336,31 @@ class Adscripcion
     public function getIdLineaInvestigacion()
     {
         return $this->idLineaInvestigacion;
+    }
+    
+    
+    
+    /**
+     * Set idEstatus
+     *
+     * @param \AppBundle\Entity\Estatus $idEstatus
+     * @return Estatus
+     */
+    public function setIdEstatus(\AppBundle\Entity\Estatus $idEstatus = null)
+    {
+        $this->idEstatus = $idEstatus;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstatus
+     *
+     * @return \AppBundle\Entity\Estatus
+     */
+    public function getIdEstatus()
+    {
+        return $this->idEstatus;
     }
 
 

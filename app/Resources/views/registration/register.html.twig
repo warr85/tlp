@@ -1,23 +1,32 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-    {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
-    <div class="container">
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    </div>
-
-
-{% endblock %}
+{% extends 'base_app.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
+     
     <style>
         .esc_oposicion, .esc_asistente, .esc_agregado, .esc_asociado, .esc_titular{
             display: none;
         }
     </style>
 {% endblock %}
+
+
+
+{% block body %}
+    <div class="account-container register">
+        <div class="content clearfix">
+            <h1>Solicitud Adscripción</h1>
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}        
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+        </div>
+        
+    </div>
+
+
+{% endblock %}
+
+
 
 
 {% block javascripts  %}

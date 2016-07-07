@@ -30,7 +30,8 @@ class UserType extends AbstractType
     {
         $builder
             ->add('fecha_ingreso', BirthdayType::class, array(
-                'label' => 'Fecha de Ingreso UBV',                
+                'label' => 'Fecha de Ingreso UBV',
+                'data' => new \DateTime("01/01/2014")
             ))
             ->add('trabajo', FileType::class, array(
                 'label' => 'Digital Constancia Trabajo',
@@ -42,11 +43,18 @@ class UserType extends AbstractType
             ->add('pregrado', FileType::class, array(
                 'label' => 'Digital Título de Pregrado',
                 'constraints' => array(
-                    new NotBlank()
+                    new NotBlank(),
+                    new File(array('maxSize' => '1024K'))
                 )
             ))
             
-            ->add('postgrado', FileType::class, array('label' => 'Digital Título de Postgrado','required' => false))
+            ->add('postgrado', FileType::class, array(
+                'label' => 'Digital Título de Postgrado',
+                'required' => false, 
+                'constraints' => array(
+                   new File(array('maxSize' => '1024K')) 
+                )
+              ))
             ->add('oposicion', CheckboxType::class, array(
                 'label'         => '¿Tiene Concurso de Oposición?',
                 'required' => false,
