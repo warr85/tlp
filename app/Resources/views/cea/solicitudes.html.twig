@@ -38,7 +38,7 @@
                     </td>                    
                     <td>{{adscripcion.idRolInstitucion.idInstitucion.idEjeParroquia.idParroquia.idMunicipio.idEstado}} </td>
                     <td>
-                        <a href="javascript:;" class="btn btn-xs btn-info"><i class="fa fa-eye"> </i></a>
+                        <a href="{{ path('cea_solicitudes_show', { 'id': adscripcion.id }) }}" class="btn btn-xs btn-info"><i class="fa fa-eye"> </i></a>
                         <a href="javascript:;" class="btn btn-xs btn-success"><i class="fa fa-check"> </i></a>
                         <a href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-times"> </i></a></td>
                     </td>

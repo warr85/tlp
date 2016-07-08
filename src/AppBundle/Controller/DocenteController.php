@@ -12,6 +12,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+use AppBundle\Entity\Adscripcion;
+
 
 /**
  * Description of DocenteController
@@ -52,7 +54,7 @@ class DocenteController extends Controller {
      * @Method("GET")
      * @Security("has_role('ROLE_COORDINADOR_NACIONAL')")
      */
-    public function SolicitudesAction()
+    public function verSolicitudesAction()
     {
         
         $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findBy(array('idEstatus' => 2));
@@ -62,4 +64,24 @@ class DocenteController extends Controller {
         ));
     }
     
+    /**
+     * Encuentra y muestra una entidad de tipo Adscripción.
+     *
+     * @Route("/solicitudes/{id}", name="cea_solicitudes_show")
+     * @Method("GET")
+     */
+    public function solicitudesShowAction(Adscripcion $adscripcion)
+    {
+        //$deleteForm = $this->createDeleteForm($usuario);
+        $escala = $this->getDoctrine()->getRepository('AppBundle:DocenteEscala')->findBy(array(
+            'idRolInstitucion' => $adscripcion->getIdRolInstitucion()->getId()
+        ));
+
+        return $this->render('cea/solicitudes_mostar.html.twig', array(
+            'adscripcion' => $adscripcion, 
+            'escalas' => $escala
+        ));
+    }
+    
 }
+ 

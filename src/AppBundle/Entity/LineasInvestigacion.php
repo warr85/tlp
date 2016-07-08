@@ -105,4 +105,8 @@ class LineasInvestigacion
     {
         return $this->idAreaInvestigacion;
     }
+    
+    public function __toString() {
+        return $this->getNombre();
+    }
 }
