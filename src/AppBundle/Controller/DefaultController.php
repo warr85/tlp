@@ -20,18 +20,27 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $persona = $this->getDoctrine()->getRepository('AppBundle:Persona')
+                              ->findOneByCedulaPasaporte($form->get('cedula')->getData());
+            
+             if (!$persona) {
+                $this->addFlash('danger', 'Docente no Registrado en la Base de Datos del Centro de Estudios.  Por Favor');
+                return $this->redirect(
+                    sprintf('%s#%s', '/', 'adscripcion')
+                );
+            }
+            
             //1. obtener el rol-institucion-persona
             $rol = $this->getDoctrine()->getRepository(
                 'AppBundle:RolInstitucion')->findOneByIdRol(
                     $this->getDoctrine()->getRepository(
-                        'AppBundle:Rol')->findOneByIdPersona(
-                            $this->getDoctrine()->getRepository('AppBundle:Persona')
-                              ->findOneByCedulaPasaporte($form->get('cedula')->getData())->getId()));
+                        'AppBundle:Rol')->findOneByIdPersona($persona));
 
             //si no existe el rol del docente, enviar correo al encargado de la región para verificar.
             if (!$rol) {
-                throw $this->createNotFoundException(
-                    'Docente no registrado en la UBV '. $form->get('cedula')->getData()
+                $this->addFlash('danger', 'Docente no Registrado en la Base de Datos del Centro de Estudios.  Por Favor');
+                return $this->redirect(
+                    sprintf('%s#%s', '/', 'adscripcion')
                 );
             }
 
@@ -60,6 +69,8 @@ class DefaultController extends Controller
                 $em->persist($actualizarRol);
                 
                 $em->flush(); //guarda en la base de datos
+                
+                $this->addFlash('notice', 'Datos enviados Satisfactoriamente.  Hemos enviado un correo a la dirección suministrada con los datos para el ingreso');
 
 
                 $message = \Swift_Message::newInstance()
@@ -87,22 +98,20 @@ class DefaultController extends Controller
                             array('name' => $name)
                         ),
                         'text/plain'
-                    )
-                    */
+                    )*/
+                    
                 ;
-                $this->get('mailer')->send($message);
-
+                $this->get('mailer')->send($message);           
 
 
             }else{
-                throw $this->createNotFoundException(
-                    'Ya tiene usuario y contraseña '. $form->get('cedula')->getData()
-                );
+               $this->addFlash('notice', 'Ya ha solicitado datos de ingreso.  Revise la dirección de correo suministrada o Contáctenos a través de: cea.ubv@gmail.com');
+               
             }
-            throw $this->createNotFoundException(
-                'Docente Encontrado '. $form->get('cedula')->getData()
-            );
            
+           return $this->redirect(
+                    sprintf('%s#%s', '/', 'adscripcion')
+                );
             //$request->getSession()->getFlashBag()->add('success', 'Your email has been sent! Thanks!');
         }
 
