@@ -1,4 +1,8 @@
 {% extends 'base_app.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/vendor/lightbox2/dist/css/lightbox.css') }}" rel="stylesheet">
+{% endblock %}
 
 {%block body %} 
 
@@ -73,8 +77,8 @@
 
                      <div class="widget-content">
                          <h3>Documentos Consignados</h3>
-                        <img src="{{asset('uploads/adscripcion/0341e64b661d9218b8589e9dc80d0f40.pdf')}}"     
-                        
+                         <a href="{{asset('bundles/framework/images/portal/logo_ubv.png')}}" data-lightbox="roadtrip">#2</a>    
+                       
 
                     </div>
                 </div>
@@ -84,3 +88,9 @@
     </div>
     
 {% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('assets/vendor/lightbox2/dist/js/lightbox.min.js') }}"></script>
+    {% endblock %}
