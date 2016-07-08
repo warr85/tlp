@@ -31,7 +31,7 @@ class UserType extends AbstractType
         $builder
             ->add('fecha_ingreso', BirthdayType::class, array(
                 'label' => 'Fecha de Ingreso UBV',
-                'data' => new \DateTime("01/01/2014")
+                'data' => new \DateTime("01/01/2003")
             ))
             ->add('trabajo', FileType::class, array(
                 'label' => 'Digital Constancia Trabajo',
