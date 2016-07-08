@@ -1,7 +1,7 @@
 {% extends 'base_app.html.twig' %}
 
 {%block body %} 
-
+    <div class="container">
      <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
               <h3>Listado de solicitudes de Adscripción Al CEA</h3>
@@ -12,20 +12,25 @@
                 <thead>
                   <tr>
                     <th> Datos del Docente </th>
-                    <th> Cantidad de Documentos</th>
-                    <th class="td-actions"> Acciones Rápidas </th>
+                    <th> Eje del Docente</th>                    
                   </tr>
                 </thead>
                 <tbody>
                     {% for adscripcion in adscripciones %}
                   <tr>
-                    <td> 
-                        {{adscripcion.idRolInstitucion}} 
+                    <td>                         
                         {{adscripcion.idRolInstitucion.idRol.idPersona.PrimerNombre}}
                         {{adscripcion.idRolInstitucion.idRol.idPersona.PrimerApellido}}
+                        ( {{adscripcion.idRolInstitucion}} )
+                         <a href="javascript:;" class="btn btn-xs btn-info"><i class="fa fa-eye"> </i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-success"><i class="fa fa-check"> </i></a>
+                        <a href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-times"> </i></a></td>
                     </td>
-                    <td> http://www.egrappler.com/ </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="fa fa-"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                    <td>
+                        <strong>Eje:</strong>{{adscripcion.idRolInstitucion.idInstitucion.idEjeParroquia.IdEje}} 
+                        <strong>Estado:</strong> {{adscripcion.idRolInstitucion.idInstitucion.idEjeParroquia.idParroquia.idMunicipio.idEstado}} 
+                    </td>                    
+                       
                   </tr>
                   {% endfor %}                  
                 
@@ -35,5 +40,6 @@
             <!-- /widget-content --> 
           </div>
           <!-- /widget --> 
-    
+         </div>
+    <!-- /container --> 
 {% endblock %}

@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Doctrine\ORM\EntityRepository;
 
 
 
@@ -54,6 +55,17 @@ class SolicitarType extends AbstractType
                 ),
                 'label' => 'Cédula'
             ))
+                
+            ->add('pfg', EntityType::class, array(
+                'placeholder' => 'Seleccione PFG al cual está adscrito',
+                'class' => 'AppBundle:AreaPersona',
+                'query_builder' => function(EntityRepository $er){
+                    return $er->createQueryBuilder('pfg')
+                            ->where('pfg.idTipoArea = 1');
+                },
+                'choice_label' => 'getNombre',
+            ))
+                
             ->add('correo', EmailType::class, array(
                 'attr' => array('placeholder' => 'Dirección de Correo...'),
                 'constraints' => array(

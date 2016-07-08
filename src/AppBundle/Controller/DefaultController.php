@@ -31,7 +31,7 @@ class DefaultController extends Controller
             //si no existe el rol del docente, enviar correo al encargado de la región para verificar.
             if (!$rol) {
                 throw $this->createNotFoundException(
-                    'No product found for id '. $form->get('cedula')->getData()
+                    'Docente no registrado en la UBV '. $form->get('cedula')->getData()
                 );
             }
 
@@ -49,8 +49,16 @@ class DefaultController extends Controller
                 $login->setIdRolInstitucion($rol);
                 $permiso = $this->getDoctrine()->getRepository('AppBundle:Role')->findOneById(1);
                 $login->addRol($permiso); //le añade la permisología básica de docente
+                
+                $rep = $this->getDoctrine()->getRepository('AppBundle:Rol');
+                //Actualizar el PFG de la persona
+                $actualizarRol = $rep->findOneByIdPersona($rol->getIdRol()->getIdPersona());
+                $actualizarRol->setIdAreaPersona($form->get('pfg')->getData() );
+                
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($login);
+                $em->persist($actualizarRol);
+                
                 $em->flush(); //guarda en la base de datos
 
 
@@ -94,37 +102,7 @@ class DefaultController extends Controller
             throw $this->createNotFoundException(
                 'Docente Encontrado '. $form->get('cedula')->getData()
             );
-
-
-
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Hello Email')
-                ->setFrom('send@example.com')
-                ->setTo('wilmer.ramones@gmail.com')
-                ->setBody(
-                    $this->renderView(
-                        'correos/solicitud_adscripcion.html.twig',
-                        array(
-                            'nombres' => $form->get('nombres')->getData(),
-                            'apellidos' => $form->get('apellidos')->getData(),
-
-                            )
-                    ),
-                    'text/html'
-                )
-                /*
-                 * If you also want to include a plaintext version of the message
-                ->addPart(
-                    $this->renderView(
-                        'Emails/registration.txt.twig',
-                        array('name' => $name)
-                    ),
-                    'text/plain'
-                )
-                */
-            ;
-            //$this->get('mailer')->send($message);
-
+           
             //$request->getSession()->getFlashBag()->add('success', 'Your email has been sent! Thanks!');
         }
 

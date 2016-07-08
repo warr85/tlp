@@ -36,6 +36,16 @@ class AreaPersona
      * @ORM\SequenceGenerator(sequenceName="area_persona_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
+    
+     /**
+     * @var \AppBundle\Entity\TipoArea
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TipoArea")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_tipo_area", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idTipoArea;
 
 
 
@@ -81,6 +91,30 @@ class AreaPersona
     public function __toString()
     {
         return $this->nombre;
+    }
+    
+    
+    /**
+     * Set idTipoArea
+     *
+     * @param \AppBundle\Entity\Estado $idTipoArea
+     * @return TipoArea
+     */
+    public function setIdTipoArea(\AppBundle\Entity\TipoArea $idTipoArea = null)
+    {
+        $this->idEstado = $idTipoArea;
+
+        return $this;
+    }
+
+    /**
+     * Get idTipoArea
+     *
+     * @return \AppBundle\Entity\TipoArea
+     */
+    public function getIdTipoArea()
+    {
+        return $this->idTipoArea;
     }
 
 

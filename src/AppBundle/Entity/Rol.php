@@ -56,7 +56,7 @@ class Rol
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AreaPersona")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_area_persona", referencedColumnName="id", nullable=false)
+     *   @ORM\JoinColumn(name="id_area_persona", referencedColumnName="id", nullable=true)
      * })
      */
     private $idAreaPersona;
