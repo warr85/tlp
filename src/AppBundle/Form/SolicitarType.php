@@ -79,7 +79,10 @@ class SolicitarType extends AbstractType
                 'class' => 'AppBundle:Eje',
                 'choice_label' => 'getNombre',
             ))
-            ->add('send', SubmitType::class, array('label' => 'Enviar Solicitud'));
+            ->add('send', SubmitType::class, array(
+                'label' => 'Enviar Solicitud',
+                'attr'  => array('class' => 'btn btn-success')
+             ));
     }
 
 
