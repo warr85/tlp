@@ -47,7 +47,7 @@ class DefaultController extends Controller
                     ->encodePassword($login, $login->getPlainPassword()); //encripta la contraseña
                 $login->setPassword($password);
                 $login->setIdRolInstitucion($rol);
-                $permiso = $this->getDoctrine()->getRepository('AppBundle:Role')->findOneById(1);
+                $permiso = $this->getDoctrine()->getRepository('AppBundle:Role')->findOneByName("ROLE_DOCENTE");
                 $login->addRol($permiso); //le añade la permisología básica de docente
                 
                 $rep = $this->getDoctrine()->getRepository('AppBundle:Rol');
