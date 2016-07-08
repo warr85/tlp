@@ -11,25 +11,37 @@
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
+                    <th> Id </th>
                     <th> Datos del Docente </th>
-                    <th> Eje del Docente</th>                    
+                    <th> Area de Adscripción</th>
+                    <th> Eje Adscripción</th>                    
+                    <th> Estado</th>                    
+                    <th> Acciones</th> 
                   </tr>
                 </thead>
                 <tbody>
                     {% for adscripcion in adscripciones %}
                   <tr>
+                      <td>{{adscripcion.id}}</td>
                     <td>                         
                         {{adscripcion.idRolInstitucion.idRol.idPersona.PrimerNombre}}
                         {{adscripcion.idRolInstitucion.idRol.idPersona.PrimerApellido}}
                         ( {{adscripcion.idRolInstitucion}} )
-                         <a href="javascript:;" class="btn btn-xs btn-info"><i class="fa fa-eye"> </i></a>
+                        
+                         
+                    </td>
+                    <td>
+                        {{adscripcion.idRolInstitucion.IdRol.IdAreaPersona.nombre}}
+                    </td>
+                    <td>
+                        {{adscripcion.idRolInstitucion.idInstitucion.idEjeParroquia.IdEje}}                         
+                    </td>                    
+                    <td>{{adscripcion.idRolInstitucion.idInstitucion.idEjeParroquia.idParroquia.idMunicipio.idEstado}} </td>
+                    <td>
+                        <a href="javascript:;" class="btn btn-xs btn-info"><i class="fa fa-eye"> </i></a>
                         <a href="javascript:;" class="btn btn-xs btn-success"><i class="fa fa-check"> </i></a>
                         <a href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-times"> </i></a></td>
                     </td>
-                    <td>
-                        <strong>Eje:</strong>{{adscripcion.idRolInstitucion.idInstitucion.idEjeParroquia.IdEje}} 
-                        <strong>Estado:</strong> {{adscripcion.idRolInstitucion.idInstitucion.idEjeParroquia.idParroquia.idMunicipio.idEstado}} 
-                    </td>                    
                        
                   </tr>
                   {% endfor %}                  
