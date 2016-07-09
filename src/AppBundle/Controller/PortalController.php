@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\Usuarios;
 
-class DefaultController extends Controller
+class PortalController extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -116,7 +116,7 @@ class DefaultController extends Controller
         }
 
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
+        return $this->render('portal/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
             'form' => $form->createView(),
         ));

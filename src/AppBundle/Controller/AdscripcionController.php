@@ -16,10 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Adscripcion;
 use AppBundle\Entity\DocenteEscala;
 
-class RegistrationController extends Controller
+class AdscripcionController extends Controller
 {
     /**
-     * @Route("/register", name="solicitud_adscripcion")
+     * @Route("/solicitud/adscripcion", name="solicitud_adscripcion")
      */
     public function registerAction(Request $request)
     {
@@ -195,7 +195,7 @@ class RegistrationController extends Controller
         }
 
         return $this->render(
-            'registration/register.html.twig',
+            'solicitudes/adscripcion.html.twig',
             array('form' => $form->createView())
         );
     }

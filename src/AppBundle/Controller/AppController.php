@@ -24,7 +24,7 @@ use AppBundle\Entity\Adscripcion;
  * 
  */
  
-class DocenteController extends Controller {
+class AppController extends Controller {
 
     /**
      * Pagina principal de inicio de la session Docente.
