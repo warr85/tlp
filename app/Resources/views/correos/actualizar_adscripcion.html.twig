@@ -1,0 +1,9 @@
+<h3>Bienvido al CEA@UBV {{ nombres  }}Tu adscripcion ha sido {{ estatus }}</h3>
+
+
+Para hacer login dirigete simplemente a la página de ingreso del Portal del Centro de Estudios Avanzados: <a href="{{ url('login') }}">Login</a>.
+
+
+
+{# Makes an absolute URL to the /images/logo.png file #}
+<img src="{{ absolute_url(asset('bundles/framework/images/portal/logo_ubv.png')) }}">

@@ -30,6 +30,14 @@ class Usuarios implements UserInterface, \Serializable
      * @ORM\Column(name="username", type="string", length=255, nullable=false, options={"comment" = "nombre de usuariro"})
      */
     protected $username;
+    
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Email
+     * @var string
+     */
+    protected $email;
 
     /**
      * @var string
@@ -112,6 +120,32 @@ class Usuarios implements UserInterface, \Serializable
     {
         return $this->username;
     }
+    
+    
+    
+     /**
+     * Set username
+     *
+     * @param string $email
+     * @return Usuarios
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    
 
     /**
      * Set password

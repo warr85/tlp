@@ -30,21 +30,43 @@ class UserType extends AbstractType
     {
         $builder
             ->add('fecha_ingreso', BirthdayType::class, array(
+                 'widget' => 'choice',
                 'label' => 'Fecha de Ingreso UBV',
-                'data' => new \DateTime("01/01/2003")
+                'data' => new \DateTime("01/01/2003"),
+                'years' => range(2003, date("Y"))
             ))
             ->add('trabajo', FileType::class, array(
                 'label' => 'Digital Constancia Trabajo',
                'constraints' => array(
                    new NotBlank(),
-                   new File(array('maxSize' => '1024K'))
+                   new File(array(
+                       'maxSize'    => '1024K',
+                       'mimeTypes' => [
+                           'application/pdf',
+                           'application/x-pdf',
+                           'image/png',
+                           'image/jpg',
+                           'image/jpeg'
+                        ],
+                       'mimeTypesMessage' => 'Sólo se permiten extensiones png, jpeg y pdf'
+                   ))
                )
            ))
             ->add('pregrado', FileType::class, array(
                 'label' => 'Digital Título de Pregrado',
                 'constraints' => array(
                     new NotBlank(),
-                    new File(array('maxSize' => '1024K'))
+                     new File(array(
+                       'maxSize'    => '1024K',
+                       'mimeTypes' => [
+                           'application/pdf',
+                           'application/x-pdf',
+                           'image/png',
+                           'image/jpg',
+                           'image/jpeg'
+                        ],
+                       'mimeTypesMessage' => 'Sólo se permiten extensiones png, jpeg y pdf'
+                   ))
                 )
             ))
             
@@ -52,7 +74,17 @@ class UserType extends AbstractType
                 'label' => 'Digital Título de Postgrado',
                 'required' => false, 
                 'constraints' => array(
-                   new File(array('maxSize' => '1024K')) 
+                   new File(array(
+                       'maxSize'    => '1024K',
+                       'mimeTypes' => [
+                           'application/pdf',
+                           'application/x-pdf',
+                           'image/png',
+                           'image/jpg',
+                           'image/jpeg'
+                        ],
+                       'mimeTypesMessage' => 'Sólo se permiten extensiones png, jpeg y pdf'
+                   )) 
                 )
               ))
             ->add('oposicion', CheckboxType::class, array(
@@ -75,7 +107,8 @@ class UserType extends AbstractType
                 'required' => false,
                 'attr' => array(
                     'class' =>  'esc_oposicion'
-                )
+                ),
+                'years' => range(2003, date("Y"))
             ))
             ->add('documento_oposicion', FileType::class, array(
                 'label' => 'Digital Documento Oposición',
@@ -84,6 +117,19 @@ class UserType extends AbstractType
                 'attr' => array(
                     'style' => 'display:none;',
                     'class' =>  'esc_oposicion'
+                ),
+                'constraints' => array(
+                   new File(array(
+                       'maxSize'    => '1024K',
+                       'mimeTypes' => [
+                           'application/pdf',
+                           'application/x-pdf',
+                           'image/png',
+                           'image/jpg',
+                           'image/jpeg'
+                        ],
+                       'mimeTypesMessage' => 'Sólo se permiten extensiones png, jpeg y pdf'
+                   )) 
                 )
             ))
 
@@ -125,7 +171,8 @@ class UserType extends AbstractType
                 'label_attr'    => array( 'class' => 'esc_asistente'),
                 'attr' => array(
                     'class' =>  'esc_asistente'
-                )
+                ),
+                'years' => range(2003, date("Y"))
             ))
             
             ->add('documento_asistente', FileType::class, array(
@@ -135,6 +182,19 @@ class UserType extends AbstractType
                 'attr' => array(     
                 	'style' => 'display:none;',               
                     'class' =>  'esc_asistente'
+                ),
+                'constraints' => array(
+                   new File(array(
+                       'maxSize'    => '1024K',
+                       'mimeTypes' => [
+                           'application/pdf',
+                           'application/x-pdf',
+                           'image/png',
+                           'image/jpg',
+                           'image/jpeg'
+                        ],
+                       'mimeTypesMessage' => 'Sólo se permiten extensiones png, jpeg y pdf'
+                   )) 
                 )
             ))
             
@@ -156,7 +216,8 @@ class UserType extends AbstractType
                 'required' => false,
                 'attr' => array(
                     'class' =>  'esc_asociado'
-                )
+                ),
+                'years' => range(2003, date("Y"))
             ))
 
             ->add('documento_asociado', FileType::class, array(
@@ -166,6 +227,19 @@ class UserType extends AbstractType
                 'attr' => array(
                     'style' => 'display:none;',
                     'class' =>  'esc_asociado'
+                ),
+                'constraints' => array(
+                   new File(array(
+                       'maxSize'    => '1024K',
+                       'mimeTypes' => [
+                           'application/pdf',
+                           'application/x-pdf',
+                           'image/png',
+                           'image/jpg',
+                           'image/jpeg'
+                        ],
+                       'mimeTypesMessage' => 'Sólo se permiten extensiones png, jpeg y pdf'
+                   )) 
                 )
             ))
 
@@ -185,7 +259,8 @@ class UserType extends AbstractType
                 'required' => false,
                 'attr' => array(
                     'class' =>  'esc_agregado'
-                )
+                ),
+                'years' => range(2003, date("Y"))
             ))
 
             ->add('documento_agregado', FileType::class, array(
@@ -195,6 +270,19 @@ class UserType extends AbstractType
                 'attr' => array(
                     'style' => 'display:none;',
                     'class' =>  'esc_agregado'
+                ),
+                'constraints' => array(
+                   new File(array(
+                       'maxSize'    => '1024K',
+                       'mimeTypes' => [
+                           'application/pdf',
+                           'application/x-pdf',
+                           'image/png',
+                           'image/jpg',
+                           'image/jpeg'
+                        ],
+                       'mimeTypesMessage' => 'Sólo se permiten extensiones png, jpeg y pdf'
+                   )) 
                 )
             ))
 
@@ -215,7 +303,8 @@ class UserType extends AbstractType
                 'required' => false,
                 'attr' => array(
                     'class' =>  'esc_titular'
-                )
+                ),
+                'years' => range(2003, date("Y"))
             ))
 
             ->add('documento_titular', FileType::class, array(
@@ -225,6 +314,19 @@ class UserType extends AbstractType
                 'attr' => array(
                     'style' => 'display:none;',
                     'class' =>  'esc_titular'
+                ),
+                'constraints' => array(
+                   new File(array(
+                       'maxSize'    => '1024K',
+                       'mimeTypes' => [
+                           'application/pdf',
+                           'application/x-pdf',
+                           'image/png',
+                           'image/jpg',
+                           'image/jpeg'
+                        ],
+                       'mimeTypesMessage' => 'Sólo se permiten extensiones png, jpeg y pdf'
+                   )) 
                 )
             ))
 

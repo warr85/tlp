@@ -140,6 +140,7 @@ class AppController extends Controller {
            $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
            $user = $this->getDoctrine()->getRepository('AppBundle:Usuarios')->findOneByIdRolInstitucion($adscripcion->getIdRolInstitucion());
            $user->addRol($this->getDoctrine()->getRepository('AppBundle:Role')->findOneByName("ROLE_ADSCRITO"));
+                                            
        }else{
            $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(3));
            $user = $this->getDoctrine()->getRepository('AppBundle:Usuarios')->findOneByIdRolInstitucion($adscripcion->getIdRolInstitucion());
@@ -151,7 +152,24 @@ class AppController extends Controller {
        $em->persist($user);
        $em->flush();
        
-       $this->addFlash('notice', 'Solicitud Actualizada Correctamente');
+       $message = \Swift_Message::newInstance()
+                    ->setSubject('Resultado Adscripcion CEA@UBV')
+                    ->setFrom('wilmer.ramones@gmail.com')
+                    ->setTo($user->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                            'correos/actualizar_adscripcion.html.twig',
+                            array(
+                                'nombres'   => $user->getUsername(),
+                                'estatus'   => $adscripciones->getIdEstatus()
+                            )
+                        ),
+                        'text/html'
+                    )                    
+                ;
+                $this->get('mailer')->send($message);
+       
+       $this->addFlash('notice', 'Solicitud Actualizada Correctamente, hemos enviado un correo al docente notificandole los cambios.');
        
        $escala = $this->getDoctrine()->getRepository('AppBundle:DocenteEscala')->findBy(array(
             'idRolInstitucion' => $adscripciones->getIdRolInstitucion()->getId()

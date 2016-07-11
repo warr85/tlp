@@ -51,6 +51,7 @@ class PortalController extends Controller
             if(!$credenciales){ //si no existe, procede a crear usuario y contraseña.
                 $login = new Usuarios();
                 $login->setUsername($usuario);
+                $login->setEmail($form->get('correo')->getData());
                 $login->setPlainPassword($form->get('cedula')->getData());
                 $password = $this->get('security.password_encoder')
                     ->encodePassword($login, $login->getPlainPassword()); //encripta la contraseña
