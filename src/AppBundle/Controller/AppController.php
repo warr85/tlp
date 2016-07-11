@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\Adscripcion;
 
@@ -50,17 +51,57 @@ class AppController extends Controller {
     /**
      * Pagina principal de inicio de la session Docente.
      *
-     * @Route("/solicitudes", name="cea_solicitudes")
-     * @Method("GET")
+     * @Route("/solicitudes/adscripcion/{estatus}", name="cea_adscripciones")
+     * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_COORDINADOR_NACIONAL')")
      */
-    public function verSolicitudesAction()
+    public function verSolicitudesAction($estatus = 2, Request $request)
     {
         
-        $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findBy(array('idEstatus' => 2));
-        
+        if ($request->getMethod() != 'POST') {
+            $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findBy(array('idEstatus' => $estatus));
+            switch ($estatus){
+                case 1: 
+                    $mensaje = "activas";
+                    break;
+                case 2: 
+                    $mensaje = "en espera";
+                    break;
+                case 3:
+                    $mensaje = "rechazadas";
+                    break;
+            }
+        }else{
+            
+            $persona = $this->getDoctrine()->getRepository('AppBundle:Persona')
+                              ->findOneByCedulaPasaporte($request->get('docente'));
+            
+             if (!$persona) {
+                $this->addFlash('danger', 'Docente ' . $request->get('docente') . ' no Registrado en la Base de Datos del Centro de Estudios.');
+               return $this->render('cea/index.html.twig', array (
+                    'adscrito' => true
+                ));
+            }
+            
+            //1. obtener el rol-institucion-persona
+            $rol = $this->getDoctrine()->getRepository(
+                'AppBundle:RolInstitucion')->findOneByIdRol(
+                    $this->getDoctrine()->getRepository(
+                        'AppBundle:Rol')->findOneByIdPersona($persona));
+
+            //si no existe el rol del docente, enviar correo al encargado de la región para verificar.
+            if (!$rol) {
+                $this->addFlash('danger', 'Docente no Registrado en la Base de Datos del Centro de Estudios.  Por Favor');
+                 return $this->render('cea/index.html.twig');
+            }
+            
+            
+            $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findByIdRolInstitucion($rol->getId());
+            $mensaje = "Busqueda : " . $request->get('docente');
+        }
         return $this->render('cea/solicitudes.html.twig', array(
-            'adscripciones' => $adscripciones
+            'adscripciones' => $adscripciones,
+            'estatus_adscripciones' => $mensaje
         ));
     }
     
@@ -95,11 +136,19 @@ class AppController extends Controller {
         
        $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneById($adscripcion->getId());
        
-       if($estatus) $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
-       else $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(3));
+       if($estatus == "true") {
+           $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
+           $user = $this->getDoctrine()->getRepository('AppBundle:Usuarios')->findOneByIdRolInstitucion($adscripcion->getIdRolInstitucion());
+           $user->addRol($this->getDoctrine()->getRepository('AppBundle:Role')->findOneByName("ROLE_ADSCRITO"));
+       }else{
+           $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(3));
+           $user = $this->getDoctrine()->getRepository('AppBundle:Usuarios')->findOneByIdRolInstitucion($adscripcion->getIdRolInstitucion());
+           $user->removeRol($this->getDoctrine()->getRepository('AppBundle:Role')->findOneByName("ROLE_ADSCRITO"));
+       }
            
        $em = $this->getDoctrine()->getManager();
        $em->persist($adscripciones);
+       $em->persist($user);
        $em->flush();
        
        $this->addFlash('notice', 'Solicitud Actualizada Correctamente');
