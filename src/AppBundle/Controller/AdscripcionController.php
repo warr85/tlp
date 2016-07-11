@@ -51,18 +51,21 @@ class AdscripcionController extends Controller
 
             // Generate a unique name for the file before saving it
             $nombreTrabajo = md5(uniqid()).'.'.$constanciaTrabajo->guessExtension();
-            $nombrePregrado = md5(uniqid()).'.'.$constanciaPregrado->guessExtension();
+            
 
             // Move the file to the directory where brochures are stored
             $constanciaTrabajo->move(
                 $this->container->getParameter('adscripcion_directory'),
                 $nombreTrabajo
-            );
-            
+            );            
+            thumbnail($nombreTrabajo, $this->container->getParameter('adscripcion_directory'), $this->container->getParameter('adscripcion_thumb_directory'));
+             
+            $nombrePregrado = md5(uniqid()).'.'.$constanciaPregrado->guessExtension();
              $constanciaPregrado->move(
                 $this->container->getParameter('adscripcion_directory'),
                 $nombrePregrado
             );
+            thumbnail($nombrePregrado, $this->container->getParameter('adscripcion_directory'), $this->container->getParameter('adscripcion_thumb_directory'));
             
             if($form->get('postgrado')->getData()) {
                 /** @var UploadedFile $constanciaPostgrado */
@@ -72,6 +75,7 @@ class AdscripcionController extends Controller
                 	$this->container->getParameter('adscripcion_directory'),
                 	$nombrePostgrado
             	);
+                thumbnail($nombrePostgrado, $this->container->getParameter('adscripcion_directory'), $this->container->getParameter('adscripcion_thumb_directory'));
                 $adscripcion->setPostgrado($nombrePostgrado);
             }
             $em = $this->getDoctrine()->getManager();
@@ -97,6 +101,7 @@ class AdscripcionController extends Controller
                         $this->container->getParameter('adscripcion_directory'),
                         $nombreOposicion
                     );
+                    thumbnail($nombreOposicion, $this->container->getParameter('adscripcion_directory'), $this->container->getParameter('adscripcion_thumb_directory'));
                     $adscripcion->setOposicion($nombreOposicion);
                     $adscripcion->setIdLineaInvestigacion($form->get('lineas_investigacion')->getData());
                     $adscripcion->setTituloTrabajo($form->get('titulo_trabajo')->getData());
@@ -120,6 +125,7 @@ class AdscripcionController extends Controller
                         $this->container->getParameter('adscripcion_directory'),
                         $nombreAsistente
                     );
+                    thumbnail($nombreAsistente, $this->container->getParameter('adscripcion_directory'), $this->container->getParameter('adscripcion_thumb_directory'));
                     $adscripcion->setAsistente($nombreAsistente);
 
 
@@ -140,6 +146,7 @@ class AdscripcionController extends Controller
                        $this->container->getParameter('adscripcion_directory'),
                        $nombreAsociado
                    );
+                   thumbnail($nombreAsociado, $this->container->getParameter('adscripcion_directory'), $this->container->getParameter('adscripcion_thumb_directory'));
                    $adscripcion->setAsociado($nombreAsociado);
                 }
 
@@ -159,6 +166,7 @@ class AdscripcionController extends Controller
                         $this->container->getParameter('adscripcion_directory'),
                         $nombreAgregado
                     );
+                    thumbnail($nombreAgregado, $this->container->getParameter('adscripcion_directory'), $this->container->getParameter('adscripcion_thumb_directory'));
                     $adscripcion->setAgreado($nombreAgregado);
                 }
 
@@ -178,6 +186,7 @@ class AdscripcionController extends Controller
                         $this->container->getParameter('adscripcion_directory'),
                         $nombreTitular
                     );
+                    thumbnail($nombreTitular, $this->container->getParameter('adscripcion_directory'), $this->container->getParameter('adscripcion_thumb_directory'));
                     $adscripcion->setTitular($nombreTitular);
                 }
 
@@ -199,4 +208,30 @@ class AdscripcionController extends Controller
             array('form' => $form->createView())
         );
     }
+}
+
+/*funcion para crear miniaturas de las imagenes y carga más rapido la página */
+
+function thumbnail ($filename, $fuente, $destino){   
+     if(preg_match('/[.](jpeg)$/', $filename)) {
+        $im = imagecreatefromjpeg($fuente . "/" . $filename);
+    } else if (preg_match('/[.](jpg)$/', $filename)) {
+        $im = imagecreatefromjpeg($fuente . "/" . $filename);
+    }else if (preg_match('/[.](gif)$/', $filename)) {
+        $im = imagecreatefromgif($fuente . "/" . $filename);
+    } else if (preg_match('/[.](png)$/', $filename)) {
+        $im = imagecreatefrompng($fuente . "/" . $filename);
+    }
+
+    $ox = imagesx($im);
+    $oy = imagesy($im);
+
+    $nx = 80;
+    $ny = 80;
+
+    $nm = imagecreatetruecolor($nx, $ny);
+
+    imagecopyresized($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
+
+    imagejpeg($nm, $destino . "/" . $filename);
 }
