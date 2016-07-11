@@ -83,5 +83,37 @@ class AppController extends Controller {
         ));
     }
     
+    
+    /**
+     * Encuentra y muestra una entidad de tipo Adscripción.
+     *
+     * @Route("/solicitudes/actualizar/{id}/{estatus}", name="cea_solicitudes_actualizar")
+     * @Method({"GET", "POST"})
+     */
+    public function solicitudesEditAction(Adscripcion $adscripcion, $estatus)
+    {
+        
+       $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneById($adscripcion->getId());
+       
+       if($estatus) $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
+       else $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(3));
+           
+       $em = $this->getDoctrine()->getManager();
+       $em->persist($adscripciones);
+       $em->flush();
+       
+       $this->addFlash('notice', 'Solicitud Actualizada Correctamente');
+       
+       $escala = $this->getDoctrine()->getRepository('AppBundle:DocenteEscala')->findBy(array(
+            'idRolInstitucion' => $adscripciones->getIdRolInstitucion()->getId()
+        ));
+       
+        return $this->render('cea/solicitudes_mostar.html.twig', array(
+            'adscripcion' => $adscripciones, 
+            'escalas' => $escala
+        ));
+       
+    }
+    
 }
  

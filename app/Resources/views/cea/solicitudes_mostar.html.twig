@@ -5,7 +5,10 @@
 {% endblock %}
 
 {%block body %} 
-
+    {% for message in app.session.flashBag.get('notice') %}
+         <div class="alert alert-success">{{ message }}</div>
+    
+    {%endfor %}
      <div class="content-wrapper">
         <div class="container">
             <div class="row">
@@ -48,14 +51,15 @@
                             </table>
                             
                         </div>
-                        
+                        {% if adscripcion.idLineaInvestigacion is not null %}
                         <div class="form-group">
                             <label for="username">Area y Línea de Investigación:</label>
                             <ul>
                                 <li>{{adscripcion.idLineaInvestigacion.idAreaInvestigacion}}</li>
                                 <li>{{adscripcion.idLineaInvestigacion}}</li>
                             </ul>                            
-                        </div>     
+                        </div>  
+                         {% endif %}
                             
                         <div class="form-group">
                              <label for="titulo">Título del Trabajo:</label>
@@ -67,18 +71,74 @@
 
                         
 
-                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-user"></span>&nbsp;Ingresar</button>
+                        <a class="btn btn-primary" href="{{ path('cea_solicitudes_actualizar', { 'id': adscripcion.id, 'estatus' : 'true' }) }}"  ><span class="fa fa-check"></span>&nbsp;Aprobar</a>
+                        <a class="btn btn-danger" href="{{ path('cea_solicitudes_actualizar', { 'id': adscripcion.id, 'estatus' : 'false' }) }}" ><span class="fa fa-close"></span>&nbsp;Rechazar</a>
                     </form>
                     <hr />
                         </div>
                 </div>
                              
-                <div class="col-md-5">
-
+                <div class="col-md-5">    
+                     <h3>Documentos Consignados</h3>    
                      <div class="widget-content">
-                         <h3>Documentos Consignados</h3>
-                         <a href="{{asset('uploads/adscripcion/'~ adscripcion.trabajo)}}" data-lightbox="adscripcion">#1</a>    
-                         <a href="{{asset('uploads/adscripcion/'~ adscripcion.oposicion)}}" data-lightbox="adscripcion">#2</a>    
+                                             
+                         
+                         
+                         <div class="col-xs-4">
+                            <div class="thumbnail">
+                                <a href="{{asset('uploads/adscripcion/'~ adscripcion.trabajo)}}" data-lightbox="adscripcion">
+                                    <img src="{{ asset('uploads/adscripcion/thumb/'~ adscripcion.trabajo) }}" />
+                                </a>
+                              <div class="caption">                                
+                                <p>Constancia de Trabajo</p>                              
+                              </div>
+                          </div>
+                        </div>
+                                
+                        <div class="col-xs-4">
+                            <div class="thumbnail">
+                                <a href="{{asset('uploads/adscripcion/'~ adscripcion.pregrado)}}" data-lightbox="adscripcion">
+                                    <img src="{{ asset('uploads/adscripcion/thumb/'~ adscripcion.pregrado) }}" />
+                                </a>
+                              <div class="caption">                                
+                                <p>Título de Pregrado</p>                              
+                              </div>
+                          </div>
+                        </div>
+                                
+                        {% if adscripcion.postgrado is not null %}         
+                        <div class="col-xs-4">
+                            <div class="thumbnail">
+                                <a href="{{asset('uploads/adscripcion/'~ adscripcion.postgrado)}}" data-lightbox="adscripcion">
+                                    <img src="{{ asset('uploads/adscripcion/thumb/'~ adscripcion.postgrado) }}" />
+                                </a>
+                              <div class="caption">                                
+                                <p>Título de Postgrado</p>                              
+                              </div>
+                          </div>
+                        </div>
+                        {% endif %}
+                         
+                        {% if adscripcion.oposicion is not null %}         
+                        <div class="col-xs-4">
+                            <div class="thumbnail">
+                                <a href="{{asset('uploads/adscripcion/'~ adscripcion.oposicion)}}" data-lightbox="adscripcion">
+                                    <img src="{{ asset('uploads/adscripcion/thumb/'~ adscripcion.oposicion) }}" />
+                                </a>
+                              <div class="caption">                                
+                                <p>Concurso de Oposición</p>                              
+                              </div>
+                          </div>
+                        </div>
+                        {% endif %}
+                         
+                         
+                        
+                         
+                         
+                             
+                         
+                         
                        
 
                     </div>
