@@ -22,7 +22,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Adscripcion
 {
 
-	/**
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false, options={"comment" = "Identificador de la Adscripcion"})

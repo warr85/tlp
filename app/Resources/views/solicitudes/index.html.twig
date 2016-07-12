@@ -1,0 +1,51 @@
+{% extends 'base_app.html.twig' %}
+
+{% block body %} 
+    <div class="main">
+        
+  <div class="main-inner">
+    <div class="container">  
+        
+        {% for message in app.session.flashBag.get('notice') %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {%endfor %}
+        
+        <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Mis Servicios Solicitados</h3>
+            </div>
+         <div class="widget-content">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th> Solicitud N° </th>
+                    <th> Descripción </th>
+                    <th> Fecha Solicitud</th>
+                    <th> Estatus Solicitud</th>                                                            
+                    <th> Acciones</th> 
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for servicio in servicios %}
+                  <tr>
+                      <td>{{servicio.id}}</td>
+                      <td>{{servicio.idServicioCe.Nombre}}</td>
+                      <td>{{servicio.fechaSolicitud | date('Y-m-d')}}</td>
+                      <td>{{servicio.idEstatus}}</td>
+                      <td>
+                        <a href="{{ path('servicio_antiguedad_imprimir', { 'id': servicio.id }) }}" class="btn btn-xs btn-info"><i class="fa fa-eye"> </i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-success"><i class="fa fa-check"> </i></a>
+                        <a href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-times"> </i></a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                    </tbody>
+                </table>            
+         </div>
+        </div>
+    </div>
+  </div>
+    </div>
+    </div>
+  </div>
+{% endblock %}

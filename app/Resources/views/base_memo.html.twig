@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}CEA | UBV!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body >
+        {% block encabezado %} 
+            <header>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img src="{{ asset('bundles/framework/images/portal/ubv_logo.png')}}" />
+                        </div>
+                        <div class="col-sm-4 col-lg-offset-3">
+                            <p>República Bolivariana de Venezuela</p>
+                            <p>Universidad Bolivariana de Venezuela</p>
+                            <p>Rectorado</p>
+                            <p>Dirección General de Apoyo Socio Administrativo</p>
+                        </div>
+                    </div>
+            </header>
+        {% endblock %}
+        {% block body %}
+            
+            {% block principal %} {% endblock %}
+
+        {% endblock %}
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}" ></script>
+        {% endblock %}
+    </body>
+</html>
