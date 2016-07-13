@@ -1,3 +1,43 @@
 {% extends 'base_memo.html.twig' %}
 
+{% block para %} 
+    {{adscripcion.idRolInstitucion.idRol.idPersona.primerNombre}} 
+    {{adscripcion.idRolInstitucion.idRol.idPersona.segundoNombre}} 
+    {{adscripcion.idRolInstitucion.idRol.idPersona.primerApellido}}
+    {{adscripcion.idRolInstitucion.idRol.idPersona.segundoApellido}}
+    ({{adscripcion.idRolInstitucion.idRol.idPersona.cedulaPasaporte}})
+    <br>Trabajador Académico adscrito al Centro de Estudios Ambientales
+{%endblock %}
 
+{% block coordinador %} 
+    Prof. Alexis Lozada
+    <br>Director (E) Del Centro de Estudios  Ambientales.    
+{% endblock %}
+
+
+{% block asunto %}
+    Reconocimiento de Antiguedad
+{%endblock%} 
+
+{% block fecha %}
+    {{ "now"|date("d/m/Y") }}
+{%endblock%}
+
+ {% block fecha_contratacion %} 
+     {{adscripcion.fechaIngreso | date("d-M-Y")}}
+ {%endblock %}
+ 
+ 
+ {% for e in escala %}
+     
+     {%if e.idTipoEscala == 1 %}
+        {% block fecha_oposicion %} 
+           {{escala.fechaEscala | date("d-M-Y")}}
+       {%endblock %}
+     {% endif %}
+ 
+ {%endfor %}
+ 
+ {%block antiguedad %}
+     {{ diferencia }}
+ {%endblock%}

@@ -65,7 +65,7 @@ class DocenteEscala
     
         
     
-     /** @ORM\Column(type="datetime", nullable=false, options={"comment" = "Fecha de obtencion de la escala"})  
+     /** @ORM\Column(type="date", nullable=false, options={"comment" = "Fecha de obtencion de la escala"})  
      /**
      * @Assert\Date()
      */      

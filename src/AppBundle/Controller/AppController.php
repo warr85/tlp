@@ -374,14 +374,52 @@ class AppController extends Controller {
      * Muestra la página donde explica brevemente el reconocimiento de Antiguedad
      * y permite realizar la solicitud
      *
-     * @Route("/mis_servicios/antiguedad/imprimir", name="servicio_antiguedad_imprimir")
+     * @Route("/mis_servicios/antiguedad/imprimir/{id}", name="servicio_antiguedad_imprimir")
      * @Method({"GET", "POST"})
      */
     public function solicitudesAntiguedadImprimirAction(){
         
-       return $this->render('memorando/antiguedad.html.twig');
+       $antiguedad = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findOneByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+       
+       if($antiguedad->getIdEstatus()->getId() == 1){
+         $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneByIdRolInstitucion($antiguedad->getIdRolInstitucion());
+         $escala = $this->getDoctrine()->getRepository('AppBundle:DocenteEscala')->findOneByIdRolInstitucion($antiguedad->getIdRolInstitucion());
+         $idRol = $escala->getIdRolInstitucion()->getId();
+        $stmt = $this->getDoctrine()->getManager()
+        ->getConnection()
+        ->prepare("select age(e.fecha_escala, a.fecha_ingreso),
+            date_part('year',age(e.fecha_escala, a.fecha_ingreso)) as anos,
+            date_part('month',age(e.fecha_escala, a.fecha_ingreso)) as meses,
+            date_part('day',age(e.fecha_escala, a.fecha_ingreso)) as dias
+            FROM docente_escala as e
+            INNER JOIN solicitud_adscripcion as a 
+            ON a.id_rol_institucion = e.id_rol_institucion
+            WHERE e.id_tipo_escala = '1' AND a.id_rol_institucion = $idRol");
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $recon = $result[0]['anos'] . " años " . $result[0]['meses'] . " meses y " . $result[0]['dias'] . " días.";
+         
+     
+        return $this->render('memorando/antiguedad.html.twig', array(
+            'antiguedad'    =>  $antiguedad,
+            'adscripcion'   =>  $adscripcion,
+            'escala'        =>  $escala,
+            'diferencia'    =>  $recon
+        ));
+       }else{
+           
+       }
+        
+        $this->addFlash('danger', 'No Puede Imprimir el reconocimiento de Antiguedad hasta que esté aprobado por el coordinador del CEA.');
+       
+        $servicios = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+        $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
         
         
+        return $this->render('solicitudes/index.html.twig', array(
+            'servicios' => $servicios,
+            'adscripcion' => $adscripcion
+        ));
         
     }
     
