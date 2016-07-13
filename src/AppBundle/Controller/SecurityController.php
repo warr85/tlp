@@ -13,6 +13,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * Security controller.
+ *
+ * @Route("/security")
+ */
+
 class SecurityController extends Controller
 {
     /**
@@ -39,7 +45,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/verificar", name="user_roles")
+     * @Route("/verificar", name="verificar")
      */
     public function verificarAction(Request $request)
     {

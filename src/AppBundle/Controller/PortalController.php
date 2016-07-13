@@ -111,7 +111,7 @@ class PortalController extends Controller
             }
            
            return $this->redirect(
-                    sprintf('%s#%s', '/', 'adscripcion')
+                    sprintf('%s#%s', '', 'adscripcion')
                 );
             //$request->getSession()->getFlashBag()->add('success', 'Your email has been sent! Thanks!');
         }
