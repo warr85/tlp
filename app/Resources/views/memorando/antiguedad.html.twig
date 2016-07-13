@@ -9,6 +9,8 @@
     <br>Trabajador Académico adscrito al Centro de Estudios Ambientales
 {%endblock %}
 
+{% block numero %}{{ correlativo }}{% endblock %}
+
 {% block coordinador %} 
     Prof. Alexis Lozada
     <br>Director (E) Del Centro de Estudios  Ambientales.    
@@ -41,3 +43,14 @@
  {%block antiguedad %}
      {{ diferencia }}
  {%endblock%}
+ 
+ {%block javascripts %} 
+     {{ parent() }}
+     <script type="text/javascript">
+         
+     window.onload = function () {
+            window.print(); //invoca la impresora tan pronto se carga el documento
+            setTimeout(function () { window.close(); }, 100); //cierra la venta si cierra el dialog de imprimir
+     }
+</script>
+ {% endblock %}
