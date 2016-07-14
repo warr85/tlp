@@ -182,15 +182,16 @@ class AppController extends Controller {
        $user = $this->getDoctrine()->getRepository('AppBundle:Usuarios')->findOneByIdRolInstitucion($servicio->getIdRolInstitucion());
        
        $message = \Swift_Message::newInstance()
-                    ->setSubject('Resultado Adscripcion CEA@UBV')
+                    ->setSubject('Resultado Solicitud de Servicio Docente CEA@UBV')
                     ->setFrom('wilmer.ramones@gmail.com')
                     ->setTo($user->getEmail())
                     ->setBody(
                         $this->renderView(
-                            'correos/actualizar_adscripcion.html.twig',
+                            'correos/actualizar_servicio.html.twig',
                             array(    
-                                'nombres'  => $user->getUserName(),
-                                'estatus'   => $servicio->getIdEstatus()
+                                'nombres'   => $user->getIdRolInstitucion()->getIdRol()->getIdPersona()->getPrimerNombre(),
+                                'apellidos' => $user->getIdRolInstitucion()->getIdRol()->getIdPersona()->getPrimerApellido(),
+                                'servicio'  => $servicio                                
                             )
                         ),
                         'text/html'
