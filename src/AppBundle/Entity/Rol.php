@@ -52,14 +52,14 @@ class Rol
 
 
     /**
-     * @var \AppBundle\Entity\AreaPersona
+     * @var \AppBundle\Entity\AreaInstitucion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AreaPersona")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AreaInstitucion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_area_persona", referencedColumnName="id", nullable=true)
+     *   @ORM\JoinColumn(name="id_area_institucion", referencedColumnName="id", nullable=true)
      * })
      */
-    private $idAreaPersona;
+    private $idAreaInstitucion;
 
 
 
@@ -163,19 +163,19 @@ class Rol
     }
 
     /**
-     * @return AreaPersona
+     * @return AreaInstitucion
      */
-    public function getIdAreaPersona()
+    public function getIdAreaInstitucion()
     {
-        return $this->idAreaPersona;
+        return $this->idAreaInstitucion;
     }
 
     /**
-     * @param AreaPersona $idAreaPersona
+     * @param AreaInstitucion $idAreaInstitucion
      */
-    public function setIdAreaPersona($idAreaPersona)
+    public function setIdAreaInstitucion($idAreaInstitucion)
     {
-        $this->idAreaPersona = $idAreaPersona;
+        $this->idAreaInstitucion = $idAreaInstitucion;
     }
 
 }

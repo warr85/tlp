@@ -58,7 +58,7 @@ class SolicitarType extends AbstractType
                 
             ->add('pfg', EntityType::class, array(
                 'placeholder' => 'Seleccione PFG al cual está adscrito',
-                'class' => 'AppBundle:AreaPersona',
+                'class' => 'AppBundle:AreaInstitucion',
                 'query_builder' => function(EntityRepository $er){
                     return $er->createQueryBuilder('pfg')
                             ->where('pfg.idTipoArea = 1');

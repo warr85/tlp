@@ -13,12 +13,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AreaPersona
+ * AreaInstitucion
  *
- * @ORM\Table(name="area_persona", uniqueConstraints={@ORM\UniqueConstraint(name="area_persona_nombre_key", columns={"nombre"})})
+ * @ORM\Table(name="area_institucion", uniqueConstraints={@ORM\UniqueConstraint(name="area_institucion_nombre_key", columns={"nombre"})})
  * @ORM\Entity
  */
-class AreaPersona
+class AreaInstitucion
 {
     /**
      * @var string
@@ -53,7 +53,7 @@ class AreaPersona
      * Set nombre
      *
      * @param string $nombre
-     * @return AreaPersona
+     * @return AreaInstitucion
      */
     public function setNombre($nombre)
     {

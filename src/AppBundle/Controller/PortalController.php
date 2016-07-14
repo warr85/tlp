@@ -63,7 +63,7 @@ class PortalController extends Controller
                 $rep = $this->getDoctrine()->getRepository('AppBundle:Rol');
                 //Actualizar el PFG de la persona
                 $actualizarRol = $rep->findOneByIdPersona($rol->getIdRol()->getIdPersona());
-                $actualizarRol->setIdAreaPersona($form->get('pfg')->getData() );
+                $actualizarRol->setIdAreaInstitucion($form->get('pfg')->getData() );
                 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($login);
