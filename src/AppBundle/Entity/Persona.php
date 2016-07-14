@@ -615,7 +615,9 @@ class Persona
     }
 
 
-
+    public function __toString() {
+        return $this->getPrimerNombre() . " " . $this->getPrimerApellido();
+    }
 
 
 
