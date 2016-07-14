@@ -1,6 +1,6 @@
 body{ 
     background: url('../../../bundles/framework/images/portal/body-bg.png'); 
-    color:#838383; 
+    color:black; 
     font: 13px/1.7em 'Open Sans';    
 }
 
@@ -17,10 +17,11 @@ body{
 .account-container {
 	width: 500px; 
 	display: block;       
-	margin: 30px auto 0 auto;	
-	background: #f9f9f9;
+	margin: 10px auto 0 auto;	
+	background:#fff;
 	
-	border: 1px solid #d5d5d5;
+	border: 1px solid;
+        border-color:#CCC;
 	
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -41,7 +42,7 @@ body{
 .register input{
     font-family: 'Open Sans';
     font-size: 13px;
-    color: #8e8d8d;
+    color: black;
     
 
 }

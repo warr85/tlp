@@ -7,18 +7,39 @@
         .esc_oposicion, .esc_asistente, .esc_agregado, .esc_asociado, .esc_titular{
             display: none;
         }
+        
+        h1, h4{
+            margin:0;
+        }
+        
+        .container{
+            margin-bottom: 0;
+        }
     </style>
 {% endblock %}
 
 
 
 {% block body %}
-    <div class="account-container register">
-        <div class="content clearfix">
-            <h1>Solicitud Adscripción</h1>
+    <div class="container">
+        <h4 class="alert alert-info"><i class="fa fa-info-circle"></i>
+            Estimado (a) Docente 
+            <strong>{{app.user.idRolInstitucion.idRol.idPersona.primerNombre}}
+                {{app.user.idRolInstitucion.idRol.idPersona.primerApellido}}</strong>,
+            para poder gozar de los beneficios del sistema cea@ubv, primero debe
+            formalizar su adscripción ante este centro de estudios, llenando los datos que a continuación
+            se solicitan. Recuerde que debe tener a su alcance los digitales de los 
+            documentos descritos en el correo enviado.
+            
+        </h4>
+    </div>
+    <div class="account-container register">        
+        <div class="content clearfix">            
+            <h1>Formalización Adscripción</h1>
             {% form_theme form 'bootstrap_3_layout.html.twig' %}        
             {{ form_start(form) }}
             {{ form_widget(form) }}
+            {{ form_end(form) }}
         </div>
         
     </div>

@@ -11,7 +11,6 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\FileValidator;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -331,7 +330,10 @@ class UserType extends AbstractType
             ))
 
             
-		  ->add('send', SubmitType::class, array('label' => 'Enviar Solicitud'))
+		  ->add('send', SubmitType::class, array(
+                      'label' => 'Formalizar Adscripción ante el CEA',
+                      'attr'  => array('class' => 'btn btn-success btn-block')
+                      ))
 
 
         ;
