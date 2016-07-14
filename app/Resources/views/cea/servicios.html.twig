@@ -21,6 +21,8 @@
                 </thead>
                 <tbody>
                     {% for servicio in servicios %}
+                        {% if not is_granted('ROLE_COORDINADOR_NACIONAL') %}
+                            {% if servicio.idRolInstitucion.idInstitucion.idEjeParroquia.idEje == app.user.idRolInstitucion.idInstitucion.idEjeParroquia.idEje %}
                   <tr>
                       <td>{{servicio.id}}</td>
                     <td>                         
@@ -31,7 +33,7 @@
                          
                     </td>
                     <td>
-                        {{servicio.idRolInstitucion.IdRol.IdAreaPersona.nombre}}
+                        {{servicio.idRolInstitucion.IdRol.IdAreaInstitucion.nombre}}
                     </td>
                     <td>
                         {{servicio.idRolInstitucion.idInstitucion.idEjeParroquia.IdEje}}                         
@@ -44,6 +46,33 @@
                     </td>
                        
                   </tr>
+                            {%endif%}
+                            {%else%}
+                                
+                                <tr>
+                      <td>{{servicio.id}}</td>
+                    <td>                         
+                        {{servicio.idRolInstitucion.idRol.idPersona.PrimerNombre}}
+                        {{servicio.idRolInstitucion.idRol.idPersona.PrimerApellido}}
+                        ( {{servicio.idRolInstitucion}} )
+                        
+                         
+                    </td>
+                    <td>
+                        {{servicio.idRolInstitucion.IdRol.IdAreaInstitucion.nombre}}
+                    </td>
+                    <td>
+                        {{servicio.idRolInstitucion.idInstitucion.idEjeParroquia.IdEje}}                         
+                    </td>                    
+                    <td>{{servicio.idRolInstitucion.idInstitucion.idEjeParroquia.idParroquia.idMunicipio.idEstado}} </td>
+                    <td>
+                        <a href="{{ path('cea_servicio_show', { 'id': servicio.id }) }}"  class="btn btn-xs btn-info"><i class="fa fa-eye"> </i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-success"><i class="fa fa-check"> </i></a>
+                        <a href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-times"> </i></a></td>
+                    </td>
+                       
+                  </tr>
+                              {%endif%}
                   {% endfor %}                  
                 
                 </tbody>

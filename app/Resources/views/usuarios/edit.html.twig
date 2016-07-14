@@ -1,7 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_app.html.twig' %}
 
 {% block body %}
-    <h1>Usuarios edit</h1>
+    <div class="container">
+    {% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}   
+    <h1>Edición de Usuarios</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -18,4 +20,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+            </div>
 {% endblock %}

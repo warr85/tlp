@@ -217,7 +217,7 @@ class AdscripcionController extends Controller
      *
      * @Route("/solicitudes/adscripcion/{estatus}", name="cea_adscripciones")
      * @Method({"GET", "POST"})
-     * @Security("has_role('ROLE_COORDINADOR')")
+     * @Security("has_role('ROLE_COORDINADOR_REGIONAL')")
      */
     public function verSolicitudesAdscripcionAction($estatus = 2, Request $request)
     {
@@ -274,7 +274,7 @@ class AdscripcionController extends Controller
      *
      * @Route("/solicitudes/{id}", name="cea_solicitudes_show")
      * @Method("GET")
-     * @Security("has_role('ROLE_COORDINADOR')")
+     * @Security("has_role('ROLE_COORDINADOR_REGIONAL')")
      */
     public function solicitudesAdscripcionShowAction(Adscripcion $adscripcion)
     {
@@ -295,7 +295,7 @@ class AdscripcionController extends Controller
      *
      * @Route("/solicitudes/actualizar/{id}/{estatus}", name="cea_solicitudes_actualizar")
      * @Method({"GET", "POST"})
-     * @Security("has_role('ROLE_COORDINADOR')")
+     * @Security("has_role('ROLE_COORDINADOR_REGIONAL')")
      */
     public function solicitudesAdscripcionEditAction(Adscripcion $adscripcion, $estatus)
     {

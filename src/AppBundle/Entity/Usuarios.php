@@ -47,7 +47,7 @@ class Usuarios implements UserInterface, \Serializable
     protected $password;
 
     /**
-     * @Assert\NotBlank()
+     * 
      * @Assert\Length(max=4096)
      */
     private $plainPassword;

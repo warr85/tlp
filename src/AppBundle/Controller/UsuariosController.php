@@ -12,7 +12,7 @@ use AppBundle\Form\UsuariosType;
 /**
  * Usuarios controller.
  *
- * @Route("/admin/usuarios")
+ * @Route("ceapp/admin/usuarios")
  */
 class UsuariosController extends Controller
 {
@@ -42,9 +42,10 @@ class UsuariosController extends Controller
     public function newAction(Request $request)
     {
         $usuario = new Usuarios();
-        $form = $this->createForm('AppBundle\Form\UsuariosType', $usuario);
+        $form = $this->createForm('AppBundle\Form\UsuarioNuevoType', $usuario);
         $form->handleRequest($request);
-
+        $pass = $usuario->getPlainPassword();
+        if(!$pass) $usuario->setPlainPassword ("0000");
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $this->get('security.password_encoder')
                 ->encodePassword($usuario, $usuario->getPlainPassword());

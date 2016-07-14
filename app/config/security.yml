@@ -5,7 +5,7 @@ security:
         AppBundle\Entity\Usuarios:
             algorithm: bcrypt
     role_hierarchy:       
-        ROLE_COORDINADOR_NACIONAL: [ROLE_COORDINADOR]
+        ROLE_COORDINADOR_NACIONAL: [ROLE_COORDINADOR_REGIONAL]
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
