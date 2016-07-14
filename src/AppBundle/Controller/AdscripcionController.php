@@ -326,7 +326,8 @@ class AdscripcionController extends Controller
                         $this->renderView(
                             'correos/actualizar_adscripcion.html.twig',
                             array(
-                                'nombres'   => $user->getUsername(),
+                                'nombres'   => $user->getIdRolInstitucion()->getIdRol()->getIdPersona()->getPrimerNombre(),
+                                'apellidos'   => $user->getIdRolInstitucion()->getIdRol()->getIdPersona()->getPrimerApellido(),
                                 'estatus'   => $adscripciones->getIdEstatus()
                             )
                         ),
