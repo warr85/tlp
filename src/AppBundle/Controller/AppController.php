@@ -36,8 +36,11 @@ class AppController extends Controller {
      */
     public function indexAction()
     {
-       $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->
-                findOneByIdRolInstitucion($this->getUser()->getIdRolInstitucion()->getId());
+       $adscripcion = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->
+                findOneBy(array(
+                    'idRolInstitucion'  =>  $this->getUser()->getIdRolInstitucion()->getId(),
+                    'idServicioCe'      =>  2
+               ));
        //si no ha solicitado adscripción regresa a la pagina de adscripcion
         if(!$adscripcion) return $this->redirect($this->generateUrl('solicitud_adscripcion'));
         //solicitud aprobada está en falso
@@ -65,7 +68,6 @@ class AppController extends Controller {
          if ($request->getMethod() != 'POST') {
             $servicios = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findBy(array(
                                 'idEstatus'     => $estatus,
-                                'idServicioCe'  => $tipo_servicio,
                     ));
             switch ($estatus){
                 case 1: 
@@ -147,7 +149,7 @@ class AppController extends Controller {
     public function serviciosIndexAction(){
         
         $servicios = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
-        $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+        $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
         
         
         return $this->render('solicitudes/index.html.twig', array(

@@ -373,6 +373,13 @@ class Adscripcion
 	    $this->fecha_creacion = new \DateTime();
 	    $this->fecha_ultima_actualizacion = new \DateTime();
     }
+    
+     public function getFechaCreacion()
+    {
+	   return $this->fecha_creacion;
+	   
+    }
+    
 
     /**
     * @ORM\PreUpdate

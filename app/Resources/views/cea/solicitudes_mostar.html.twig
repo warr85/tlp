@@ -20,12 +20,12 @@
                     </h4>                       
                 </div>
                 <div class="col-md-3">
-                    {% if adscripcion.idEstatus.id == 1 %}
-                        <h4 class="alert alert-success">Estatus <strong>{{adscripcion.idEstatus}}</strong>
-                    {% elseif adscripcion.idEstatus.id == 3 %}
-                        <h4 class="alert alert-danger">Estatus <strong>{{adscripcion.idEstatus}}</strong> 
+                    {% if servicio.idEstatus.id == 1 %}
+                        <h4 class="alert alert-success">Estatus <strong>{{servicio.idEstatus}}</strong>
+                    {% elseif servicio.idEstatus.id == 3 %}
+                        <h4 class="alert alert-danger">Estatus <strong>{{servicio.idEstatus}}</strong> 
                     {% else %}
-                        <h4 class="alert alert-warning">Estatus <strong>{{adscripcion.idEstatus}}</strong> 
+                        <h4 class="alert alert-warning">Estatus <strong>{{servicio.idEstatus}}</strong> 
                      {% endif %}
                     </h4>                       
                 </div>

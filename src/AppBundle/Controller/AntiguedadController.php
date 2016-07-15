@@ -46,7 +46,10 @@ class AntiguedadController extends Controller {
      */
     public function serviciosAntiguedadIndexAction(){
         
-        $servicio = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findOneByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+        $servicio = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findOneBy(array(
+            'idRolInstitucion' => $this->getUser()->getIdRolInstitucion(),
+            'idServicioCe'  => 1
+        ));
         
         if(!$servicio){
                 return $this->render('solicitudes/reconocimiento_antiguedad.html.twig');
@@ -67,9 +70,9 @@ class AntiguedadController extends Controller {
      * @Route("/mis_servicios/antiguedad/imprimir/{id}", name="servicio_antiguedad_imprimir")
      * @Method({"GET", "POST"})
      */
-    public function serviciosAntiguedadImprimirAction(){
+    public function serviciosAntiguedadImprimirAction(DocenteServicio $antiguedad){
         
-       $antiguedad = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findOneByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+       
        
        if($antiguedad->getIdEstatus()->getId() == 1){
          $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneByIdRolInstitucion($antiguedad->getIdRolInstitucion());
@@ -124,9 +127,7 @@ class AntiguedadController extends Controller {
         
        }else{
            
-       }
-        
-        $this->addFlash('danger', 'No Puede Imprimir el reconocimiento de Antiguedad hasta que esté aprobado por el coordinador del CEA.');
+           $this->addFlash('danger', 'No Puede Imprimir el reconocimiento de Antiguedad hasta que esté aprobado por el coordinador del CEA.');
        
         $servicios = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
         $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
@@ -136,6 +137,10 @@ class AntiguedadController extends Controller {
             'servicios' => $servicios,
             'adscripcion' => $adscripcion
         ));
+           
+       }
+        
+        
         
     }
     

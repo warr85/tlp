@@ -124,7 +124,7 @@
                 </table>
                 </div>
                 
-                        <p class="text-justify cuerpo-memo">Reciba un cordial saludo bolivariano y revolucionario de parte del equipo 
+                           {%block cuerpo %} <p class="text-justify cuerpo-memo"> Reciba un cordial saludo bolivariano y revolucionario de parte del equipo 
                            de trabajo de este Centro de Estudios Ambientales.  La presente es para 
                            informar que este Centro reconoce su antigüedad con fines de ascenso en 
                            escalafones de la carrera universitaria en esta Institución tomando en cuenta 
@@ -137,7 +137,7 @@
                                por única vez, los años, los meses y los días faltantes para satisfacer 
                                la permanencia legal exigida en el correspondiente escalafón que tuviese 
                                el trabajador académico en el momento de hacer su solicitud de ascenso 
-                               inmediato".</i> 
+                               inmediato".</i>  
                            
                            <br> &nbsp;&nbsp;&nbsp;&nbsp;En tal sentido, tomando la información 
                                 suministrada por Usted se tiene que: </p>
@@ -164,6 +164,7 @@
                             <p class="text-justify">  Por lo tanto desde su primera contratación 
                                 en la UBV hasta el Concurso de Oposición <strong>se reconoce una antigüedad de 
                                     {%block antiguedad %}{%endblock%}</strong></p>
+                            {% endblock %}
                             <p class="text-justify">Sin más a que hacer referencia, y dándole las gracias por su atención se despide. </p>
                             <div class="text-center firma">
                                 

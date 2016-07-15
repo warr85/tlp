@@ -30,16 +30,19 @@
                   </tr>
                 </thead>
                 <tbody>
+                    
                     {% for servicio in servicios %}
                   <tr>
                       <td>{{servicio.id}}</td>
                       <td>{{servicio.idServicioCe.Nombre}}</td>
-                      <td>{{servicio.fechaSolicitud | date('Y-m-d')}}</td>
+                      <td>{{servicio.fechaSolicitud | date('d-m-Y')}}</td>
                       <td>{{servicio.idEstatus}}</td>
                       <td>
-                        <a href="{{ path('servicio_antiguedad_imprimir', { 'id': servicio.id }) }}" target="_blank" class="btn btn-xs btn-info"><i class="fa fa-eye"> </i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-success"><i class="fa fa-check"> </i></a>
-                        <a href="javascript:;" class="btn btn-danger btn-xs"><i class="fa fa-times"> </i></a>
+                          {%if servicio.idServicioCe.id == 1 %}
+                            <a href="{{ path('servicio_antiguedad_imprimir', { 'id': servicio.id }) }}" target="_blank" class="btn btn-xs btn-info"><i class="fa fa-print"> </i></a>                        
+                          {% elseif servicio.idServicioCe.id == 2 %}
+                              <a href="{{ path('servicio_adscripcion_imprimir', { 'id': servicio.id }) }}" target="_blank" class="btn btn-xs btn-info"><i class="fa fa-print"> </i></a>                        
+                          {%endif%}
                       </td>
                   </tr>
                   {% endfor %}

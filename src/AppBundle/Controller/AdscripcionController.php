@@ -15,6 +15,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Adscripcion;
 use AppBundle\Entity\DocenteEscala;
+use AppBundle\Entity\Memorando;
+use AppBundle\Entity\DocenteServicio;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -193,10 +196,17 @@ class AdscripcionController extends Controller
                 }
 
             }
+            
+            //Crear la solicitud de Servicio
+            $servicios = new DocenteServicio();
 
+            $servicios->setIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+            $servicios->setIdServicioCe($this->getDoctrine()->getRepository('AppBundle:ServiciosCe')->findOneById(2));
+            $servicios->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:estatus')->findOneById(2));
+
+            $em->persist($servicios);
             $em->persist($adscripcion);
 
-            
             $em->flush(); //guarda en la base de datos
             
 
@@ -221,9 +231,13 @@ class AdscripcionController extends Controller
      */
     public function verSolicitudesAdscripcionAction($estatus = 2, Request $request)
     {
+         $servicios = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findBy(array(
+                'idEstatus' => $estatus,
+                'idServicioCe' => 2
+            ));  
         
         if ($request->getMethod() != 'POST') {
-            $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findBy(array('idEstatus' => $estatus));
+                     
             switch ($estatus){
                 case 1: 
                     $mensaje = "activas";
@@ -263,8 +277,8 @@ class AdscripcionController extends Controller
             $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findByIdRolInstitucion($rol->getId());
             $mensaje = "Busqueda : " . $request->get('docente');
         }
-        return $this->render('cea/solicitudes.html.twig', array(
-            'adscripciones' => $adscripciones,
+        return $this->render('cea/servicios.html.twig', array(
+            'servicios' => $servicios,
             'estatus_adscripciones' => $mensaje
         ));
     }
@@ -272,20 +286,23 @@ class AdscripcionController extends Controller
     /**
      * Encuentra y muestra una entidad de tipo Adscripción.
      *
-     * @Route("/solicitudes/{id}", name="cea_solicitudes_show")
+     * @Route("/adscripcion/{id}", name="cea_adscripcion_show")
      * @Method("GET")
      * @Security("has_role('ROLE_COORDINADOR_REGIONAL')")
      */
-    public function solicitudesAdscripcionShowAction(Adscripcion $adscripcion)
-    {
-        //$deleteForm = $this->createDeleteForm($usuario);
+    public function solicitudesAdscripcionShowAction(DocenteServicio $servicio)
+    {        
         $escala = $this->getDoctrine()->getRepository('AppBundle:DocenteEscala')->findBy(array(
-            'idRolInstitucion' => $adscripcion->getIdRolInstitucion()->getId()
+            'idRolInstitucion' => $servicio->getIdRolInstitucion()->getId()
         ));
+        
+        $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneByIdRolInstitucion($servicio->getIdRolInstitucion());
 
         return $this->render('cea/solicitudes_mostar.html.twig', array(
             'adscripcion' => $adscripcion, 
-            'escalas' => $escala
+            'servicio'  => $servicio,
+            'escalas' => $escala,
+            'servicio' => $servicio
         ));
     }
     
@@ -300,21 +317,24 @@ class AdscripcionController extends Controller
     public function solicitudesAdscripcionEditAction(Adscripcion $adscripcion, $estatus)
     {
         
-       $adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneById($adscripcion->getId());
-       
+       //$adscripciones = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneById($adscripcion->getId());
+       $servicios = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findOneBy(array(
+           'idRolInstitucion'   => $adscripcion->getIdRolInstitucion(),
+           'idServicioCe'       => 2
+       ));
        if($estatus == "true") {
-           $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
+           $servicios->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
            $user = $this->getDoctrine()->getRepository('AppBundle:Usuarios')->findOneByIdRolInstitucion($adscripcion->getIdRolInstitucion());
            $user->addRol($this->getDoctrine()->getRepository('AppBundle:Role')->findOneByName("ROLE_ADSCRITO"));
                                             
        }else{
-           $adscripciones->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(3));
+           $servicios->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(3));
            $user = $this->getDoctrine()->getRepository('AppBundle:Usuarios')->findOneByIdRolInstitucion($adscripcion->getIdRolInstitucion());
            $user->removeRol($this->getDoctrine()->getRepository('AppBundle:Role')->findOneByName("ROLE_ADSCRITO"));
        }
            
        $em = $this->getDoctrine()->getManager();
-       $em->persist($adscripciones);
+       $em->persist($servicios);
        $em->persist($user);
        $em->flush();
        
@@ -328,7 +348,7 @@ class AdscripcionController extends Controller
                             array(
                                 'nombres'   => $user->getIdRolInstitucion()->getIdRol()->getIdPersona()->getPrimerNombre(),
                                 'apellidos'   => $user->getIdRolInstitucion()->getIdRol()->getIdPersona()->getPrimerApellido(),
-                                'estatus'   => $adscripciones->getIdEstatus()
+                                'estatus'   => $servicios->getIdEstatus()
                             )
                         ),
                         'text/html'
@@ -339,18 +359,74 @@ class AdscripcionController extends Controller
        $this->addFlash('notice', 'Solicitud Actualizada Correctamente, hemos enviado un correo al docente notificandole los cambios.');
        
        $escala = $this->getDoctrine()->getRepository('AppBundle:DocenteEscala')->findBy(array(
-            'idRolInstitucion' => $adscripciones->getIdRolInstitucion()->getId()
+            'idRolInstitucion' => $adscripcion->getIdRolInstitucion()->getId()
         ));
        
         return $this->render('cea/solicitudes_mostar.html.twig', array(
-            'adscripcion' => $adscripciones, 
-            'escalas' => $escala
+            'servicio'      => $servicios,
+            'adscripcion'   => $adscripcion, 
+            'escalas'       => $escala
         ));
        
     }
     
     
+     /**
+     * Muestra la página donde explica brevemente el reconocimiento de Antiguedad
+     * y permite realizar la solicitud
+     *
+     * @Route("/mis_servicios/adscripcion/imprimir/{id}", name="servicio_adscripcion_imprimir")
+     * @Method({"GET", "POST"})
+     */
+    public function serviciosAdscripcionImprimirAction(DocenteServicio $servicio){
+        
+       
+        if ($servicio->getIdEstatus()->getId() == 1){
+            
+            $correlativo = $this->getDoctrine()->getRepository('AppBundle:Memorando')->findOneByIdDocenteServicio($servicio);
+            if(!$correlativo){
+                 $correlativo = $this->getDoctrine()->getRepository('AppBundle:Memorando')->findOneBy(
+                    array('ano'=> date("Y")), 
+                   array('id' => 'DESC')
+               );
+               $numero = 1;
+               if ($correlativo) $numero = $correlativo->getCorrelativo() + 1;
+               $memo = new Memorando();
+               $memo->setCorrelativo($numero);
+               $memo->setIdDocenteServicio($servicio);
+               $memo->setAno(date("Y"));
+               $memo->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(1));
+
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($memo);
+               $em->flush();
+               $memorando = $memo->getCorrelativo() . "-" . $memo->getAno();
+            }else{
+               $memorando = $correlativo->getCorrelativo() . "-" . $correlativo->getAno();
+            }
+            
+            
+            $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findOneByIdRolInstitucion($servicio->getIdRolInstitucion());
+            return $this->render('memorando/adscripcion.html.twig', array(                
+                'adscripcion'   =>  $adscripcion,                                
+                'correlativo'   =>  $memorando
+            ));
+   
+    }else{
+        $this->addFlash('danger', 'No Puede Imprimir el reconocimiento de Adscripcion hasta que esté aprobado por el coordinador del CEA.');
+       
+        $servicios = $this->getDoctrine()->getRepository('AppBundle:DocenteServicio')->findByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+        $adscripcion = $this->getDoctrine()->getRepository('AppBundle:Adscripcion')->findByIdRolInstitucion($this->getUser()->getIdRolInstitucion());
+        
+        
+        return $this->render('solicitudes/index.html.twig', array(
+            'servicios' => $servicios,
+            'adscripcion' => $adscripcion
+        ));
+    }
     
+    
+    }  
 }
 
 /*funcion para crear miniaturas de las imagenes y carga más rapido la página */

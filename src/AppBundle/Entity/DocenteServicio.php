@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * DocenteServicio
  *
- * @ORM\Table(name="docente_servicio", uniqueConstraints={@ORM\UniqueConstraint(name="docente_servicio_id_rol_institucion_key", columns={"id_rol_institucion"})})
+ * @ORM\Table(name="docente_servicio" )
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
