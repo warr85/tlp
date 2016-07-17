@@ -1,0 +1,69 @@
+<?php
+
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CursoModuloUnidad
+ *
+ * @ORM\Table(name="curso_modulo_unidad", uniqueConstraints={@ORM\UniqueConstraint(name="uq_curso_modulo_unidad", columns={"codigo"})}, indexes={@ORM\Index(name="fki_curso_modulo_unidad_curso_modulos", columns={"id_curso_modulo"})})
+ * @ORM\Entity
+ */
+class CursoModuloUnidad
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false, options={"comment" = "Nombre del Modulo"})
+     */
+    private $nombre;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Descripcion del Modulo"})
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="string", length=100, nullable=false, options={"comment" = "Código del modulo"})
+     */
+    private $codigo;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="secuencia", type="integer", nullable=false, options={"comment" = "Código del Curso"})
+     */
+    private $secuencia;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"comment" = "Identificador del Curso"})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\SequenceGenerator(sequenceName="curso_modulos_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\CursoModulos
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoModulos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_curso_modulo", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idCursoModulo;
+
+
+
+    
+
+    
+}

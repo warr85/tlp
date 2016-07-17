@@ -76,4 +76,16 @@ class PortalController extends Controller
             'form' => $form->createView(),
         ));
     }
+    
+    /**
+     * 
+     * @param Request $request
+     * @Route("/cursos/{curso}", name="homepage") 
+     */
+    
+    public function cursosAction(Cursos $curso){
+        
+        
+        
+    }
 }

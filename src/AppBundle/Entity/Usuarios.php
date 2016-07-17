@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ubv-cipee
- * Date: 29/06/16
- * Time: 08:36 AM
- */
-
-
 
 namespace AppBundle\Entity;
 

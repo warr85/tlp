@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CursoModulos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Codigo</th>
+                <th>Secuencia</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cursoModulo in cursoModulos %}
+            <tr>
+                <td><a href="{{ path('admin_gestion_cursos_modulos_show', { 'id': cursoModulo.id }) }}">{{ cursoModulo.nombre }}</a></td>
+                <td>{{ cursoModulo.descripcion }}</td>
+                <td>{{ cursoModulo.codigo }}</td>
+                <td>{{ cursoModulo.secuencia }}</td>
+                <td>{{ cursoModulo.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_gestion_cursos_modulos_show', { 'id': cursoModulo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_gestion_cursos_modulos_edit', { 'id': cursoModulo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_gestion_cursos_modulos_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
