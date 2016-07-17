@@ -2,66 +2,64 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}CEA | UBV!{% endblock %}</title>
+        <title>{% block title %}tlprgna!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css')}}" />
+            <link rel="stylesheet" href="{{asset('assets/vendor/font-awesome/css/font-awesome.min.css')}}" />            
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body data-spy="scroll" data-offset="20" data-target="#navbar">
-
-        {% block body %}
-            {% block navegacion %}
-
-
-
-                <!-- Nav Menu Section -->
+        
+  
+             <!-- Nav Menu Section -->
                 <div class="logo-menu">
                     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="50">
-                        <div class="container">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header col-md-3">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="#home"><i class="fa fa-briefcase"></i> CEA@UBV</a>
-                            </div>
+                    <div class="container-fluid">
+                      <!-- Brand and toggle get grouped for better mobile display -->
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                          <a class="navbar-brand" href="#"><i class="fa fa-lightbulb-o"></i> tlprgn@</a>
+                      </div>
 
-                            <div class="collapse navbar-collapse" id="navbar">
-                                <ul class="nav navbar-nav col-md-9 pull-right">
-                                    <li class="active"><a data-scroll href="#area-principal"><i class="fa fa-home"></i> Inicio</a></li>
-                                    <li><a data-scroll href="#servicios"><i class="fa fa-cogs"></i> Servicios</a></li>
-                                    <li><a data-scroll href="#actividades"><i class="fa fa-flask"></i> Foto</a></li>
-                                    <li><a data-scroll href="#descarga"><i class="fa fa-puzzle-piece"></i> Descargas</a></li>
-                                    <li><a data-scroll href="#about"><i class="fa fa-info"></i> El CEA</a></li>
-                                    <li><a data-scroll href="#adscripcion"><i class="fa fa-envelope"></i> Adscripción</a></li>
-                                    {% if app.user %}
-                                        <li><a href="{{ path('logout') }}"><i class="fa fa-close"></i> logout</a></li>
-                                    {% else %}
-                                        <li><a href="{{ path('login') }}"><i class="fa fa-user"></i> Ingresar</a></li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
+                      <!-- Collect the nav links, forms, and other content for toggling -->
+                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            {% block enlaces %}
+                                <li class="active"><a data-scroll href="#area-principal"><i class="fa fa-home"></i> Inicio</a></li>
+                                <li><a data-scroll href="#servicios"><i class="fa fa-cogs"></i> Servicios</a></li>
+                                <li><a data-scroll href="#cursos"><i class="fa fa-lightbulb-o"></i> Cursos</a></li>
+                                <li><a data-scroll href="#pie"><i class="fa fa-info"></i> Info</a></li>                                                                        
+                            {% endblock %}
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if app.user %}
+                              <li><a href="#">Bienvenido {{ app.user.username }}!</a></li>
+                              <li><a href="{{ path('logout') }}"><i class ="fa fa-close"></i> Cerrar Sesión</a></li>
+                            {% else %}
+                            <li><a href="{{ path('login') }}"><i class="fa fa-user"></i> Ingresar</a></li>
+                            {% endif %}
+
+                        </ul>
+                      </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                  </nav>
                 </div>
-
-            {% endblock %}
-            {% block principal %} {% endblock %}
-
-        {% endblock %}
-
-        {% block javascripts %}
-            <script type="text/javascript" src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}" ></script>
-
-
-
-
+            
+ 
+        
+        
+        {% block body %}{% endblock %}
+        
+        {% block javascripts %}            
+            <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+            <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
         {% endblock %}
     </body>
 </html>

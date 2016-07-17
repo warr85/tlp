@@ -18,7 +18,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Usuarios
  *
- * @ORM\Table(name="usuarios", uniqueConstraints={@ORM\UniqueConstraint(name="usuarios_id_rol_institucion_key", columns={"id_rol_institucion"})})
+ * @ORM\Table(name="usuarios")
  * @ORM\Entity(repositoryClass="UsuariosRepository")
  * @UniqueEntity(fields="username", message="Nombre de usuario ya Existe")
  */
@@ -63,16 +63,7 @@ class Usuarios implements UserInterface, \Serializable
      * @ORM\SequenceGenerator(sequenceName="usuarios_id_seq", allocationSize=1, initialValue=1)
      */
     protected $id;
-
-    /**
-     * @var \AppBundle\Entity\RolInstitucion
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\RolInstitucion")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_rol_institucion", referencedColumnName="id", nullable=false)
-     * })
-     */
-    protected $idRolInstitucion;
+    
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -181,28 +172,7 @@ class Usuarios implements UserInterface, \Serializable
         return $this->id;
     }
 
-    /**
-     * Set idRolInstitucion
-     *
-     * @param \AppBundle\Entity\RolInstitucion $idRolInstitucion
-     * @return Usuarios
-     */
-    public function setIdRolInstitucion(\AppBundle\Entity\RolInstitucion $idRolInstitucion = null)
-    {
-        $this->idRolInstitucion = $idRolInstitucion;
-
-        return $this;
-    }
-
-    /**
-     * Get idRolInstitucion
-     *
-     * @return \AppBundle\Entity\RolInstitucion
-     */
-    public function getIdRolInstitucion()
-    {
-        return $this->idRolInstitucion;
-    }
+    
 
     /**
      * Add rol

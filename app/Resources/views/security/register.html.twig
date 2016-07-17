@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent()}}
+    <link href="{{ asset('bundles/AppBundle/css/portal.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/animate/animate.min.css') }}" rel="stylesheet" />
+    <style>
+        .form-horizontal {
+            max-width: 430px;
+            margin: 0 auto;            
+        }
+        
+        .subtitle{
+            margin-bottom: 50px;
+        }
+    </style>
+{% endblock %}
+
+{%  block enlaces %}        
+        <li ><a data-scroll href="{{ path('homepage') }}"><i class="fa fa-home"></i> Regresar al portal</a></li>
+    {% endblock %}
+
+{% block body %} 
+    
+     
+    
+    <section id="area-principal">
+                <div class="container">
+                    
+                    <div class="col-md-12">
+                            <h1 class="title"><img class="encabezado" src="{{ asset('bundles/AppBundle/images/portal/encabezado.png') }}" /></h1>                            
+                            <h2 class="subtitle"><i class="fa fa-lightbulb-o fa-2x yellow"></i>¡Enciende Tu Conocimiento!</h2>
+                    </div>                 
+                            
+                            <div class="row">
+                                {% for message in app.session.flashBag.get('notice') %}
+                                    <div class="alert alert-success">{{ message }}</div>
+                                {%endfor %}
+
+                                {% for message in app.session.flashBag.get('danger') %}
+                                    <div class="alert alert-danger">{{ message }}</div>
+                                {%endfor %}
+
+                                {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}                                
+                                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                                {{ form_widget(form) }}
+                                <div class="form-group">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10">                                   
+                                    <a href="{{ path('login') }}" >¿Ya estas registrado?</a>
+                                </div>
+                                </div>
+                               {{ form_end(form) }}
+                    </form>
+                    </div>
+                </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %} 
+            {{ parent() }}
+            <script type="text/javascript" src="{{ asset('assets/vendor/smooth-scroll/smooth-scroll.min.js') }}" ></script>
+            <script>
+                    $('#register_register').on('click', function () {
+                        $(this).button('loading');                        
+                    });
+            </script>
+        {% endblock %}

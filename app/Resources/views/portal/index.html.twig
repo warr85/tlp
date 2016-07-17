@@ -1,299 +1,353 @@
-    {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('assets/vendor/AppBundle/portal.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/lightbox2/dist/css/lightbox.css') }}" rel="stylesheet">
-
+    {{ parent()}}
+    <link href="{{ asset('bundles/AppBundle/css/portal.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/animate/animate.min.css') }}" rel="stylesheet" />
 {% endblock %}
+    
 
-{% block body %}
-
-    {% block navegacion %}
-
-
-            <!-- Nav Menu Section -->
-            <div class="logo-menu">
-                <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="50">
-                    <div class="container">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header col-md-3">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="#home"><i class="fa fa-briefcase"></i> CEA@UBV</a>
+{% block body %}           
+            {% block principal %}
+            <section id="area-principal">
+                <div class="container">
+                     
+                        
+                        <div class="col-md-12">
+                            <h1 class="title"><img class="encabezado" src="{{ asset('bundles/AppBundle/images/portal/encabezado.png') }}" /></h1>                            
+                            <h2 class="subtitle"><i class="fa fa-lightbulb-o fa-2x yellow"></i>¡Enciende Tu Conocimiento!</h2>
                         </div>
+                        <div class="row"> 
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                            <img class=" animated fadeInLeft mascot" src="{{ asset('bundles/AppBundle/images/portal/teclin-portal1.png') }}" alt="">
+                            
+                            </div>
+                             <div class="col-md-5 col-sm-5 col-xs-12 animated fadeInRight delay-0-5 text-justify">
+                                <p>Somos una empresa que nace en la virtualidad y 
+                                    que te ofrece la mejor forma de capacitarte en 
+                                    línea en las áreas de las Tecnologías de 
+                                    Información y Comunicación a tu propio ritmo y de
+                                    una forma 100% interactiva.</p>
+                                <a href="#cursos" class="btn btn-common btn-lg">Ver cursos</a>
+                                <a href="#pie" class="btn btn-primary btn-lg">Saber más</a>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInLeft delay-1 ">
+                                <br>                               
+                                {% for message in app.session.flashBag.get('notice') %}
+                                    <div class="alert alert-success">{{ message }}</div>
+                                {%endfor %}
 
-                        <div class="collapse navbar-collapse" id="navbar">
-                            <ul class="nav navbar-nav col-md-9 pull-right">
-                                <li class="active"><a data-scroll href="#area-principal"><i class="fa fa-home"></i> Inicio</a></li>
-                                <li><a data-scroll href="#servicios"><i class="fa fa-cogs"></i> Servicios</a></li>
-                                <li><a data-scroll href="#actividades"><i class="fa fa-flask"></i> Foto</a></li>
-                                <li><a data-scroll href="#descarga"><i class="fa fa-puzzle-piece"></i> Descargas</a></li>
-                                <li><a data-scroll href="#about"><i class="fa fa-info"></i> El CEA</a></li>
-                                <li><a data-scroll href="#adscripcion"><i class="fa fa-envelope"></i> Adscripción</a></li>
-                                {% if app.user %}
-                                    <li><a href="{{ path('logout') }}"><i class="fa fa-close"></i> logout</a></li>
-                                {% else %}
-                                <li><a href="{{ path('login') }}"><i class="fa fa-user"></i> Ingresar</a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+                                {% for message in app.session.flashBag.get('danger') %}
+                                    <div class="alert alert-danger">{{ message }}</div>
+                                {%endfor %}
 
+                                {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}                                
+                                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                                {{ form_widget(form) }}
+                                 <div class="form-group">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10">
+                                    {{ form_widget(form.register) }}
+                                    <a href="{{ path('login') }}" >¿Ya registrado?</a>
+                                </div>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
 
-
-    {% endblock %} <!-- End block navegación -->
-
-    {% block principal %}
-        <section id="area-principal">
-            <div class="container">
-                <div class="row">                                                          
-                    <div class="col-md-12">
-                        <h1 class="title">CEA - Centro de Estudios Ambientales</h1>
-                        <h2 class="subtitle">Universidad Bolivariana de Venezuela!</h2>
-
-                        <img class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" src="{{ asset('bundles/framework/images/portal/logo_ubv.png') }}" alt="">
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5">
-                            <p>El Centro de Estudios Ambientales (CEA), constituye un órgano <strong>académico</strong>, para actuar de manera conjunta con las comunidades, organismos del Estado y otros actores sociales en la ejecución de proyectos de desarrollo ecosocialista que garanticen la apropiación del territorio de manera armónica con la naturaleza.</p>
-                            <a href="#adscripcion" class="btn btn-common btn-lg">Solicitar Acceso!</a>
-                            <a href="#about" class="btn btn-primary btn-lg">Saber más</a>
                         </div>
 
                     </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Fin de área Principal-->
-
-        <!-- Servicios del CEA -->
+                
+            </section>
+                            
+           <!-- Servicios de TLP -->
 
         <section id="servicios">
             <div class="container text-center">
                 <div class="row">
-                    <h1 class="title">Servicios que ofrecemos</h1>
-                    <h2 class="subtitle">Estos son nuestros servicios más importantes</h2>
+                    <h1 class="title">Servicios </h1>
+                    <h2 class="subtitle">Conoce los servicios que tenemos para ti</h2>
 
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="service-item">
-                            <img src="{{ asset('bundles/framework/images/portal/escalafon.png') }}" alt="">
-                            <h3>Solicitud de Ascenso</h3>
-                            <p>A través del sistema podrás realizar la solicitud de ascenso y tener un control del estatus del proceso desde que inicia hasta que concluye.</p>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 media">
+                        <div class="media-left">
+                           <div class="bg-green-300 text-white">
+                                <div class="panel-body">
+                                    <i class="fa fa-film fa-2x fa-fw"></i>
+                                 </div>
+                            </div>
                         </div>
-                    </div>
-
-
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="service-item">
-                            <img src="{{ asset('bundles/framework/images/portal/planificacion.png') }}" alt="">
-                            <h3>Planificador Académico</h3>
-                            <p>A través del sistema podrás crear la planificación de tus actividades y enmarcarlas dentro de los objetivos históricos del plan de patría y los objetivos de la UBV.</p>
+                        <div class="media-body service-item">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3 class="media-heading">Clases en vídeo</h3>
+                                    <p>Observa los vídeos de las clases a cualquier hora y a tu
+                                    propio ritmo.  Siempre los tendrás disponibles</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                     </div>
 
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="service-item">
-                            <img src="{{ asset('bundles/framework/images/portal/registro.png') }}" alt="">
-                            <h3>Antiguedad</h3>
-                            <p>El Centro Estudios Ambienales CEA@UBV reconoce tu antigüedad con fines de ascenso
-                            en escalafones de la carrera univesitaria entre el primer contrato y el concurso de 
-                            oposición.</p>
+
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 media">
+                        <div class="media-left">
+                           <div class="bg-red-400 text-white">
+                                <div class="panel-body">
+                                    <i class="fa fa-tasks fa-2x fa-fw"></i>
+                                 </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="media-body service-item">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3 class="media-heading">100% Interactivo</h3>
+                                    <p>Realizarás prácticas interactivas autoevaluadas al finalizar
+                                        cada módulo para reforzar y fijar los conocimientos adquiridos.</p>
+                                </div>
+                            </div>                            
+                        </div>
+                     </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 media">
+                        <div class="media-left">
+                           <div class="bg-orange-400 text-white">
+                                <div class="panel-body">
+                                    <i class="fa fa-refresh fa-2x fa-fw"></i>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="media-body service-item">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3 class="media-heading">Contenido Actualizado</h3>
+                                    <p>Nuestros cursos están al día con las nuevas tecnologías
+                                        y constantes cambios que se ejecutan en nuestro mundo.</p>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 media">
+                        <div class="media-left">
+                           <div class="bg-cyan-400 text-white">
+                                <div class="panel-body">
+                                    <i class="fa fa-user-plus fa-2x fa-fw"></i>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="media-body service-item">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3 class="media-heading">Tutores Calificados</h3>
+                                    <p>Los Cursos, así como los tutores están calificados o son
+                                        expertos en el área del o de los cursos. Aprovéchalos.</p>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 media">
+                        <div class="media-left">
+                           <div class="bg-purple-300 text-white">
+                                <div class="panel-body">
+                                    <i class="fa fa-life-saver fa-2x fa-fw"></i>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="media-body service-item">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3 class="media-heading">Soporte Premium</h3>
+                                    <p>Nunca estarás solo. Un tutor
+                                    siempre te guiará a lo largo del curso. Adicional
+                                    a ello contamos con blogs y chats para
+                                    estar siempre en contacto.</p>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 media">
+                        <div class="media-left">
+                           <div class="bg-pink-400 text-white">
+                                <div class="panel-body">
+                                    <i class="fa fa-certificate fa-2x fa-fw"></i>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="media-body service-item">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3 class="media-heading">Certificados</h3>
+                                    <p>Recibirás Open Badges (Insignias) al finalizar cada módulo
+                                        y tu certificado al terminar el curso.</p>
+                                </div>
+                            </div>
+                                    
+                        </div>
+                     </div>
 
                 </div>
             </div>
         </section>
         <!-- Service Section End -->
-
-        <!-- seccion de Fotos -->
-
-        <section id="actividades">
+        
+        <!-- Sección de los Cursos -->
+         <section id="cursos">
             <div class="container">
                 <div class="row">
-                    <h1 class="title">Actividades Recientes del CEA</h1>
-                    <h2 class="subtitle">Fotos</h2>
-
-
-
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="portfolio-item wow fadeInLeft" data-wow-delay=".5s">
-                            <a href="#"><img src="{{ asset('bundles/framework/images/portal/actividades/actividad1.jpg') }}" alt=""></a>
-                            <div class="overlay">
-                                <div class="icons">
-                                    <a data-lightbox="image1" href="{{ asset('bundles/framework/images/portal/actividades/actividad1.jpg') }}" class="preview"><i class="fa fa-search-plus fa-4x"></i></a>
-                                </div>
+                    <h1 class="title">Cursos</h1>
+                    <h2 class="subtitle">Galería de Cursos que tenemos a tu disposición</h2>
+                    
+                      <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{asset('bundles/AppBundle/images/portal/dwc.png')}}" alt="dwc.png">
+                            <div class="caption">
+                                <h4 class="pull-right">20.000 Bsf</h4>
+                                <h4><a href="#">Desarrollador Web</a>
+                                </h4>
+                                <p>
+                                    Cusro 100% en línea e interactivo que te permitirá convertirte en un desarrollador
+                                    para la web.
+                                
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reseñas</p>
+                                <p class="yellow">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </p>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="portfolio-item wow fadeInLeft" data-wow-delay=".7s">
-                            <a href="#"><img src="{{ asset('bundles/framework/images/portal/actividades/actividad2.jpg') }}" alt=""></a>
-                            <div class="overlay">
-                                <div class="icons">
-                                    <a data-lightbox="image1" href="{{ asset('bundles/framework/images/portal/actividades/actividad2.jpg') }}" class="preview"><i class="fa fa-search-plus fa-4x"></i></a>
-                                </div>
+                    
+                    <div class="col-md-4 col-sm-6 hero-feature">
+                        <div class="thumbnail">
+                            <img src="{{asset('bundles/AppBundle/images/portal/twitter-up.png')}}" alt="">
+                             <div class="caption">
+                                <h4 class="pull-right">15.000 Bsf</h4>
+                                <h4><a href="#">Despegar con Twitter</a>
+                                </h4>
+                                <p>
+                                    Curso interativo que te enseña a usar y sobre todo a 
+                                    disfrutar los beneficios que tiene esta increible
+                                    red social de microblogging.
+                                
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reseñas</p>
+                                <p class="yellow">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="portfolio-item wow fadeInLeft" data-wow-delay=".9s">
-                            <a href="#"><img src="{{ asset('bundles/framework/images/portal/actividades/actividad3.jpg') }}" alt=""></a>
-                            <div class="overlay">
-                                <div class="icons">
-                                    <a data-lightbox="image1" href="{{ asset('bundles/framework/images/portal/actividades/actividad3.jpg') }}" class="preview"><i class="fa fa-search-plus fa-4x"></i></a>
-                                </div>
+                    
+                    <div class="col-md-4 col-sm-6 hero-feature">
+                        <div class="thumbnail">
+                            <img src="{{asset('bundles/AppBundle/images/portal/preziCurso.png')}}" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">15.000 Bsf</h4>
+                                <h4><a href="#">Presentaciones con Prezi</a>
+                                </h4>
+                                <p>
+                                    ¿Aburrido de las presentaciones tradicionales estilos
+                                    diapositiva? Aquí la solución, impresiona a tu audiencia
+                                    con Prezi.
+                                
+                                </p>
+                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reseñas</p>
+                                <p class="yellow">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInRight" data-wow-delay="1.1s">
-                        <div class="portfolio-item">
-                            <a href="#"><img src="{{ asset('bundles/framework/images/portal/actividades/actividad4.jpg') }}" alt=""></a>
-                            <div class="overlay">
-                                <div class="icons">
-                                    <a data-lightbox="image1" href="{{ asset('bundles/framework/images/portal/actividades/actividad4.jpg') }}" class="preview"><i class="fa fa-search-plus fa-4x"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
 
                 </div>
             </div>
-        </section>
-        <!-- Portfolio Section End -->
-
-        <!-- descarga Section -->
-        <section id="descarga">
-            <div class="container">
-                <div class="row">
-
-                    <h1 class="title">Descarga de Archivos</h1>
-                    <h2 class="subtitle">Documentos relacionados con el CEA</h2>
-
-                    <div class="wow fadeInDown">
-                        <img class="col-md-3 col-md-3 col-sm-3 col-xs-12" src="{{ asset('bundles/framework/images/portal/descargas/descarga1.png') }}" alt="documento-1">
-
-                        <img class="col-md-3 col-md-3 col-sm-3 col-xs-12" src="{{ asset('bundles/framework/images/portal/descargas/descarga2.png') }}" alt="documento-2">
-
-                        <img class="col-md-3 col-md-3 col-sm-3 col-xs-12" src="{{ asset('bundles/framework/images/portal/descargas/descarga3.png') }}" alt="documento-3">
-
-                        <img class="col-md-3 col-md-3 col-sm-3 col-xs-12" src="{{ asset('bundles/framework/images/portal/descargas/descarga4.png') }}" alt="documento-4">
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Client Section End -->
-
-
-        <!-- Que es el CEA -->
-
-        <section id="about">
-            <div class="container">
-                <div class="row">
-                    <h1 class="title">Sobre Nosotros</h1>
-                    <h2 class="subtitle">¿Qué es el CEA?</h2>
-
-                    <div class="col-md-8 col-sm-12">
-                        <p>
-                            El Centro de Estudios Ambientales (CEA), creado en el año 2008, constituye un órgano académico que realza el vínculo, ya existente, entre la comunidad ubevista emergente del pueblo venezolano desde áreas académicas Ordenamiento Territorial, Hábitat y Ecodesarrollo y Soberanía Alimentaria cuyo propósito es el desarrollo de actividades académicas vinculada con la investigación y el desarrollo comunitario que contribuyan a la formación de ciudadanos profesionales con carácter integral, para actuar de manera conjunta con las comunidades, organismos del Estado y otros actores sociales en la ejecución de proyectos de desarrollo ecosocialista que garanticen la apropiación del territorio de manera armónica con la naturaleza y la promoción de la seguridad alimentaria, que se ajusten a las necesidades imperantes de las comunidades, bajo el esquema de la solidaridad, amor, cooperación, la reciprocidad, el intercambio equitativo y la tolerancia desde un nuevo modelo ecosocialista.
-                        </p>
-                    </div>
-
-                    <img class="col-md-4 col-md-4 col-sm-12 col-xs-12" src="{{ asset('bundles/framework/images/portal/logo_ubv.png') }}" alt="">
-
-                </div>
-            </div>
-        </section>
-        <!-- Que es el CEA End -->
-
-
-        <!-- Adscripcion Section -->
-        <section id="adscripcion">
-            <div class="container text-center">
-                <div class="row">
-                    <h1 class="title">Solicitar Ingreso a <code>cea@ubv</code></h1>
-
-                    <h2 class="subtitle">Llenar este sencillo formulario es el primer paso a la adscripción</h2>
-
-
-                        <div class="col-md-6 wow fadeInLeft" data-wow-delay=".5s">
-                            {% for message in app.session.flashBag.get('notice') %}
-                                <div class="alert alert-success">{{ message }}</div>
-                            {%endfor %}
+         </section>
                             
-                            {% for message in app.session.flashBag.get('danger') %}
-                                <div class="alert alert-danger">{{ message }}</div>
-                            {%endfor %}
-                            
-                            {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}                                
-                            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-                            {{ form_widget(form) }}
-                            {{ form_end(form) }}
+    <section id="pie" class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <h4 class="text-headline text-light">La Empresa</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Tecnolíne@ Paraguaná C.A.</a></li>                        
+                        <li><a href="#">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h4 class="text-headline text-light">Explora</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="">Cursos</a></li>
+                        <li><a href="">Tutores</a></li>                        
+                        <li><a href="">¿Quieres dar clases?</a></li>
+                        <li><a href="">Registráte</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <h4 class="text-headline text-light">Lista de Correos</h4>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="dirección email aquí...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-grey-800" type="button">Suscribirse</button>
+                            </span>
                         </div>
-
-
-                    <div class="col-md-6 wow fadeInRight">
-                        <div class="social-links">
-                            <a class="social" href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
-                            <a class="social" href="https://twitter.com/ubv?lang=es" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-                            <a class="social" href="#" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a>
-                            <a class="social" href="#" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
-                        </div>
-                        <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i> Av. Leonardo Da Vinci, Los Chaguaramos, UBV</p>
-                            <p><i class="fa fa-envelope"></i> ubv@ubv.edu.ve</p>
-                        </div>
-
-                        <p>
-                            Universidad Bolivariana de Venezuela | la casa del diálogo de los saberes.<br>
-                        </p>
-
                     </div>
-
+                    <br/>
+                    <p>
+                        <a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a>                       
+                        <a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a>                        
+                    </p>
+                    <p class="text-subhead">
+                        &copy; 2016 Tecnolíne@ Paraguaná
+                    </p>
                 </div>
             </div>
-        </section>
-
-        <!-- Conatct Section End-->
-
-        <div id="copyright">
+        </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <div id="copyright">
             <div class="container">
-                <div class="col-md-10"><p>© UBV 2016 Todas las izquierdas reservadas ;). </p></div>
+                <div class="col-md-10"><p>© Tecnolínea Paraguaná C.A. 2016 Todas las izquierdas reservadas ;). </p></div>
                 <div class="col-md-2">
                     <span class="to-top pull-right"><a href="#area-principal"><i class="fa fa-angle-up fa-2x"></i></a></span>
                 </div>
             </div>
         </div>
-        <!-- Copyright Section End-->
+    <!-- // Footer -->
+            
+            {% endblock %}
 
+        {% endblock %}
 
-    {% endblock %}
-
-
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('assets/vendor/lightbox2/dist/js/lightbox.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/smooth-scroll/dist/js/smooth-scroll.js') }}" ></script>
-    <script type="text/javascript">
-        smoothScroll.init();
-    </script>
-{% endblock %}
-
-
+         {% block javascripts %} 
+            {{ parent() }}
+            <script type="text/javascript" src="{{ asset('assets/vendor/smooth-scroll/smooth-scroll.min.js') }}" ></script>
+            <script>
+                    $('#register_register').on('click', function () {
+                        $(this).button('loading');                        
+                    });
+            </script>
+        {% endblock %}
