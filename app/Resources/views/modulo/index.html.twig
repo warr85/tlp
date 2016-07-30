@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modulo list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modulo in modulos %}
+            <tr>
+                <td><a href="{{ path('admin_gestion_modulos_show', { 'id': modulo.id }) }}">{{ modulo.titulo }}</a></td>
+                <td>{{ modulo.descripcion }}</td>
+                <td>{{ modulo.precio }}</td>
+                <td>{{ modulo.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_gestion_modulos_show', { 'id': modulo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_gestion_modulos_edit', { 'id': modulo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_gestion_modulos_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
