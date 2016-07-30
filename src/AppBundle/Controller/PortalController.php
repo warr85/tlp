@@ -80,7 +80,7 @@ class PortalController extends Controller
     /**
      * 
      * @param Request $request
-     * @Route("/cursos/{curso}", name="homepage") 
+     * @Route("/cursos/{curso}", name="cursos") 
      */
     
     public function cursosAction(Cursos $curso){

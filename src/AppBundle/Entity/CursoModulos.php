@@ -213,10 +213,10 @@ class CursoModulos
     /**
      * Add unidad
      *
-     * @param \AppBundle\Entity\CusoModuloUnidad $unidad
+     * @param \AppBundle\Entity\CursoModuloUnidad $unidad
      * @return CursoModulos
      */
-    public function addUnidad(\AppBundle\Entity\CusoModuloUnidad $unidad)
+    public function addUnidad(\AppBundle\Entity\CursoModuloUnidad $unidad)
     {
         $this->unidad[] = $unidad;
 
@@ -226,9 +226,9 @@ class CursoModulos
     /**
      * Remove unidad
      *
-     * @param \AppBundle\Entity\CusoModuloUnidad $unidad
+     * @param \AppBundle\Entity\CursoModuloUnidad $unidad
      */
-    public function removeUnidad(\AppBundle\Entity\CusoModuloUnidad $unidad)
+    public function removeUnidad(\AppBundle\Entity\CursoModuloUnidad $unidad)
     {
         $this->unidad->removeElement($unidad);
     }
