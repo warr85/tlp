@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Estatus
  *
- * @ORM\Table(name="estatus")
+ * @ORM\Table(name="modulo")
  * @ORM\Entity
  */
 class Modulo
@@ -25,7 +25,7 @@ class Modulo
     /**
      * @var text
      *
-     * @ORM\Column(name="descripcion", type="text", length=100, nullable=false, options={"comment" = "Nombre del Modulo"})
+     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Modulo"})
      */
     private $descripcion;
     
@@ -53,6 +53,13 @@ class Modulo
      */
     private $id;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Curso", inversedBy="modulos")
+     * @ORM\JoinColumn(name="curso_id", referencedColumnName="id", nullable=false)
+     */
+    protected $CursoId;
+    
 
     
+   
 }

@@ -1,0 +1,59 @@
+<?php
+
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * Estatus
+ *
+ * @ORM\Table(name="curso")
+ * @ORM\Entity
+ */
+class Curso
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titulo", type="string", length=255, nullable=false, options={"comment" = "Titulo del Curso"})
+     */
+    private $titulo;
+    
+    
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Curso"})
+     */
+    private $descripcion;
+    
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cupo", type="integer", nullable=false, options={"comment" = "cupo del curso"})
+     */
+    private $cupo;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Modulo", mappedBy="CursoId", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $modulos;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"comment" = "Identificador del estatus"})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\SequenceGenerator(sequenceName="estatus_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+    
+
+    
+   
+}

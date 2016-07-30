@@ -9,15 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Estatus
  *
- * @ORM\Table(name="modulo")
+ * @ORM\Table(name="curso")
  * @ORM\Entity
  */
-class Modulo
+class Curso
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="titulo", type="string", length=255, nullable=false, options={"comment" = "Titulo del Modulo"})
+     * @ORM\Column(name="titulo", type="string", length=255, nullable=false, options={"comment" = "Titulo del Curso"})
      */
     private $titulo;
     
@@ -25,23 +25,23 @@ class Modulo
     /**
      * @var text
      *
-     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Modulo"})
+     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Curso"})
      */
     private $descripcion;
     
     
     /**
-     * @var float
+     * @var integer
      *
-     * @ORM\Column(name="precio", type="float", nullable=false, options={"comment" = "Valor del modulo"})
+     * @ORM\Column(name="cupo", type="integer", nullable=false, options={"comment" = "cupo del curso"})
      */
-    private $precio;
+    private $cupo;
     
     /**
-     * @ORM\OneToMany(targetEntity="ModuloTema", mappedBy="ModuloId", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Modulo", mappedBy="CursoId", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
-    private $temas;
+    private $modulos;
 
     /**
      * @var integer
@@ -53,12 +53,6 @@ class Modulo
      */
     private $id;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="Curso", inversedBy="modulos")
-     * @ORM\JoinColumn(name="curso_id", referencedColumnName="id", nullable=true)
-     */
-    protected $CursoId;
-    
 
     
    
@@ -67,14 +61,14 @@ class Modulo
      */
     public function __construct()
     {
-        $this->temas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->modulos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Set titulo
      *
      * @param string $titulo
-     * @return Modulo
+     * @return Curso
      */
     public function setTitulo($titulo)
     {
@@ -97,7 +91,7 @@ class Modulo
      * Set descripcion
      *
      * @param string $descripcion
-     * @return Modulo
+     * @return Curso
      */
     public function setDescripcion($descripcion)
     {
@@ -117,26 +111,26 @@ class Modulo
     }
 
     /**
-     * Set precio
+     * Set cupo
      *
-     * @param float $precio
-     * @return Modulo
+     * @param integer $cupo
+     * @return Curso
      */
-    public function setPrecio($precio)
+    public function setCupo($cupo)
     {
-        $this->precio = $precio;
+        $this->cupo = $cupo;
 
         return $this;
     }
 
     /**
-     * Get precio
+     * Get cupo
      *
-     * @return float 
+     * @return integer 
      */
-    public function getPrecio()
+    public function getCupo()
     {
-        return $this->precio;
+        return $this->cupo;
     }
 
     /**
@@ -150,60 +144,38 @@ class Modulo
     }
 
     /**
-     * Add temas
+     * Add modulos
      *
-     * @param \AppBundle\Entity\ModuloTema $temas
-     * @return Modulo
+     * @param \AppBundle\Entity\Modulo $modulos
+     * @return Curso
      */
-    public function addTema(\AppBundle\Entity\ModuloTema $temas)
+    public function addModulo(\AppBundle\Entity\Modulo $modulos)
     {
-        $this->temas[] = $temas;
+        $this->modulos[] = $modulos;
 
         return $this;
     }
 
     /**
-     * Remove temas
+     * Remove modulos
      *
-     * @param \AppBundle\Entity\ModuloTema $temas
+     * @param \AppBundle\Entity\Modulo $modulos
      */
-    public function removeTema(\AppBundle\Entity\ModuloTema $temas)
+    public function removeModulo(\AppBundle\Entity\Modulo $modulos)
     {
-        $this->temas->removeElement($temas);
+        $this->modulos->removeElement($modulos);
     }
 
     /**
-     * Get temas
+     * Get modulos
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTemas()
+    public function getModulos()
     {
-        return $this->temas;
+        return $this->modulos;
     }
-
-    /**
-     * Set CursoId
-     *
-     * @param \AppBundle\Entity\Curso $cursoId
-     * @return Modulo
-     */
-    public function setCursoId(\AppBundle\Entity\Curso $cursoId)
-    {
-        $this->CursoId = $cursoId;
-
-        return $this;
-    }
-
-    /**
-     * Get CursoId
-     *
-     * @return \AppBundle\Entity\Curso 
-     */
-    public function getCursoId()
-    {
-        return $this->CursoId;
-    }
+    
     
     /**
      * @return string
