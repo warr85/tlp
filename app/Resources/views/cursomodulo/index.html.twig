@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CursoModulo list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fechainicio</th>
+                <th>Fechafin</th>
+                <th>Orden</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cursoModulo in cursoModulos %}
+            <tr>
+                <td><a href="{{ path('admin_gestion_curso_modulos_show', { 'id': cursoModulo.id }) }}">{{ cursoModulo.id }}</a></td>
+                <td>{% if cursoModulo.FechaInicio %}{{ cursoModulo.FechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cursoModulo.FechaFin %}{{ cursoModulo.FechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cursoModulo.orden }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_gestion_curso_modulos_show', { 'id': cursoModulo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_gestion_curso_modulos_edit', { 'id': cursoModulo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_gestion_curso_modulos_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

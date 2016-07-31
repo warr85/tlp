@@ -6,20 +6,22 @@
     <table>
         <thead>
             <tr>
-                <th>Titulo</th>
-                <th>Descripcion</th>
-                <th>Cupo</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>                
                 <th>Id</th>
+                <th>Imagename</th>
+                <th>Updatedat</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for curso in cursos %}
             <tr>
-                <td><a href="{{ path('admin_gestion_cursos_show', { 'id': curso.id }) }}">{{ curso.titulo }}</a></td>
-                <td>{{ curso.descripcion }}</td>
-                <td>{{ curso.cupo }}</td>
+                <td><a href="{{ path('admin_gestion_cursos_show', { 'id': curso.id }) }}">{{ curso.nombre }}</a></td>
+                <td>{{ curso.descripcion }}</td>                
                 <td>{{ curso.id }}</td>
+                <td>{{ curso.imageName }}</td>
+                <td>{% if curso.updatedAt %}{{ curso.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>

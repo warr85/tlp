@@ -9,15 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Estatus
  *
- * @ORM\Table(name="modulo")
+ * @ORM\Table(name="tema")
  * @ORM\Entity
  */
-class Modulo
+class Tema
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del Modulo"})
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del Tema"})
      */
     private $nombre;
     
@@ -25,16 +25,16 @@ class Modulo
     /**
      * @var text
      *
-     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Modulo"})
+     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Tema"})
      */
     private $descripcion;
         
     
     /**
-     * @ORM\OneToMany(targetEntity="ModuloTema", mappedBy="ModuloId", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Modulo", mappedBy="ModuloId", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
-    private $temas;
+    private $modulos;
 
     /**
      * @var integer
@@ -48,8 +48,4 @@ class Modulo
     
     
     
-
-    
-   
-   
 }

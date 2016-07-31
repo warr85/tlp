@@ -15,10 +15,8 @@ class ModuloType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titulo')
+            ->add('nombre')
             ->add('descripcion')
-            ->add('precio')
-            ->add('temas')
         ;
     }
     

@@ -9,15 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Estatus
  *
- * @ORM\Table(name="modulo")
+ * @ORM\Table(name="tema")
  * @ORM\Entity
  */
-class Modulo
+class Tema
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del Modulo"})
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del Tema"})
      */
     private $nombre;
     
@@ -25,16 +25,16 @@ class Modulo
     /**
      * @var text
      *
-     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Modulo"})
+     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Tema"})
      */
     private $descripcion;
         
     
     /**
-     * @ORM\OneToMany(targetEntity="ModuloTema", mappedBy="ModuloId", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Modulo", mappedBy="ModuloId", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
-    private $temas;
+    private $modulos;
 
     /**
      * @var integer
@@ -47,19 +47,20 @@ class Modulo
     private $id;
     
     
+    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->temas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->modulos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Set nombre
      *
      * @param string $nombre
-     * @return Modulo
+     * @return Tema
      */
     public function setNombre($nombre)
     {
@@ -82,7 +83,7 @@ class Modulo
      * Set descripcion
      *
      * @param string $descripcion
-     * @return Modulo
+     * @return Tema
      */
     public function setDescripcion($descripcion)
     {
@@ -112,42 +113,35 @@ class Modulo
     }
 
     /**
-     * Add temas
+     * Add modulos
      *
-     * @param \AppBundle\Entity\ModuloTema $temas
-     * @return Modulo
+     * @param \AppBundle\Entity\Modulo $modulos
+     * @return Tema
      */
-    public function addTema(\AppBundle\Entity\ModuloTema $temas)
+    public function addModulo(\AppBundle\Entity\Modulo $modulos)
     {
-        $this->temas[] = $temas;
+        $this->modulos[] = $modulos;
 
         return $this;
     }
 
     /**
-     * Remove temas
+     * Remove modulos
      *
-     * @param \AppBundle\Entity\ModuloTema $temas
+     * @param \AppBundle\Entity\Modulo $modulos
      */
-    public function removeTema(\AppBundle\Entity\ModuloTema $temas)
+    public function removeModulo(\AppBundle\Entity\Modulo $modulos)
     {
-        $this->temas->removeElement($temas);
+        $this->modulos->removeElement($modulos);
     }
 
     /**
-     * Get temas
+     * Get modulos
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getTemas()
+    public function getModulos()
     {
-        return $this->temas;
-    }
-    
-    /**
-     * @return string
-     */
-    public function __toString() {
-        return $this->getNombre();
+        return $this->modulos;
     }
 }

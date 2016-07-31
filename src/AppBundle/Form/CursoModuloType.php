@@ -5,9 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class CursoType extends AbstractType
+class CursoModuloType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,11 +15,12 @@ class CursoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('descripcion')            
-            ->add('imageName')            
-            ->add('imageFile', FileType::class, array('label' => 'Brochure (PDF file)'))
-            ->add('modulos')
+            ->add('FechaInicio')
+            ->add('FechaFin')
+            ->add('orden')
+            ->add('idCurso')
+            ->add('idModulo')
+            ->add('idCostoCursoModulo')
         ;
     }
     
@@ -30,7 +30,7 @@ class CursoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Curso'
+            'data_class' => 'AppBundle\Entity\CursoModulo'
         ));
     }
 }

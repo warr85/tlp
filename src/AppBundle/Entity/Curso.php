@@ -4,6 +4,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
@@ -11,15 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="curso")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Curso
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="titulo", type="string", length=255, nullable=false, options={"comment" = "Titulo del Curso"})
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del Curso"})
      */
-    private $titulo;
+    private $nombre;
     
     
     /**
@@ -28,17 +31,10 @@ class Curso
      * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Curso"})
      */
     private $descripcion;
-    
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="cupo", type="integer", nullable=false, options={"comment" = "cupo del curso"})
-     */
-    private $cupo;
+          
     
     /**
-     * @ORM\OneToMany(targetEntity="Modulo", mappedBy="CursoId", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="CursoModulo", mappedBy="idCurso", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $modulos;
@@ -53,9 +49,30 @@ class Curso
      */
     private $id;
     
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="course_image", fileNameProperty="imageName")
+     * 
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     
-   
     /**
      * Constructor
      */
@@ -65,26 +82,26 @@ class Curso
     }
 
     /**
-     * Set titulo
+     * Set nombre
      *
-     * @param string $titulo
+     * @param string $nombre
      * @return Curso
      */
-    public function setTitulo($titulo)
+    public function setNombre($nombre)
     {
-        $this->titulo = $titulo;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     /**
-     * Get titulo
+     * Get nombre
      *
      * @return string 
      */
-    public function getTitulo()
+    public function getNombre()
     {
-        return $this->titulo;
+        return $this->nombre;
     }
 
     /**
@@ -111,29 +128,6 @@ class Curso
     }
 
     /**
-     * Set cupo
-     *
-     * @param integer $cupo
-     * @return Curso
-     */
-    public function setCupo($cupo)
-    {
-        $this->cupo = $cupo;
-
-        return $this;
-    }
-
-    /**
-     * Get cupo
-     *
-     * @return integer 
-     */
-    public function getCupo()
-    {
-        return $this->cupo;
-    }
-
-    /**
      * Get id
      *
      * @return integer 
@@ -144,12 +138,99 @@ class Curso
     }
 
     /**
-     * Add modulos
+     * Set imageName
      *
-     * @param \AppBundle\Entity\Modulo $modulos
+     * @param string $imageName
      * @return Curso
      */
-    public function addModulo(\AppBundle\Entity\Modulo $modulos)
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string 
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Curso
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    
+    
+     /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Curso
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+    
+    /**
+     * @return string
+     */
+    public function __toString() {
+        return $this->getNombre();
+    }
+
+    /**
+     * Add modulos
+     *
+     * @param \AppBundle\Entity\CursoModulo $modulos
+     * @return Curso
+     */
+    public function addModulo(\AppBundle\Entity\CursoModulo $modulos)
     {
         $this->modulos[] = $modulos;
 
@@ -159,9 +240,9 @@ class Curso
     /**
      * Remove modulos
      *
-     * @param \AppBundle\Entity\Modulo $modulos
+     * @param \AppBundle\Entity\CursoModulo $modulos
      */
-    public function removeModulo(\AppBundle\Entity\Modulo $modulos)
+    public function removeModulo(\AppBundle\Entity\CursoModulo $modulos)
     {
         $this->modulos->removeElement($modulos);
     }
@@ -174,13 +255,5 @@ class Curso
     public function getModulos()
     {
         return $this->modulos;
-    }
-    
-    
-    /**
-     * @return string
-     */
-    public function __toString() {
-        return $this->getTitulo();
     }
 }

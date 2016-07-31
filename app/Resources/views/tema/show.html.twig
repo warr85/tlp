@@ -1,31 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modulo</h1>
+    <h1>Tema</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Nombre</th>
-                <td>{{ modulo.nombre }}</td>
+                <td>{{ tema.nombre }}</td>
             </tr>
             <tr>
                 <th>Descripcion</th>
-                <td>{{ modulo.descripcion }}</td>
+                <td>{{ tema.descripcion }}</td>
             </tr>
             <tr>
                 <th>Id</th>
-                <td>{{ modulo.id }}</td>
+                <td>{{ tema.id }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('admin_gestion_modulos_index') }}">Back to the list</a>
+            <a href="{{ path('admin_gestion_temas_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('admin_gestion_modulos_edit', { 'id': modulo.id }) }}">Edit</a>
+            <a href="{{ path('admin_gestion_temas_edit', { 'id': tema.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

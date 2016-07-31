@@ -1,0 +1,94 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ubv-cipee
+ * Date: 29/06/16
+ * Time: 08:45 AM
+ */
+
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CursoModulo
+ *
+ * @ORM\Table(name="curso_modulo", uniqueConstraints={@ORM\UniqueConstraint(name="uq_curso_modulo", columns={"id_curso", "id_modulo"})}, indexes={@ORM\Index(name="fki_curso", columns={"id_curso"})})
+ * @ORM\Entity
+ */
+class CursoModulo
+{
+  
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"comment" = "Identificador del curso_modulo"})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\SequenceGenerator(sequenceName="curso_modulo_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Curso
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Curso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_curso", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idCurso;
+    
+    /**
+     * @var \AppBundle\Entity\Modulo
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Modulo", inversedBy="modulos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_modulo", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idModulo;
+    
+    
+    /**
+     * @var \AppBundle\Entity\Costo
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CostoCursoModulo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_costo_curso_modulo", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idCostoCursoModulo;
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     *
+     * @var \DateTime
+     */
+    private $FechaInicio;
+    
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     *
+     * @var \DateTime
+     */
+    private $FechaFin;
+    
+    
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     *
+     * @var \string
+     */
+    private $orden;
+    
+    
+    
+
+
+
+    
+}

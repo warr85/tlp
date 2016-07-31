@@ -9,32 +9,27 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Estatus
  *
- * @ORM\Table(name="modulo")
+ * @ORM\Table(name="costo_curso_modulo")
  * @ORM\Entity
  */
-class Modulo
+class CostoCursoModulo
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del Modulo"})
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del CostoCursoModulo"})
      */
     private $nombre;
     
     
     /**
-     * @var text
+     * @var float
      *
-     * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Modulo"})
+     * @ORM\Column(name="costo", type="float", nullable=false, options={"comment" = "valor del cursoso Modulo"})
      */
-    private $descripcion;
+    private $costo;
         
     
-    /**
-     * @ORM\OneToMany(targetEntity="ModuloTema", mappedBy="ModuloId", cascade={"all"})
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
-    private $temas;
 
     /**
      * @var integer
@@ -48,8 +43,8 @@ class Modulo
     
     
     
-
     
    
-   
+
+    
 }

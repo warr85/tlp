@@ -6,20 +6,29 @@
     <table>
         <tbody>
             <tr>
-                <th>Titulo</th>
-                <td>{{ curso.titulo }}</td>
+                <th>Nombre</th>
+                <td>{{ curso.nombre }}</td>
             </tr>
             <tr>
                 <th>Descripcion</th>
                 <td>{{ curso.descripcion }}</td>
-            </tr>
-            <tr>
-                <th>Cupo</th>
-                <td>{{ curso.cupo }}</td>
-            </tr>
+            </tr>            
             <tr>
                 <th>Id</th>
                 <td>{{ curso.id }}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ curso.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td><img src=" {{ vich_uploader_asset(curso, 'imageFile') }}" alt="{{ curso.imageName }}" /></td>
+                <td>{{ curso.imageFile }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if curso.updatedAt %}{{ curso.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

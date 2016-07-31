@@ -65,3 +65,12 @@ swiftmailer:
     username:  wilmer.ramones@gmail.com
     password:  07102009RR
     #spool:     { type: memory }
+
+# vich_uploader Configuration
+vich_uploader:
+    db_driver: orm
+    
+    mappings:
+        course_image:
+            uri_prefix:         /images/course
+            upload_destination: %kernel.root_dir%/../web/images/course

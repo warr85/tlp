@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modulo list</h1>
+    <h1>Tema list</h1>
 
     <table>
         <thead>
@@ -13,18 +13,18 @@
             </tr>
         </thead>
         <tbody>
-        {% for modulo in modulos %}
+        {% for tema in temas %}
             <tr>
-                <td><a href="{{ path('admin_gestion_modulos_show', { 'id': modulo.id }) }}">{{ modulo.nombre }}</a></td>
-                <td>{{ modulo.descripcion }}</td>
-                <td>{{ modulo.id }}</td>
+                <td><a href="{{ path('admin_gestion_temas_show', { 'id': tema.id }) }}">{{ tema.nombre }}</a></td>
+                <td>{{ tema.descripcion }}</td>
+                <td>{{ tema.id }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('admin_gestion_modulos_show', { 'id': modulo.id }) }}">show</a>
+                            <a href="{{ path('admin_gestion_temas_show', { 'id': tema.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('admin_gestion_modulos_edit', { 'id': modulo.id }) }}">edit</a>
+                            <a href="{{ path('admin_gestion_temas_edit', { 'id': tema.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_gestion_modulos_new') }}">Create a new entry</a>
+            <a href="{{ path('admin_gestion_temas_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}
