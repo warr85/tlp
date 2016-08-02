@@ -197,89 +197,35 @@
                 <div class="row">
                     <h1 class="title">Cursos</h1>
                     <h2 class="subtitle">Galería de Cursos que tenemos a tu disposición</h2>
-                    
-                      <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="{{asset('bundles/AppBundle/images/portal/dwc.png')}}" alt="dwc.png">
-                            <div class="caption">
-                                <h4 class="pull-right">20.000 Bsf</h4>
-                                <h4><a href="#">Desarrollador Web</a>
-                                </h4>
-                                <p>
-                                    Cusro 100% en línea e interactivo que te permitirá convertirte en un desarrollador
-                                    para la web.
-                                
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reseñas</p>
-                                <p class="yellow">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-sm-6 hero-feature">
-                        <div class="thumbnail">
-                            <img src="{{asset('bundles/AppBundle/images/portal/twitter-up.png')}}" alt="">
-                             <div class="caption">
-                                <h4 class="pull-right">15.000 Bsf</h4>
-                                <h4><a href="#">Despegar con Twitter</a>
-                                </h4>
-                                <p>
-                                    Curso interativo que te enseña a usar y sobre todo a 
-                                    disfrutar los beneficios que tiene esta increible
-                                    red social de microblogging.
-                                
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reseñas</p>
-                                <p class="yellow">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-sm-6 hero-feature">
-                        <div class="thumbnail">
-                            <img src="{{asset('bundles/AppBundle/images/portal/preziCurso.png')}}" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">15.000 Bsf</h4>
-                                <h4><a href="#">Presentaciones con Prezi</a>
-                                </h4>
-                                <p>
-                                    ¿Aburrido de las presentaciones tradicionales estilos
-                                    diapositiva? Aquí la solución, impresiona a tu audiencia
-                                    con Prezi.
-                                
-                                </p>
-                                <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reseñas</p>
-                                <p class="yellow">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    {% for curso in cursos %} 
+                            <div class="col-sm-4 col-lg-4 col-md-4">
+                              <div class="thumbnail">
+                                  <img src="{{ vich_uploader_asset(curso, 'imageFile') }}" alt="dwc.png">
+                                  <div class="caption">
+                                      {% set costo = 0  %}
+                                      {% for mod in curso.modulos %} {% set costo = costo + mod.idCostoCursoModulo.costo  %} {% endfor %}
+                                      <h4 class="pull-right">{{costo}}</h4>
+                                      <h4><a href="#">{{ curso.nombre}}</a>
+                                      </h4>
+                                      <p>
+                                          {{curso.descripcion}}
+
+                                      </p>
+                                      <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
+                                  </div>
+                                  <div class="ratings">
+                                      <p class="pull-right">15 reseñas</p>
+                                      <p class="yellow">
+                                          <span class="fa fa-star"></span>
+                                          <span class="fa fa-star"></span>
+                                          <span class="fa fa-star"></span>
+                                          <span class="fa fa-star"></span>
+                                          <span class="fa fa-star"></span>
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>                    
+                    {% endfor %}                                       
 
                 </div>
             </div>

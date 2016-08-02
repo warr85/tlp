@@ -15,8 +15,15 @@ class PortalController extends Controller
      */
     public function indexAction(Request $request)
     {
-         $login = new Usuarios();
+        $em = $this->getDoctrine()->getManager();
+        $login = new Usuarios();
+        $gruposActivos = $em->getRepository('AppBundle:CursoGrupo')->findByIdEstatus($em->getRepository('AppBundle:Estatus')->findOneByNombre('Activo'));
+        //Encontrar todos los cursos que tegan grupos activos
+        $cursos = $em->getRepository('AppBundle:Curso')->findBy(array(
+            'id' => $gruposActivos));
+                
         $form = $this->createForm('AppBundle\Form\RegisterType', $login);
+                   
         $form->handleRequest($request);
        
         if ($form->isSubmitted() && $form->isValid()) {
@@ -30,7 +37,7 @@ class PortalController extends Controller
                 
                 
                 
-                $em = $this->getDoctrine()->getManager();
+                
                 $em->persist($login);
                 
                 
@@ -74,6 +81,7 @@ class PortalController extends Controller
         return $this->render('portal/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
             'form' => $form->createView(),
+            'cursos' => $cursos
         ));
     }
     
