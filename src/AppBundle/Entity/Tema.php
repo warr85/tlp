@@ -30,11 +30,6 @@ class Tema
     private $descripcion;
         
     
-    /**
-     * @ORM\OneToMany(targetEntity="Modulo", mappedBy="ModuloId", cascade={"all"})
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
-    private $modulos;
 
     /**
      * @var integer
@@ -48,13 +43,7 @@ class Tema
     
     
     
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->modulos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    
 
     /**
      * Set nombre
@@ -111,37 +100,9 @@ class Tema
     {
         return $this->id;
     }
-
-    /**
-     * Add modulos
-     *
-     * @param \AppBundle\Entity\Modulo $modulos
-     * @return Tema
-     */
-    public function addModulo(\AppBundle\Entity\Modulo $modulos)
-    {
-        $this->modulos[] = $modulos;
-
-        return $this;
+    
+    public function __toString() {
+        return $this->getNombre();
     }
 
-    /**
-     * Remove modulos
-     *
-     * @param \AppBundle\Entity\Modulo $modulos
-     */
-    public function removeModulo(\AppBundle\Entity\Modulo $modulos)
-    {
-        $this->modulos->removeElement($modulos);
-    }
-
-    /**
-     * Get modulos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getModulos()
-    {
-        return $this->modulos;
-    }
 }

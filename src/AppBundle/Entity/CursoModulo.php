@@ -85,6 +85,12 @@ class CursoModulo
      */
     private $orden;
     
+    /**
+     * @ORM\OneToMany(targetEntity="CursoModuloTema", mappedBy="idCursoModulo", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $temas;
+    
     
     
 
@@ -242,5 +248,45 @@ class CursoModulo
     
     public function __toString() {
         return $this->getIdModulo()->getNombre();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->temas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add temas
+     *
+     * @param \AppBundle\Entity\CursoModuloTema $temas
+     * @return CursoModulo
+     */
+    public function addTema(\AppBundle\Entity\CursoModuloTema $temas)
+    {
+        $this->temas[] = $temas;
+
+        return $this;
+    }
+
+    /**
+     * Remove temas
+     *
+     * @param \AppBundle\Entity\CursoModuloTema $temas
+     */
+    public function removeTema(\AppBundle\Entity\CursoModuloTema $temas)
+    {
+        $this->temas->removeElement($temas);
+    }
+
+    /**
+     * Get temas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTemas()
+    {
+        return $this->temas;
     }
 }

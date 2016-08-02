@@ -28,13 +28,7 @@ class Modulo
      * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Modulo"})
      */
     private $descripcion;
-        
-    
-    /**
-     * @ORM\OneToMany(targetEntity="ModuloTema", mappedBy="ModuloId", cascade={"all"})
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
-    private $temas;
+            
 
     /**
      * @var integer
@@ -47,13 +41,7 @@ class Modulo
     private $id;
     
     
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->temas = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+   
 
     /**
      * Set nombre
@@ -111,38 +99,7 @@ class Modulo
         return $this->id;
     }
 
-    /**
-     * Add temas
-     *
-     * @param \AppBundle\Entity\ModuloTema $temas
-     * @return Modulo
-     */
-    public function addTema(\AppBundle\Entity\ModuloTema $temas)
-    {
-        $this->temas[] = $temas;
-
-        return $this;
-    }
-
-    /**
-     * Remove temas
-     *
-     * @param \AppBundle\Entity\ModuloTema $temas
-     */
-    public function removeTema(\AppBundle\Entity\ModuloTema $temas)
-    {
-        $this->temas->removeElement($temas);
-    }
-
-    /**
-     * Get temas
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTemas()
-    {
-        return $this->temas;
-    }
+   
     
     /**
      * @return string
