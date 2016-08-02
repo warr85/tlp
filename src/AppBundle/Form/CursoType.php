@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CursoType extends AbstractType
 {
@@ -20,7 +21,16 @@ class CursoType extends AbstractType
             ->add('descripcion')            
             ->add('imageName')            
             ->add('imageFile', FileType::class, array('label' => 'Brochure (PDF file)'))
-            ->add('modulos')
+            ->add('modulos', EntityType::class, array(
+                'class'     => 'AppBundle:CursoModulo',
+                'multiple'  => true,
+                'expanded'  => true
+            ))
+            ->add('grupos', EntityType::class, array(
+                'class'     => 'AppBundle:CursoGrupo',
+                'multiple'  => true,
+                'expanded'  => true
+            ))
         ;
     }
     

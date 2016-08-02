@@ -38,6 +38,13 @@ class Curso
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $modulos;
+    
+    
+     /**
+     * @ORM\OneToMany(targetEntity="CursoGrupo", mappedBy="idCurso", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $grupos;
 
     /**
      * @var integer
@@ -222,5 +229,38 @@ class Curso
      */
     public function __toString() {
         return $this->getNombre();
+    }
+
+    /**
+     * Add modulos
+     *
+     * @param \AppBundle\Entity\CursoModulo $modulos
+     * @return Curso
+     */
+    public function addModulo(\AppBundle\Entity\CursoModulo $modulos)
+    {
+        $this->modulos[] = $modulos;
+
+        return $this;
+    }
+
+    /**
+     * Remove modulos
+     *
+     * @param \AppBundle\Entity\CursoModulo $modulos
+     */
+    public function removeModulo(\AppBundle\Entity\CursoModulo $modulos)
+    {
+        $this->modulos->removeElement($modulos);
+    }
+
+    /**
+     * Get modulos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getModulos()
+    {
+        return $this->modulos;
     }
 }

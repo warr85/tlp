@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CursoGrupo list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fechainicio</th>
+                <th>Fechafin</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cursoGrupo in cursoGrupos %}
+            <tr>
+                <td><a href="{{ path('admin_gestion_grupos_show', { 'id': cursoGrupo.id }) }}">{{ cursoGrupo.id }}</a></td>
+                <td>{% if cursoGrupo.FechaInicio %}{{ cursoGrupo.FechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cursoGrupo.FechaFin %}{{ cursoGrupo.FechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cursoGrupo.nombre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_gestion_grupos_show', { 'id': cursoGrupo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_gestion_grupos_edit', { 'id': cursoGrupo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_gestion_grupos_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
