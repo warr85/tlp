@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Inscripcion list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Fechainscripcion</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inscripcion in inscripcions %}
+            <tr>
+                <td><a href="{{ path('curso_comprar_show', { 'id': inscripcion.id }) }}">{{ inscripcion.FechaInscripcion }}</a></td>
+                <td>{{ inscripcion.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('curso_comprar_show', { 'id': inscripcion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('curso_comprar_edit', { 'id': inscripcion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('curso_comprar_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

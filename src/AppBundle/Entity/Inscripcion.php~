@@ -1,0 +1,70 @@
+<?php
+
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+
+/**
+ * Estatus
+ *
+ * @ORM\Table(name="inscripcion")
+ * @ORM\Entity
+ */
+class Inscripcion
+{
+    
+    
+    
+    /**
+     * @var \AppBundle\Entity\CursoGrupo
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoGrupo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_curso_grupo", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idCursoGrupo;
+    
+    
+    /**
+     * @var \AppBundle\Entity\CursoAvance
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoAvance")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_curso_avance", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idCursoAvance;
+    
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     *
+     * @var \DateTime
+     */
+    private $FechaInscripcion;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Suscripcion", mappedBy="idInscripcion", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $suscripciones;
+    
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"comment" = "Identificador del estatus"})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\SequenceGenerator(sequenceName="estatus_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+    
+ 
+}

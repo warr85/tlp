@@ -1,0 +1,77 @@
+<?php
+
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * Estatus
+ *
+ * @ORM\Table(name="curso_avance")
+ * @ORM\Entity
+ */
+class CursoAvance
+{
+    
+    
+    
+    /**
+     * @var \AppBundle\Entity\Inscripcion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Inscripcion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_inscripcion", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idInscripcion;
+    
+    
+    /**
+     * @var \AppBundle\Entity\CursoModuloTema
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoModuloTema")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_curso_modulo_tema", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idCursoModuloTema;
+    
+    /**
+     * @var \AppBundle\Entity\Estatus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estatus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_estatus", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idEstatus;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="CursoAvanceEvaluacion", mappedBy="idCursoAvance", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $evaluaciones;
+    
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     *
+     * @var \DateTime
+     */
+    private $FechaAvance;
+                
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"comment" = "Identificador del estatus"})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\SequenceGenerator(sequenceName="estatus_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+    
+ 
+}
