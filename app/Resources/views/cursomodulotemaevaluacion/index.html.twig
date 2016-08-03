@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CursoModuloTemaEvaluacion list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ponderacion</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cursoModuloTemaEvaluacion in cursoModuloTemaEvaluacions %}
+            <tr>
+                <td><a href="{{ path('admin_gestion_tema_evaluaciones_show', { 'id': cursoModuloTemaEvaluacion.id }) }}">{{ cursoModuloTemaEvaluacion.ponderacion }}</a></td>
+                <td>{{ cursoModuloTemaEvaluacion.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_gestion_tema_evaluaciones_show', { 'id': cursoModuloTemaEvaluacion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_gestion_tema_evaluaciones_edit', { 'id': cursoModuloTemaEvaluacion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_gestion_tema_evaluaciones_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

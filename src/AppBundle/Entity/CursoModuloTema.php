@@ -60,6 +60,13 @@ class CursoModuloTema
     private $orden;
     
     
+    /**
+     * @ORM\OneToMany(targetEntity="CursoModuloTemaEvaluacion", mappedBy="idCursoModuloTema", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $evaluaciones;
+    
+    
     
     
    
@@ -145,5 +152,45 @@ class CursoModuloTema
     
     public function __toString() {
         return $this->getIdTema()->getNombre();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->evaluaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add evaluaciones
+     *
+     * @param \AppBundle\Entity\CursoModuloTemaEvaluacion $evaluaciones
+     * @return CursoModuloTema
+     */
+    public function addEvaluacione(\AppBundle\Entity\CursoModuloTemaEvaluacion $evaluaciones)
+    {
+        $this->evaluaciones[] = $evaluaciones;
+
+        return $this;
+    }
+
+    /**
+     * Remove evaluaciones
+     *
+     * @param \AppBundle\Entity\CursoModuloTemaEvaluacion $evaluaciones
+     */
+    public function removeEvaluacione(\AppBundle\Entity\CursoModuloTemaEvaluacion $evaluaciones)
+    {
+        $this->evaluaciones->removeElement($evaluaciones);
+    }
+
+    /**
+     * Get evaluaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvaluaciones()
+    {
+        return $this->evaluaciones;
     }
 }

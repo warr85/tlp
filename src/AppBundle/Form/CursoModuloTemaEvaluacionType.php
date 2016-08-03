@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CursoModuloTemaType extends AbstractType
+class CursoModuloTemaEvaluacionType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,10 +15,9 @@ class CursoModuloTemaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('orden')
-            ->add('idCursoModulo')
-            ->add('idTema')
-            ->add('evaluaciones')
+            ->add('ponderacion')
+            ->add('idTipoEvaluacion')
+            ->add('idCursoModuloTema')
         ;
     }
     
@@ -28,7 +27,7 @@ class CursoModuloTemaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\CursoModuloTema'
+            'data_class' => 'AppBundle\Entity\CursoModuloTemaEvaluacion'
         ));
     }
 }

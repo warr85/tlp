@@ -60,7 +60,97 @@ class CursoModuloTema
     private $orden;
     
     
+    /**
+     * @ORM\OneToMany(targetEntity="CursoModuloTemaEvaluacion", mappedBy="idCursoModuloTema", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $evaluaciones;
+    
+    
     
     
    
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set orden
+     *
+     * @param string $orden
+     * @return CursoModuloTema
+     */
+    public function setOrden($orden)
+    {
+        $this->orden = $orden;
+
+        return $this;
+    }
+
+    /**
+     * Get orden
+     *
+     * @return string 
+     */
+    public function getOrden()
+    {
+        return $this->orden;
+    }
+
+    /**
+     * Set idCursoModulo
+     *
+     * @param \AppBundle\Entity\CursoModulo $idCursoModulo
+     * @return CursoModuloTema
+     */
+    public function setIdCursoModulo(\AppBundle\Entity\CursoModulo $idCursoModulo)
+    {
+        $this->idCursoModulo = $idCursoModulo;
+
+        return $this;
+    }
+
+    /**
+     * Get idCursoModulo
+     *
+     * @return \AppBundle\Entity\CursoModulo 
+     */
+    public function getIdCursoModulo()
+    {
+        return $this->idCursoModulo;
+    }
+
+    /**
+     * Set idTema
+     *
+     * @param \AppBundle\Entity\Tema $idTema
+     * @return CursoModuloTema
+     */
+    public function setIdTema(\AppBundle\Entity\Tema $idTema)
+    {
+        $this->idTema = $idTema;
+
+        return $this;
+    }
+
+    /**
+     * Get idTema
+     *
+     * @return \AppBundle\Entity\Tema 
+     */
+    public function getIdTema()
+    {
+        return $this->idTema;
+    }
+    
+    public function __toString() {
+        return $this->getIdTema()->getNombre();
+    }
 }
