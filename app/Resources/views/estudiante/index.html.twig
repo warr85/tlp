@@ -1,0 +1,164 @@
+{% extends 'base_estudiante.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/AppBundle/css/module-colors-background.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %} 
+    <div class="container">
+        <div class="page-section">
+            <div class="row">
+                <div class="col-md-10">
+
+                    <!-- Suscripcion -->
+                    <div class="panel panel-default">
+                        <div class="media v-middle">
+                            <div class="media-left">
+                                <div class="bg-green-400 text-white">
+                                    <div class="panel-body">
+                                        <i class="fa fa-credit-card fa-fw fa-2x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                Tu suscripción termina el <span class="text-primary">25 February 2015</span>
+                            </div>
+                            <div class="media-right media-padding">
+                                <a class="btn btn-white paper-shadow relative" data-z="0.5" data-hover-z="1" data-animated href="#">
+                                    Upgrade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Final de Suscripcion -->
+
+                   
+                    <div class="row">
+                         <!-- Mostrar Cursos Suscritos y Avance -->
+                        <div class="col-md-6">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>Cursos <small>Estatus y avance.</small></h5>
+                                </div>
+                                <div class="ibox-content">
+
+                                    <div>
+                                        <div>
+                                            <span>Memory</span>
+                                            <small class="pull-right">10/200 GB</small>
+                                        </div>
+                                        <div class="progress progress-small">
+                                            <div style="width: 60%;" class="progress-bar"></div>
+                                        </div>
+
+                                        <div>
+                                            <span>Bandwidth</span>
+                                            <small class="pull-right">20 GB</small>
+                                        </div>
+                                        <div class="progress progress-small">
+                                            <div style="width: 50%;" class="progress-bar"></div>
+                                        </div>
+
+                                        <div>
+                                            <span>Activity</span>
+                                            <small class="pull-right">73%</small>
+                                        </div>
+                                        <div class="progress progress-small">
+                                            <div style="width: 40%;" class="progress-bar"></div>
+                                        </div>
+
+                                        <div>
+                                            <span>FTP</span>
+                                            <small class="pull-right">400 GB</small>
+                                        </div>
+                                        <div class="progress progress-small">
+                                            <div style="width: 20%;" class="progress-bar progress-bar-danger"></div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin de Cursos Suscritos -->
+                        
+                        <div class="col-md-6">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>Recompensas <small> Tus Logros recientemente alcanzados  .</small></h5>
+                                </div>
+                                <div class="ibox-content">
+
+                                    <button class="btn btn-warning dim" type="button"><i class="fa fa-git"></i></button>
+                                    <button class="btn btn-success dim" type="button"><i class="fa fa-html5"></i></button>
+
+
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>Certificados <small> Tus Cursos Terminados.</small></h5>
+                                </div>
+                                <div class="ibox-content">
+
+                                   <div class="tooltip-demo">
+                                       <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><i class="fa fa-file-text fa-2x"></i></button>
+                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fa fa-file-text fa-2x"></i></button>
+                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fa fa-file-text fa-2x"></i></button>
+                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right"><i class="fa fa-file-text fa-2x"></i></button>
+                        </div>
+
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                         
+
+
+
+                </div>
+                    
+                    <div class="col-md-6">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>Examenes / Quizz <small> Resultados.</small></h5>
+                                </div>
+                                <div class="ibox-content">
+                        <div>
+                                            <div class="feed-activity-list">
+
+                                                <div class="feed-element">
+                                                    <a href="profile.html" class="pull-left">
+                                                        <i class="fa fa-2x fa-html5">&nbsp;</i>
+                                                    </a> 
+                                                    <div class="media-body ">
+                                                        <a class="pull-right">10/10 <br> <small class="text-muted">Excelente</small></a>
+                                                        <strong> Introducción a GIT</strong> Curso de GIT. <br>
+                                                        <small class="text-muted"> Today 5:60 pm - 12.06.2014</small>
+
+                                                    </div>
+                                                </div>
+
+                                                
+                                            </div>
+
+                                            
+
+                                        </div>
+                                     </div>
+                            </div>
+                         
+                         
+                         
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
