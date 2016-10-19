@@ -12,7 +12,7 @@ use AppBundle\Form\UsuariosType;
 /**
  * Usuarios controller.
  *
- * @Route("ceapp/admin/usuarios")
+ * @Route("admin/usuarios")
  */
 class UsuariosController extends Controller
 {

@@ -1,4 +1,4 @@
-{% extends 'base_app.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block body %}
     <div class="container">
@@ -15,10 +15,9 @@
                 <thead>
                   <tr>
                     <th>Id</th>                    
-                    <th>Nombres y Apellidos</th>
-                    <th>Eje</th>
-                    <th>Estado</th>
-                    <th>Nombre de Usuario</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Contraseña</th>                    
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -26,12 +25,11 @@
         {% for usuario in usuarios %}
             <tr>
                 <td>{{ usuario.id }}</td>
-                <td>{{ usuario.idRolInstitucion.idRol.idPersona.primerNombre }}, {{ usuario.idRolInstitucion.idRol.idPersona.primerApellido }}</td>
-                <td>{{usuario.idRolInstitucion.idInstitucion.idEjeParroquia.idEje}}</td>
-                <td>{{usuario.idRolInstitucion.idInstitucion.idEjeParroquia.idParroquia.idMunicipio.idEstado}}</td>
                 <td>
                     <a href="{{ path('admin_usuarios_show', { 'id': usuario.id }) }}">{{ usuario.username }}</a>
-                </td>                          
+                </td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.plainPassword}}</td>                                       
                 <td> 
                     <a href="{{ path('admin_usuarios_show', { 'id': usuario.id }) }}" class="btn btn-xs btn-info"><i class="fa fa-eye" ></i></a>
                     <a href="{{ path('admin_usuarios_edit', { 'id': usuario.id }) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>                                            
