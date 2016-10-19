@@ -167,20 +167,30 @@
 
     <script type="text/javascript">
 
-        jQuery(function ($, undefined) {
+        jQuery(function ($) {
             $('#terminal').terminal(function (command, term) {
-                if (command !== '') {
-                    var result = window.eval(command);
-                    if (result != undefined) {
-                        term.echo(String(result));
-                    }
-                }
+                term.echo(evaluar(command));
+                //var $x = evaluar(command);
             }, {
-                greetings: 'Interprete de Comandos del Curso',
+                greetings: 'Interprete de Comandos del Curso, --help-- para ayuda de comandos',
                 name: 'curso_git',
                 prompt: 'curso_git$> '
             });
         });
+
+        var $palabraGit = /^git$/g;
+        var $gitEspacio = /^git+\s/g;
+        var $status = /\bstatus$/g;
+        function evaluar(c) {
+
+            if (c.match($gitEspacio)) {
+                if (c.match($status)) {
+                    return ("match espacio!");
+                }
+            }
+
+        }
+
     </script>
 
 {% endblock %}
