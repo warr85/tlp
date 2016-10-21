@@ -3759,6 +3759,16 @@ code {
   border-style: solid solid none;
   border-width: 1px 0;
 }
+
+.animado {
+  height: 200px;
+}
+
+.animado-container {
+  height: 300px;
+}
+
+
 .ibox-footer {
   color: inherit;
   border-top: 1px solid #e7eaec;
