@@ -39,5 +39,5 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: ROLE_DOCENTE }
         - { path: ^/ceapp, roles: ROLE_DOCENTE }
-        - { path: ^/admin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
