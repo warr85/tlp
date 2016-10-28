@@ -24,6 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Inscripcion;
 
+
 /**
  * Description of ElearningController
  * Este controlador es el que gestiona el aprendizaje del estudiante
@@ -43,24 +44,36 @@ class ElearningController extends Controller {
         $inscripcion = $this->getDoctrine()->getRepository('AppBundle:Inscripcion')->findBy(array(
            'idUsuario'  => $this->getUser() 
         ));
+        //Para saber en que parte del curso se encuentra esta inscripcion
+        $avance = $this->getDoctrine()->getRepository('AppBundle:CursoAvance')->findOneBy(array(
+           'idInscripcion'  => $inscripcion,
+            'idEstatus'     => 1            
+        ));
         
         return $this->render('estudiante/index.html.twig', array(
             'inscripciones' => $inscripcion,
+            'avance'        => $avance
         ));
         
     }
     
     
     /**
-     * @Route("/curso/programacion/{id}", name="estudiante_curso_programacion")
+     * @Route("/curso/programacion/{id}/reto/{avance}", name="estudiante_curso_programacion")
      */
-    public function cursoProgramacionAction(Inscripcion $inscripcion, Request $request){
+    public function cursoProgramacionAction(Inscripcion $inscripcion, $avance, Request $request){
         
         $cursoModulo = $this->getDoctrine()->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
-        
+        $temaActual = $this->getDoctrine()->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
+           'idCursoModulo'  => $cursoModulo,
+            'orden'         => $avance
+        ));
         return $this->render('estudiante/curso_programacion.html.twig', array(
             'inscripcion'   => $inscripcion,
-            'cursoModulo'   => $cursoModulo
+            'cursoModulo'   => $cursoModulo,
+            'avance'        => $avance,
+            'temaActual'    => $temaActual
+                
         ));
         
     }

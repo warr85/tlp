@@ -48,7 +48,7 @@
                         <div>
                            
                                 
-                                <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id }) }}"><span > {{inscripcion.idCursoGrupo.idCurso.nombre}} </span></a>
+                                <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance.idCursoModuloTema.orden }) }}"><span > {{inscripcion.idCursoGrupo.idCurso.nombre}} </span></a>
                            
                             
                             

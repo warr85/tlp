@@ -15,9 +15,11 @@ label {
 }
 
 
+.current{
+    color: #f79d3c!important;
+}
 
-
-.encendido:hover {
+.encendido {
   -webkit-animation: neon5 1.5s ease-in-out infinite alternate;
   -moz-animation: neon5 1.5s ease-in-out infinite alternate;
   animation: neon5 1.5s ease-in-out infinite alternate;
