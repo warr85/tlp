@@ -4,8 +4,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 
 /**
@@ -28,6 +27,17 @@ class Inscripcion
      * })
      */
     private $idCursoGrupo;
+    
+    
+     /**
+     * @var \AppBundle\Entity\Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuarios", inversedBy="inscripciones", cascade={"all"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_usuario", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idUsuario;
     
     
     /**
@@ -128,28 +138,6 @@ class Inscripcion
         return $this->idCursoGrupo;
     }
 
-    /**
-     * Set idCursoAvance
-     *
-     * @param \AppBundle\Entity\CursoAvance $idCursoAvance
-     * @return Inscripcion
-     */
-    public function setIdCursoAvance(\AppBundle\Entity\CursoAvance $idCursoAvance)
-    {
-        $this->idCursoAvance = $idCursoAvance;
-
-        return $this;
-    }
-
-    /**
-     * Get idCursoAvance
-     *
-     * @return \AppBundle\Entity\CursoAvance 
-     */
-    public function getIdCursoAvance()
-    {
-        return $this->idCursoAvance;
-    }
 
     /**
      * Add suscripciones
@@ -182,5 +170,38 @@ class Inscripcion
     public function getSuscripciones()
     {
         return $this->suscripciones;
+    }
+
+    /**
+     * Add avances
+     *
+     * @param \AppBundle\Entity\CursoAvance $avances
+     * @return Inscripcion
+     */
+    public function addAvance(\AppBundle\Entity\CursoAvance $avances)
+    {
+        $this->avances[] = $avances;
+
+        return $this;
+    }
+
+    /**
+     * Remove avances
+     *
+     * @param \AppBundle\Entity\CursoAvance $avances
+     */
+    public function removeAvance(\AppBundle\Entity\CursoAvance $avances)
+    {
+        $this->avances->removeElement($avances);
+    }
+
+    /**
+     * Get avances
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAvances()
+    {
+        return $this->avances;
     }
 }

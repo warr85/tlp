@@ -29,6 +29,17 @@ class Inscripcion
     private $idCursoGrupo;
     
     
+     /**
+     * @var \AppBundle\Entity\Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuarios", inversedBy="inscripciones", cascade={"all"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_usuario", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idUsuario;
+    
+    
     /**
      * @ORM\OneToMany(targetEntity="CursoAvance", mappedBy="idInscripcion", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -192,5 +203,28 @@ class Inscripcion
     public function getAvances()
     {
         return $this->avances;
+    }
+
+    /**
+     * Set idUsuario
+     *
+     * @param \AppBundle\Entity\Usuarios $idUsuario
+     * @return Inscripcion
+     */
+    public function setIdUsuario(\AppBundle\Entity\Usuarios $idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get idUsuario
+     *
+     * @return \AppBundle\Entity\Usuarios 
+     */
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
     }
 }

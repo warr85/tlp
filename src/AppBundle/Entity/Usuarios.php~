@@ -46,7 +46,7 @@ class Usuarios implements UserInterface, \Serializable
     
     
     /**
-     * @ORM\OneToMany(targetEntity="Inscripcion", mappedBy="idUsuario", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="inscripcion", mappedBy="idUsuario", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $inscripciones;
@@ -278,38 +278,5 @@ class Usuarios implements UserInterface, \Serializable
     public function getSalt()
     {
         // TODO: Implement getSalt() method.
-    }
-
-    /**
-     * Add inscripciones
-     *
-     * @param \AppBundle\Entity\inscripcion $inscripciones
-     * @return Usuarios
-     */
-    public function addInscripcione(\AppBundle\Entity\inscripcion $inscripciones)
-    {
-        $this->inscripciones[] = $inscripciones;
-
-        return $this;
-    }
-
-    /**
-     * Remove inscripciones
-     *
-     * @param \AppBundle\Entity\inscripcion $inscripciones
-     */
-    public function removeInscripcione(\AppBundle\Entity\inscripcion $inscripciones)
-    {
-        $this->inscripciones->removeElement($inscripciones);
-    }
-
-    /**
-     * Get inscripciones
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInscripciones()
-    {
-        return $this->inscripciones;
     }
 }

@@ -53,7 +53,7 @@ class InscripcionController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             
-            
+            $inscripcion->setIdUsuario($this->getUser());
             $avance->setIdInscripcion($inscripcion);
             $avance->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
             $curso = $inscripcion->getIdCursoGrupo()->getIdCurso();
