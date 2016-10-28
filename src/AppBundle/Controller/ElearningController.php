@@ -22,7 +22,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\CursoModulo;
+use AppBundle\Entity\Inscripcion;
 
 /**
  * Description of ElearningController
@@ -54,10 +54,13 @@ class ElearningController extends Controller {
     /**
      * @Route("/curso/programacion/{id}", name="estudiante_curso_programacion")
      */
-    public function cursoProgramacionAction(CursoModulo $cursoModulo, Request $request){
+    public function cursoProgramacionAction(Inscripcion $inscripcion, Request $request){
+        
+        $cursoModulo = $this->getDoctrine()->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
         
         return $this->render('estudiante/curso_programacion.html.twig', array(
-            'cursoModulo' => $cursoModulo,
+            'inscripcion'   => $inscripcion,
+            'cursoModulo'   => $cursoModulo
         ));
         
     }

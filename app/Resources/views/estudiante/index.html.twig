@@ -46,10 +46,10 @@
                 {% for inscripcion in inscripciones %}
                     <div>
                         <div>
-                           {% for avance in inscripcion.avances %}
+                           
                                 
-                                <a href="{{ path('estudiante_curso_programacion', { 'id': avance.idCursoModuloTema.idCursoModulo.id }) }}"><span > {{inscripcion.idCursoGrupo.idCurso.nombre}} </span></a>
-                           {% endfor %}
+                                <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id }) }}"><span > {{inscripcion.idCursoGrupo.idCurso.nombre}} </span></a>
+                           
                             
                             
                             

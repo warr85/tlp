@@ -31,7 +31,7 @@
     <div class="row wrapper border-bottom white-bg page-heading">
 
         <div class="col-sm-4">
-            <h2>Curso de {{ cursoModulo.idCurso.nombre }}</h2>
+            <h2>Curso de {{ inscripcion.idCursoGrupo.idCurso.nombre }}</h2>
             <ol class="breadcrumb">
                 <ol class="breadcrumb">
                 <li>
@@ -40,11 +40,14 @@
                 
                 
                 <li class="active">
+                    
                     {% for temas in cursoModulo.temas %}
-                        
+                        {% for avance in inscripcion.avances %}
+                            {{ dump(avance.idCursoModuloTema.orden) }}
+                        {% endfor %}
+                        {{ dump(temas) }}
                         <a class="fa fa-github fa-3x"></a>
                     {% endfor %}
-                    
                    
                     
                 </li>
