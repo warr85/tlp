@@ -40,7 +40,13 @@ class ElearningController extends Controller {
      */
     public function indexAction(Request $request){
         
-        return $this->render('estudiante/index.html.twig');
+        $inscripcion = $this->getDoctrine()->getRepository('AppBundle:Inscripcion')->findBy(array(
+           'idUsuario'  => $this->getUser() 
+        ));
+        
+        return $this->render('estudiante/index.html.twig', array(
+            'inscripciones' => $inscripcion,
+        ));
         
     }
     

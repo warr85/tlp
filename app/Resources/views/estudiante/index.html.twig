@@ -43,10 +43,16 @@
                     <h5>Cursos <small>Estatus y avance.</small></h5>
                 </div>
                 <div class="ibox-content">
-
+                {% for inscripcion in inscripciones %}
                     <div>
                         <div>
-                            <a href="{{ path('estudiante_curso_programacion', { 'id': 3 }) }}"><span > Intro a <span class="fa fa-git"></span></span></a>
+                           {% for avance in inscripcion.avances %}
+                                
+                                <a href="{{ path('estudiante_curso_programacion', { 'id': avance.idCursoModuloTema.idCursoModulo.id }) }}"><span > {{inscripcion.idCursoGrupo.idCurso.nombre}} </span></a>
+                           {% endfor %}
+                            
+                            
+                            
                             <small class="pull-right">10/100 %</small>
                         </div>
                         <div class="progress progress-small">
@@ -54,6 +60,7 @@
                         </div>
                         
                     </div>
+                {% endfor %}
 
 
                 </div>
