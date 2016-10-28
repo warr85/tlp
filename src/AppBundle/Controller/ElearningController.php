@@ -50,7 +50,9 @@ class ElearningController extends Controller {
      */
     public function cursoProgramacionAction(CursoModulo $cursoModulo, Request $request){
         
-        return $this->render('estudiante/curso_programacion.html.twig');
+        return $this->render('estudiante/curso_programacion.html.twig', array(
+            'cursoModulo' => $cursoModulo,
+        ));
         
     }
     

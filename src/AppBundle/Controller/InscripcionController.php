@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Inscripcion;
-use AppBundle\Form\InscripcionType;
+use AppBundle\Entity\CursoAvance;
+use AppBundle\Entity\Suscripcion;
+
 
 /**
  * Inscripcion controller.
@@ -42,13 +44,44 @@ class InscripcionController extends Controller
     public function newAction(Request $request)
     {
         $inscripcion = new Inscripcion();
+        $avance = new CursoAvance();
+        $suscripcion = new Suscripcion();
+        
         $form = $this->createForm('AppBundle\Form\InscripcionType', $inscripcion);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            
+            $avance->setIdInscripcion($inscripcion);
+            $avance->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
+            $curso = $inscripcion->getIdCursoGrupo()->getIdCurso();
+            $cursoModulo = $this->getDoctrine()->getRepository('AppBundle:CursoModulo')->findOneBy(array(               
+                'idCurso'   => $curso,
+                'orden'     => 1
+            ));
+            $cursoModuloTemas = $this->getDoctrine()->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
+               'idCursoModulo'  => $cursoModulo,
+                'orden'         => 1
+            ));
+            $avance->setIdCursoModuloTema($cursoModuloTemas);
+            $avance->setFechaAvance(new \DateTime());
+            $inscripcion->setFechaInscripcion(new \DateTime());
+            
+            $suscripcion->setFechaPago(new \DateTime());
+            $suscripcion->setIdInscripcion($inscripcion);
+            $suscripcion->setIdEstatus($em->getRepository('AppBundle:Estatus')->findOneById(2));
+            $suscripcion->setIdCostoCursoModulo($cursoModulo->getIdCostoCursoModulo());
+            $suscripcion->setIdFormaPago($em->getRepository('AppBundle:FormaPago')->findOneById(1));
+            
+            $em->persist($avance);
+            $em->persist($suscripcion);
             $em->persist($inscripcion);
+                           
             $em->flush();
+            
+            
 
             return $this->redirectToRoute('curso_comprar_show', array('id' => $inscripcion->getId()));
         }

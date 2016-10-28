@@ -20,7 +20,7 @@ class CursoAvance
     /**
      * @var \AppBundle\Entity\Inscripcion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Inscripcion")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Inscripcion", inversedBy="avances", cascade={"all"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_inscripcion", referencedColumnName="id", nullable=false)
      * })

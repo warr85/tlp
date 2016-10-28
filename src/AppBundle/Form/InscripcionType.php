@@ -14,10 +14,8 @@ class InscripcionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('FechaInscripcion')
-            ->add('idCursoGrupo')
-            ->add('idCursoAvance')
+        $builder            
+            ->add('idCursoGrupo')            
         ;
     }
     

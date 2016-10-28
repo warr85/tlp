@@ -1,0 +1,35 @@
+html, body {
+  height:100%;
+}
+
+label {
+  margin:0 auto;
+  background-image:url('http://png.findicons.com/files/icons/1588/farm_fresh_web/32/lightbulb_off.png');
+  display:block;
+  width:32px;
+  height:32px;
+  cursor:pointer;
+  position:relative;
+  top:50%;
+  margin-top:-16px;
+}
+
+
+
+
+.encendido:hover {
+  -webkit-animation: neon5 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon5 1.5s ease-in-out infinite alternate;
+  animation: neon5 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon5 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF9900, 0 0 70px #FF9900, 0 0 80px #FF9900, 0 0 100px #FF9900, 0 0 150px #FF9900;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF9900, 0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
+  }
+}
+
+

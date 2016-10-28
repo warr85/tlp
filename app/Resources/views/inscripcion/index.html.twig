@@ -12,9 +12,17 @@
             </tr>
         </thead>
         <tbody>
+           
+            {% for inscripcion in inscripcions %}
+                
+               {% for avance in inscripcion.suscripciones %} 
+                {{ dump(avance.idFormaPago.nombre) }} 
+               {% endfor %}
+            {% endfor %}
         {% for inscripcion in inscripcions %}
+            
             <tr>
-                <td><a href="{{ path('curso_comprar_show', { 'id': inscripcion.id }) }}">{{ inscripcion.FechaInscripcion }}</a></td>
+                <td><a href="{{ path('curso_comprar_show', { 'id': inscripcion.id }) }}">{{ inscripcion.FechaInscripcion | date('d-M-Y') }}</a></td>
                 <td>{{ inscripcion.id }}</td>
                 <td>
                     <ul>
