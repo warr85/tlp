@@ -3708,14 +3708,7 @@ img.circle-border {
 .breadcrumb > .active {
   color: inherit;
 }
-code {
-  background-color: #F9F2F4;
-  border-radius: 4px;
-  color: #ca4440;
-  font-size: 90%;
-  padding: 2px 4px;
-  white-space: nowrap;
-}
+
 .ibox {
   clear: both;
   margin-bottom: 25px;
