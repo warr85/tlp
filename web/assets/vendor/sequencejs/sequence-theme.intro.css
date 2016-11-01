@@ -467,7 +467,7 @@
   width: 1.33333em;
   margin-right: .333333em;
   line-height: 1;
-  background-image: url("../images/bulb.svg");
+  background-image: url("../../../../images/course/bulb.svg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: contain;
@@ -542,7 +542,7 @@
   margin-top: .25em;
   padding: 0;
   line-height: 1;
-  font-size: .75em;
+  font-size: 1em;
   font-family: Ubuntu, sans-serif;
   font-weight: 700;
 }
@@ -1436,8 +1436,8 @@
   }
 
   .seq .seq-instruction-icon {
-    width: auto;
-    height: auto;
+    width: 14px;
+    height: 34px;
   }
 
   .seq .seq-examples {
