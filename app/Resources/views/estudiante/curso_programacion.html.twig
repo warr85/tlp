@@ -316,6 +316,53 @@
                         </li>
 
                         <li class="seq-step4" id="step4">
+                            <div class="seq-code-pane seq-valign">
+
+                                <button type="button" class="seq-view-code">
+                                    <i class="fa fa-angle-double-up"></i> Show Code
+                                </button>
+
+                                <div class="seq-code">
+
+                                    <div class="seq-code-block" data-seq id="local1">
+                                        <i class="seq-step-icon">1</i>
+                                        <code>
+                                            <span>Este es nuestro directorio</span>                                            
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local2">
+                                        <i class="seq-step-icon">2</i>
+                                        <code>
+                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local3">
+                                        <i class="seq-step-icon">3</i>
+                                        <code>
+                                            <span>Hacemos unos cambios y los guardamos</span>                                           
+                                        </code>
+                                    </div>
+                                    
+                                    <div class="seq-code-block" data-seq id="local4">
+                                        <i class="seq-step-icon">4</i>
+                                        <code>
+                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
+                                        </code>
+                                    </div>
+                                    
+                                    <div class="seq-code-block" data-seq id="local5">
+                                        <i class="seq-step-icon">5</i>
+                                        <code>
+                                            <span>Y así sucesivamente hasta terminar.</span>
+                                        </code>
+                                    </div>
+                                    
+                                    
+                                </div>
+
+                            </div>
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
@@ -325,24 +372,33 @@
                                             <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
                                         </object>
 
-                                        <h2>Controlador de Versión </h2>
+                                        <h2>Controlador de Vesiones LOCAL </h2>
 
                                         <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
                                         </object>
                                     </div>
+                                        
+                                        
 
                                     
 
                                     <div class="seq-step">
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="prueba" /> 
+                                        <p> Un método muy comun en controlar versiones, era el de crear un directorio y dentro de él, guardar las distintas versiones o cambios que haciamos sobre un archivo.  Los programadores crearon un controlador parecido con una base de datos que registra los cambios como podemos ver en la animación.</p>
+                                        <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="caja1" /> 
+                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja2" />
+                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja3" />
+                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja4" />
+                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja5" />
+                                        <p class="col-lg-7" id="local8"> en un controlador de versiones, ese directorio sería una base de datos que guarda cada uno de los cambios para que podamos regresar en el tiempo si lo vemos necesario, Pero que pasa si se necesita trabajar en conjunto con otras personas (colaborar)</p>
                                     </div>
                                 </div>
 
                             </div>
                         </li>
-
-                        <li class="seq-step5" id="step5">
+                        
+                        
+                        <li class="seq-step4" id="step5">
                             <div class="seq-code-pane seq-valign">
 
                                 <button type="button" class="seq-view-code">
@@ -351,34 +407,42 @@
 
                                 <div class="seq-code">
 
-                                    <div class="seq-code-block" data-seq>
+                                    <div class="seq-code-block" data-seq id="local1">
+                                        <i class="seq-step-icon">1</i>
+                                        <code>
+                                            <span>Este es nuestro directorio</span>                                            
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local2">
+                                        <i class="seq-step-icon">2</i>
+                                        <code>
+                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local3">
+                                        <i class="seq-step-icon">3</i>
+                                        <code>
+                                            <span>Hacemos unos cambios y los guardamos</span>                                           
+                                        </code>
+                                    </div>
+                                    
+                                    <div class="seq-code-block" data-seq id="local4">
+                                        <i class="seq-step-icon">4</i>
+                                        <code>
+                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
+                                        </code>
+                                    </div>
+                                    
+                                    <div class="seq-code-block" data-seq id="local5">
                                         <i class="seq-step-icon">5</i>
                                         <code>
-                                            <span>.seq-in .content {</span>
-                                            <span class="seq-code-1">transform: <strong>translateZ(0)</strong>;</span>
-                                            <span class="seq-code-1"><strong>will-change: transform</strong>;</span>
-                                            <span>}</span>
+                                            <span>Y así sucesivamente hasta terminar.</span>
                                         </code>
                                     </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">6</i>
-                                        <code>
-                                            <span><strong>.seq-next</strong> {</span>
-                                            <span class="seq-code-1">/* Makes an element a functioning next button */</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">7</i>
-                                        <code>
-                                            <span><strong>.seq-touch</strong> {</span>
-                                            <span class="seq-code-1">/* Styles for touch devices */</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
+                                    
+                                    
                                 </div>
 
                             </div>
@@ -386,41 +450,37 @@
 
                                 <div class="seq-instruction">
 
-                                    <h3>All of the features you need for animated applications</h3>
+                                    <div class="seq-title">
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
+                                        </object>
+
+                                        <h2>Controlador de Vesiones Centralizado </h2>
+
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
+                                           <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
+                                        </object>
+                                    </div>
+                                        
+                                        
+
+                                    
 
                                     <div class="seq-step">
-                                        <p><a href="http://sequencejs.com/documentation/" title="Read the Sequence.js documentation">Fully documented</a>, along with <a href="http://sequencejs.com/documentation/#options" title="Learn more about Sequence.js options">30+ options</a>, and an <a href="http://sequencejs.com/documentation/#api" title="Learn more about the Sequence.js API">easy-to-use API</a>.</p>
-
-                                        <ul class="seq-features">
-                                            <li>
-                                                <i class="fa fa-check"></i> Responsive Support
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Hardware Accelerated Animation<sup class="seq-step-icon">5</sup>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Touch Support
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Easy-to-add UI<sup class="seq-step-icon">6</sup>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Auto Play/Cycle
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> State Classes for Easy Styling<sup class="seq-step-icon">7</sup>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> Preloader
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i> &amp; More
-                                            </li>
-                                        </ul>
+                                        <p> Un método muy comun en controlar versiones, era el de crear un directorio y dentro de él, guardar las distintas versiones o cambios que haciamos sobre un archivo.  Los programadores crearon un controlador parecido con una base de datos que registra los cambios como podemos ver en la animación.</p>
+                                        <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="caja1" /> 
+                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja2" />
+                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja3" />
+                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja4" />
+                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja5" />
+                                        <p class="col-lg-7" id="local8"> en un controlador de versiones, ese directorio sería una base de datos que guarda cada uno de los cambios para que podamos regresar en el tiempo si lo vemos necesario, Pero que pasa si se necesita trabajar en conjunto con otras personas (colaborar)</p>
                                     </div>
                                 </div>
+
                             </div>
                         </li>
+
+                        
 
                         <li class="seq-step6" id="step6">
                             <div class="seq-code-pane seq-valign">
@@ -645,7 +705,9 @@
 
     {% block javascripts %} 
         {{ parent() }}
-        <script src="{{asset('assets/vendor/greensock/TweenLite.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('assets/vendor/greensock/TweenMax.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('assets/vendor/greensock/jquery.gsap.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('assets/vendor/greensock/TimelineLite.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/vendor/terminal/jquery.terminal-min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/vendor/terminal/jquery.mousewheel-min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/vendor/FileTree/js/file-tree.min.js')}}" type="text/javascript"></script>    
@@ -756,10 +818,10 @@
                             content: "Contiene en amarillo tu ubicación actual, en negro lo que falta y en azul lo que has completado.  <strong>Si pasas sobre ellos</strong>, podrás ver el título del módulo",
                             placement: "bottom",
                             onShown: function (tour) {
-                                $('body').addClass('tour-open')
+                                $('body').addClass('tour-open');
                             },
                             onHidden: function (tour) {
-                                $('body').removeClass('tour-close')
+                                $('body').removeClass('tour-close');
                             }
                         },
                         {
@@ -768,7 +830,7 @@
                             content: "En esta sección podrás disfrutar de una manera siempre interactiva de la clase correspondiente al módulo donde estás ubicado.  siempre estarán disponibles para ti para cuando las necesites.",
                             placement: "right",
                             backdrop: true,
-                            backdropContainer: '#wrapper',
+                            backdropContainer: '#wrapper'
                         },
                         {
                             element: "#tour4",
@@ -776,7 +838,7 @@
                             content: "Aquí es donde nos ensuciaremos las manos y encenderemos nuestros conocimientos, colocando manos a la obra sobre los aprendido en la clase virtual.",
                             placement: "left",
                             backdrop: true,
-                            backdropContainer: '#wrapper',
+                            backdropContainer: '#wrapper'
                         }
                     ]});
 
@@ -788,13 +850,67 @@
 
                     // Start the tour
                     // tour.start();
-                })                                
+                });                               
 
             });
             
+            
+            
+                var $bd = $('#caja1');
+                var $t1 = $('#local1');
+                var $t2 = $('#local2');
+                var $t3 = $('#local3');
+                var $t4 = $('#local4');
+                var $t5 = $('#local5');
+                 var $t8 = $('#local8');
+                var $file = $('#caja2');
+                var $copy1 = $('#caja3');
+                var $copy2 = $('#caja4');
+                var $copy3 = $('#caja5');
+                
+                $file.css({ opacity: 0 });
+                $copy1.css({opacity:0 });
+                $copy2.css({ opacity: 0 });
+                $copy3.css({ opacity: 0 });
+                $t1.css({ opacity: 0 });
+                $t2.css({ opacity: 0 });
+                $t3.css({ opacity: 0 });
+                $t4.css({ opacity: 0 });
+                $t5.css({ opacity: 0 });
+                $t8.css({ opacity: 0 });
+            
+            
             $("#step4").click(function () {
-                var photo = document.getElementById("prueba");                
-                TweenLite.to(photo, 2, {width:"200px", height:"150px"});
+                
+                
+                $file.css({ opacity: 0 });
+                $copy1.css({opacity:0 });
+                $copy2.css({ opacity: 0 });
+                $copy3.css({ opacity: 0 });
+                $t1.css({ opacity: 0 });
+                $t2.css({ opacity: 0 });
+                $t3.css({ opacity: 0 });
+                $t4.css({ opacity: 0 });
+                $t5.css({ opacity: 0 });
+                
+                var tl = new TimelineLite();                
+                tl
+                    .add(TweenLite.to($bd, 3, {width:"120px", height:"180px", x:"300"}))
+                    .add(TweenLite.to($t1, 2, {opacity:1}))
+                    .add(TweenLite.to($file, 3, {x:"250", y:'135', opacity:"1"}))
+                    .add(TweenLite.to($t2, 2, {opacity:1}))
+                    .add(TweenLite.to($t3, 2, {opacity:1}))                    
+                    .add(TweenLite.fromTo($copy1, 3, {x:"250", y:'135'}, {x:"340", y:'135', opacity:1}))                                        
+                    .add(TweenLite.to($file, 3, {x:"250", y:'70'}))
+                    .add(TweenLite.to($t4, 2, {opacity:1}))
+                    .add(TweenLite.fromTo($copy2, 3, {x:"250", y:"70"}, {x:"340", y:"70", opacity:1}))                    
+                    .add(TweenLite.to($t5, 2, {opacity:1}))                    
+                    .add(TweenLite.to($file, 3, {x:"250", y:'5'}))
+                    .add(TweenLite.fromTo($copy3, 3, {x:"250", y:"5"}, {x:"340", y:"5", opacity:1}))
+                    .add(TweenLite.to($t8, 2, {opacity:1}));
+                    
+                                    
+                
             });
             
 

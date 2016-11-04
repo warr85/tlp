@@ -67,9 +67,13 @@
   left: .625em;
   height: 14px;
   width: 54px;
-  background-image: url("../images/browser-buttons.svg");
+  background-image: url("../../../../images/course/browser-buttons.svg");
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.prueba{
+    position:absolute;
 }
 
 .seq .seq-nav {
