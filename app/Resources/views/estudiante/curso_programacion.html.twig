@@ -385,12 +385,19 @@
 
                                     <div class="seq-step">
                                         <p> Un método muy comun en controlar versiones, era el de crear un directorio y dentro de él, guardar las distintas versiones o cambios que haciamos sobre un archivo.  Los programadores crearon un controlador parecido con una base de datos que registra los cambios como podemos ver en la animación.</p>
-                                        <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="caja1" /> 
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja2" />
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja3" />
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja4" />
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja5" />
-                                        <p class="col-lg-7" id="local8"> en un controlador de versiones, ese directorio sería una base de datos que guarda cada uno de los cambios para que podamos regresar en el tiempo si lo vemos necesario, Pero que pasa si se necesita trabajar en conjunto con otras personas (colaborar)</p>
+                                        <img src="{{ asset('images/course/pc1.png') }}" class="prueba" id="pc" /> 
+                                        <img src="{{ asset('images/course/ubuntu-folder-icon.png') }}" class="prueba" id="folder" /> 
+                                        <div class="nautilus">
+                                            <img src="{{ asset('images/course/nautilus.png') }}" class="prueba" id="nautilus" /> 
+                                            <img src="{{ asset('images/course/v1.png') }}" class="prueba" id="v1" /> 
+                                            <img src="{{ asset('images/course/v2.png') }}" class="prueba" id="v2" /> 
+                                            <img src="{{ asset('images/course/v3.png') }}" class="prueba" id="v3" /> 
+                                            <img src="{{ asset('images/course/v4.png') }}" class="prueba" id="v4" /> 
+                                            <img src="{{ asset('images/course/v5.png') }}" class="prueba" id="v5" /> 
+                                            <img src="{{ asset('images/course/v6.png') }}" class="prueba" id="v6" /> 
+                                        </div>
+                                        <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="caja1" />                                         
+                                        <h1 class="col-lg-7" id="local7">CV Local:</h1><p class="col-lg-7" id="local8"> El directorio sería la base de datos y cada cambio se registra como una versión del archivo, teniendo a la mano el más reciente</p>
                                     </div>
                                 </div>
 
@@ -467,7 +474,10 @@
                                     
 
                                     <div class="seq-step">
-                                        <p> Un método muy comun en controlar versiones, era el de crear un directorio y dentro de él, guardar las distintas versiones o cambios que haciamos sobre un archivo.  Los programadores crearon un controlador parecido con una base de datos que registra los cambios como podemos ver en la animación.</p>
+                                        <p> 
+                                           El problema con el método local es que no se puede trabajar colaborativamente.  Para solucionar esto,                                           
+                                           nacieron los CV centralizados, que tenían un servidor que tenía las diferentes versiones de los archivos
+                                        </p>
                                         <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="caja1" /> 
                                         <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja2" />
                                         <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja3" />
@@ -855,20 +865,37 @@
             });
             
             
-            
-                var $bd = $('#caja1');
+                var $pc = $('#pc');
+                var $play = $('#caja1');
+                var $folder = $('#folder');
+                var $nautilus = $('#nautilus');
+                var $v1 = $('#v1');
+                var $v2 = $('#v2');
+                var $v3 = $('#v3');
+                var $v4 = $('#v4');
+                var $v5 = $('#v5');
+                var $v6 = $('#v6');
                 var $t1 = $('#local1');
                 var $t2 = $('#local2');
                 var $t3 = $('#local3');
                 var $t4 = $('#local4');
                 var $t5 = $('#local5');
-                 var $t8 = $('#local8');
+                var $t7 = $('#local7');
+                var $t8 = $('#local8');
                 var $file = $('#caja2');
                 var $copy1 = $('#caja3');
                 var $copy2 = $('#caja4');
                 var $copy3 = $('#caja5');
-                
-                $file.css({ opacity: 0 });
+                               
+                $folder.css({opacity:0 });
+                $v1.css({ opacity: 0 });
+                $v2.css({ opacity: 0 });
+                $v3.css({ opacity: 0 });
+                $v4.css({ opacity: 0 });
+                $v5.css({ opacity: 0 });
+                $v6.css({ opacity: 0 });
+                $pc.css({opacity:0 });
+                $nautilus.css({opacity:0 });
                 $copy1.css({opacity:0 });
                 $copy2.css({ opacity: 0 });
                 $copy3.css({ opacity: 0 });
@@ -877,12 +904,13 @@
                 $t3.css({ opacity: 0 });
                 $t4.css({ opacity: 0 });
                 $t5.css({ opacity: 0 });
+                $t7.css({ opacity: 0 });
                 $t8.css({ opacity: 0 });
             
             
             $("#step4").click(function () {
                 
-                
+                $folder.css({opacity:0 });
                 $file.css({ opacity: 0 });
                 $copy1.css({opacity:0 });
                 $copy2.css({ opacity: 0 });
@@ -894,23 +922,23 @@
                 $t5.css({ opacity: 0 });
                 
                 var tl = new TimelineLite();                
-                tl
-                    .add(TweenLite.to($bd, 3, {width:"120px", height:"180px", x:"300"}))
-                    .add(TweenLite.to($t1, 2, {opacity:1}))
-                    .add(TweenLite.to($file, 3, {x:"250", y:'135', opacity:"1"}))
-                    .add(TweenLite.to($t2, 2, {opacity:1}))
-                    .add(TweenLite.to($t3, 2, {opacity:1}))                    
-                    .add(TweenLite.fromTo($copy1, 3, {x:"250", y:'135'}, {x:"340", y:'135', opacity:1}))                                        
-                    .add(TweenLite.to($file, 3, {x:"250", y:'70'}))
-                    .add(TweenLite.to($t4, 2, {opacity:1}))
-                    .add(TweenLite.fromTo($copy2, 3, {x:"250", y:"70"}, {x:"340", y:"70", opacity:1}))                    
-                    .add(TweenLite.to($t5, 2, {opacity:1}))                    
-                    .add(TweenLite.to($file, 3, {x:"250", y:'5'}))
-                    .add(TweenLite.fromTo($copy3, 3, {x:"250", y:"5"}, {x:"340", y:"5", opacity:1}))
-                    .add(TweenLite.to($t8, 2, {opacity:1}));
-                    
-                                    
-                
+                tl  
+                    .add(TweenLite.to($play, 0.2, {opacity:0}))
+                    .add(TweenLite.fromTo($pc, 3, {width:"0px", height:"0px", x:"0"}, {width:"180px", height:"180px", x:"200", opacity:1}))
+                    .add(TweenLite.to($pc, 4, {scale:5}))
+                    .add(TweenLite.fromTo($folder, 2, {x:"150", y:"-100", width:"60px", height:"60px", opacity:0}, {x:"150", y:"-100", width:"60px", height:"60px", opacity:1}))
+                    .add(TweenLite.fromTo($folder, 0.2, {scale:1}, {scale:1.5}))
+                    .add(TweenLite.fromTo($folder, 0.2, {scale:1}, {scale:1.5}))
+                    .add(TweenLite.to($folder, 0.5, {opacity:0}))
+                    .add(TweenLite.fromTo($nautilus, 2, {x:"100", y:"-170", width:"360px", height:"280px", opacity:0}, {x:"100", y:"-170", width:"360px", height:"280px", opacity:1}))                    
+                    .add(TweenLite.fromTo($v1, 2, {x:"200", y:"-110", width:"60px", height:"60px", opacity:0}, {x:"200", y:"-110", width:"60px", height:"60px", opacity:1}))
+                    .add(TweenLite.fromTo($v2, 2, {x:"300", y:"-110", width:"60px", height:"60px", opacity:0}, {x:"300", y:"-110", width:"60px", height:"60px", opacity:1}))
+                    .add(TweenLite.fromTo($v3, 2, {x:"400", y:"-110", width:"60px", height:"60px", opacity:0}, {x:"400", y:"-110", width:"60px", height:"60px", opacity:1}))
+                    .add(TweenLite.fromTo($v4, 2, {x:"200", y:"-10", width:"60px", height:"60px", opacity:0}, {x:"200", y:"-10", width:"60px", height:"60px", opacity:1}))
+                    .add(TweenLite.fromTo($v5, 2, {x:"300", y:"-10", width:"60px", height:"60px", opacity:0}, {x:"300", y:"-10", width:"60px", height:"60px", opacity:1}))
+                    .add(TweenLite.fromTo($v6, 2, {x:"400", y:"-10", width:"60px", height:"60px", opacity:0}, {x:"400", y:"-10", width:"60px", height:"60px", opacity:1}))                    
+                    .add(TweenLite.to(".nautilus", 1, {scale:0}))                         
+                    .add(TweenLite.to($pc, 1, {scale:0})) 
             });
             
 
