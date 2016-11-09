@@ -403,6 +403,7 @@
                                             <img src="{{ asset('images/course/file2.png') }}" class="prueba" id="v9" />
                                             <img src="{{ asset('images/course/file3.png') }}" class="prueba" id="v10" />
                                         </div>
+                                        <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc0" />
                                         <div class="prueba" id="text"></div>
                                         <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="caja1" />                                         
                                         <h1 id="local7">CV Local:</h1><p id="local8"> Excelente, sabemos que es un controlador de versiones manual y local.   El gran problema es que sucede cuando queremos trabajar en equipo y/o colaborar?????</p>
@@ -414,53 +415,7 @@
                         
                         
                         <li class="seq-step4" id="step5">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-                                    
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-                                    
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-                                    
-                                    
-                                </div>
-
-                            </div>
+                            
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
@@ -483,15 +438,14 @@
 
                                     <div class="seq-step">
                                         <p> 
-                                           El problema con el método local es que no se puede trabajar colaborativamente.  Para solucionar esto,                                           
-                                           nacieron los CV centralizados, que tenían un servidor que tenía las diferentes versiones de los archivos
-                                        </p>
-                                        <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="caja1" /> 
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja2" />
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja3" />
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja4" />
-                                        <img src="{{ asset('images/course/square.png') }}" class="prueba" id="caja5" />
-                                        <p class="col-lg-7" id="local8"> en un controlador de versiones, ese directorio sería una base de datos que guarda cada uno de los cambios para que podamos regresar en el tiempo si lo vemos necesario, Pero que pasa si se necesita trabajar en conjunto con otras personas (colaborar)</p>
+                                           Para trabajar de manera colaborativa, se crearon los controladores de versiones centralizados.  Estos contaban con un servidor
+                                           que llevaba el control de las versiones de los archivos y el número de clientes a los que les entregaba la versión.
+                                        </p>         
+                                        <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc1" />
+                                        <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc2" />
+                                        <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc3" />
+                                        <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="play2" />
+                                        
                                     </div>
                                 </div>
 
@@ -875,6 +829,7 @@
             
             
                 var $pc = $('#pc');
+                var $pc0 = $('#pc0');
                 var $play = $('#caja1');
                 var $folder = $('#folder');
                 var $nautilus = $('#nautilus');
@@ -888,7 +843,7 @@
                 var $v7 = $('#v7');
                 var $v8 = $('#v8');
                 var $v9 = $('#v9');
-                var $v10 = $('#v10');
+                var $v10 = $('#v10');                
                 var $t1 = $('#local1');
                 var $t2 = $('#local2');
                 var $t3 = $('#local3');
@@ -903,6 +858,7 @@
                 var $text = $('#text');
                                
                 $folder.css({opacity:0 });
+                $pc0.css({ opacity:0 });
                 $bd.css({ opacity: 0 });
                 $v1.css({ opacity: 0 });
                 $v2.css({ opacity: 0 });
@@ -932,6 +888,7 @@
             $("#step4").click(function () {
                 
                 $folder.css({opacity:0 });
+                $pc0.css({opacity:0 });
                 $bd.css({ opacity: 0 });
                 $v1.css({ opacity: 0 });
                 $v2.css({ opacity: 0 });
@@ -953,7 +910,8 @@
                 $t7.css({ opacity: 0 });
                 $t8.css({ opacity: 0 });
                 
-                var tl = new TimelineLite();                
+                var tl = new TimelineLite();
+                tl.timeScale(6);
                 tl  
                     .add(TweenLite.to($play, 0.2, {opacity:0}))
                     .add(TweenLite.fromTo($pc, 3, {width:"0px", height:"0px", x:"0"}, {width:"180px", height:"180px", x:"200", opacity:1}))
@@ -1001,11 +959,43 @@
                     .add(TweenLite.fromTo($v10, 2, {x:"170", y:"-75", width:"40px", height:"55px", opacity:0}, {x:"350", y:"-75", width:"40px", height:"55px", opacity:1}))                    
                     .add(TweenLite.fromTo($text, 2, {x:"100", y:"5", width:"320px"},{x:"100", y:"5", text:"Mantenemos un orden y un control, ya que sólo estamos pendientes de un sólo archivo o documento y el CV se encarga del resto.", ease:Linear.easeNone, opacity:1, width:"320px"}))
                     .add(TweenLite.to($text, 1, {delay:2, text:""}))
-                    .add(TweenLite.to(".cvl", 1, {scale:0})) 
-                    .add(TweenLite.to($pc, 1, {scale:0}))                    
-                    .add(TweenLite.to($t7, 0.2, {opacity:1}))
-                    .add(TweenLite.to($t8, 0.2, {opacity:1}))
+                    .add(TweenLite.to(".cvl", 1, {scale:0}));
+            tl
+                    .add([
+                            TweenLite.to($pc, 3, {scale:0}, "+=4"),
+                            TweenLite.fromTo($pc0, 3, {width:"0px", height:"0px", x:"0", opacity:1}, {width:"80px", height:"80px", x:"400", y:"100", opacity:1}, "-=4")
+                    ]);
+            tl
+                    .add(TweenLite.to($t7, 1, {opacity:1}))
+                    .add(TweenLite.to($t8, 1, {opacity:1}));
+            
+            
                                         
+            });
+            
+            
+            $play2 = $('#play2');
+            $pc1 = $('#pc1');
+            $pc2 = $('#pc2');
+            $pc3 = $('#pc3');
+            
+            $play2.css({ opacity: 1 });
+            $pc1.css({ opacity: 0 });
+            $pc2.css({ opacity: 0 });
+            $pc3.css({ opacity: 0 });
+            
+            $("#step5").click(function () {
+                
+                $pc1.css({ opacity: 0 });
+                
+                var tl2 = new TimelineLite();
+                
+                tl2
+                    .add(TweenLite.to($play2, 0.2, {opacity:0}))
+                    .add(TweenLite.fromTo($pc1, 3, {width:"0px", height:"0px", x:"0", opacity:1}, {width:"80px", height:"80px", x:"400", y:"100", opacity:1}))
+                    .add(TweenLite.fromTo($pc2, 3, {width:"0px", height:"0px", x:"0", opacity:1}, {width:"80px", height:"80px", x:"300", y:"100", opacity:1}))
+                    .add(TweenLite.fromTo($pc3, 3, {width:"0px", height:"0px", x:"0", opacity:1}, {width:"80px", height:"80px", x:"200", y:"100", opacity:1}))
+                  
             });
             
 
