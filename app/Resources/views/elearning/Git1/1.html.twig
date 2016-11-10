@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/bombillo.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/sequencejs/sequence-theme.intro.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.css') }}">
+    
+
+    <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/slickQuiz.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/master.css') }}">
 
 
     <style>
         #terminal{
-            height:350px;            
+            height:350px;         
             margin-top: 20px; 
         }
-        
+
         .acomodar{
             margin-top: 10px;                        
         }
@@ -236,7 +240,7 @@
                                             </li>
 
                                         </ul>
-                                        
+
 
                                     </div>
                                 </div>
@@ -298,16 +302,27 @@
                                     </div>
 
                                     <div class="seq-step">
-                                        <p> Un Controlador de Versiones (VCS en inglés) es un sistema que registra los cambios en el tiempo de creación, guardado, editado y guardado nuevamente en uno o varios archivos. </p>
+                                        <p> 
+                                            Un Controlador de Versiones (VCS en inglés) 
+                                            es un sistema que registra los cambios 
+                                            ocurridos durante la creación, guardado, 
+                                            editado y guardado nuevamente en uno o varios 
+                                            archivos. 
+                                        </p>
                                         <br>
-                                        <p class="seq-tip seq-bulb">Usar un controlador de versiones significa también que si te equivos o pierdes los archivos, puedes recuperarlos facilmente.</p>
+                                        <p class="seq-tip seq-bulb">
+                                            Tip: Al usar un controlador de versiones 
+                                            significa también que si te equivocas o pierdes
+                                            el/los archivo(s), puedes recuperarlos 
+                                            facilmente.
+                                        </p>
                                     </div>
-                                    
+
 
                                 </div>
                             </div>
                         </li>
-                        
+
                         <li class="seq-step4" id="step4">
                             <div class="seq-code-pane seq-valign">
 
@@ -331,11 +346,11 @@
                                             <span><strong>Centralizado</strong></span>
                                             <span class="seq-code-1">Un Servidor Central</span>
                                             <span class="seq-code-1">Multiple clientes</span>
-                                            
+
 
                                         </code>
                                     </div>
-                                    
+
                                     <div class="seq-code-block" data-seq>
                                         <i class="seq-step-icon">3</i>
                                         <code>
@@ -364,37 +379,36 @@
                                     </div>
 
                                     <div class="seq-step">
-                                        <p>Lo interesante de Git Radica en su tipo de Sistema Controlador, pero para entenderlo, primero debemos familiarizarnos con los otros tipos anteriores de VCS</p>
+                                        <p>Lo interesante de Git Radica en su tipo de Sistema Controlador, pero para entenderlo, primero debemos familiarizarnos con los otros tipos existentes</p>
                                         <br>
 
-                                    <p>Tipos de VCS: (hacer clic para ver animación)</p>
-                                    <a id="animacion_local" href="#"  class="seq-button seq-button-highlight">Local<i class="fa fa-laptop"></i></a>
-                                    <a href="#" class="seq-button seq-button-link">Centralizado<i class="fa fa-download"></i></a>
-                                    <a href="#"  class="seq-button seq-button-highlight">Distribuido <i class="fa fa-github"></i></a>
+                                        <p>Tipos de VCS: (hacer clic para ver animación)</p>
+                                        <a id="animacion_local" href="#"  class="seq-button seq-button-highlight">Local<i class="fa fa-laptop"></i></a>
+                                        <a href="#" class="seq-button seq-button-link">Centralizado<i class="fa fa-download"></i></a>
+                                        <a href="#"  class="seq-button seq-button-highlight">Distribuido <i class="fa fa-github"></i></a>
                                     </div>
-                                    
-                                        
-                                         <img src="{{ asset('images/course/pc1.png') }}" class="prueba" id="pc" /> 
-                                        <img src="{{ asset('images/course/ubuntu-folder-icon.png') }}" class="prueba" id="folder" />                                         
-                                        <div class="nautilus">
-                                            <img src="{{ asset('images/course/nautilus.png') }}" class="prueba" id="nautilus" /> 
-                                            <img src="{{ asset('images/course/v1.png') }}" class="prueba" id="v1" /> 
-                                            <img src="{{ asset('images/course/v2.png') }}" class="prueba" id="v2" /> 
-                                            <img src="{{ asset('images/course/v3.png') }}" class="prueba" id="v3" /> 
-                                            <img src="{{ asset('images/course/v4.png') }}" class="prueba" id="v4" /> 
-                                            <img src="{{ asset('images/course/v5.png') }}" class="prueba" id="v5" /> 
-                                            <img src="{{ asset('images/course/v6.png') }}" class="prueba" id="v6" />                                             
-                                        </div>
-                                        <div class="cvl">
-                                            <img src="{{ asset('images/course/bd.png') }}" class="prueba" id="bd" /> 
-                                            <img src="{{ asset('images/course/file.png') }}" class="prueba" id="v7" />
-                                            <img src="{{ asset('images/course/file1.png') }}" class="prueba" id="v8" />
-                                            <img src="{{ asset('images/course/file2.png') }}" class="prueba" id="v9" />
-                                            <img src="{{ asset('images/course/file3.png') }}" class="prueba" id="v10" />
-                                        </div>
-                                        <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc0" />
-                                        <div class="prueba" id="text"></div>
-                                        <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="caja1" />                                         
+
+
+                                    <img src="{{ asset('images/course/pc1.png') }}" class="prueba" id="pc" /> 
+                                    <img src="{{ asset('images/course/ubuntu-folder-icon.png') }}" class="prueba" id="folder" />                                         
+                                    <div class="nautilus">
+                                        <img src="{{ asset('images/course/nautilus.png') }}" class="prueba" id="nautilus" /> 
+                                        <img src="{{ asset('images/course/v1.png') }}" class="prueba" id="v1" /> 
+                                        <img src="{{ asset('images/course/v2.png') }}" class="prueba" id="v2" /> 
+                                        <img src="{{ asset('images/course/v3.png') }}" class="prueba" id="v3" /> 
+                                        <img src="{{ asset('images/course/v4.png') }}" class="prueba" id="v4" /> 
+                                        <img src="{{ asset('images/course/v5.png') }}" class="prueba" id="v5" /> 
+                                        <img src="{{ asset('images/course/v6.png') }}" class="prueba" id="v6" />                                             
+                                    </div>
+                                    <div class="cvl">
+                                        <img src="{{ asset('images/course/bd.png') }}" class="prueba" id="bd" /> 
+                                        <img src="{{ asset('images/course/file.png') }}" class="prueba" id="v7" />
+                                        <img src="{{ asset('images/course/file1.png') }}" class="prueba" id="v8" />
+                                        <img src="{{ asset('images/course/file2.png') }}" class="prueba" id="v9" />
+                                        <img src="{{ asset('images/course/file3.png') }}" class="prueba" id="v10" />
+                                    </div>
+                                    <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc0" />
+                                    <div class="prueba" id="text"></div>                                        
                                 </div>
                             </div>
                         </li>
@@ -456,7 +470,7 @@
                                             <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
                                         </object>
 
-                                        <h2>Controlador de Vesiones LOCAL </h2>
+                                        <h2>La historia de GIT </h2>
 
                                         <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
                                             <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
@@ -468,9 +482,11 @@
 
 
                                     <div class="seq-step">
-                                        <p> Un método muy comun en controlar versiones, era el de crear un directorio y dentro de él, guardar las distintas versiones o cambios que haciamos sobre un archivo.  Los programadores crearon un controlador parecido con una base de datos que registra los cambios como podemos ver en la animación.</p>
-                                       
-                                        <h1 id="local7">CV Local:</h1><p id="local8"> Excelente, sabemos que es un controlador de versiones manual y local.   El gran problema es que sucede cuando queremos trabajar en equipo y/o colaborar?????</p>
+                                        <p> 
+                                            
+                                        </p>
+
+                                        
                                     </div>
                                 </div>
 
@@ -671,7 +687,75 @@
 
         </div>
 
-        <div class="col-lg-5">
+        <div class="col-lg-5 acomodar">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Mis Evaluaciones</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#">Config option 1</a>
+                            </li>
+                            <li><a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content profile-content">
+
+                    <div id="slickQuiz">
+                        <h1 class="quizName"><!-- where the quiz name goes --></h1>
+
+                        <div class="quizArea">
+                            <div class="quizHeader">
+                                <!-- where the quiz main copy goes -->
+
+                                <a class="button_quiz startQuiz" href="#">Get Started!</a>
+                            </div>
+
+                            <!-- where the quiz gets built -->
+                        </div>
+
+                        <div class="quizResults">
+                            <h3 class="quizScore">You Scored: <span><!-- where the quiz score goes --></span></h3>
+
+                            <h3 class="quizLevel"><strong>Ranking:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
+
+                            <div class="quizResultsCopy">
+                                <!-- where the quiz result copy goes -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!--row -->
+    
+    
+    
+    <div class="row">
+        <div class="col-lg-7 acomodar" id="tour4">
+            <div id="sequence" class="seq">
+
+                <div class="seq-screen">
+
+                    <div id="terminal"></div>
+
+                </div>
+            </div>
+
+        </div>
+        
+        
+        <div class="col-lg-5 acomodar">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Mi directorio</h5>
@@ -699,26 +783,12 @@
                 </div>
             </div>
         </div>
-
-
-
+        
+        
     </div>
-                                        <div class="row">
-    <div class="col-lg-7 acomodar" id="tour4">
-        <div id="sequence" class="seq">
-
-                <div class="seq-screen">
-                    
-                    <div id="terminal"></div>
-              
-                </div>
-        </div>
-
-    </div>
-                                            </div>
 
 
-   
+
 
 
 {% endblock %}
@@ -737,6 +807,11 @@
     <script src="{{asset('assets/vendor/sequencejs/sequence.min.js')}}" type="text/javascript"></script>    
     <script src="{{asset('assets/vendor/sequencejs/sequence-theme.intro.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js')}}" type="text/javascript"></script>  
+    
+    <script src="{{asset('assets/vendor/quiz/slickQuiz-config.js')}}" type="text/javascript"></script>  
+    <script src="{{asset('assets/vendor/quiz/slickQuiz.js')}}" type="text/javascript"></script>  
+    <script src="{{asset('assets/vendor/quiz/master.js')}}" type="text/javascript"></script>  
+    
 
 
     <script type="text/javascript">
