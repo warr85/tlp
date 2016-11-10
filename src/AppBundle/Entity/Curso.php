@@ -24,6 +24,13 @@ class Curso
      */
     private $nombre;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_corto", type="string", length=255, nullable=true, options={"comment" = "Nombre Corto del curso"})
+     */
+    private $nombreCorto;
+    
     
     /**
      * @var text
@@ -295,5 +302,28 @@ class Curso
     public function getGrupos()
     {
         return $this->grupos;
+    }
+
+    /**
+     * Set nombreCorto
+     *
+     * @param string $nombreCorto
+     * @return Curso
+     */
+    public function setNombreCorto($nombreCorto)
+    {
+        $this->nombreCorto = $nombreCorto;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreCorto
+     *
+     * @return string 
+     */
+    public function getNombreCorto()
+    {
+        return $this->nombreCorto;
     }
 }

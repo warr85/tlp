@@ -24,6 +24,13 @@ class Curso
      */
     private $nombre;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_corto", type="string", length=255, nullable=true, options={"comment" = "Nombre Corto del curso"})
+     */
+    private $nombreCorto;
+    
     
     /**
      * @var text
@@ -262,5 +269,38 @@ class Curso
     public function getModulos()
     {
         return $this->modulos;
+    }
+
+    /**
+     * Add grupos
+     *
+     * @param \AppBundle\Entity\CursoGrupo $grupos
+     * @return Curso
+     */
+    public function addGrupo(\AppBundle\Entity\CursoGrupo $grupos)
+    {
+        $this->grupos[] = $grupos;
+
+        return $this;
+    }
+
+    /**
+     * Remove grupos
+     *
+     * @param \AppBundle\Entity\CursoGrupo $grupos
+     */
+    public function removeGrupo(\AppBundle\Entity\CursoGrupo $grupos)
+    {
+        $this->grupos->removeElement($grupos);
+    }
+
+    /**
+     * Get grupos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGrupos()
+    {
+        return $this->grupos;
     }
 }
