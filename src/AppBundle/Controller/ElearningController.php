@@ -68,7 +68,7 @@ class ElearningController extends Controller {
            'idCursoModulo'  => $cursoModulo,
             'orden'         => $avance
         ));
-        return $this->render('estudiante/curso_programacion.html.twig', array(
+        return $this->render('elearning/' . $inscripcion->getIdCursoGrupo()->getIdCurso()->getNombreCorto() . '/' . $avance .  '.html.twig', array(
             'inscripcion'   => $inscripcion,
             'cursoModulo'   => $cursoModulo,
             'avance'        => $avance,

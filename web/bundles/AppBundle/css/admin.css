@@ -192,7 +192,7 @@ h5 {
   float: left;
   height: 50px;
   padding: 0;
-  width: 200px;
+  width: 350px;
   display: inline-table;
 }
 .navbar-form-custom .form-group {
@@ -3459,7 +3459,7 @@ video {
 }
 .title-action {
   text-align: right;
-  padding-top: 30px;
+  padding-top: 8px;
 }
 .ibox-content h1,
 .ibox-content h2,
@@ -3699,7 +3699,7 @@ img.circle-border {
 }
 .breadcrumb {
   background-color: #ffffff;
-  padding: 0;
+ /* padding: 0;*/
   margin-bottom: 0;
 }
 .breadcrumb > li a {
