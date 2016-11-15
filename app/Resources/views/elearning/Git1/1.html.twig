@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/bombillo.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/sequencejs/sequence-theme.intro.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.css') }}">
-    
+
 
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/slickQuiz.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/master.css') }}">
@@ -481,12 +481,11 @@
 
 
 
-                                    <div class="seq-step">
-                                        <p> 
-                                            
-                                        </p>
+                                    <div class="seq-step"> 
 
-                                        
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+
                                     </div>
                                 </div>
 
@@ -738,9 +737,9 @@
             </div>
         </div>
     </div> <!--row -->
-    
-    
-    
+
+
+
     <div class="row">
         <div class="col-lg-7 acomodar" id="tour4">
             <div id="sequence" class="seq">
@@ -753,8 +752,8 @@
             </div>
 
         </div>
-        
-        
+
+
         <div class="col-lg-5 acomodar">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -783,11 +782,29 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
     </div>
 
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="flipbook-viewport">
+                    <div class="container">
+                        <div class="flipbook">
+                            <div style="background-image:url({{ asset('images/books/1.jpg') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/2.png') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/3.jpg') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/4.jpg') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/5.jpg') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/1.jpg') }})"></div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -807,11 +824,12 @@
     <script src="{{asset('assets/vendor/sequencejs/sequence.min.js')}}" type="text/javascript"></script>    
     <script src="{{asset('assets/vendor/sequencejs/sequence-theme.intro.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js')}}" type="text/javascript"></script>  
-    
+    <script src="{{asset('assets/vendor/modernizr/modernizr.2.5.3.min.js')}}" type="text/javascript"></script>  
+
     <script src="{{asset('assets/vendor/quiz/slickQuiz-config.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/quiz/slickQuiz.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/quiz/master.js')}}" type="text/javascript"></script>  
-    
+
 
 
     <script type="text/javascript">
@@ -1121,7 +1139,59 @@
 
         });
 
+        $(document).keydown(function (e) {
 
+            var previous = 37, next = 39;
+
+            switch (e.keyCode) {
+                case previous:
+
+                    $('.flipbook').turn('previous');
+
+                    break;
+                case next:
+
+                    $('.flipbook').turn('next');
+
+                    break;
+            }
+
+        });
+
+        function loadApp() {
+
+            // Create the flipbook
+
+
+            $('.flipbook').turn({
+                // Width
+
+                width: 822,
+                // Height
+
+                height: 600,
+                // Elevation
+
+                elevation: 10,
+                // Enable gradients
+
+                gradients: false,
+                // Auto center this flipbook
+
+                autoCenter: true
+
+            });
+        }
+
+// Load the HTML4 version if there's not CSS transform
+
+        yepnope({
+            test: Modernizr.csstransforms,
+            yep: ['{{ asset("assets/vendor/turnjs/turn.js") }}'],
+            nope: ['{{ asset("assets/vendor/turnjs/turn.html4.min.js") }}'],
+            both: ['{{ asset("assets/vendor/turnjs/basic.css") }}'],
+            complete: loadApp
+        });
 
 
     </script>
