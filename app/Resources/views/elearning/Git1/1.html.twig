@@ -482,8 +482,11 @@
 
 
                                     <div class="seq-step"> 
-
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+                                        <p>Es muy interesante la historia de como se originó GIT y para ello
+                                            te la vamos a presentar a través de una revista digital (que posiblemente
+                                            haga menos aburrido tener que leer) puedes pasar las páginas con el ratón o a través
+                                            de las teclas de dirección en el teclado.</p>
+                                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".bs-example-modal-lg">Leer Historia de GIT</button>
 
 
                                     </div>
@@ -494,7 +497,124 @@
 
 
                         <li class="seq-step6" id="step6">
+                            <div class="seq-code-pane seq-valign">
 
+                                <button type="button" class="seq-view-code">
+                                    <i class="fa fa-angle-double-up"></i> Show Code
+                                </button>
+
+                                <div class="seq-code">
+
+                                    <div class="seq-code-block" data-seq>
+                                        <i class="seq-step-icon">1</i>
+                                        <code>
+                                            <span><strong>Local</strong></span>
+                                            <span class="seq-code-1">Ocurre dentro de tu sólo computadora</span>                                           
+                                        </code>
+                                    </div>
+                                    <div class="seq-code-block" data-seq>
+                                        <i class="seq-step-icon">2</i>
+                                        <code>
+
+                                            <span><strong>Centralizado</strong></span>
+                                            <span class="seq-code-1">Un Servidor Central</span>
+                                            <span class="seq-code-1">Multiple clientes</span>
+
+
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq>
+                                        <i class="seq-step-icon">3</i>
+                                        <code>
+
+                                            <span><strong>Distribuido</strong></span>
+                                            <span>Todas la máquinas tienen registro de los cambios</span>
+
+                                        </code>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="seq-content seq-valign" data-seq>
+
+                                <div class="seq-instruction">
+                                    <div class="seq-title">
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
+                                        </object>
+
+                                        <h2>Nociones básicas de Git</h2>
+
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
+                                        </object>
+                                    </div>
+
+                                    <div class="seq-step">
+                                        <p>Es muy importante tener recordar como funciona GIT, como registra la información y como piensa para que nuestro aprendizaje sea mas fluido.</p>
+                                        <br>
+
+                                        <p>¿Cómo funciona GIT?: (hacer clic para ver animación)</p>
+                                        <a id="animacion_local" href="#"  class="seq-button seq-button-highlight">Fotografías<i class="fa fa-laptop"></i></a>
+                                        <a href="#" class="seq-button seq-button-link">Local<i class="fa fa-download"></i></a>
+                                        <a href="#"  class="seq-button seq-button-highlight">Los Estados <i class="fa fa-github"></i></a>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="seq-step7" id="step7">
+                            <div class="seq-code-pane seq-valign">
+
+                                <button type="button" class="seq-view-code">
+                                    <i class="fa fa-angle-double-up"></i> Show Code
+                                </button>
+
+                                <div class="seq-code">
+
+                                    <div class="seq-code-block" data-seq id="local1">
+                                        <i class="seq-step-icon">1</i>
+                                        <code>
+                                            <span>Este es nuestro directorio</span>                                            
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local2">
+                                        <i class="seq-step-icon">2</i>
+                                        <code>
+                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local3">
+                                        <i class="seq-step-icon">3</i>
+                                        <code>
+                                            <span>Hacemos unos cambios y los guardamos</span>                                           
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local4">
+                                        <i class="seq-step-icon">4</i>
+                                        <code>
+                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local5">
+                                        <i class="seq-step-icon">5</i>
+                                        <code>
+                                            <span>Y así sucesivamente hasta terminar.</span>
+                                        </code>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
@@ -504,7 +624,7 @@
                                             <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
                                         </object>
 
-                                        <h2>Controlador de Vesiones Centralizado </h2>
+                                        <h2>La linea de  comandos </h2>
 
                                         <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
                                             <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
@@ -515,15 +635,381 @@
 
 
 
-                                    <div class="seq-step">
-                                        <p> 
-                                            Para trabajar de manera colaborativa, se crearon los controladores de versiones centralizados.  Estos contaban con un servidor
-                                            que llevaba el control de las versiones de los archivos y el número de clientes a los que les entregaba la versión.
-                                        </p>         
-                                        <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc1" />
-                                        <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc2" />
-                                        <img src="{{ asset('images/course/local.png') }}" class="prueba" id="pc3" />
-                                        <img src="{{ asset('images/course/cuadro_blanco.png') }}" class="prueba" id="play2" />
+                                    <div class="seq-step"> 
+                                        <p>
+                                            En este curso interactivo, vamos
+                                            a utilizar el interprete de comandos o terminal, debido 
+                                            a que en él, se pueden ejecutar todos los
+                                            comandos de GIT  (la mayoría de las interfaces
+                                            gráficas u otros clientes, sólo implemente un grupo de comandos).
+                                            Si aprendes a usar el Terminal entonces es muy sencillo aprender
+                                            a utilizar un cliente de GIT mientras que al revés es practicamente imposible.
+
+                                        </p>                                        
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                        <li class="seq-step8" id="step8">
+                            <div class="seq-code-pane seq-valign">
+
+                                <button type="button" class="seq-view-code">
+                                    <i class="fa fa-angle-double-up"></i> Show Code
+                                </button>
+
+                                <div class="seq-code">
+
+                                    <div class="seq-code-block" data-seq id="local1">
+                                        <i class="seq-step-icon">1</i>
+                                        <code>
+                                            <span>Este es nuestro directorio</span>                                            
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local2">
+                                        <i class="seq-step-icon">2</i>
+                                        <code>
+                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local3">
+                                        <i class="seq-step-icon">3</i>
+                                        <code>
+                                            <span>Hacemos unos cambios y los guardamos</span>                                           
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local4">
+                                        <i class="seq-step-icon">4</i>
+                                        <code>
+                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local5">
+                                        <i class="seq-step-icon">5</i>
+                                        <code>
+                                            <span>Y así sucesivamente hasta terminar.</span>
+                                        </code>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="seq-content seq-valign" data-seq>
+
+                                <div class="seq-instruction">
+
+                                    <div class="seq-title">
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
+                                        </object>
+
+                                        <h2>Instalar GIT </h2>
+
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
+                                        </object>
+                                    </div>
+
+
+
+
+
+                                    <div class="seq-step"> 
+                                        <p>
+                                            Antes de usar GIT, debes tenerlo disponible en
+                                            nuestras máquinas.
+                                        </p>       
+
+                                        <div>
+
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Linux</a></li>
+                                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mac</a></li>
+                                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Windows</a></li>    
+                                                <li role="presentation"><a href="#mas" aria-controls="messages" role="tab" data-toggle="tab">Más</a></li>    
+                                            </ul>
+
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                                    Si usas Fedora puedes ejecutar:<br>
+                                                    <code>$ sudo yum install git-all</code><br>
+                                                    Si estas en debian u alguna distribución basada en Debian:<br>
+                                                    <code>$ sudo apt-get install git-all</code>          
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="profile">
+                                                    La manera más sencilla sería instalar Xcode Command Line Tools y luego
+                                                    intentar correr git desde el terminal.  Si git no está instalado, entonces
+                                                    emergerá una ventana en donde se puede instalar.
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="messages">
+                                                    Para instalarlo en Windows basta con dirigirse a la página de descarga
+                                                    de <a href="http://git-scm.com/download/win">git para windows</a> y
+                                                    ejecutar el instalador 
+                                                </div>
+
+                                                <div role="tabpanel" class="tab-pane fade" id="mas">
+                                                    Para mayor información sobre algun Sistema Operativo diferente a los
+                                                    mencionados u alguna otra forma de instalación, dirigirse a la página
+                                                    de <a href="https://git-scm.com/downloads"> descargas de git</a> donde
+                                                    encontraremos información extendida sobre el tema.
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        
+                        <li class="seq-step9" id="step9">
+                            <div class="seq-code-pane seq-valign">
+
+                                <button type="button" class="seq-view-code">
+                                    <i class="fa fa-angle-double-up"></i> Show Code
+                                </button>
+
+                                <div class="seq-code">
+
+                                    <div class="seq-code-block" data-seq id="local1">
+                                        <i class="seq-step-icon">1</i>
+                                        <code>
+                                            <span>Este es nuestro directorio</span>                                            
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local2">
+                                        <i class="seq-step-icon">2</i>
+                                        <code>
+                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local3">
+                                        <i class="seq-step-icon">3</i>
+                                        <code>
+                                            <span>Hacemos unos cambios y los guardamos</span>                                           
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local4">
+                                        <i class="seq-step-icon">4</i>
+                                        <code>
+                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local5">
+                                        <i class="seq-step-icon">5</i>
+                                        <code>
+                                            <span>Y así sucesivamente hasta terminar.</span>
+                                        </code>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="seq-content seq-valign" data-seq>
+
+                                <div class="seq-instruction">
+
+                                    
+
+
+
+
+
+                                    <div class="seq-step"> 
+                                            
+
+                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          ¿Configurar GIT?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Ahora que tenemos GIT instalado, debemos configurar ciertos elementos del 
+        ambiente de trabajo para controlar los aspectos de como opera y se ve GIT.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          git config
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+          Git incluye una herramienta denominada <code>git config</code> la cual permite configuar las variables del entorno de trabajo.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          ¿Que vamos a configurar?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        <ul>
+            <li>
+                <strong>Nuestra identidad (usuario y correo):</strong> Git lo utiliza para amarrar tus datos a los commits.
+            </li>
+            <li>
+                <strong>Nuestro editor:</strong> Cual es nuestro editor de texto para escribir el mensaje de nuestros cambios.
+            </li>
+            <li>
+                <strong>Revisar la configuración:</strong> ¿Con cuál comando reviso mi información?
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        
+                        
+                        <li class="seq-step10" id="step10">
+                            <div class="seq-code-pane seq-valign">
+
+                                <button type="button" class="seq-view-code">
+                                    <i class="fa fa-angle-double-up"></i> Show Code
+                                </button>
+
+                                <div class="seq-code">
+
+                                    <div class="seq-code-block" data-seq id="local1">
+                                        <i class="seq-step-icon">1</i>
+                                        <code>
+                                            <span>Este es nuestro directorio</span>                                            
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local2">
+                                        <i class="seq-step-icon">2</i>
+                                        <code>
+                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local3">
+                                        <i class="seq-step-icon">3</i>
+                                        <code>
+                                            <span>Hacemos unos cambios y los guardamos</span>                                           
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local4">
+                                        <i class="seq-step-icon">4</i>
+                                        <code>
+                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
+                                        </code>
+                                    </div>
+
+                                    <div class="seq-code-block" data-seq id="local5">
+                                        <i class="seq-step-icon">5</i>
+                                        <code>
+                                            <span>Y así sucesivamente hasta terminar.</span>
+                                        </code>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="seq-content seq-valign" data-seq>
+
+                                <div class="seq-instruction">
+
+                                    
+
+
+
+
+
+                                    <div class="seq-step"> 
+                                            
+
+                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Nuestra identidad
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+          <code>git config --global user.name "Pedro Perez"</code> <br>
+          <code>git config --global user.email pedrop@ejemplo.com</code>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Nuestro Editor
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+          <code>git config --global core.editor gedit</code> <br>                    
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Revisar nuestra configuración
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        <code>git config --list</code> <br>   
+      </div>
+    </div>
+  </div>
+                                            
+                                            
+</div>
+
 
                                     </div>
                                 </div>
@@ -533,7 +1019,7 @@
 
 
 
-                        <li class="seq-step7" id="step7">
+                        <li class="seq-step11" id="step11">
                             <div class="seq-code-pane seq-valign">
 
                                 <button type="button" class="seq-view-code">
@@ -621,49 +1107,7 @@
                             </div>
                         </li>
 
-                        <li class="seq-step8" id="step8">
-                            <div class="seq-code-pane seq-valign">
 
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>/* Install via NPM */</span>
-                                            <span><strong>npm install sequencejs</strong></span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>/* Install via Bower */</span>
-                                            <span><strong>bower install sequencejs</strong></span>
-                                        </code>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <p class="seq-follow-on">This presentation was powered by...</p>
-                                    <object class="seq-logo" type="image/svg+xml" data="images/sequence-logo.svg" width="240" height="48">
-                                        <img src="images/sequence-logo.png" alt="Sequence.js logo" width="240" height="46" />
-                                    </object>
-
-                                    <p>Make your animated step-based application today...</p>
-                                    <a href="http://sequencejs.com/themes/" title="View themes created with Sequence.js" class="seq-button seq-button-highlight">View Example Themes <i class="fa fa-tag"></i></a>
-                                    <a href="http://sequencejs.com/download/" title="Download Sequence.js" class="seq-button seq-button-link">Download Now <i class="fa fa-arrow-circle-down"></i></a>
-                                </div>
-
-                            </div>
-                        </li>
                     </ul>
                 </div>
 
@@ -675,12 +1119,14 @@
 
             <ul role="navigation" aria-label="Pagination" aria-controls="sequence" class="seq-pagination">
                 <li class="seq-current"><a href="#step1" rel="step1" title="Go to slide 1: Intro"><i class="fa fa-bookmark"></i> <span>Intro</span></a></li>
-                <li><a href="#step2" rel="step2" title="Go to slide 2: How It Works"><i class="fa fa-info-circle"></i> <span>How It Works</span></a></li>
-                <li><a href="#step3" rel="step3" title="Go to slide 3: Animation"><i class="fa fa-bolt"></i> <span>Animation</span></a></li>
-                <li><a href="#step4" rel="step4" title="Go to slide 4: Responsive/Touch"><i class="fa fa-expand"></i> <span>Responsive/Touch</span></a></li>
-                <li><a href="#step5" rel="step5" title="Go to slide 5: Features"><i class="fa fa-cog"></i> <span>Features</span></a></li>
-                <li><a href="#step6" rel="step6" title="Go to slide 6: Support"><i class="fa fa-tablet"></i> <span>Support</span></a></li>
-                <li><a href="#step7" rel="step7" title="Go to slide 7: Download"><i class="fa fa-arrow-circle-down"></i> <span>Download</span></a></li>
+                <li><a href="#step2" rel="step2" title="Go to slide 2: How It Works"><i class="fa fa-info-circle"></i> <span>Crear</span></a></li>
+                <li><a href="#step3" rel="step3" title="Go to slide 3: Animation"><i class="fa fa-bolt"></i> <span>VCS</span></a></li>
+                <li><a href="#step4" rel="step4" title="Go to slide 4: Responsive/Touch"><i class="fa fa-expand"></i> <span>Tipos</span></a></li>
+                <li><a href="#step5" rel="step5" title="Go to slide 5: Features"><i class="fa fa-cog"></i> <span>Git</span></a></li>
+                <li><a href="#step6" rel="step6" title="Go to slide 6: Support"><i class="fa fa-tablet"></i> <span>Básico</span></a></li>
+                <li><a href="#step7" rel="step7" title="Go to slide 7: Download"><i class="fa fa-arrow-circle-down"></i> <span>Terminal</span></a></li>
+                <li><a href="#step8" rel="step8" title="Go to slide 8: Download"><i class="fa fa-arrow-circle-down"></i> <span>Instalar</span></a></li>
+                <li><a href="#step9" rel="step9" title="Go to slide 9: Download"><i class="fa fa-arrow-circle-down"></i> <span>Configurar</span></a></li>
             </ul>
 
 

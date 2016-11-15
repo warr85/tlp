@@ -1818,7 +1818,7 @@
 
 @media only screen and (min-width: 769px) {
   .seq-pagination li {
-    width: 13.666667%;
+    width: 10%;
   }
 
   .seq-pagination li.seq-current {
