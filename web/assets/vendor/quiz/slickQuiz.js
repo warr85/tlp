@@ -17,13 +17,13 @@
             _element = '#' + $element.attr('id'),
 
             defaults = {
-                checkAnswerText:  'Check My Answer!',
-                nextQuestionText: 'Next &raquo;',
+                checkAnswerText:  'Revisar mi respuesta',
+                nextQuestionText: 'Sig &raquo;',
                 backButtonText: '',
                 completeQuizText: '',
                 tryAgainText: '',
-                questionCountText: 'Question %current of %total',
-                preventUnansweredText: 'You must select at least one answer.',
+                questionCountText: 'Pregunta %current de %total',
+                preventUnansweredText: 'Debes seleccionar al menos una respuesta.',
                 questionTemplateText:  '%count. %text',
                 scoreTemplateText: '%score / %total',
                 nameTemplateText:  '<span>Quiz: </span>%name',
@@ -31,7 +31,7 @@
                 numberOfQuestions: null,
                 randomSortQuestions: false,
                 randomSortAnswers: false,
-                preventUnanswered: false,
+                preventUnanswered: true,
                 disableScore: false,
                 disableRanking: false,
                 scoreAsPercentage: false,
@@ -97,6 +97,8 @@
             _quizHeader            = _element + ' .quizHeader',
             _quizScore             = _element + ' .quizScore',
             _quizLevel             = _element + ' .quizLevel',
+            _quizDesc              = _element + ' .quizDescription',
+            _nextClass             = _element + ' .next_class',
 
             // Top Level Quiz Element Objects
             $quizStarter           = $(_quizStarter),
@@ -105,6 +107,8 @@
             $quizResults           = $(_quizResults),
             $quizResultsCopy       = $(_quizResultsCopy),
             $quizHeader            = $(_quizHeader),
+            $quizDescription       = $(_quizDesc),
+            $nextClass             = $(_nextClass)
             $quizScore             = $(_quizScore),
             $quizLevel             = $(_quizLevel)
         ;
@@ -203,7 +207,7 @@
                 key = internal.method.getKey (3); // how many notches == how many jQ animations you will run
                 keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
                 kN = keyNotch; // you specify the notch, you get a callback function for your animation
-
+                $nextClass.hide();
                 $quizName.hide().html(plugin.config.nameTemplateText
                     .replace('%name', quizValues.info.name) ).fadeIn(1000, kN(key,1));
                 $quizHeader.hide().prepend($('<div class="quizDescription">' + quizValues.info.main + '</div>')).fadeIn(1000, kN(key,2));
@@ -334,7 +338,7 @@
 
                 // Toggle the start button OR start the quiz if start button is disabled
                 if (plugin.config.skipStartButton || $quizStarter.length == 0) {
-                    $quizStarter.hide();
+                    $quizStarter.hide();                    
                     plugin.method.startQuiz.apply (this, [{callback: plugin.config.animationCallbacks.startQuiz}]); // TODO: determine why 'this' is being passed as arg to startQuiz method
                     kN(key,3).apply (null, []);
                 } else {
@@ -362,7 +366,11 @@
 
                 if (plugin.config.skipStartButton || $quizStarter.length == 0) {
                     start({callback: kN(key,1)});
+                    $quizName.hide();
+                    $(".quizDescription").remove();
                 } else {
+                    $quizName.hide();
+                    $(".quizDescription").remove();
                     $quizStarter.fadeOut(300, function(){
                         start({callback: kN(key,1)}); // 1st notch on key must be on both sides of if/else, otherwise key won't turn
                     });
@@ -456,7 +464,7 @@
                 });
 
                 if (plugin.config.preventUnanswered && selectedAnswers.length === 0) {
-                    alert(plugin.config.preventUnansweredText);
+                    toastr.error("Debes seleccionar al menos una respuesta","Error");           
                     return false;
                 }
 
@@ -592,7 +600,8 @@
                 key = internal.method.getKey (1); // how many notches == how many jQ animations you will run
                 keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
                 kN = keyNotch; // you specify the notch, you get a callback function for your animation
-
+                toastr.info("Felicidades, has terminado el QUIZ",'Excelente!');
+                $nextClass.show();
                 var score        = $(_element + ' ' + _correct).length,
                     displayScore = score;
                 if (plugin.config.scoreAsPercentage) {

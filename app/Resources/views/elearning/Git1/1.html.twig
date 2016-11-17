@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/slickQuiz.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/master.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/steps/jquery.steps.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetAlert/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/toastr.min.css') }}">
 
 
     <style>
@@ -965,54 +965,54 @@
 
                                         <p>Actividad en la Consola o Terminal</p>
                                         <div id="wizard">
-                            <h1>Primero</h1>
-                            <div class="step-content">
-                                <div class="text-center m-t-md">
-                                <h2>¿Git Instalado?</h2>
-                                    <p>
-                                     Para ver si git está instalado en nuestra
-                                    computadora, preguntamos por su versión
-                                    con el comando <br>
-                                    <code>git --version</code>
-                                    </p>
-                                </div>
-                            </div>
+                                            <h1>Primero</h1>
+                                            <div class="step-content">
+                                                <div class="text-center m-t-md">
+                                                    <h2>¿Git Instalado?</h2>
+                                                    <p>
+                                                        Para ver si git está instalado en nuestra
+                                                        computadora, preguntamos por su versión
+                                                        con el comando <br>
+                                                        <code>git --version</code>
+                                                    </p>
+                                                </div>
+                                            </div>
 
-                            <h1>Segundo</h1>
-                            <div class="step-content">
-                                <div class="text-center m-t-md">
-                                    <h2>¿Quien soy?</h2>
-                                    <p>
-                                     Debemos configurar nuestro nombre para que git sepa
-                                     quien está realizando cambios<br>
-                                    <code>git config --global user.name TuNombre</code>
-                                    </p>
-                                </div>
-                            </div>
+                                            <h1>Segundo</h1>
+                                            <div class="step-content">
+                                                <div class="text-center m-t-md">
+                                                    <h2>¿Quien soy?</h2>
+                                                    <p>
+                                                        Debemos configurar nuestro nombre para que git sepa
+                                                        quien está realizando cambios<br>
+                                                        <code>git config --global user.name TuNombre</code>
+                                                    </p>
+                                                </div>
+                                            </div>
 
-                            <h1>Tercero</h1>
-                            <div class="step-content">
-                                <div class="text-center m-t-md">
-                                    <h2>¿cómo te ubico?</h2>
-                                    <p>
-                                     Para contactar al desarrolldor que hizo los cambios
-                                     es importante configurar nuestro correo<br>
-                                    <code>git config --global user.email TuMail</code>
-                                </div>
-                            </div>
-                            
-                            
-                            <h1>Cuarto</h1>
-                            <div class="step-content">
-                                <div class="text-center m-t-md">
-                                    <h2>¿Mi configuración?</h2>
-                                    <p>
-                                     Para revisar mi configuración basta
-                                     con ejecutar <br>
-                                    <code>git config --list</code>
-                                </div>
-                            </div>
-                        </div>
+                                            <h1>Tercero</h1>
+                                            <div class="step-content">
+                                                <div class="text-center m-t-md">
+                                                    <h2>¿cómo te ubico?</h2>
+                                                    <p>
+                                                        Para contactar al desarrolldor que hizo los cambios
+                                                        es importante configurar nuestro correo<br>
+                                                        <code>git config --global user.email TuMail</code>
+                                                </div>
+                                            </div>
+
+
+                                            <h1>Cuarto</h1>
+                                            <div class="step-content">
+                                                <div class="text-center m-t-md">
+                                                    <h2>¿Mi configuración?</h2>
+                                                    <p>
+                                                        Para revisar mi configuración basta
+                                                        con ejecutar <br>
+                                                        <code>git config --list</code>
+                                                </div>
+                                            </div>
+                                        </div>
 
 
                                     </div>
@@ -1136,6 +1136,41 @@
 
         </div>
 
+        <div class="col-lg-5">
+            <ul class="stat-list">
+                <li>
+
+                    <small>Progreso de este nivel</small>
+                    <div class="stat-percent">48%</div>
+                    <div class="progress progress-mini">
+                        <div style="width: 48%;" class="progress-bar"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col-lg-5">
+                    Logros disponibles en este Nivel:
+                    </div>
+                        <div class="col-lg-7">
+                    <div class="tooltip-demo">
+                    <button class="btn btn-warning btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Conceptos de GIT"><i class="fa fa-book"></i>
+                    </button>
+                    <button class="btn btn-primary btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Primer Comando en GIT"><i class="fa fa-terminal"></i>
+                    </button>
+                    <button class="btn btn-success btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Primera Evaluación"><i class="fa fa-check-circle-o"></i>
+                    </button>
+                    
+                        </div>
+                            </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+
+
+
         <div class="col-lg-5 acomodar">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -1167,16 +1202,18 @@
                             <div class="quizHeader">
                                 <!-- where the quiz main copy goes -->
 
-                                <a class="button_quiz startQuiz" href="#">Get Started!</a>
+                                <a class="button_quiz startQuiz" id="btnQuiz" href="#">Comenzar Quiz!</a>
+                                
                             </div>
 
                             <!-- where the quiz gets built -->
                         </div>
 
                         <div class="quizResults">
-                            <h3 class="quizScore">You Scored: <span><!-- where the quiz score goes --></span></h3>
+                            <h3 class="quizScore">Tus Puntos: <span><!-- where the quiz score goes --></span></h3>
 
-                            <h3 class="quizLevel"><strong>Ranking:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
+                            <h3 class="quizLevel"><strong>Nivel:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
+                            <a class="next_class btn btn-success" id="next_class" <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente Clase!</a>
 
                             <div class="quizResultsCopy">
                                 <!-- where the quiz result copy goes -->
@@ -1280,40 +1317,68 @@
     <script src="{{asset('assets/vendor/quiz/slickQuiz-config.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/quiz/slickQuiz.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/quiz/master.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/sweetAlert/sweetalert.min.js')}}" type="text/javascript"></script>  
+    <script src="{{asset('assets/vendor/toastr/toastr.min.js')}}" type="text/javascript"></script>  
 
 
 
     <script type="text/javascript">
 
         jQuery(function ($) {
+            
+           toastr.options = {
+            "closeButton": true,
+            "debug": true,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "50000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "slideDown",
+            "hideMethod": "fadeOut"            
+          };
+            
+            
+            
             $('#terminal').terminal(function (command, term) {
-                var $inter = evaluar(command);                
-                if ($inter.chk === true){
+                var $inter = evaluar(command);
+                if ($inter.chk === true) {
                     term.echo("[[;green;]" + $inter.out + "]");
-                    setTimeout(function(){
-                        swal("Buen Trabajo!", $inter.msg, "success");
+                    setTimeout(function () {
+                        toastr.success($inter.msg, 'Excelente');
                     }, 1200);
-                }else if ($inter.chk === "done"){
+                } else if ($inter.chk === "done") {
                     term.echo("[[;green;]" + $inter.out + "]");
-                    swal("Nuevamente Buen Trabajo!", $inter.msg, "success");
-                }else if ($inter.chk === "plain"){
+                    toastr.info($inter.msg,'Ya ejecutado!');
+                } else if ($inter.chk === "plain") {
                     term.echo($inter.out);
-                    setTimeout(function(){
-                        swal("Buen Trabajo!", $inter.msg, "success");
+                    setTimeout(function () {
+                        toastr.success($inter.msg, 'Excelente');
                     }, 1200);
-                    
-                }else{
+
+                } else {
                     term.echo("[[;red;]" + $inter.out + "]");
                 }
-                    
+                
+                if($inter.fin){
+                    alert("entra");
+                    $("#btnQuiz").prop('disabled', false);
+                    $("#btnQuiz").attr('disabled', false);
+                    toastr.info("Quiz Disponible",'Felicitaciones, has desbloqueado el Quiz de este nivel!');           
+                }
+
                 //var $x = evaluar(command);
             }, {
                 greetings: 'Interprete de Comandos del Curso, --help-- para ayuda de comandos',
                 name: 'curso_git',
                 prompt: 'curso_git$> ',
-                onBlur: function() {
-                   return false;
+                onBlur: function () {
+                    return false;
                 }
             });
             var data = [{
@@ -1342,7 +1407,22 @@
             $('#fixed-tree').fileTree({
                 data: data
             });
+            
+            
+                         
+            
+            
         });
+        $("#btnQuiz").prop('disabled', true);
+        $("#btnQuiz").attr('disabled', 'disabled');
+        $( "#btnQuiz" ).click(function() {
+            var isDisabled = $('#btnQuiz').is('[disabled=disabled]');           
+            if (isDisabled){
+                toastr.error("Para desbloquearlo, debes obtener los dos primeros logros de este nivel","Quiz Bloqueado");           
+            }
+            
+        });   
+        
         var $palabraGit = /^git$/g;
         var $gitEspacio = /^git+\s/g;
         var $configEspacio = /\bconfig+\s/g;
@@ -1365,79 +1445,81 @@
         function evaluar(c) {
             var $w = {};
             if (c.match($gitVersion)) {
-                if($c === 0){
+                if ($c === 0) {
                     $c = 1;
-                     $w = JSON.stringify({ out: "git version 2.10.2", chk: true, msg:"Has ejecutado tu primer comando en git.  FELICITACIONES" });                    
-                }else if ($c > 0){
-                     $w = JSON.stringify({ out: "git version 2.10.2", chk: "done", msg:"El Comando GIT --VERSION ya lo has ejecutado" });
+                    $w = JSON.stringify({out: "git version 2.10.2", chk: true, msg: "Has ejecutado tu primer comando en git.  FELICITACIONES"});
+                } else if ($c > 0) {
+                    $w = JSON.stringify({out: "git version 2.10.2", chk: "done", msg: "El Comando GIT --VERSION ya lo has ejecutado"});
                 }
                 var respuesta = JSON.parse($w);
                 return (respuesta);
             }
 
             if (c.match($gitConfigUser)) {
-                
-                if($c === 1){
-                    
-                    $c = 2;
-                    $w = JSON.stringify({ out: " ", chk: true, msg:"Git no muestra ningun mensaje al configurar correctamente alguna variable. Has configurado correctamente tu nombre de usuario" });                                        
-                    name = c.substr(c.indexOf("user.name") + 9);                     
-                }else if ($c > 1){
-                     $w = JSON.stringify({ out: " ", chk: "done", msg:"Renombrado el usuario satisfactoriamente" });
-                     name = c.substr(c.indexOf("user.name") + 9);                     
-                }else{
-                    $w = JSON.stringify({ out: "Error, debes ejecutar primero el comando de la version instalada de git", chk: false });
-                }
-                var respuesta = JSON.parse($w);                
-                return (respuesta);
-            }
 
-            if (c.match($gitConfigMail)) {
-                if($c === 2){
-                    $c = 3;
-                     $w = JSON.stringify({ out: " ", chk: true, msg:"Has configurado correctamente tu dirección de Correo" });                    
-                     email = c.substr(c.indexOf("user.email") + 10); 
-                }else if ($c > 2){
-                     $w = JSON.stringify({ out: " ", chk: "done", msg:"Cambiada la dirección satisfactoriamente" });
-                     email = c.substr(c.indexOf("user.email") + 10); 
-                }else{
-                    $w = JSON.stringify({ out: "Error, debes configurar primero tu nombre de usuario", chk: false });
+                if ($c === 1) {
+
+                    $c = 2;
+                    $w = JSON.stringify({out: " ", chk: true, msg: "Git no muestra ningun mensaje al configurar correctamente alguna variable. Has configurado correctamente tu nombre de usuario"});
+                    name = c.substr(c.indexOf("user.name") + 9);
+                } else if ($c > 1) {
+                    $w = JSON.stringify({out: " ", chk: "done", msg: "Renombrado el usuario satisfactoriamente"});
+                    name = c.substr(c.indexOf("user.name") + 9);
+                } else {
+                    $w = JSON.stringify({out: "Error, debes ejecutar primero el comando de la version instalada de git", chk: false});
                 }
                 var respuesta = JSON.parse($w);
                 return (respuesta);
             }
-            
+
+            if (c.match($gitConfigMail)) {
+                if ($c === 2) {
+                    $c = 3;
+                    $w = JSON.stringify({out: " ", chk: true, msg: "Has configurado correctamente tu dirección de Correo"});
+                    email = c.substr(c.indexOf("user.email") + 10);
+                } else if ($c > 2) {
+                    $w = JSON.stringify({out: " ", chk: "done", msg: "Cambiada la dirección satisfactoriamente"});
+                    email = c.substr(c.indexOf("user.email") + 10);
+                } else {
+                    $w = JSON.stringify({out: "Error, debes configurar primero tu nombre de usuario", chk: false});
+                }
+                var respuesta = JSON.parse($w);
+                return (respuesta);
+            }
+
             if (c.match($gitConfigList)) {
-                if($c === 3){
+                if ($c === 3) {
                     $c = 4;
-                    $w = JSON.stringify({ out: "user.email=" + email +"\nuser.name=" + name + "\ncolorui=auto", chk: "plain", msg:"Has revisado tu configuración" });                    
-                }else if ($c > 3){
-                     $w = JSON.stringify({ out: "user.email=" + email +"\nuser.name=" + name + "\ncolorui=auto", chk: "plain", msg:"Ya has ejecutado este comando, puedes verificar tu información para verificar los cambios" });
-                }else{
-                    $w = JSON.stringify({ out: "Error, debes configurar primero tu dirección de correo", chk: false });
+                    $w = JSON.stringify({out: "user.email=" + email + "\nuser.name=" + name + "\ncolorui=auto", chk: "plain", msg: "Has revisado tu configuración", fin: true});
+                } else if ($c > 3) {
+                    $w = JSON.stringify({out: "user.email=" + email + "\nuser.name=" + name + "\ncolorui=auto", chk: "plain", msg: "Ya has ejecutado este comando, puedes verificar tu información para verificar los cambios"});
+                } else {
+                    $w = JSON.stringify({out: "Error, debes configurar primero tu dirección de correo", chk: false});
                 }
                 var respuesta = JSON.parse($w);
                 return (respuesta);
             }
 
             if (c.match($gitHelp)) {
-                $w = JSON.stringify({ out: "\n\nusage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [-c name=value] [--help]\n           <command> [<args>]\n\n The most commonly used git commands are:\n   add        Add file contents to the index\n   bisect     Find by binary search the change that introduced a bug\n   branch     List, create, or delete branches\n   checkout   Checkout a branch or paths to the working tree\n   clone      Clone a repository into a new directory\n   commit     Record changes to the repository\n   diff       Show changes between commits, commit and working tree, etc\n   fetch      Download objects and refs from another repository\n   grep       Print lines matching a pattern\n   init       Create an empty git repository or reinitialize an existing one\n   log        Show commit logs\n   merge      Join two or more development histories together\n   mv         Move or rename a file, a directory, or a symlink\n   pull       Fetch from and merge with another repository or a local branch\n   push       Update remote refs along with associated objects\n   rebase     Forward-port local commits to the updated upstream head\n   reset      Reset current HEAD to the specified state\n   rm         Remove files from the working tree and from the index\n   show       Show various types of objects\n   status     Show the working tree status\n   tag        Create, list, delete or verify a tag object signed with GPG\n\nSee 'git help <command>' for more information on a specific command.", chk: "plain", msg:"Siempre es bueno consultar la ayuda. " });                    
+                $w = JSON.stringify({out: "\n\nusage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [-c name=value] [--help]\n           <command> [<args>]\n\n The most commonly used git commands are:\n   add        Add file contents to the index\n   bisect     Find by binary search the change that introduced a bug\n   branch     List, create, or delete branches\n   checkout   Checkout a branch or paths to the working tree\n   clone      Clone a repository into a new directory\n   commit     Record changes to the repository\n   diff       Show changes between commits, commit and working tree, etc\n   fetch      Download objects and refs from another repository\n   grep       Print lines matching a pattern\n   init       Create an empty git repository or reinitialize an existing one\n   log        Show commit logs\n   merge      Join two or more development histories together\n   mv         Move or rename a file, a directory, or a symlink\n   pull       Fetch from and merge with another repository or a local branch\n   push       Update remote refs along with associated objects\n   rebase     Forward-port local commits to the updated upstream head\n   reset      Reset current HEAD to the specified state\n   rm         Remove files from the working tree and from the index\n   show       Show various types of objects\n   status     Show the working tree status\n   tag        Create, list, delete or verify a tag object signed with GPG\n\nSee 'git help <command>' for more information on a specific command.", chk: "plain", msg: "Siempre es bueno consultar la ayuda. "});
                 var respuesta = JSON.parse($w);
                 return (respuesta);
             }
-            
-            $w = JSON.stringify({ out: "Error", chk: false });
+           
+           alert("hola");
+
+            $w = JSON.stringify({out: "Error", chk: false});
             var respuesta = JSON.parse($w);
-                return (respuesta);
+            return (respuesta);
 
         }
 
 
 
         $(document).ready(function () {
-            
-            $("#wizard").steps();
 
+            $("#wizard").steps();
+            
             // Instance the tour
             var tour = new Tour({
                 steps: [{

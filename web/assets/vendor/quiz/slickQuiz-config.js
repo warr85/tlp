@@ -4,8 +4,8 @@
 
 var quizJSON = {
     "info": {
-        "name":    "Enciende Tu Conocimiento!!",
-        "main":    "<p>Vamos a averiguar todo lo que hemos encendido a través de este rápido quiz</p>",
+        "name":    "Primer Quiz",
+        "main":    "<p>Vamos a encender nuestros conocimientos a través del presente Quiz.  El mismo estará disponible una vez hayas obtenido los dos primeros logros de este curso</p>",
         "results": "<h5>Saber más:</h5><p>Puedes expandir tu conocimiento a través del manual de git en español a través del siguiente enlace: <a href='#'>enlace</a>.</p>",
         "level1":  "Conocedor de GIT",
         "level2":  "Nociones de GIT",
