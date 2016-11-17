@@ -24,7 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Description of AdminController
+ * Redirecciona al dashboard de administrador del TLP
  *
  * @author Tecnolínea Paraguná C.A.
  * 
