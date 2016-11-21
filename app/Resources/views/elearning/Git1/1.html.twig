@@ -329,7 +329,7 @@
                             <div class="seq-code-pane seq-valign">
 
                                 <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
+                                    <i class="fa fa-angle-double-up"></i> Mostar Código
                                 </button>
 
                                 <div class="seq-code">
@@ -1116,8 +1116,8 @@
                 </div>
 
                 <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
-                    <button type="button" class="seq-prev" aria-label="Previous"><i class="fa fa-chevron-circle-left"></i> Previous</button>
-                    <button type="button" class="seq-next" aria-label="Next">Next <i class="fa fa-chevron-circle-right"></i></button>
+                    <button type="button" class="seq-prev" aria-label="Previous"><i class="fa fa-chevron-circle-left"></i> Ant.</button>
+                    <button type="button" class="seq-next" aria-label="Next">Sig <i class="fa fa-chevron-circle-right"></i></button>
                 </fieldset>
             </div>
 
@@ -1153,11 +1153,11 @@
                     </div>
                         <div class="col-lg-7">
                     <div class="tooltip-demo">
-                    <button class="btn btn-warning btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Conceptos de GIT"><i class="fa fa-book"></i>
+                    <button id="conceptos" class="btn btn-warning btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Conceptos de GIT"><i class="fa fa-book"></i>
                     </button>
-                    <button class="btn btn-primary btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Primer Comando en GIT"><i class="fa fa-terminal"></i>
+                    <button id="comandos" class="btn btn-primary btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Primeros Comandos en GIT"><i class="fa fa-terminal"></i>
                     </button>
-                    <button class="btn btn-success btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Primera Evaluación"><i class="fa fa-check-circle-o"></i>
+                    <button id="logro_quiz" class="btn btn-success btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Primera Evaluación"><i class="fa fa-check-circle-o"></i>
                     </button>
                     
                         </div>
@@ -1365,11 +1365,12 @@
                     term.echo("[[;red;]" + $inter.out + "]");
                 }
                 
-                if($inter.fin){
-                    alert("entra");
+                if($inter.fin){                    
                     $("#btnQuiz").prop('disabled', false);
                     $("#btnQuiz").attr('disabled', false);
-                    toastr.info("Quiz Disponible",'Felicitaciones, has desbloqueado el Quiz de este nivel!');           
+                    toastr.info("Primeros comandos en GIT",'Logro Desbloqueado!');
+                    $("#comandos").removeClass("btn-outline").addClass("btn-primary-done animated rubberBand");
+                    toastr.success("Quiz Disponible",'Felicitaciones, has desbloqueado el Quiz de este nivel!');           
                 }
 
                 //var $x = evaluar(command);
@@ -1505,8 +1506,7 @@
                 var respuesta = JSON.parse($w);
                 return (respuesta);
             }
-           
-           alert("hola");
+                      
 
             $w = JSON.stringify({out: "Error", chk: false});
             var respuesta = JSON.parse($w);
@@ -1517,6 +1517,7 @@
 
 
         $(document).ready(function () {
+            
 
             $("#wizard").steps();
             

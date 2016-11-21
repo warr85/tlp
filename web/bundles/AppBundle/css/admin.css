@@ -636,6 +636,24 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   border-color: #18a689;
   color: #FFFFFF;
 }
+
+.btn-primary-done {
+  background-color: #18a689;
+  border-color: #18a689;
+  color: #FFFFFF;
+   -webkit-transition: all 5s; 
+    -moz-transition: all 5s; 
+    -o-transition: all 5s; 
+    transition: all 5s;
+    -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-iteration-count: 3;
+  -moz-animation-duration: 2s;
+  -moz-animation-delay: 2s;
+  -moz-animation-iteration-count: 3;
+}
+
+
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
@@ -677,6 +695,24 @@ fieldset[disabled] .btn-primary.active {
   border-color: #1a7bb9;
   color: #FFFFFF;
 }
+
+.btn-success-done{
+  background-color: #1a7bb9;
+  border-color: #1a7bb9;
+  color: #FFFFFF;
+  -webkit-transition: all 5s; 
+    -moz-transition: all 5s; 
+    -o-transition: all 5s; 
+    transition: all 5s;
+    -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-iteration-count: 3;
+  -moz-animation-duration: 2s;
+  -moz-animation-delay: 2s;
+  -moz-animation-iteration-count: 3;
+}
+
+
 .btn-success:active,
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
@@ -798,6 +834,23 @@ fieldset[disabled] .btn-default.active {
   border-color: #f7a54a;
   color: #FFFFFF;
 }
+
+.btn-warning-done {
+  background-color: #f7a54a;
+  border-color: #f7a54a;
+  color: #FFFFFF;
+   -webkit-transition: all 5s; 
+    -moz-transition: all 5s; 
+    -o-transition: all 5s; 
+    transition: all 5s;
+    -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-iteration-count: 3;
+  -moz-animation-duration: 2s;
+  -moz-animation-delay: 2s;
+  -moz-animation-iteration-count: 3;
+}
+
 .btn-warning:active,
 .btn-warning.active,
 .open .dropdown-toggle.btn-warning {

@@ -600,7 +600,8 @@
                 key = internal.method.getKey (1); // how many notches == how many jQ animations you will run
                 keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
                 kN = keyNotch; // you specify the notch, you get a callback function for your animation
-                toastr.info("Felicidades, has terminado el QUIZ",'Excelente!');
+                toastr.info("Felicidades, has terminado el QUIZ y has conseguido todos los logros de este nivel.",'Quiz Terminado!');
+                $("logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
                 $nextClass.show();
                 var score        = $(_element + ' ' + _correct).length,
                     displayScore = score;
@@ -630,6 +631,16 @@
 
                     $(_quizLevel + ' span').html(levelText);
                     $(_quizLevel).addClass('level' + levelRank);
+                    alert(levelRank);
+                    if (levelRank < 3){
+                        toastr.info("Felicidades, has terminado el QUIZ y has conseguido todos los logros de este nivel.",'Quiz Terminado!');
+                        $("#logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
+                    }else if (levelRank < 4 ){
+                        toastr.warning("Quiz terminado, debes practicar un poco mas, pero puedes avanzar.",'Quiz Terminado!');
+                        $("#logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
+                    }else{
+                         toastr.error("Debemos repasar nuevamente los conceptos que rodean GIT.",'Debemos intentar nuevamente!');                        
+                    }
                 }
 
                 $quizArea.fadeOut(300, function() {

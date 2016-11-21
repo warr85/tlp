@@ -144,7 +144,7 @@ var codePane = {
     mySequence.utils.addClass($step, "seq-code-pane-open");
     mySequence.utils.removeClass($step, "seq-code-pane-snap-shut");
 
-    $button.innerHTML = '<i class="fa fa-angle-double-down"></i> Hide Code';
+    $button.innerHTML = '<i class="fa fa-angle-double-down"></i> Ocultar';
 
     $codePane.setAttribute("data-is-open", true);
     codePane.$openElement = $codePane;
@@ -200,7 +200,13 @@ mySequence.ready = function() {
 mySequence.animationStarted = function(id, sequence) {
 
   // When animation starts, close any open code panes
-  var $currentStep = sequence.$steps[sequence.currentStepId - 1];
+  var $currentStep = sequence.$steps[sequence.currentStepId - 1];  
+  
+    
+    if (sequence.currentStepId == 9){
+      toastr.info("FELICITACIONES! Acabas de desbloquear el logo: Conceptos de GIT", 'Logro Desbloqueado'); 
+      $("#conceptos").removeClass('btn-outline').addClass('btn-warning-done animated rubberBand');      
+    }
 
   codePane.hide($currentStep, false);
 }
