@@ -21,7 +21,7 @@
                 nextQuestionText: 'Sig &raquo;',
                 backButtonText: '',
                 completeQuizText: '',
-                tryAgainText: '',
+                tryAgainText: 'Intentar Nuevamente',
                 questionCountText: 'Pregunta %current de %total',
                 preventUnansweredText: 'Debes seleccionar al menos una respuesta.',
                 questionTemplateText:  '%count. %text',
@@ -640,6 +640,7 @@
                         $("#logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
                     }else{
                          toastr.error("Debemos repasar nuevamente los conceptos que rodean GIT.",'Debemos intentar nuevamente!');                        
+                         $quizResultsCopy.append('<p><a class="button ' + tryAgainClass + '" href="#">' + plugin.config.tryAgainText + '</a></p>');
                     }
                 }
 
