@@ -207,16 +207,19 @@ mySequence.animationStarted = function(id, sequence) {
       toastr.info("FELICITACIONES! Acabas de desbloquear el logro: Conceptos de GIT", 'Logro Desbloqueado'); 
       $("#conceptos").removeClass('fa-inverse').addClass('text-warning animated rubberBand');      
       
+      
+      var data = {inscripcion : $('#inscripcion').val(), logro: 1};
+      var url = $('#url_ajax').val();
       $.ajax({
            method: "GET",
-           url: "{{ url('ajax_progreso') }}",
+           url: url,
            async: true,
            cache: false,
+           data: data,
            //timeout: 50000,
            success: function (data) {
                     
-                   var posts = JSON.parse(data.posts);
-                   console.log(posts);
+                   alert("exito");
                    /*if(posts.length > 0)
                     {
                         var html = "";
@@ -230,7 +233,7 @@ mySequence.animationStarted = function(id, sequence) {
                     //setTimeout(waitForMsg, 60000);
             },
            error: function (XMLHttpRequest, textStatus, errorThrown) { 
-                 console.log(errorThrown);
+                 console.log(errorThrown, textStatus, XMLHttpRequest);
                  //setTimeout(waitForMsg, 300000);
 
            }

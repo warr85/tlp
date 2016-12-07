@@ -1135,7 +1135,7 @@
                         <div class="col-lg-7">
                     <div class="tooltip-demo"> 
                         {% for logro in logros %}
-                        <span id="{{ logro.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logro.nombre }}" class="fa-stack fa-2x  has-badge" data-count="{{ logro.badge }}">
+                        <span id="{{ logro.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logro.nombre }}" class="fa-stack has-badge" data-count="{{ logro.badge }}">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-{{ logro.imagen }} fa-stack-1x fa-inverse"></i>
                         </span>
@@ -1197,7 +1197,8 @@
 
                             <h3 class="quizLevel"><strong>Nivel:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
                             <a class="next_class btn btn-success" id="next_class" <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente Clase!</a>
-
+                                <input id="inscripcion" type="hidden" value="{{ inscripcion.id }}" />
+                                <input id="url_ajax" type="hidden" value="{{ url('ajax_progreso') }}" />
                             <div class="quizResultsCopy">
                                 <!-- where the quiz result copy goes -->
                             </div>
