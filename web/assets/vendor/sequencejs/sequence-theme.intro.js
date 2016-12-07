@@ -204,8 +204,40 @@ mySequence.animationStarted = function(id, sequence) {
   
     
     if (sequence.currentStepId == 9){
-      toastr.info("FELICITACIONES! Acabas de desbloquear el logo: Conceptos de GIT", 'Logro Desbloqueado'); 
-      $("#conceptos").removeClass('btn-outline').addClass('btn-warning-done animated rubberBand');      
+      toastr.info("FELICITACIONES! Acabas de desbloquear el logro: Conceptos de GIT", 'Logro Desbloqueado'); 
+      $("#conceptos").removeClass('fa-inverse').addClass('text-warning animated rubberBand');      
+      
+      $.ajax({
+           method: "GET",
+           url: "{{ url('ajax_progreso') }}",
+           async: true,
+           cache: false,
+           //timeout: 50000,
+           success: function (data) {
+                    
+                   var posts = JSON.parse(data.posts);
+                   console.log(posts);
+                   /*if(posts.length > 0)
+                    {
+                        var html = "";
+                        for(d in posts)
+                        {
+                            html += "<p>" + JSON.stringify(posts[d]) + "</p>";
+                        }
+                        $("#contador_solicitudes").append(html);
+                    }*/
+                   $("#contador_solicitudes").html(posts);
+                    //setTimeout(waitForMsg, 60000);
+            },
+           error: function (XMLHttpRequest, textStatus, errorThrown) { 
+                 console.log(errorThrown);
+                 //setTimeout(waitForMsg, 300000);
+
+           }
+
+       });
+      
+      
     }
 
   codePane.hide($currentStep, false);

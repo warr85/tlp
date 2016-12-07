@@ -68,11 +68,15 @@ class ElearningController extends Controller {
            'idCursoModulo'  => $cursoModulo,
             'orden'         => $avance
         ));
+        
+        $logros = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findByIdCursoModuloTema($temaActual);
+        
         return $this->render('elearning/' . $inscripcion->getIdCursoGrupo()->getIdCurso()->getNombreCorto() . '/' . $avance .  '.html.twig', array(
             'inscripcion'   => $inscripcion,
             'cursoModulo'   => $cursoModulo,
             'avance'        => $avance,
-            'temaActual'    => $temaActual
+            'temaActual'    => $temaActual,
+            'logros'        => $logros
                 
         ));
         

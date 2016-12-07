@@ -1133,13 +1133,15 @@
                     Logros disponibles en este Nivel:
                     </div>
                         <div class="col-lg-7">
-                    <div class="tooltip-demo">
-                    <button id="conceptos" class="btn btn-warning btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Conceptos de GIT"><i class="fa fa-book"></i>
-                    </button>
-                    <button id="comandos" class="btn btn-primary btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Primeros Comandos en GIT"><i class="fa fa-terminal"></i>
-                    </button>
-                    <button id="logro_quiz" class="btn btn-success btn-circle btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Primera Evaluación"><i class="fa fa-check-circle-o"></i>
-                    </button>
+                    <div class="tooltip-demo"> 
+                        {% for logro in logros %}
+                        <span id="{{ logro.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logro.nombre }}" class="fa-stack fa-2x  has-badge" data-count="{{ logro.badge }}">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-{{ logro.imagen }} fa-stack-1x fa-inverse"></i>
+                        </span>
+                        {% endfor %}
+                        
+                                                      
                     
                         </div>
                             </div>
@@ -1346,7 +1348,7 @@
                     $("#btnQuiz").prop('disabled', false);
                     $("#btnQuiz").attr('disabled', false);
                     toastr.info("Primeros comandos en GIT",'Logro Desbloqueado!');
-                    $("#comandos").removeClass("btn-outline").addClass("btn-primary-done animated rubberBand");
+                    $("#comandos").removeClass("fa-inverse").addClass("text-warning animated rubberBand");
                     toastr.success("Quiz Disponible",'Felicitaciones, has desbloqueado el Quiz de este nivel!');           
                 }
 
