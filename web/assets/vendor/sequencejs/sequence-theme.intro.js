@@ -218,8 +218,11 @@ mySequence.animationStarted = function(id, sequence) {
            data: data,
            //timeout: 50000,
            success: function (data) {
-                    
-                   alert("exito");
+                    if($('.progress-bar').attr('aria-valuenow') < 30){
+                        $('.progress-bar').css('width', '30%');
+                        $('.stat-percent').html('30%');
+                    }
+                    console.log(data);                   
                    /*if(posts.length > 0)
                     {
                         var html = "";
@@ -229,7 +232,7 @@ mySequence.animationStarted = function(id, sequence) {
                         }
                         $("#contador_solicitudes").append(html);
                     }*/
-                   $("#contador_solicitudes").html(posts);
+                   //$("#contador_solicitudes").html(posts);
                     //setTimeout(waitForMsg, 60000);
             },
            error: function (XMLHttpRequest, textStatus, errorThrown) { 

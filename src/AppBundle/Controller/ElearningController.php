@@ -63,20 +63,23 @@ class ElearningController extends Controller {
      */
     public function cursoProgramacionAction(Inscripcion $inscripcion, $avance, Request $request){
         
+        $tema = $inscripcion->getAvances()->last();                                            
         $cursoModulo = $this->getDoctrine()->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
         $temaActual = $this->getDoctrine()->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
            'idCursoModulo'  => $cursoModulo,
-            'orden'         => $avance
+            'orden'         => $tema->getIdCursoModuloTema()
         ));
-        
-        $logros = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findByIdCursoModuloTema($temaActual);
+                
+        $logrosObtenidos = $this->getDoctrine()->getRepository("AppBundle:InscripcionLogro")->findAll();                                        
+        $logrosDisponibles = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findByIdCursoModuloTema($tema->getIdCursoModuloTema());
         
         return $this->render('elearning/' . $inscripcion->getIdCursoGrupo()->getIdCurso()->getNombreCorto() . '/' . $avance .  '.html.twig', array(
-            'inscripcion'   => $inscripcion,
-            'cursoModulo'   => $cursoModulo,
-            'avance'        => $avance,
-            'temaActual'    => $temaActual,
-            'logros'        => $logros
+            'inscripcion'       => $inscripcion,
+            'cursoModulo'       => $cursoModulo,
+            'avance'            => $avance,
+            'temaActual'        => $tema->getIdCursoModuloTema(),
+            'logrosDisponibles' => $logrosDisponibles,
+            'logrosObtenidos'   => $logrosObtenidos,            
                 
         ));
         

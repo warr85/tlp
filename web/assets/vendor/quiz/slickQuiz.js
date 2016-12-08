@@ -634,9 +634,15 @@
                     alert(levelRank);
                     if (levelRank < 3){
                         toastr.info("Felicidades, has terminado el QUIZ y has conseguido todos los logros de este nivel.",'Quiz Terminado!');
+                        $('.progress-bar').css('width', '100%');
+                        $('.stat-percent').html('100%');
+                        $('.progress-bar').attr('aria-valuenow', '100');
                         $("#logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
                     }else if (levelRank < 4 ){
                         toastr.warning("Quiz terminado, debes practicar un poco mas, pero puedes avanzar.",'Quiz Terminado!');
+                        $('.progress-bar').css('width', '100%');
+                        $('.stat-percent').html('100%');
+                        $('.progress-bar').attr('aria-valuenow', '100');
                         $("#logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
                     }else{
                          toastr.error("Debemos repasar nuevamente los conceptos que rodean GIT.",'Debemos intentar nuevamente!');                        
