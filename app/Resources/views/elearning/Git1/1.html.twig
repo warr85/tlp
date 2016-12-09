@@ -389,7 +389,7 @@
 
                                         <p>Tipos de VCS: (hacer clic para ver animación)</p>
                                         <a id="animacion_local" href="#" data-toggle="modal" data-target=".bs-modal-video"  class="seq-button seq-button-highlight">Local<i class="fa fa-laptop"></i></a>
-                                        <a href="#" class="seq-button seq-button-link">Centralizado<i class="fa fa-download"></i></a>
+                                        <a href="#" data-toggle="modal" data-target=".bs-modal-video2" class="seq-button seq-button-link">Centralizado<i class="fa fa-download"></i></a>
                                         <a href="#"  class="seq-button seq-button-highlight">Distribuido <i class="fa fa-github"></i></a>
                                     </div>
 
@@ -1305,6 +1305,22 @@
                         
                         
     <div class="modal fade bs-modal-video" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <video id="myMoov" poster="{{ asset('assets/vendor/moovly/videos/local.jpg') }}"  width="854" height="481" class="video-js vjs-default-skin vjs-big-play-centered vjs-controls-enabled vjs-has-started vjs-user-active" controls preload="none" data-setup='{"children": { "loadingSpinner": true, "controlBar": { "children": {"currentTimeDisplay": false, "timeDivider": false, "durationDisplay": false ,"volumeControl":false, "muteToggle":false}}}}'>                    
+                    <source src="{{ asset('assets/vendor/moovly/videos/local.webm') }}" type='video/webm'/>
+                    <source src="{{ asset('assets/vendor/moovly/videos/local.mp4') }}" type='video/mp4'/>
+                    <source src="{{ asset('assets/vendor/moovly/videos/local.ogg') }}" type='video/ogg'/>
+                    <p class="vjs-no-js">Para poder ver este video, necesita tener habilitado javascript y un navegador actualizado <a href="http://videojs.com/html5-video-support/" target="_blank">que soporte video con HTML 5</a></p>
+                </video>
+
+            </div>
+        </div>
+    </div>
+                    
+                    
+    <div class="modal fade bs-modal-video2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
