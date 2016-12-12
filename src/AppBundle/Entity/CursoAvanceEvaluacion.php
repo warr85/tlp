@@ -63,26 +63,7 @@ class CursoAvanceEvaluacion
     
     
     
-    /**
-     * @ORM\Column(type="datetime", nullable=false)
-     *
-     * @var \DateTime
-     */
-    private $FechaPago;
     
-             
-    
-    
-    
-    /**
-     * @var \AppBundle\Entity\FormaPago
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FormaPago")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_forma_pago", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $idFormaPago;
         
     
 
@@ -106,28 +87,7 @@ class CursoAvanceEvaluacion
         $this->resultados = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Set FechaPago
-     *
-     * @param \DateTime $fechaPago
-     * @return CursoAvanceEvaluacion
-     */
-    public function setFechaPago($fechaPago)
-    {
-        $this->FechaPago = $fechaPago;
-
-        return $this;
-    }
-
-    /**
-     * Get FechaPago
-     *
-     * @return \DateTime 
-     */
-    public function getFechaPago()
-    {
-        return $this->FechaPago;
-    }
+   
 
     /**
      * Get id
@@ -241,26 +201,5 @@ class CursoAvanceEvaluacion
         return $this->resultados;
     }
 
-    /**
-     * Set idFormaPago
-     *
-     * @param \AppBundle\Entity\FormaPago $idFormaPago
-     * @return CursoAvanceEvaluacion
-     */
-    public function setIdFormaPago(\AppBundle\Entity\FormaPago $idFormaPago)
-    {
-        $this->idFormaPago = $idFormaPago;
-
-        return $this;
-    }
-
-    /**
-     * Get idFormaPago
-     *
-     * @return \AppBundle\Entity\FormaPago 
-     */
-    public function getIdFormaPago()
-    {
-        return $this->idFormaPago;
-    }
+   
 }
