@@ -1222,6 +1222,9 @@
                             <a class="next_class btn btn-success" id="next_class" <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente Clase!</a>
                                 <input id="inscripcion" type="hidden" value="{{ inscripcion.id }}" />
                                 <input id="url_ajax" type="hidden" value="{{ url('ajax_progreso') }}" />
+                                <input id="url_avance" type="hidden" value="{{ url('ajax_avance') }}" />
+                                <input id="tema_actual" type="hidden" value="{{ temaActual.id }}" />
+                                <input id="url_evaluacion" type="hidden" value="{{ url('ajax_evaluacion') }}" />
                             <div class="quizResultsCopy">
                                 <!-- where the quiz result copy goes -->
                             </div>

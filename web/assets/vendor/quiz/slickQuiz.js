@@ -637,13 +637,143 @@
                         $('.progress-bar').css('width', '100%');
                         $('.stat-percent').html('100%');
                         $('.progress-bar').attr('aria-valuenow', '100');
-                        $("#logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
+                        $("#logro_quiz").removeClass('fa-inverse').addClass('text-warning animated rubberBand');
+                        var data = {inscripcion : $('#inscripcion').val(), logro: 3, tema : $('#tema_actual').val()};
+                        var urlLogro = $('#url_ajax').val();
+                        var urlAvance = $('#url_avance').val();
+                        var urlEvaluacion = $('#url_evaluacion').val();
+                        $.ajax({
+                             method: "GET",
+                             url: urlLogro,
+                             async: true,
+                             cache: false,
+                             data: data,
+                             //timeout: 50000,
+                             success: function (data) {
+                                      $('.progress-bar').css('width', '100%');
+                                      $('.stat-percent').html('100%');
+                                      console.log(data);                   
+                                     /*if(posts.length > 0)
+                                      {
+                                          var html = "";
+                                          for(d in posts)
+                                          {
+                                              html += "<p>" + JSON.stringify(posts[d]) + "</p>";
+                                          }
+                                          $("#contador_solicitudes").append(html);
+                                      }*/
+                                     //$("#contador_solicitudes").html(posts);
+                                      //setTimeout(waitForMsg, 60000);
+                              },
+                             error: function (XMLHttpRequest, textStatus, errorThrown) { 
+                                   console.log(errorThrown, textStatus, XMLHttpRequest);
+                                   //setTimeout(waitForMsg, 300000);
+
+                             }
+
+                         });
+                         
+                         $.ajax({
+                             method: "GET",
+                             url: urlAvance,
+                             async: true,
+                             cache: false,
+                             data: data,
+                             //timeout: 50000,
+                             success: function (data) {
+                                      $('.progress-bar').css('width', '100%');
+                                      $('.stat-percent').html('100%');
+                                      console.log(data);                   
+                                     /*if(posts.length > 0)
+                                      {
+                                          var html = "";
+                                          for(d in posts)
+                                          {
+                                              html += "<p>" + JSON.stringify(posts[d]) + "</p>";
+                                          }
+                                          $("#contador_solicitudes").append(html);
+                                      }*/
+                                     //$("#contador_solicitudes").html(posts);
+                                      //setTimeout(waitForMsg, 60000);
+                              },
+                             error: function (XMLHttpRequest, textStatus, errorThrown) { 
+                                   console.log(errorThrown, textStatus, XMLHttpRequest);
+                                   //setTimeout(waitForMsg, 300000);
+
+                             }
+
+                         });
+                         var data2 = {inscripcion : $('#inscripcion').val(), logro: 3, tema : $('#tema_actual').val(), score: displayScore};
+                         $.ajax({
+                             method: "GET",
+                             url: urlEvaluacion,
+                             async: true,
+                             cache: false,
+                             data: data2,
+                             //timeout: 50000,
+                             success: function (data) {
+                                      $('.progress-bar').css('width', '100%');
+                                      $('.stat-percent').html('100%');
+                                      console.log(data);                   
+                                     /*if(posts.length > 0)
+                                      {
+                                          var html = "";
+                                          for(d in posts)
+                                          {
+                                              html += "<p>" + JSON.stringify(posts[d]) + "</p>";
+                                          }
+                                          $("#contador_solicitudes").append(html);
+                                      }*/
+                                     //$("#contador_solicitudes").html(posts);
+                                      //setTimeout(waitForMsg, 60000);
+                              },
+                             error: function (XMLHttpRequest, textStatus, errorThrown) { 
+                                   console.log(errorThrown, textStatus, XMLHttpRequest);
+                                   //setTimeout(waitForMsg, 300000);
+
+                             }
+
+                         });
                     }else if (levelRank < 4 ){
                         toastr.warning("Quiz terminado, debes practicar un poco mas, pero puedes avanzar.",'Quiz Terminado!');
                         $('.progress-bar').css('width', '100%');
                         $('.stat-percent').html('100%');
                         $('.progress-bar').attr('aria-valuenow', '100');
                         $("#logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
+                        var data = {inscripcion : $('#inscripcion').val(), logro: 3};
+                        var url = $('#url_ajax').val();
+                        $.ajax({
+                             method: "GET",
+                             url: url,
+                             async: true,
+                             cache: false,
+                             data: data,
+                             //timeout: 50000,
+                             success: function (data) {
+                                     
+                                    $('.progress-bar').css('width', '100%');
+                                    $('.stat-percent').html('100%');
+                                      
+                                      console.log(data);                   
+                                     /*if(posts.length > 0)
+                                      {
+                                          var html = "";
+                                          for(d in posts)
+                                          {
+                                              html += "<p>" + JSON.stringify(posts[d]) + "</p>";
+                                          }
+                                          $("#contador_solicitudes").append(html);
+                                      }*/
+                                     //$("#contador_solicitudes").html(posts);
+                                      //setTimeout(waitForMsg, 60000);
+                              },
+                             error: function (XMLHttpRequest, textStatus, errorThrown) { 
+                                   console.log(errorThrown, textStatus, XMLHttpRequest);
+                                   //setTimeout(waitForMsg, 300000);
+
+                             }
+
+                         });
                     }else{
                          toastr.error("Debemos repasar nuevamente los conceptos que rodean GIT.",'Debemos intentar nuevamente!');                        
                          $quizResultsCopy.append('<p><a class="button ' + tryAgainClass + '" href="#">' + plugin.config.tryAgainText + '</a></p>');
