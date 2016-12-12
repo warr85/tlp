@@ -63,12 +63,13 @@ class ElearningController extends Controller {
      */
     public function cursoProgramacionAction(Inscripcion $inscripcion, $avance, Request $request){
         
-        $tema = $inscripcion->getAvances()->last();                                            
+        $tema = $inscripcion->getAvances()->first();
+        
         $cursoModulo = $this->getDoctrine()->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
-        $temaActual = $this->getDoctrine()->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
+        /*$temaActual = $this->getDoctrine()->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
            'idCursoModulo'  => $cursoModulo,
             'orden'         => $tema->getIdCursoModuloTema()
-        ));
+        ));*/
                 
         $logrosObtenidos = $this->getDoctrine()->getRepository("AppBundle:InscripcionLogro")->findAll();                                        
         $logrosDisponibles = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findByIdCursoModuloTema($tema->getIdCursoModuloTema());
