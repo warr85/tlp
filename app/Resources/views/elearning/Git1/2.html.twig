@@ -2,12 +2,13 @@
 
 {% block stylesheets %} 
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/terminal/jquery.terminal.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/FileTree/css/file-tree.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/terminal/jquery.terminal.css') }}">    
     <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/bombillo.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/sequencejs/sequence-theme.intro.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/elfinder.full.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/theme.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/slickQuiz.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/master.css') }}">
@@ -139,14 +140,13 @@
                                     <h3>Obteniendo un Repositorio.</h3>
 
                                     <div class="seq-step">
-                                        <p>Bienvenido al reto número 2: <code>Repositorio GIT</code>
-                                            Podemos obtener un proyecto GIT de dos maneras.<br>
-                                            La primera sería tener un proyecto o un directorio
-                                            e importarlo con GIT.<br>  La segunda sería "clonar"
-                                            un repositorio Git existente desde otro servidor.
-                                            
+                                        <p>
+                                            Podemos obtener un proyecto GIT de dos maneras.
+                                            La primera sería tener un proyecto o un directorio (carpeta)
+                                            e inicializarlo con GIT.<br>  La segunda manera sería "clonar"
+                                            un repositorio Git existente desde otro servidor.                                            
                                             <a href="#" title="" class="seq-next">
-                                                Ir al primer Paso →</a>
+                                                Primera manera →</a>
                                         </p>
                                     </div>
                                 </div>
@@ -215,10 +215,10 @@
                                     <div class="seq-step">                                        
                                         
                                         <p>
-                                            Si queremos comenzar a seguir, mantener, vigilar
-                                            un proyecto con GIT, necesitamos ubicarnos en
-                                            ese directorio y escribir el comando 
-                                            <code>git init</code><br>
+                                            Si queremos comenzar a seguir, mantener y/o vigilar
+                                            un proyecto con GIT, necesitamos ubicarnos 
+                                            primeramente dentro de ese directorio y escribir 
+                                            el comando <code>git init</code><br>
                                             para nuestro ejemplo, vamos a empezar
                                             a crear un repositorio Git en un
                                             directorio denominado "Octonautas"
@@ -1256,7 +1256,7 @@
                 </div>
                 <div class="ibox-content profile-content">
 
-                    <div id="fixed-tree"></div>
+                    <div id="elfinder"></div>
                 </div>
             </div>
         </div>
@@ -1325,28 +1325,60 @@
 
 {% block javascripts %} 
     {{ parent() }}    
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{ asset('assets/vendor/elfinder/js/elfinder.full.js') }}"type="text/javascript" ></script>
+    <script src="{{ asset('assets/vendor/elfinder/js/i18n/elfinder.es.js') }}"type="text/javascript" ></script>
     <script src="{{asset('assets/vendor/terminal/jquery.terminal-min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendor/terminal/jquery.mousewheel-min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendor/FileTree/js/file-tree.min.js')}}" type="text/javascript"></script>    
+    <script src="{{asset('assets/vendor/terminal/jquery.mousewheel-min.js')}}" type="text/javascript"></script>    
     <script src="{{asset('assets/vendor/sequencejs/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>    
     <script src="{{asset('assets/vendor/sequencejs/hammer.min.js')}}" type="text/javascript"></script>    
     <script src="{{asset('assets/vendor/sequencejs/sequence.min.js')}}" type="text/javascript"></script>    
     <script src="{{asset('assets/vendor/sequencejs/sequence-theme.intro.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/modernizr/modernizr.2.5.3.min.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/steps/jquery.steps.min.js')}}" type="text/javascript"></script>  
-
+    <script src="{{asset('assets/vendor/steps/jquery.steps.min.js')}}" type="text/javascript"></script>      
     <script src="{{asset('assets/vendor/quiz/slickQuiz-config.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/quiz/slickQuiz.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/quiz/master.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/toastr/toastr.min.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/moovly/js/videojs/video.js')}}" type="text/javascript"></script>      
+    <script src="{{asset('assets/vendor/moovly/js/videojs/video.js')}}" type="text/javascript"></script>
 
 
 
     <script type="text/javascript">
 
         jQuery(function ($) {
+            
+            
+            $('#elfinder').elfinder({
+					url : "{{ asset('assets/vendor/elfinder/php/connector.minimal.php')}}", 
+					lang: 'es',
+                                        height: 200,
+					uiOptions: {
+                    toolbar : [
+                        // toolbar configuration
+                        ['open'],                                              
+                        ['info'],
+                        ['quicklook'],                                                                        
+                        ['view'],
+                        ['help']
+                    ]
+                },
+                
+                contextmenu : {
+    // navbarfolder menu
+    navbar : ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+
+    // current directory menu
+    cwd    : [ 'back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
+
+    // current directory file menu
+    files  : [
+        'open', 'quicklook', '|',
+        'rm', '|', 'edit', 'rename', 'info'
+    ]
+},
+				});
             
            toastr.options = {
             "closeButton": true,
@@ -1437,37 +1469,10 @@
             }, {
                 greetings: 'Interprete de Comandos del Curso, --help-- para ayuda de comandos',
                 name: 'curso_git',
-                prompt: 'curso_git$> ',
-                onBlur: function () {
-                    return false;
-                }
+                prompt: 'curso_git$> '
+                
             });
-            var data = [{
-                    id: 'dir-1',
-                    name: 'Octonautas',
-                    type: 'dir',
-                    children: [
-                        {
-                            id: 'dir-2',
-                            name: 'Sub_dir',
-                            type: 'dir',
-                            children: [{
-                                    id: 'file-1',
-                                    name: 'file-tree-master.zip',
-                                    type: 'zip',
-                                    url: 'http://www.jqueryscript.net/other/Nice-File-Tree-View-Plugin-with-jQuery-Bootstrap-File-Tree.html'
-                                }]
-                        }, {
-                            id: 'file-2',
-                            name: 'File tree',
-                            type: 'zip',
-                            url: 'http://www.jqueryscript.net/other/Nice-File-Tree-View-Plugin-with-jQuery-Bootstrap-File-Tree.html'
-                        }
-                    ]
-                }];
-            $('#fixed-tree').fileTree({
-                data: data
-            });
+            
             
             
                          
