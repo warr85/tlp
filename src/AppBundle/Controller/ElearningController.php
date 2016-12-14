@@ -73,7 +73,10 @@ class ElearningController extends Controller {
                 
         $logrosObtenidos = $this->getDoctrine()->getRepository("AppBundle:InscripcionLogro")->findAll();                                        
         $logrosDisponibles = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findByIdCursoModuloTema($temaActual->getId());
-        
+        $directorio = $this->get('kernel')->getRootDir() . '/../web/assets/vendor/elfinder/octonautas/' .$this->getUser()->getUserName();    
+        if(!file_exists($directorio)){
+            mkdir($directorio);
+        }
         return $this->render('elearning/' . $inscripcion->getIdCursoGrupo()->getIdCurso()->getNombreCorto() . '/' . $avance .  '.html.twig', array(
             'inscripcion'       => $inscripcion,
             'cursoModulo'       => $cursoModulo,
@@ -84,7 +87,7 @@ class ElearningController extends Controller {
             'logrosObtenidos'   => $logrosObtenidos,   
             'currentDirName'    => "octonauta",
             'currentUser'       => $this->getUser()->getUserName(),
-            'currentDir'        => $this->get('kernel')->getRootDir() . '/../web' . $this->getRequest()->getBasePath()    
+            'currentDir'        => $directorio     
         ));
         
     }

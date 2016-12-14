@@ -86,6 +86,10 @@ elFinder::$netDrivers['ftp'] = 'FTP';
  * @param  string  $path  file path relative to volume root directory started with directory separator
  * @return bool|null
  **/
+
+//if(isset($_GET['user'])) $path = $_GET['user'];
+$user = filter_input(INPUT_GET, 'user', FILTER_SANITIZE_SPECIAL_CHARS);
+
 function access($attr, $path, $data, $volume) {
 	return strpos(basename($path), '.') === 0       // if file/folder begins with '.' (dot)
 		? !($attr == 'read' || $attr == 'write')    // set read+write to false, other (locked+hidden) set to true
@@ -100,7 +104,7 @@ $opts = array(
 	'roots' => array(
 		array(
 			'driver'        => 'LocalFileSystem',           // driver for accessing file system (REQUIRED)
-			'path'          => '../octonautas/',                 // path to files (REQUIRED)
+			'path'          => '../octonautas/' . $user,                 // path to files (REQUIRED)
 			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../octonautas/', // URL to files (REQUIRED)
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
 			'uploadAllow'   => array('image', 'text/plain'),// Mimetype `image` and `text/plain` allowed to upload
