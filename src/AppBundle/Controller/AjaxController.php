@@ -183,5 +183,177 @@ class AjaxController extends Controller {
     }
     
     
+    /**
+     * @Route("/console", name="ajax_console")
+     * @Method({"GET"})
+     */
+    public function consoleAction(Request $request){
+        
+        if($request->isXmlHttpRequest()){
+            
+            /**
+             * array of allowed commands. Default: empty array (all are allowed)
+             * You can use * for any symbol.
+             * Example: "branch*" will allow both "branch" and "branch -v" commands
+             */
+            $allow = array();
+
+            /**
+             * array of denied commands. Default: empty array (none is denied)
+             * You can use * for any symbol.
+             */
+            $deny = array(
+                "rm*",
+            );
+            
+            
+             
+            
+            $encoders = array(new JsonEncoder());
+            $normalizers = array(new ObjectNormalizer());
+ 
+            $serializer = new Serializer($normalizers, $encoders);
+ 
+            $em = $this->getDoctrine()->getManager();
+            $parametros = $this->getRequest()->query->all();
+            
+            $currentDir = $parametros['cd'];
+            $allowChangeDir = true;           
+            
+            $userCommand = urldecode($parametros['command']);
+            $userCommand = escapeshellcmd($userCommand);
+            
+            
+            
+            $commands = array(
+                'git*' => '/usr/bin/git $1',
+                'composer*' => '/usr/local/bin/composer $1',
+                'symfony*' => './app/console $1',
+                '*' => '$1', // Allow any command. Must be at the end of the list.
+            );
+            
+            $response = new JsonResponse();
+            $response->setStatusCode(200);
+            
+            if (!empty($allow)) {
+                if (!searchCommand($userCommand, $allow)) {
+                    $these = implode('<br>', $allow);
+                    $error = "<span class='error'>Sorry, but this command not allowed. Try these:<br>{$these}</span>\n";
+                    $response->setData(array(
+                        'response'      => 'success',
+                        'parametros'    => $userCommand,
+                        'error'         => $error,                       
+                    ));
+                    return $response;
+                }
+            }
+
+            // Check command by deny list.
+            if (!empty($deny)) {
+                //var_dump($deny); exit;
+                if (searchCommand($userCommand, $deny)) {
+                    $error = "<span class='error'>Lo sentimos, pero este comando no está permitido.</span>\n";
+                    $response->setData(array(
+                        'response'      => 'success',
+                        'parametros'    => $userCommand,
+                        'error'         => $error,
+                        'salida'        => ""
+                    ));
+                    return $response;
+                }
+            }
+            
+            if ($allowChangeDir && 1 === preg_match('/^cd\s+(?<path>.+?)$/i', $userCommand, $matches)) {
+                
+                
+                $newDir = $matches['path'];
+                $newDir = '/' === $newDir[0] ? $newDir : $currentDir . '/' . $newDir;                
+                if (is_dir($newDir)) {
+                    $newDir = realpath($newDir);
+                    // Interface will recognize this and save as current dir.
+                    $salida = "set current directory $newDir";
+                    $response->setData(array(
+                        'response'      => 'success',
+                        'parametros'    => $userCommand,
+                        'salida'         => $salida,                       
+                    ));
+                    return $response;                    
+                } else {
+                    $salida = "<span class='error'>cd: $newDir: No such directory.</span>\n";
+                    $response->setData(array(
+                        'response'      => 'success',
+                        'parametros'    => $userCommand,
+                        'salida'         => $salida,                       
+                    ));
+                    return $response;  
+                }
+            }
+            
+            
+                        
+            $userCommand = "cd $currentDir && $userCommand";
+            
+            $descriptors = array(
+                0 => array("pipe", "r"), // stdin - read channel
+                1 => array("pipe", "w"), // stdout - write channel
+                2 => array("pipe", "w"), // stdout - error channel
+                3 => array("pipe", "r"), // stdin - This is the pipe we can feed the password into
+            );
+
+    $process = proc_open($userCommand, $descriptors, $pipes);
+
+    if (!is_resource($process)) {
+        die("Can't open resource with proc_open.");
+    }
+
+    // Nothing to push to input.
+    fclose($pipes[0]);
+
+    $output = stream_get_contents($pipes[1]);
+    fclose($pipes[1]);
+
+    $error = stream_get_contents($pipes[2]);
+    fclose($pipes[2]);
+
+    // TODO: Write passphrase in pipes[3].
+    fclose($pipes[3]);
+
+    // Close all pipes before proc_close!
+    $code = proc_close($process);
+
     
+            
+            //var_dump($parametros); exit;
+                        
+            $response->setData(array(
+                'response'      => 'success',
+                'parametros'    => $userCommand,
+                'salida'        => $output,
+                'error'         => $error,
+                'code'          => $code
+            ));
+            return $response;
+        }
+        
+        
+    }
+    
+    
+    
+}
+
+
+function searchCommand($userCommand, array $commands, &$found = false, $inValues = true)
+{
+    foreach ($commands as $key => $value) {
+        list($pattern, $format) = $inValues ? array($value, '$1') : array($key, $value);
+        $pattern = '/^' . str_replace('\*', '(.*?)', preg_quote($pattern)) . '$/i';
+        if (preg_match($pattern, $userCommand)) {
+            if (false !== $found) {
+                $found = preg_replace($pattern, $format, $userCommand);
+            }
+            return true;
+        }
+    }
+    return false;
 }

@@ -81,8 +81,10 @@ class ElearningController extends Controller {
             'temaActual'        => $temaActual,
             'temaCurso'         => $tema->getIdCursoModuloTema(),
             'logrosDisponibles' => $logrosDisponibles,
-            'logrosObtenidos'   => $logrosObtenidos,            
-                
+            'logrosObtenidos'   => $logrosObtenidos,   
+            'currentDirName'    => "octonauta",
+            'currentUser'       => $this->getUser()->getUserName(),
+            'currentDir'        => $this->get('kernel')->getRootDir() . '/../web' . $this->getRequest()->getBasePath()    
         ));
         
     }

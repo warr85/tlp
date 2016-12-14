@@ -25,12 +25,72 @@
         }
 
         .acomodar{
-            margin-top: 10px;                        
+            margin-top: 10px;             
         }
 
         .seq {
             z-index: 1;
         }
+        
+        
+    #console {
+        margin: 0;
+        padding: 0;
+        display: table;
+        width: 100%;
+        white-space: nowrap;
+        color: #FFFFFF;
+        background-color: #281022;
+        height: 15px;        
+    }
+    
+    #console-panel{
+        background-color: #281022; 
+        overflow-y: scroll;
+        height: 250px;
+    }
+    
+   
+    #console div {
+        display: table-cell;
+        width: auto;
+    }
+
+    #console #command {
+        width: 100%;
+    }
+
+    #console input {
+        border: none;
+        outline: none;
+        background: transparent;
+        width: 100%;
+    }
+
+    #console input:focus {
+        outline: none;
+    }
+    
+    #preConsole {
+        border: none;
+        margin:0;
+        padding-top: 50px;
+        white-space: pre;
+        background-color: #281022;
+        color: white;
+    }
+
+    #preCode {
+        color: gray;
+        font-family: inherit;
+        font-size: inherit;
+    }
+    
+    .error {
+        color: red;
+    }
+        
+        
 
     </style>
 
@@ -1240,11 +1300,16 @@
 
     <div class="row">
         <div class="col-lg-7 acomodar" id="tour4">
-            <div id="sequence" class="seq">
+            <div id="console-panel" class="seq">
 
                 <div class="seq-screen">
 
-                    <div id="terminal"></div>
+                    <pre id="preConsole"></pre>
+                    <form id="console">
+                        <div id="currentDirName">{{ currentDirName }}/ </div>
+                        <div>{{ currentUser }}$></div>
+                        <div id="command"><input id="inputConsole" type="text" value=""></div>
+                    </form>
 
                 </div>
             </div>
@@ -1367,38 +1432,115 @@
 
 
     <script type="text/javascript">
+        
+        /**
+     * Windows variables.
+     */
+    window.currentDir = '{{ currentDir }}';
+    window.currentDirName = window.currentDir.split('/').pop();
+    window.currentUser = '{{ currentUser }}';
+    window.titlePattern = "* — console";
+    window.document.title = window.titlePattern.replace('*', window.currentDirName);
 
         jQuery(function ($) {
+          
+            
+        var screen = $('#preConsole');
+        var input = $('#inputConsole').focus();
+        var form = $('#console');
+        var scroll = function () {
+            window.scrollTo(0, document.body.scrollHeight);
+        };
+        //input.history();
+        //input.autocomplete(<?php echo json_encode($autocomplete); ?>);
+        form.submit(function () {
+            
+            
+            var command = $.trim(input.val());
+            if (command == '') {               
+                return false;
+            }
+
+            $("<code id='preCode'>" + window.currentDirName + "&nbsp;" + window.currentUser + "$&nbsp;" + command + "</code><br>").appendTo(screen);
+            
+            //scroll();
+            input.val('');
+            form.hide();
+            //input.addHistory(command);
+           var data3 = {command: command, cd: window.currentDir};
+           $.ajax({
+                        method: "GET",
+                        url: "{{ url('ajax_console') }}",
+                        async: true,
+                        cache: false,
+                        data: data3,
+                        //timeout: 50000,
+                        success: function (data) {
+                                console.log(data);
+                                 
+                                var pattern = /^set current directory (.+?)$/i;
+                                if (matches = data.salida.match(pattern)) {
+                                    console.log(matches);
+                                    window.currentDir = matches[1];
+                                    window.currentDirName = window.currentDir.split('/').pop() + "/";
+                                    $('#currentDirName').text(window.currentDirName);
+                                    window.document.title = window.titlePattern.replace('*', window.currentDirName);
+                                }else{
+                                 
+                                 
+                                    if(data.salida !== ""){
+                                       screen.append(data.salida);
+                                   }else{
+                                       screen.append(data.error);
+                                   }
+                               }
+                         },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) { 
+                              console.log(errorThrown, textStatus, XMLHttpRequest);
+                              
+                              //setTimeout(waitForMsg, 300000);
+
+                        },
+                        complete: function(){
+                           form.show(); 
+                           $('#inputConsole').focus();
+                        }
+
+                    });
+            return false;
+        });
+            
+            
             
             $('#elfinder').elfinder({
-					url : "{{ asset('assets/vendor/elfinder/php/connector.minimal.php')}}", 
-					lang: 'es',
-                                        height: 200,
-					uiOptions: {
-                    toolbar : [
-                        // toolbar configuration
-                        ['open'],                                              
-                        ['info'],
-                        ['quicklook'],                                                                        
-                        ['view'],
-                        ['help']
-                    ]
-                },
+                    url : "{{ asset('assets/vendor/elfinder/php/connector.minimal.php')}}", 
+                    lang: 'es',
+                    height: 200,
+                    uiOptions: {
+                        toolbar : [
+                            // toolbar configuration
+                            ['open'],                                              
+                            ['info'],
+                            ['quicklook'],                                                                        
+                            ['view'],
+                            ['help']
+                        ]
+                     },
                 
-                contextmenu : {
-    // navbarfolder menu
-    navbar : ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+                    contextmenu : {
+                            // navbarfolder menu
+                            navbar : ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
 
-    // current directory menu
-    cwd    : [ 'back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
+                            // current directory menu
+                            cwd    : [ 'back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
 
-    // current directory file menu
-    files  : [
-        'open', 'quicklook', '|',
-        'rm', '|', 'edit', 'rename', 'info'
-    ]
-},
-				});
+                            // current directory file menu
+                            files  : [
+                                'open', 'quicklook', '|',
+                                'rm', '|', 'edit', 'rename', 'info'
+                            ]
+                    }
+            });
             
             
             
@@ -1614,12 +1756,7 @@
 
         $(document).ready(function () {
             
-            
-            
-            
-		
-            
-            
+
             videojs.options.flash.swf = "{{ asset('assets/vendor/moovly/js/videojs/video-js.swf') }}";
             alert(videojs);
             $contador = $("#contadorObtenidos").val();
@@ -1772,6 +1909,10 @@
             $guardado.show();
           });
 
+
+        $(window).load(function(e) {
+            $("#inputConsole").click();
+        });
 
     </script>
 
