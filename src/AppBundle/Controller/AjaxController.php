@@ -266,8 +266,31 @@ class AjaxController extends Controller {
             if ($allowChangeDir && 1 === preg_match('/^cd\s+(?<path>.+?)$/i', $userCommand, $matches)) {
                 
                 
-                $newDir = $matches['path'];
-                $newDir = '/' === $newDir[0] ? $newDir : $currentDir . '/' . $newDir;                
+                $newDir = $matches['path']; 
+                if($newDir[0] === '/'){
+                    $salida = "<span class='error'>cd: $newDir: No podemos ir a ese directorio, permiso denegado.</span>\n";
+                    $response->setData(array(
+                        'response'      => 'success',
+                        'parametros'    => $userCommand,
+                        'salida'         => $salida,                       
+                    ));
+                    return $response; 
+                }
+                if($newDir === '..'){
+                    $exploded = explode("/", $currentDir);
+                    $last = array_pop($exploded);
+                    if($last === $parametros['user']){
+                        $salida = "<span class='error'>cd: $newDir: No podemos salir de tu directorio de usuario, permiso denegado.</span>\n";
+                        $response->setData(array(
+                            'response'      => 'success',
+                            'parametros'    => $userCommand,
+                            'salida'         => $salida,                       
+                        ));
+                        return $response;
+                    }
+                }
+                $newDir = $currentDir . '/' . $newDir;
+                           
                 if (is_dir($newDir)) {
                     $newDir = realpath($newDir);
                     // Interface will recognize this and save as current dir.
