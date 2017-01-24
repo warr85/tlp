@@ -1480,10 +1480,11 @@
                                     window.currentDirName = window.currentDir.split('/').pop() + "/";
                                     $('#currentDirName').text(window.currentDirName);
                                     window.document.title = window.titlePattern.replace('*', window.currentDirName);
-                                }else{
-                                 
-                                 
-                                    if(data.salida !== ""){
+                                }else{                                                                  
+                                    if(data.salida !== ""){                                        
+                                        if (data.comando.match($gitVersion)) {
+                                            toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');                                            
+                                        }
                                        screen.append(data.salida);
                                    }else{
                                        screen.append(data.error);
@@ -1576,6 +1577,7 @@
             
             $('#terminal').terminal(function (command, term) {
                 var $inter = evaluar(command);
+                
                 if ($inter.chk === true) {
                     term.echo("[[;green;]" + $inter.out + "]");
                     setTimeout(function () {
@@ -1693,12 +1695,14 @@
         var email = "";
         function evaluar(c) {
             var $w = {};
+            console.log(c);
+            console.log(c.match($gitVersion));
             if (c.match($gitVersion)) {
                 if ($c === 0) {
                     $c = 1;
-                    $w = JSON.stringify({out: "git version 2.10.2", chk: true, msg: "Has ejecutado tu primer comando en git.  FELICITACIONES"});
+                    $w = JSON.stringify({out: "git version 2.11.0", chk: true, msg: "Has ejecutado tu primer comando en git.  FELICITACIONES"});
                 } else if ($c > 0) {
-                    $w = JSON.stringify({out: "git version 2.10.2", chk: "done", msg: "El Comando GIT --VERSION ya lo has ejecutado"});
+                    $w = JSON.stringify({out: "git version 2.11.0", chk: "done", msg: "El Comando GIT --VERSION ya lo has ejecutado"});
                 }
                 var respuesta = JSON.parse($w);
                 return (respuesta);

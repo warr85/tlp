@@ -313,7 +313,7 @@ class AjaxController extends Controller {
             }
             
             
-                        
+            $comando = $userCommand;
             $userCommand = "cd $currentDir && $userCommand";
             
             $descriptors = array(
@@ -353,7 +353,8 @@ class AjaxController extends Controller {
                 'parametros'    => $userCommand,
                 'salida'        => $output,
                 'error'         => $error,
-                'code'          => $code
+                'code'          => $code,
+                'comando'       => $comando
             ));
             return $response;
         }
