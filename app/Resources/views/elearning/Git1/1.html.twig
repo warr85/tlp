@@ -202,7 +202,7 @@
                                             configurarlo y hacerlo funcionar.  
                                             Descuida, intentaremos hacerlo lo menos aburrido
                                             posible <a href="#" title="" class="seq-next">
-                                                go to the next step →</a>
+                                                Siguiente lámina →</a>
                                         </p>
                                     </div>
                                 </div>
@@ -211,45 +211,7 @@
                         </li>
 
                         <li class="seq-step2" id="step2">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>.seq-out .content {</span>
-                                            <span class="seq-code-1">transform: translateY(-100%);</span>
-                                            <span class="seq-code-1">transition: .2s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>.content {</span>
-                                            <span class="seq-code-1">transform: translateY(100%);</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>.seq-in .content {</span>
-                                            <span class="seq-code-1">transform: translateY(0);</span>
-                                            <span class="seq-code-1">transition: .25s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-                                </div>
-
-                            </div>
+                           
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
@@ -259,7 +221,7 @@
                                             <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
                                         </object>
 
-                                        <h2>Al Crear Contenido </h2>
+                                        <h2>Seres Creativos </h2>
 
                                         <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
                                             <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
@@ -268,9 +230,11 @@
 
 
 
-                                    <div class="seq-step">                                        
-                                        <h3>Actividades diarias cuando creas contenido</h3>
-                                        <p>Si eres un diseñador, una persona que trabaja con documentos, eres un desarrollador o alguién que escribe código, entonces has:</p>
+                                    <div class="seq-step">                                                                                
+                                        <p>
+                                            Si eres un diseñador, o trabajas editando documentos, 
+                                            eres un desarrollador o programador, entonces has pasado por estos pasos:
+                                        </p>
                                         <ul class="seq-examples">
                                             <li>
                                                 <object class="seq-scale seq-example" data="{{ asset('images/course/square.svg') }}" type="image/svg+xml">
@@ -301,6 +265,11 @@
                                             </li>
 
                                         </ul>
+                                        <p>
+                                            ¿verdad que si? y hasta has guardado el archivo con diferente nombre, 
+                                            no mientas.... jejejejeje. Eso es un sistema controlador de tus versiones
+                                            manual, 
+                                        </p>
 
 
                                     </div>
@@ -318,32 +287,7 @@
 
                                 <div class="seq-code">
 
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.seq-in .rotate {</span>
-                                            <span class="seq-code-1">animation-name: rotate;</span>
-                                            <span class="seq-code-1">animation-duration: 1s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.seq-in .fade {</span>
-                                            <span class="seq-code-1">animation-name: fade;</span>
-                                            <span class="seq-code-1">animation-duration: 1s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.seq-in .threed {</span>
-                                            <span class="seq-code-1">animation-name: threed;</span>
-                                            <span class="seq-code-1">animation-duration: 1s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -355,7 +299,7 @@
                                             <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
                                         </object>
 
-                                        <h2>¿ Sistema Controlador de Versiones (VCS)?</h2>
+                                        <h2>¿ Qué es un Controlador de Versiones ?</h2>
 
                                         <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
                                             <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
@@ -363,67 +307,104 @@
                                     </div>
 
                                     <div class="seq-step">
+                                        <img src="{{ asset('images/course/vcs.png') }}" class="center-block" width="150" height="120"/>
                                         <p> 
                                             Un Controlador de Versiones (VCS en inglés) 
                                             es un sistema que registra los cambios 
-                                            ocurridos durante la creación, guardado, 
-                                            editado y guardado nuevamente en uno o varios 
+                                            ocurridos durante la <strong>creación, guardado, 
+                                            editado y guardado</strong> nuevamente en uno o varios 
                                             archivos. 
                                         </p>
                                         <br>
-                                        <p class="seq-tip seq-bulb">
-                                            Tip: Al usar un controlador de versiones 
-                                            significa también que si te equivocas o pierdes
-                                            el/los archivo(s), puedes recuperarlos 
-                                            facilmente.
-                                        </p>
+                                        
                                     </div>
 
 
                                 </div>
                             </div>
                         </li>
-
-                        <li class="seq-step4" id="step4">
+                        
+                        
+                         <li class="seq-step4" id="step4">
                             <div class="seq-code-pane seq-valign">
 
                                 <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Mostar Código
+                                    <i class="fa fa-angle-double-up"></i> Show Code
                                 </button>
 
                                 <div class="seq-code">
 
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span><strong>Local</strong></span>
-                                            <span class="seq-code-1">Ocurre dentro de tu sólo computadora</span>                                           
-                                        </code>
-                                    </div>
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-
-                                            <span><strong>Centralizado</strong></span>
-                                            <span class="seq-code-1">Un Servidor Central</span>
-                                            <span class="seq-code-1">Multiple clientes</span>
-
-
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-
-                                            <span><strong>Distribuido</strong></span>
-                                            <span>Todas la máquinas tienen registro de los cambios</span>
-
-                                        </code>
-                                    </div>
+                                    
                                 </div>
 
                             </div>
+                            <div class="seq-content seq-valign" data-seq>
+
+                                <div class="seq-instruction">
+                                    <div class="seq-title">
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
+                                        </object>
+
+                                        <h2>Beneficios de usar VCS</h2>
+
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
+                                        </object>
+                                    </div>
+
+                                    <div class="seq-step">
+                                        <div>
+
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#colaboracion" aria-controls="colaboracion" role="tab" data-toggle="tab">Colaborar</a></li>
+                                                <li role="presentation"><a href="#restauracion" aria-controls="restauracion" role="tab" data-toggle="tab">Restaurar</a></li>
+                                                <li role="presentation"><a href="#conocer" aria-controls="conocer" role="tab" data-toggle="tab">Conocer</a></li>    
+                                                <li role="presentation"><a href="#respaldo" aria-controls="respaldo" role="tab" data-toggle="tab">Respaldar</a></li>    
+                                            </ul>
+
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade in active" id="colaboracion">
+                                                    Con un CVS puedes tu y tu equipo de trabajo pueden trabar libremente
+                                                    en el mismo archivo sin pisarse los pies y sin estar diciendo:
+                                                    "Esperen... nadie toque el archivo xyz que voy a realizar una modificación".
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="restauracion">
+                                                    Ser capaz de recuperar la versión anterior de un archivo (o incluso de todo
+                                                    un proyecto) significa que: <strong>Es casi imposible equivocarse</strong>, por
+                                                    lo que puedes trabajar mas relajado en secciones claves de tu proyecto. Es como
+                                                    <strong>viajar en el tiempo....</strong>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="conocer">
+                                                    cada vez que guardas un archivo, tu VCS te obliga a escribir una <strong>
+                                                    descripcion</strong> de ese o esos cambios y es capaz de mostrarte a su
+                                                    vez, los cambios entre las distintas versiones. <strong>Te cuenta
+                                                    la historia de tu proyecto</strong>
+                                                </div>
+
+                                                <div role="tabpanel" class="tab-pane fade" id="respaldo">
+                                                    Al usar Git, tu, tus colaboradores y el servidor central, tienen
+                                                    copias del proyecto.  Si alguno falla, hay muchas probabilidades
+                                                    de recuperar el proyecto desde cualquiera de esas fuentas.
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </li>
+                        
+                        
+
+                        <li class="seq-step5" id="step5">
+                            
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
@@ -440,7 +421,7 @@
                                     </div>
 
                                     <div class="seq-step">
-                                        <p>Lo interesante de Git Radica en su tipo de Sistema Controlador, pero para entenderlo, primero debemos familiarizarnos con los otros tipos existentes</p>
+                                        <p>Lo interesante de <strong>Git</strong> radica en su forma de controlar las versiones, pero para entenderla, primero debemos familiarizarnos con los otros tipos existentes</p>
                                         <br>
 
                                         <p>Tipos de VCS: (hacer clic para ver animación)</p>
@@ -456,53 +437,7 @@
                         </li>
 
                         <li class="seq-step5" id="step5">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
+                            
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
@@ -512,7 +447,7 @@
                                             <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
                                         </object>
 
-                                        <h2>La historia de GIT </h2>
+                                        <h2>¿Cómo nació GIT? </h2>
 
                                         <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
                                             <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
@@ -524,10 +459,7 @@
 
 
                                     <div class="seq-step"> 
-                                        <p>Es muy interesante la historia de como se originó GIT y para ello
-                                            te la vamos a presentar a través de una revista digital (que posiblemente
-                                            haga menos aburrido tener que leer) puedes pasar las páginas con el ratón o a través
-                                            de las teclas de dirección en el teclado.</p>
+                                        <p>La historia del nacimiento de GIT es muy interesante,a continuación se creó una revista digital para que puedes leer y conocer la historia. (usa las teclas de navegación para desplazarte en la páginas)</p>
                                         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".bs-example-modal-lg">Leer Historia de GIT</button>
 
 
@@ -539,68 +471,18 @@
 
 
                         <li class="seq-step6" id="step6">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span><strong>Local</strong></span>
-                                            <span class="seq-code-1">Ocurre dentro de tu sólo computadora</span>                                           
-                                        </code>
-                                    </div>
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-
-                                            <span><strong>Centralizado</strong></span>
-                                            <span class="seq-code-1">Un Servidor Central</span>
-                                            <span class="seq-code-1">Multiple clientes</span>
-
-
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-
-                                            <span><strong>Distribuido</strong></span>
-                                            <span>Todas la máquinas tienen registro de los cambios</span>
-
-                                        </code>
-                                    </div>
-                                </div>
-
-                            </div>
+                            
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Nociones básicas de Git</h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
+                                   
 
                                     <div class="seq-step">
-                                        <p>Es muy importante tener recordar como funciona GIT, como registra la información y como piensa para que nuestro aprendizaje sea mas fluido.</p>
-                                        <br>
 
-                                        <p>¿Cómo funciona GIT?: (hacer clic para ver animación)</p>
-                                        <a id="animacion_local" href="#"  class="seq-button seq-button-highlight">Fotografías<i class="fa fa-laptop"></i></a>
-                                        <a href="#" class="seq-button seq-button-link">Local<i class="fa fa-download"></i></a>
-                                        <a href="#"  class="seq-button seq-button-highlight">Los Estados <i class="fa fa-github"></i></a>
+                                        <br>
+                                        <img src="{{ asset('images/course/whatGit.png') }}" width="460" height="280" class="center-block"
+
+                                        
                                     </div>
 
 
@@ -610,53 +492,7 @@
                         </li>
 
                         <li class="seq-step7" id="step7">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
+                            
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
@@ -666,7 +502,7 @@
                                             <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
                                         </object>
 
-                                        <h2>La linea de  comandos </h2>
+                                        <h2>Interprete de comandos </h2>
 
                                         <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
                                             <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
@@ -677,19 +513,29 @@
 
 
 
-                                    <div class="seq-step"> 
-                                        <p>
-                                            En este curso interactivo, vamos
-                                            a utilizar el interprete de comandos o terminal, debido 
-                                            a que en él, se pueden ejecutar todos los
-                                            comandos de GIT  (la mayoría de las interfaces
-                                            gráficas u otros clientes, sólo implemente un grupo de comandos).
-                                            Si aprendes a usar el Terminal entonces es muy sencillo aprender
-                                            a utilizar un cliente de GIT mientras que al revés es practicamente imposible.
+                                    <div class="seq-step">
+                                        
+                                        <div class="row">
+                                            
+                                            <img src="{{ asset('images/course/terminal.gif') }}" width="300" height="120" class="right" />
+                                        
+                                        
+                                                 
+                            
+                                            <p class="right"> En este curso en línea e interactivo, vamos
+                                            a utilizar el terminal para ejecutar los comandos 
+                                            de Git que vamos a ver en este curso.  </p>
+                                            <p class="seq-tip seq-bulb">
+                                            Existen
+                                            interfaces gráficas (GUI), pero te recomiendo aprender
+                                            a usar la consola porque puedes
+                                            exportar estos conocimientos a la GUI fácilmente,
+                                            pero no es el caso en viceversa. </p>
+                                            
 
-                                        </p>                                        
-
-
+                                                                              
+                                        </div>
+                                        
                                     </div>
                                 </div>
 
@@ -698,53 +544,7 @@
 
 
                         <li class="seq-step8" id="step8">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
+                            
                             <div class="seq-content seq-valign" data-seq>
 
                                 <div class="seq-instruction">
@@ -817,8 +617,49 @@
 
                             </div>
                         </li>
-
+                        
                         <li class="seq-step9" id="step9">
+                            
+                            <div class="seq-content seq-valign" data-seq>
+
+                                <div class="seq-instruction">
+
+                                    <div class="seq-title">
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
+                                        </object>
+
+                                        <h2>Actividad número uno </h2>
+
+                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
+                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
+                                        </object>
+                                    </div>
+
+
+
+
+
+                                    <div class="seq-step"> 
+                                        <p id="reto1">
+                                            Manos a la obra, Vamos a usar
+                                            la consola o terminal para ver
+                                            si tenemos Git Instalado.
+                                            
+                                            En el terminal de abajo escribe
+                                            el siguiente comando:<br>
+                                            <code>git --version</code>
+
+                                        </p>                                        
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="seq-step10" id="step10">
                             <div class="seq-code-pane seq-valign">
 
                                 <button type="button" class="seq-view-code">
@@ -943,7 +784,7 @@
                         </li>
 
 
-                        <li class="seq-step10" id="step10">
+                        <li class="seq-step11" id="step11">
                             <div class="seq-code-pane seq-valign">
 
                                 <button type="button" class="seq-view-code">
@@ -1063,7 +904,7 @@
 
 
 
-                        <li class="seq-step11" id="step11">
+                        <li class="seq-step12" id="step12">
                             <div class="seq-code-pane seq-valign">
 
                                 <button type="button" class="seq-view-code">
@@ -1389,9 +1230,9 @@
             <div class="modal-content">
 
                 <video id="myMoov" poster="{{ asset('assets/vendor/moovly/videos/local.jpg') }}"  width="854" height="481" class="video-js vjs-default-skin vjs-big-play-centered vjs-controls-enabled vjs-has-started vjs-user-active" controls preload="none" data-setup='{"children": { "loadingSpinner": true, "controlBar": { "children": {"currentTimeDisplay": false, "timeDivider": false, "durationDisplay": false ,"volumeControl":false, "muteToggle":false}}}}'>                    
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.webm') }}" type='video/webm'/>
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.mp4') }}" type='video/mp4'/>
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.ogg') }}" type='video/ogg'/>
+                    <source src="{{ asset('assets/vendor/moovly/videos/central.webm') }}" type='video/webm'/>
+                    <source src="{{ asset('assets/vendor/moovly/videos/central.mp4') }}" type='video/mp4'/>
+                    <source src="{{ asset('assets/vendor/moovly/videos/central.ogg') }}" type='video/ogg'/>
                     <p class="vjs-no-js">Para poder ver este video, necesita tener habilitado javascript y un navegador actualizado <a href="http://videojs.com/html5-video-support/" target="_blank">que soporte video con HTML 5</a></p>
                 </video>
 
@@ -1481,9 +1322,12 @@
                                     $('#currentDirName').text(window.currentDirName);
                                     window.document.title = window.titlePattern.replace('*', window.currentDirName);
                                 }else{                                                                  
-                                    if(data.salida !== ""){                                        
-                                        if (data.comando.match($gitVersion)) {
-                                            toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');                                            
+                                    if(data.salida !== ""){ 
+                                        if(data.comando){
+                                            if (data.comando.match($gitVersion)) {
+                                                toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');                                            
+                                                $("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                            }
                                         }
                                        screen.append(data.salida);
                                    }else{
