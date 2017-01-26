@@ -3,7 +3,7 @@
 	var isEnabled = true;
 
 	document.querySelector( '.reveal .slides' ).addEventListener( 'mousedown', function( event ) {
-		var modifier = ( Reveal.getConfig().zoomKey ? Reveal.getConfig().zoomKey : 'alt' ) + 'Key';
+		var modifier = ( Reveal.getConfig().zoomKey ? Reveal.getConfig().zoomKey : 'z' ) + 'Key';
 
 		var zoomPadding = 20;
 		var revealScale = Reveal.getScale();

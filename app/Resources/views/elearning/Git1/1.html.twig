@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/bombillo.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/reveal.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/theme/moon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/lib/css/zenburn.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-ui/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/elfinder.full.css') }}">
@@ -19,90 +20,90 @@
 
 
     <style>
-        
-        
+
+
         .window {
-            
+
             height: 300px;
             background-color: #f2f1f0;
             -webkit-transition: 1s;
             transition: 1s;
         }
-.window .topbar {
-  height: 40px;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-image: -webkit-linear-gradient(#65645e, #3c3b37);
-  background-image: linear-gradient(#65645e, #3c3b37);
-  
-  border-bottom: 1px solid #302f2c;
-}
-.window .topbar p {
-  color: #dfdbd0;
-  margin-left: 20px;
-}
-.window .topbar .icons {
-  background-image: -webkit-linear-gradient(#363632, #4e4d48);
-  background-image: linear-gradient(#363632, #4e4d48);
-  margin-left: 15px;
-  border-radius: 500px;
-  padding-top: 2px;
-  padding-bottom: 1px;
-  padding-left: 3px;
-  padding-right: 3px;
-}
-.window .topbar .icons .close {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-image: -webkit-linear-gradient(#f79674, #df5106);
-  background-image: linear-gradient(#f79674, #df5106);
-  display: inline-block;
-}
-.window .topbar .icons .close:hover {
-  background-image: -webkit-linear-gradient(#f8a082, #f85c09);
-  background-image: linear-gradient(#f8a082, #f85c09);
-}
-.window .topbar .icons .hide,
-.window .topbar .icons .maximize {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-left: 5px;
-  background-image: -webkit-linear-gradient(#989792, #5a5a55);
-  background-image: linear-gradient(#989792, #5a5a55);
-  display: inline-block;
-}
-.window .topbar .icons .hide:hover,
-.window .topbar .icons .maximize:hover {
-  background-image: -webkit-linear-gradient(#a2a19d, #6b6b65);
-  background-image: linear-gradient(#a2a19d, #6b6b65);
-}
+        .window .topbar {
+            height: 40px;
+            width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background-image: -webkit-linear-gradient(#65645e, #3c3b37);
+            background-image: linear-gradient(#65645e, #3c3b37);
 
-.window .wtitle{
-    font-size:14px;
-    font-weight: bold;
-}
+            border-bottom: 1px solid #302f2c;
+        }
+        .window .topbar p {
+            color: #dfdbd0;
+            margin-left: 20px;
+        }
+        .window .topbar .icons {
+            background-image: -webkit-linear-gradient(#363632, #4e4d48);
+            background-image: linear-gradient(#363632, #4e4d48);
+            margin-left: 15px;
+            border-radius: 500px;
+            padding-top: 2px;
+            padding-bottom: 1px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+        .window .topbar .icons .close {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-image: -webkit-linear-gradient(#f79674, #df5106);
+            background-image: linear-gradient(#f79674, #df5106);
+            display: inline-block;
+        }
+        .window .topbar .icons .close:hover {
+            background-image: -webkit-linear-gradient(#f8a082, #f85c09);
+            background-image: linear-gradient(#f8a082, #f85c09);
+        }
+        .window .topbar .icons .hide,
+        .window .topbar .icons .maximize {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: 5px;
+            background-image: -webkit-linear-gradient(#989792, #5a5a55);
+            background-image: linear-gradient(#989792, #5a5a55);
+            display: inline-block;
+        }
+        .window .topbar .icons .hide:hover,
+        .window .topbar .icons .maximize:hover {
+            background-image: -webkit-linear-gradient(#a2a19d, #6b6b65);
+            background-image: linear-gradient(#a2a19d, #6b6b65);
+        }
 
-.window .tools {
-  height: 30px;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #3c3b37;
-  color: #dfdbd0;
-}
-        
-        
+        .window .wtitle{
+            font-size:14px;
+            font-weight: bold;
+        }
+
+        .window .tools {
+            height: 30px;
+            width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background-color: #3c3b37;
+            color: #dfdbd0;
+        }
+
+
         .acomodar{
             margin-top: 10px;             
         }
@@ -110,66 +111,66 @@
         .seq {
             z-index: 1;
         }
-        
-        
-    #console {
-        margin: 0;
-        padding: 0;
-        display: table;
-        width: 100%;
-        white-space: nowrap;
-        color: #FFFFFF;
-        background-color: #281022;
-        height: 15px;        
-    }
-    
-    #console-panel{
-        background-color: #281022; 
-        overflow-y: scroll;
-        height: 300px;
-    }
-    
-   
-    #console div {
-        display: table-cell;
-        width: auto;
-    }
 
-    #console #command {
-        width: 100%;
-    }
 
-    #console input {
-        border: none;
-        outline: none;
-        background: transparent;
-        width: 100%;
-    }
+        #console {
+            margin: 0;
+            padding: 0;
+            display: table;
+            width: 100%;
+            white-space: nowrap;
+            color: #FFFFFF;
+            background-color: #281022;
+            height: 15px;        
+        }
 
-    #console input:focus {
-        outline: none;
-    }
-    
-    #preConsole {
-        border: none;
-        margin:0;
-        /*padding-top: 50px;*/
-        white-space: pre;
-        background-color: #281022;
-        color: white;
-    }
+        #console-panel{
+            background-color: #281022; 
+            overflow-y: scroll;
+            height: 300px;
+        }
 
-    #preCode {
-        color: gray;
-        font-family: inherit;
-        font-size: inherit;
-    }
-    
-    .error {
-        color: red;
-    }
-        
-        
+
+        #console div {
+            display: table-cell;
+            width: auto;
+        }
+
+        #console #command {
+            width: 100%;
+        }
+
+        #console input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+        }
+
+        #console input:focus {
+            outline: none;
+        }
+
+        #preConsole {
+            border: none;
+            margin:0;
+            /*padding-top: 50px;*/
+            white-space: pre;
+            background-color: #281022;
+            color: white;
+        }
+
+        #preCode {
+            color: gray;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .error {
+            color: red;
+        }
+
+
 
     </style>
 
@@ -184,7 +185,7 @@
         <div class="col-sm-4" >                     
             <ol class="breadcrumb">
                 <li>
-                    
+
                     <h4><img id="guardado" src="{{ asset('images/course/lightbulbOn6.png') }}" width="36px" /><img id="loadingBulb" src="{{ asset('images/course/bulb.gif') }}" width="36px" /> Progreso del Curso</h4>
                 </li>
 
@@ -224,64 +225,270 @@
     <div class="row">
         <div class="col-lg-7" style="height:400px" id="tour3" >
 
-           <div class="reveal">
+            <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+                <!-- Any section element inside of this container is displayed as a slide -->
+                <div class="slides">
+                    <section data-background-image="{{ asset('images/course/bg_git.jpg') }}">
+                        <h1>Fundamentos de GIT</h1>
+                        <h3>El Controlador de versiones distribuido Libre</h3>
+                        <p>
+                            <small>Creado por <a href="www.tecnolineaparaguana.com.ve">Wilmer Ramones</a> / <a href="http://twitter.com/wramonesr">@wramonesr</a></small>
+                        </p>
+                    </section>
 
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
+                    <section data-transition="zoom">                        
+                        <h3>
+                            Gracias por encender tu conocimiento con Tecnolíne@
+                            Paraguaná.
+                        </h3>
+                        <h4>En este Primera parte vamos a conocer:</h4>
+                        <ul>
+                            <li>¿Qué es Controlador de Versiones?</li>
+                            <li>¿Qué es Git?</li>
+                            <li>¿Cómo instalar Git?</li>
+                            <li>¿Como Configurar Git?</li>
+                        </ul> 
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+                    </section>
+
+                    <!-- Example of nested vertical slides -->
+                    <section data-transition="concave">
+                        <section >
+                            <h2>Presentación Multiespacial</h2>
+                            <p>Esta presentación puede ir en cualquier dirección,
+                                puedes controlar la presentación con las teclas de
+                                dirección del teclado, o con barra espaciadora para
+                                pasar por todas y cada una de las láminas.</p>
+
+                            <br>
+                            <a href="#" class="navigate-down">
+                                <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+                            </a>
+                        </section>
+                        <section>
+                            <h2>Sótano nivel 1</h2>
+                            <p>Puedes ir al princio o final de la presentación
+                                utiizando las teclas <em>inicio</em> o <em>fin</em>.</p>
+                        </section>
+                        <section>
+                            <h2>Sótano nivel 2</h2>
+                            <p>Si presionas la tecla <em>Esc</em>, puedes ver
+                                en miniatura todas las láminas de la presentación</p>
+                            <br>
+
+                        </section>
+
+                        <section>
+                            <h2>Sótano nivel 3</h2>
+                            <p>¿Estamos listos? Continuemos con nuestra clase de GIT
+                                <br>
+                                <a href="#/3">
+                                    <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+                                </a>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                        <h2>Trabajo Creativo</h2>
+                        <p>
+                            Si eres un diseñador, desarrollador o programados, 
+                            entonces has pasado por los pasos de:
+                        </p>
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" class="animated infinite bounce" />                                                
+                                <p><small><strong>crear</strong></small></p>
+                            </div>
+                            <div class="col-lg-3">
+                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" class="animated infinite flip" />                                                
+                                 <p><small><strong>Guardar</strong></small></p>
+                            </div>
+                            <div class="col-lg-3">
+                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" class="animated infinite bounce" />                                                
+                                 <p><small><strong>Editar</strong></small></p>
+                            </div>
+                            <div class="col-lg-3">
+                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" class="animated infinite flip" />                                                
+                                 <p><small><strong>Guardar Nuevamente</strong></small></p>
+                            </div>
+
+                        </div>
+
+                                 <h4>¿Verdad que sí?</h4>
+                                 <p>Incluso me atrevo a decir que
+                                 has guardado el mismo documento
+                                 con otro nombre... ¿verdad?</p>
+                        </section>
+                        <section data-background="http://i.giphy.com/90F8aUepslB84.gif" >
+                            <h2>No mientas.... jejejej</h2>
+                            
+                            
+                        </section>                            
+                    </section>
+                                 
+                                 <section>
+                                <h2>No hay problema</h2> 
+                                <p>Sin darte cuenta, estabas utilizando tu propio
+                                sistema manual para controlar tus versiones </p>
+                            </section>
+                            
+                            <section>
+                                <section>
+                                <h2>¿Que es un Controlador de Versiones?</h2> 
+                                <p>Un Controlador de Versiones (VCS en inglés) 
+                                es un sistema que registra los cambios 
+                                ocurridos durante la <strong>creación, guardado, 
+                                editado y guardado</strong> nuevamente en uno o varios 
+                                archivos. </p>
+                                </section>
+                                <section data-background="http://33.media.tumblr.com/d6e357b4974443d8e972bd39a87ec17a/tumblr_n4f2rhFzgC1tvnszbo2_250.gif">
+                                    <h2>Excelente verdad... y no has visto los beneficios</h2>                                    
+                                </section>
+                            </section>
+                            
+                           
+                            
+                            <section>
+                                  
+                                    <h2>Beneficios de usar CVS</h2>
+                                    <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#colaboracion" aria-controls="colaboracion" role="tab" data-toggle="tab">Colaborar</a></li>
+                                                <li role="presentation"><a href="#restauracion" aria-controls="restauracion" role="tab" data-toggle="tab">Restaurar</a></li>
+                                                <li role="presentation"><a href="#conocer" aria-controls="conocer" role="tab" data-toggle="tab">Conocer</a></li>    
+                                                <li role="presentation"><a href="#respaldo" aria-controls="respaldo" role="tab" data-toggle="tab">Respaldar</a></li>    
+                                            </ul>
+
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade in active" id="colaboracion">
+                                                    Con un CVS puedes tu y tu equipo de trabajo pueden trabar libremente
+                                                    en el mismo archivo sin pisarse los pies y sin estar diciendo:
+                                                    "Esperen... nadie toque el archivo xyz que voy a realizar una modificación".
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="restauracion">
+                                                    Ser capaz de recuperar la versión anterior de un archivo (o incluso de todo
+                                                    un proyecto) significa que: <strong>Es casi imposible equivocarse</strong>, por
+                                                    lo que puedes trabajar mas relajado en secciones claves de tu proyecto. Es como
+                                                    <strong>viajar en el tiempo....</strong>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="conocer">
+                                                    cada vez que guardas un archivo, tu VCS te obliga a escribir una <strong>
+                                                    descripcion</strong> de ese o esos cambios y es capaz de mostrarte a su
+                                                    vez, los cambios entre las distintas versiones. <strong>Te cuenta
+                                                    la historia de tu proyecto</strong>
+                                                </div>
+
+                                                <div role="tabpanel" class="tab-pane fade" id="respaldo">
+                                                    Al usar Git, tu, tus colaboradores y el servidor central, tienen
+                                                    copias del proyecto.  Si alguno falla, hay muchas probabilidades
+                                                    de recuperar el proyecto desde cualquiera de esas fuentas.
+                                                </div>
+
+                                            </div>                               
+                                
+                            </section>
+                                 <section>
+                                     <section>
+                                     <h2>Tipos de Controlador de Versiones</h2>
+                                     <p>Tipos de VCS: (hacer clic para ver animación)</p>
+                                        <a id="animacion_local" href="#/vcs-local" data-toggle="modal" data-target=".bs-modal-video"  class="btn btn-primary btn-lg">Local<i class="fa fa-laptop"></i></a>
+                                        <a href="#" data-toggle="modal" data-target=".bs-modal-video2" class="btn btn-warning">Centralizado<i class="fa fa-download"></i></a>
+                                        <a href="#"  class="btn btn-success btn-lg">Distribuido <i class="fa fa-github"></i></a>
+                                        </section>
+                                     <section id="vcs-local" data-background-video="{{ asset('assets/vendor/moovly/videos/local.webm') }}">
+                                     
+                                    </section>
+                                 </section>
+                                     
+                                 <section>
+                                    <p>La historia del nacimiento de GIT es muy interesante,a continuación se creó una revista digital para que puedes leer y conocer la historia. (usa las teclas de navegación para desplazarte en la páginas)</p>
+                                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".bs-example-modal-lg">Leer Historia de GIT</button>
+                                 </section>
+                                     <section data-background="{{ asset('images/course/whatGit.png') }}">
+                                         
+                                     </section>
+                                     
+                                     <section data-background="{{ asset('images/course/terminal.gif') }}">
+                                         <h2>Vamos a trabajar con la consola o terminal</h2>
+                                     </section>
+                                         <section>
+                                             <h2>Interprete de comandos</h2>
+                                             <p>En este curso en línea e interactivo, vamos
+                                            a utilizar el terminal para ejecutar los comandos 
+                                            de Git que vamos a ver en este curso.  Es cierto que Existen
+                                            interfaces gráficas, pero te recomiendo aprender
+                                            a usar la consola porque puedes
+                                            exportar estos conocimientos a la interfaz gráfica fácilmente,
+                                            pero no es el caso en viceversa.... Así que sin miedo
+                                            a la consola o terminal..</p>
+                                         </section>
+                                         
+                                         <section>
+                                             <p>Antes de usar Git, primer debemos instalarlo</p>
+                                             <div>
+
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Linux</a></li>
+                                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mac</a></li>
+                                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Windows</a></li>    
+                                                <li role="presentation"><a href="#mas" aria-controls="messages" role="tab" data-toggle="tab">Más</a></li>    
+                                            </ul>
+
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                                    Si usas Fedora puedes ejecutar:<br>
+                                                    <pre><code class="hljs" style="word-wrap: break-word;">$ sudo yum install git-all</code></pre>
+                                                    
+                                                    Si estas en debian u alguna distribución basada en Debian:<br>
+                                                    <pre><code class="hljs" style="word-wrap: break-word;">$ sudo apt-get install git-all</code></pre>          
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="profile">
+                                                    La manera más sencilla sería instalar Xcode Command Line Tools y luego
+                                                    intentar correr git desde el terminal.  Si git no está instalado, entonces
+                                                    emergerá una ventana en donde se puede instalar.
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="messages">
+                                                    Para instalarlo en Windows basta con dirigirse a la página de descarga
+                                                    de <a href="http://git-scm.com/download/win">git para windows</a> y
+                                                    ejecutar el instalador 
+                                                </div>
+
+                                                <div role="tabpanel" class="tab-pane fade" id="mas">
+                                                    Para mayor información sobre algun Sistema Operativo diferente a los
+                                                    mencionados u alguna otra forma de instalación, dirigirse a la página
+                                                    de <a href="https://git-scm.com/downloads"> descargas de git</a> donde
+                                                    encontraremos información extendida sobre el tema.
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                         </section>
+                                         <section data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                                             <h2>Por fin... Manos a la obra</h2>
+                                             
+                                         </section>
+                                         
+                                         <section>
+						<h2>Actividad en la Consola</h2>
+						<p>Vamos presionando la tecla para que aparezcan las instrucciones:</p>
+						<p class="fragment fade-up">En el terminal o consola</p>
+						<p class="fragment fade-left">escribe el siguiente comando</p>
+						<p ><pre class="fragment fade-right"><code class="hljs" style="word-wrap: break-word;">$ sudo yum install git-all</code></pre></p>
+						<p class="fragment fade-up">Luego sigues avanzando...</p>						
+						<p class="fragment fade-down">Semaforo <span class="fragment highlight-red">En sus marcas</span> <span class="fragment highlight-blue">Listos</span> <span class="fragment highlight-green">Fuera</span></p>
 					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+                </div>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
+            </div> 
 
-				
 
-			</div>
-
-		</div> 
-
-            
 
 
         </div>
@@ -299,41 +506,41 @@
                 <li>
                     <div class="row">
                         <div class="col-lg-5">
-                    Logros disponibles en este Nivel:
-                    </div>
-                        <div class="col-lg-7">
-                    <div class="tooltip-demo">                        
-                        {% set contadorObtenidos = 0 %}
-                        {% for logroD in logrosDisponibles %}
-                            {% set obtenido = false %}
-                            {% for logroO in logrosObtenidos %}                                
-                                {% if logroO.idCursoModuloTemaLogro.id == logroD.id %}
-                                    {% set contadorObtenidos = contadorObtenidos + 1 %}
-                                    {% set obtenido = true %}
-                                {% endif %}                                    
-                            {% endfor %}
-                            {% if not obtenido %}
-                                <span id="{{ logroD.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logroD.nombre }}" class="fa-stack has-badge" data-count="{{ logroD.badge }}">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
-                                </span>
-                            {% else %}                                                                
-                                {% if logroD.id == 2 %}
-                                   <input type="hidden" id="quizOpen" value="true" />
-                                {% endif %}
-                                <span id="{{ logroD.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logroD.nombre }}" class="fa-stack has-badge" data-count="{{ logroD.badge }}">
-                                        <i class="fa fa-circle fa-stack-2x text-warning"></i>
-                                        <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
-                                </span>
-                            {% endif %}
-                        {% endfor %}
-                        
-                           {% if contadorObtenidos > 0 %}
-                              <input type="hidden" id="contadorObtenidos" value="{{ contadorObtenidos }}" /> 
-                           {% endif %}
-                    
+                            Logros disponibles en este Nivel:
                         </div>
+                        <div class="col-lg-7">
+                            <div class="tooltip-demo">                        
+                                {% set contadorObtenidos = 0 %}
+                                {% for logroD in logrosDisponibles %}
+                                    {% set obtenido = false %}
+                                    {% for logroO in logrosObtenidos %}                                
+                                        {% if logroO.idCursoModuloTemaLogro.id == logroD.id %}
+                                            {% set contadorObtenidos = contadorObtenidos + 1 %}
+                                            {% set obtenido = true %}
+                                        {% endif %}                                    
+                                    {% endfor %}
+                                    {% if not obtenido %}
+                                        <span id="{{ logroD.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logroD.nombre }}" class="fa-stack has-badge" data-count="{{ logroD.badge }}">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    {% else %}                                                                
+                                        {% if logroD.id == 2 %}
+                                            <input type="hidden" id="quizOpen" value="true" />
+                                        {% endif %}
+                                        <span id="{{ logroD.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logroD.nombre }}" class="fa-stack has-badge" data-count="{{ logroD.badge }}">
+                                            <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if contadorObtenidos > 0 %}
+                                    <input type="hidden" id="contadorObtenidos" value="{{ contadorObtenidos }}" /> 
+                                {% endif %}
+
                             </div>
+                        </div>
                     </div>
                 </li>
 
@@ -342,7 +549,7 @@
         </div>
 
 
-                        
+
         <div class="col-lg-5 acomodar">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -375,7 +582,7 @@
                                 <!-- where the quiz main copy goes -->
 
                                 <a class="button_quiz startQuiz" id="btnQuiz" href="#">Comenzar Quiz!</a>
-                                
+
                             </div>
 
                             <!-- where the quiz gets built -->
@@ -391,9 +598,9 @@
                                 <input id="url_avance" type="hidden" value="{{ url('ajax_avance') }}" />
                                 <input id="tema_actual" type="hidden" value="{{ temaActual.id }}" />
                                 <input id="url_evaluacion" type="hidden" value="{{ url('ajax_evaluacion') }}" />
-                            <div class="quizResultsCopy">
-                                <!-- where the quiz result copy goes -->
-                            </div>
+                                <div class="quizResultsCopy">
+                                    <!-- where the quiz result copy goes -->
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -405,26 +612,26 @@
 
     <div class="row">
         <div class="col-lg-7 acomodar" id="tour4">
-            
-                <div class="window" id="console-panel">
-                    <div class="topbar">
-                      <div class="icons">
+
+            <div class="window" id="console-panel">
+                <div class="topbar">
+                    <div class="icons">
                         <div class="close"></div>
                         <div class="hide"></div>
                         <div class="maximize"></div>
-                      </div>
-                      <p class="wtitle">Terminal</p>
                     </div>
-
-                    <pre id="preConsole"></pre>
-                    <form id="console">
-                        <div id="currentDirName">{{ currentDirName }}/ </div>
-                        <div>{{ currentUser }}$></div>
-                        <div id="command"><input id="inputConsole" type="text" value=""></div>
-                    </form>
+                    <p class="wtitle">Terminal</p>
                 </div>
-                
-            
+
+                <pre id="preConsole"></pre>
+                <form id="console">
+                    <div id="currentDirName">{{ currentDirName }}/ </div>
+                    <div>{{ currentUser }}$></div>
+                    <div id="command"><input id="inputConsole" type="text" value=""></div>
+                </form>
+            </div>
+
+
 
         </div>
 
@@ -480,11 +687,11 @@
             </div>
         </div>
     </div>
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
     <div class="modal fade bs-modal-video" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -499,8 +706,8 @@
             </div>
         </div>
     </div>
-                    
-                    
+
+
     <div class="modal fade bs-modal-video2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -522,13 +729,13 @@
 
 {% block javascripts %} 
     {{ parent() }}    
-    
+
     <script src="{{ asset('assets/vendor/elfinder/js/elfinder.full.js') }}"type="text/javascript" ></script>
     <script src="{{ asset('assets/vendor/elfinder/js/i18n/elfinder.es.js') }}"type="text/javascript" ></script>
-    
+
     <script src="{{asset('assets/vendor/revealjs/lib/js/head.min.js')}}" type="text/javascript"></script>    
     <script src="{{asset('assets/vendor/revealjs/js/reveal.js')}}" type="text/javascript"></script>    
-    
+
     <script src="{{asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/modernizr/modernizr.2.5.3.min.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/steps/jquery.steps.min.js')}}" type="text/javascript"></script>      
@@ -537,188 +744,195 @@
     <script src="{{asset('assets/vendor/quiz/master.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/toastr/toastr.min.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/moovly/js/videojs/video.js')}}" type="text/javascript"></script>
-    
+
 
 
 
     <script type="text/javascript">
-        
+
         /**
-     * Windows variables.
-     */
-    window.topDir = '{{ currentDir }}';
-    window.currentDir = '{{ currentDir }}';
-    window.currentDirName = window.currentDir.split('/').pop();
-    window.currentUser = '{{ currentUser }}';
-    window.titlePattern = "* — console";
-    window.document.title = window.titlePattern.replace('*', window.currentDirName);
+         * Windows variables.
+         */
+        window.topDir = '{{ currentDir }}';
+        window.currentDir = '{{ currentDir }}';
+        window.currentDirName = window.currentDir.split('/').pop();
+        window.currentUser = '{{ currentUser }}';
+        window.titlePattern = "* — console";
+        window.document.title = window.titlePattern.replace('*', window.currentDirName);
 
         jQuery(function ($) {
-            
-            
+
+
             Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: "{{ asset('assets/vendor/revealjs/lib/js/classList.js') }}", condition: function() { return !document.body.classList; } },
-					{ src: "{{ asset('assets/vendor/revealjs/plugin/markdown/marked.js') }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: "{{ asset('assets/vendor/revealjs/plugin/markdown/markdown.js') }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: "{{ asset('assets/vendor/revealjs/plugin/highlight/highlight.js') }}", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: "{{ asset('assets/vendor/revealjs/plugin/zoom-js/zoom.js') }}", async: true },
-					{ src: "{{ asset('assets/vendor/revealjs/plugin/notes/notes.js') }}", async: true }
-				]
-			});
-
-            
-          
-            
-        var screen = $('#preConsole');
-        var input = $('#inputConsole').focus();
-        var form = $('#console');
-        var scroll = function () {
-            window.scrollTo(0, document.body.scrollHeight);
-        };
-        //input.history();
-        //input.autocomplete(<?php echo json_encode($autocomplete); ?>);
-        form.submit(function () {
-            
-            
-            var command = $.trim(input.val());
-            if (command == '') {               
-                return false;
-            }
-
-            $("<code id='preCode'>" + window.currentDirName + "&nbsp;" + window.currentUser + "$&nbsp;" + command + "</code><br>").appendTo(screen);
-            
-            //scroll();
-            input.val('');
-            form.hide();
-            //input.addHistory(command);
-           var data3 = {command: command, cd: window.currentDir, user: window.currentUser};
-           $.ajax({
-                        method: "GET",
-                        url: "{{ url('ajax_console') }}",
-                        async: true,
-                        cache: false,
-                        data: data3,
-                        //timeout: 50000,
-                        success: function (data) {
-                                console.log(data);
-                                 
-                                var pattern = /^set current directory (.+?)$/i;
-                                if (matches = data.salida.match(pattern)) {
-                                    console.log(matches);
-                                    window.currentDir = matches[1];
-                                    window.currentDirName = window.currentDir.split('/').pop() + "/";
-                                    $('#currentDirName').text(window.currentDirName);
-                                    window.document.title = window.titlePattern.replace('*', window.currentDirName);
-                                }else{                                                                  
-                                    if(data.salida !== ""){ 
-                                        if(data.comando){
-                                            if (data.comando.match($gitVersion)) {
-                                                toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');                                            
-                                                $("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
-                                            }
-                                        }
-                                       screen.append(data.salida);
-                                   }else{
-                                       screen.append(data.error);
-                                   }
-                               }
-                         },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) { 
-                              console.log(errorThrown, textStatus, XMLHttpRequest);
-                              
-                              //setTimeout(waitForMsg, 300000);
-
-                        },
-                        complete: function(){
-                           form.show(); 
-                           $('#inputConsole').focus();
-                        }
-
-                    });
-            return false;
-        });
-            
-            
-            
-            $('#elfinder').elfinder({
-                    url : "{{ asset('assets/vendor/elfinder/php/connector.minimal.php')}}", 
-                    lang: 'es',
-                    height: 250,
-                    customData  : {user: window.currentUser},
-                    handlers : {
-                        dblclick : function(event, elfinderInstance) {
-                          event.preventDefault();
-                          elfinderInstance.exec('getfile')
-                            .done(function() { elfinderInstance.exec('quicklook'); })
-                            .fail(function() { elfinderInstance.exec('open'); });
-                        }
-                      },
-
-                      getFileCallback : function(files, fm) {
-                        return false;
-                      },
-                    uiOptions: {
-                        toolbar : [
-                            // toolbar configuration
-                            ['open'],
-                            ['home', 'up'],
-                            ['info'],
-                            ['reload'],
-                            ['quicklook'],                                                                        
-                            ['view'],
-                            ['help']
-                        ]
-                     },
-                
-                    contextmenu : {
-                            // navbarfolder menu
-                            navbar : ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
-
-                            // current directory menu
-                            cwd    : [ 'back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
-
-                            // current directory file menu
-                            files  : [
-                                'open', 'quicklook', '|',
-                                'rm', '|', 'edit', 'rename', 'info'
-                            ]
-                    }
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    {src: "{{ asset('assets/vendor/revealjs/lib/js/classList.js') }}", condition: function () {
+                            return !document.body.classList;
+                        }},
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/markdown/marked.js') }}", condition: function () {
+                            return !!document.querySelector('[data-markdown]');
+                        }},
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/markdown/markdown.js') }}", condition: function () {
+                            return !!document.querySelector('[data-markdown]');
+                        }},
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/highlight/highlight.js') }}", async: true, callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }},
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/zoom-js/zoom.js') }}", async: true},
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/notes/notes.js') }}", async: true}
+                ]
             });
-            
-            
-            
-           toastr.options = {
-            "closeButton": true,
-            "debug": true,
-            "newestOnTop": false,
-            "progressBar": true,
-            "positionClass": "toast-top-center",
-            "preventDuplicates": true,
-            "onclick": null,
-            "showDuration": "50000",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "slideDown",
-            "hideMethod": "fadeOut"            
-          };
-            
-            
-            
+
+
+
+
+            var screen = $('#preConsole');
+            var input = $('#inputConsole').focus();
+            var form = $('#console');
+            var scroll = function () {
+                window.scrollTo(0, document.body.scrollHeight);
+            };
+            //input.history();
+            //input.autocomplete(<?php echo json_encode($autocomplete); ?>);
+            form.submit(function () {
+
+
+                var command = $.trim(input.val());
+                if (command == '') {
+                    return false;
+                }
+
+                $("<code id='preCode'>" + window.currentDirName + "&nbsp;" + window.currentUser + "$&nbsp;" + command + "</code><br>").appendTo(screen);
+
+                //scroll();
+                input.val('');
+                form.hide();
+                //input.addHistory(command);
+                var data3 = {command: command, cd: window.currentDir, user: window.currentUser};
+                $.ajax({
+                    method: "GET",
+                    url: "{{ url('ajax_console') }}",
+                    async: true,
+                    cache: false,
+                    data: data3,
+                    //timeout: 50000,
+                    success: function (data) {
+                        console.log(data);
+
+                        var pattern = /^set current directory (.+?)$/i;
+                        if (matches = data.salida.match(pattern)) {
+                            console.log(matches);
+                            window.currentDir = matches[1];
+                            window.currentDirName = window.currentDir.split('/').pop() + "/";
+                            $('#currentDirName').text(window.currentDirName);
+                            window.document.title = window.titlePattern.replace('*', window.currentDirName);
+                        } else {
+                            if (data.salida !== "") {
+                                if (data.comando) {
+                                    if (data.comando.match($gitVersion)) {
+                                        toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');
+                                        $("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                    }
+                                }
+                                screen.append(data.salida);
+                            } else {
+                                screen.append(data.error);
+                            }
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(errorThrown, textStatus, XMLHttpRequest);
+
+                        //setTimeout(waitForMsg, 300000);
+
+                    },
+                    complete: function () {
+                        form.show();
+                        $('#inputConsole').focus();
+                    }
+
+                });
+                return false;
+            });
+
+
+
+            $('#elfinder').elfinder({
+                url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php')}}",
+                lang: 'es',
+                height: 250,
+                customData: {user: window.currentUser},
+                handlers: {
+                    dblclick: function (event, elfinderInstance) {
+                        event.preventDefault();
+                        elfinderInstance.exec('getfile')
+                                .done(function () {
+                                    elfinderInstance.exec('quicklook');
+                                })
+                                .fail(function () {
+                                    elfinderInstance.exec('open');
+                                });
+                    }
+                },
+                getFileCallback: function (files, fm) {
+                    return false;
+                },
+                uiOptions: {
+                    toolbar: [
+                        // toolbar configuration
+                        ['open'],
+                        ['home', 'up'],
+                        ['info'],
+                        ['reload'],
+                        ['quicklook'],
+                        ['view'],
+                        ['help']
+                    ]
+                },
+                contextmenu: {
+                    // navbarfolder menu
+                    navbar: ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+                    // current directory menu
+                    cwd: ['back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
+                    // current directory file menu
+                    files: [
+                        'open', 'quicklook', '|',
+                        'rm', '|', 'edit', 'rename', 'info'
+                    ]
+                }
+            });
+
+
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-center",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "50000",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "slideDown",
+                "hideMethod": "fadeOut"
+            };
+
+
+
             $('#terminal').terminal(function (command, term) {
                 var $inter = evaluar(command);
-                
+
                 if ($inter.chk === true) {
                     term.echo("[[;green;]" + $inter.out + "]");
                     setTimeout(function () {
@@ -726,7 +940,7 @@
                     }, 1200);
                 } else if ($inter.chk === "done") {
                     term.echo("[[;green;]" + $inter.out + "]");
-                    toastr.info($inter.msg,'Ya ejecutado!');
+                    toastr.info($inter.msg, 'Ya ejecutado!');
                 } else if ($inter.chk === "plain") {
                     term.echo($inter.out);
                     setTimeout(function () {
@@ -736,13 +950,13 @@
                 } else {
                     term.echo("[[;red;]" + $inter.out + "]");
                 }
-                
-                if($inter.fin){  
-                    var data = {inscripcion : $('#inscripcion').val(), logro: 2};
+
+                if ($inter.fin) {
+                    var data = {inscripcion: $('#inscripcion').val(), logro: 2};
                     var url = $('#url_ajax').val();
-                    
+
                     $("#btnQuiz").prop('disabled', false);
-                    $("#btnQuiz").attr('disabled', false);                    
+                    $("#btnQuiz").attr('disabled', false);
                     $.ajax({
                         method: "GET",
                         url: url,
@@ -751,35 +965,35 @@
                         data: data,
                         //timeout: 50000,
                         success: function (data) {
-                                 $('.progress-bar').attr('aria-valuenow', '60');
-                                 $('.progress-bar').css('width', '60%');
-                                 $('.stat-percent').html('60%');
-                                 
-                                 console.log(data);                   
-                                /*if(posts.length > 0)
-                                 {
-                                     var html = "";
-                                     for(d in posts)
-                                     {
-                                         html += "<p>" + JSON.stringify(posts[d]) + "</p>";
-                                     }
-                                     $("#contador_solicitudes").append(html);
-                                 }*/
-                                //$("#contador_solicitudes").html(posts);
-                                 //setTimeout(waitForMsg, 60000);
-                         },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) { 
-                              console.log(errorThrown, textStatus, XMLHttpRequest);
-                              //setTimeout(waitForMsg, 300000);
+                            $('.progress-bar').attr('aria-valuenow', '60');
+                            $('.progress-bar').css('width', '60%');
+                            $('.stat-percent').html('60%');
+
+                            console.log(data);
+                            /*if(posts.length > 0)
+                             {
+                             var html = "";
+                             for(d in posts)
+                             {
+                             html += "<p>" + JSON.stringify(posts[d]) + "</p>";
+                             }
+                             $("#contador_solicitudes").append(html);
+                             }*/
+                            //$("#contador_solicitudes").html(posts);
+                            //setTimeout(waitForMsg, 60000);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(errorThrown, textStatus, XMLHttpRequest);
+                            //setTimeout(waitForMsg, 300000);
 
                         }
 
                     });
-                    
-                    
-                    toastr.info("Has obtenido el logro de Primeros comandos en GIT",'FELICITACIONES! Logro Desbloqueado!');
+
+
+                    toastr.info("Has obtenido el logro de Primeros comandos en GIT", 'FELICITACIONES! Logro Desbloqueado!');
                     $("#comandos").removeClass("fa-inverse").addClass("text-warning animated rubberBand");
-                    toastr.success("Quiz Disponible",'Felicitaciones, has desbloqueado el Quiz de este nivel!');           
+                    toastr.success("Quiz Disponible", 'Felicitaciones, has desbloqueado el Quiz de este nivel!');
                 }
 
                 //var $x = evaluar(command);
@@ -791,30 +1005,30 @@
                     return false;
                 }
             });
-            
-            
-            
-                         
-            
-            
+
+
+
+
+
+
         });
         $("#btnQuiz").prop('disabled', true);
         $("#btnQuiz").attr('disabled', 'disabled');
-        
-        $( "#btnQuiz" ).click(function() {
-             var $open = $("#quizOpen").val();
-             if($open){
-                 $("#btnQuiz").prop('disabled', false);
-                 $("#btnQuiz").attr('disabled', false);
-             }else{
-                var isDisabled = $('#btnQuiz').is('[disabled=disabled]');           
-                if (isDisabled){
-                    toastr.error("Para desbloquearlo, debes obtener los dos primeros logros de este nivel","Quiz Bloqueado");           
+
+        $("#btnQuiz").click(function () {
+            var $open = $("#quizOpen").val();
+            if ($open) {
+                $("#btnQuiz").prop('disabled', false);
+                $("#btnQuiz").attr('disabled', false);
+            } else {
+                var isDisabled = $('#btnQuiz').is('[disabled=disabled]');
+                if (isDisabled) {
+                    toastr.error("Para desbloquearlo, debes obtener los dos primeros logros de este nivel", "Quiz Bloqueado");
                 }
             }
-            
-        });   
-        
+
+        });
+
         var $palabraGit = /^git$/g;
         var $gitEspacio = /^git+\s/g;
         var $configEspacio = /\bconfig+\s/g;
@@ -899,7 +1113,7 @@
                 var respuesta = JSON.parse($w);
                 return (respuesta);
             }
-                      
+
 
             $w = JSON.stringify({out: "Error", chk: false});
             var respuesta = JSON.parse($w);
@@ -910,20 +1124,20 @@
 
 
         $(document).ready(function () {
-            
+
 
             videojs.options.flash.swf = "{{ asset('assets/vendor/moovly/js/videojs/video-js.swf') }}";
             alert(videojs);
             $contador = $("#contadorObtenidos").val();
             alert($contador);
-            for (var $i = 0; $i < $contador; $i++){
-                $('.progress-bar').css('width', $contador * 30 + '%'); 
+            for (var $i = 0; $i < $contador; $i++) {
+                $('.progress-bar').css('width', $contador * 30 + '%');
                 $('.stat-percent').html($contador * 30 + '%');
                 $('.progress-bar').attr('aria-valuenow', $contador * 30);
             }
-            
+
             $("#wizard").steps();
-            
+
             // Instance the tour
             var tour = new Tour({
                 steps: [{
@@ -985,17 +1199,17 @@
         });
 
 
-       
+
 
 
         $("#animacion_local").click(function () {
 
-            
+
 
         });
 
 
-        
+
 
         $(document).keydown(function (e) {
 
@@ -1050,22 +1264,22 @@
             both: ['{{ asset("assets/vendor/turnjs/basic.css") }}'],
             complete: loadApp
         });
-        
-        
+
+
         var $loading = $('#loadingBulb').hide();
         var $guardado = $('#guardado').show();
         $(document)
-          .ajaxStart(function () {              
-              $guardado.hide();
-              $loading.show();
-           })
-          .ajaxStop(function () {
-            $loading.hide();
-            $guardado.show();
-          });
+                .ajaxStart(function () {
+                    $guardado.hide();
+                    $loading.show();
+                })
+                .ajaxStop(function () {
+                    $loading.hide();
+                    $guardado.show();
+                });
 
 
-        $(window).load(function(e) {
+        $(window).load(function (e) {
             $("#inputConsole").click();
         });
 
