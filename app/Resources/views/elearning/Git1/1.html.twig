@@ -3,7 +3,8 @@
 {% block stylesheets %} 
     {{ parent() }}    
     <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/bombillo.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/sequencejs/sequence-theme.intro.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/reveal.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/theme/moon.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-ui/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/elfinder.full.css') }}">
@@ -18,6 +19,89 @@
 
 
     <style>
+        
+        
+        .window {
+            
+            height: 300px;
+            background-color: #f2f1f0;
+            -webkit-transition: 1s;
+            transition: 1s;
+        }
+.window .topbar {
+  height: 40px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: -webkit-linear-gradient(#65645e, #3c3b37);
+  background-image: linear-gradient(#65645e, #3c3b37);
+  
+  border-bottom: 1px solid #302f2c;
+}
+.window .topbar p {
+  color: #dfdbd0;
+  margin-left: 20px;
+}
+.window .topbar .icons {
+  background-image: -webkit-linear-gradient(#363632, #4e4d48);
+  background-image: linear-gradient(#363632, #4e4d48);
+  margin-left: 15px;
+  border-radius: 500px;
+  padding-top: 2px;
+  padding-bottom: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.window .topbar .icons .close {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-image: -webkit-linear-gradient(#f79674, #df5106);
+  background-image: linear-gradient(#f79674, #df5106);
+  display: inline-block;
+}
+.window .topbar .icons .close:hover {
+  background-image: -webkit-linear-gradient(#f8a082, #f85c09);
+  background-image: linear-gradient(#f8a082, #f85c09);
+}
+.window .topbar .icons .hide,
+.window .topbar .icons .maximize {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-left: 5px;
+  background-image: -webkit-linear-gradient(#989792, #5a5a55);
+  background-image: linear-gradient(#989792, #5a5a55);
+  display: inline-block;
+}
+.window .topbar .icons .hide:hover,
+.window .topbar .icons .maximize:hover {
+  background-image: -webkit-linear-gradient(#a2a19d, #6b6b65);
+  background-image: linear-gradient(#a2a19d, #6b6b65);
+}
+
+.window .wtitle{
+    font-size:14px;
+    font-weight: bold;
+}
+
+.window .tools {
+  height: 30px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #3c3b37;
+  color: #dfdbd0;
+}
+        
         
         .acomodar{
             margin-top: 10px;             
@@ -42,7 +126,7 @@
     #console-panel{
         background-color: #281022; 
         overflow-y: scroll;
-        height: 250px;
+        height: 300px;
     }
     
    
@@ -69,7 +153,7 @@
     #preConsole {
         border: none;
         margin:0;
-        padding-top: 50px;
+        /*padding-top: 50px;*/
         white-space: pre;
         background-color: #281022;
         color: white;
@@ -138,881 +222,66 @@
 
 
     <div class="row">
-        <div class="col-lg-7" id="tour3" >
-
-            <div id="sequence" class="seq">
-
-                <div class="seq-screen">
-                    <ul class="seq-canvas">
-
-                        <li class="seq-step1 seq-in" id="step1">
-
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span><strong>Objetivo de este módulo</strong></span>
-                                            <span>Iniciarnos en GIT</span>
-
-                                            <span class="seq-code-1">¿Que son los controladores de versión?</span>
-                                        </code>
-                                    </div>
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-
-                                            <span class="seq-code-1">¿Que es Git?</span>
-
-                                        </code>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>{{ inscripcion.idCursoGrupo.idCurso.nombre }}</h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-                                    <h3>Bienvenido.</h3>
-
-                                    <div class="seq-step">
-                                        <p>En este curso vamos a encender nuestros 
-                                            conocimientos sobre el manejador de versiones 
-                                            <code>distribuido</code> GIT al conocer 
-                                            rápidamente que es, como instalarlo, 
-                                            configurarlo y hacerlo funcionar.  
-                                            Descuida, intentaremos hacerlo lo menos aburrido
-                                            posible <a href="#" title="" class="seq-next">
-                                                Siguiente lámina →</a>
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li class="seq-step2" id="step2">
-                           
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Seres Creativos </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-                                    <div class="seq-step">                                                                                
-                                        <p>
-                                            Si eres un diseñador, o trabajas editando documentos, 
-                                            eres un desarrollador o programador, entonces has pasado por estos pasos:
-                                        </p>
-                                        <ul class="seq-examples">
-                                            <li>
-                                                <object class="seq-scale seq-example" data="{{ asset('images/course/square.svg') }}" type="image/svg+xml">
-                                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" />
-                                                </object>
-                                                <p><strong>Creado</strong></p>
-                                            </li>
-
-                                            <li>
-                                                <object class="seq-rotate seq-example" data="{{ asset('images/course/square.svg') }}" type="image/svg+xml">
-                                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" />
-                                                </object>
-                                                <p><strong>Guardado</strong></p>
-                                            </li>
-
-                                            <li>
-                                                <object class="seq-doors seq-example" data="{{ asset('images/course/square.svg') }}" type="image/svg+xml">
-                                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" />
-                                                </object>
-                                                <p><strong>Editado</strong></p>
-                                            </li>
-
-                                            <li>
-                                                <object class="seq-fade seq-example" data="{{ asset('images/course/square.svg') }}" type="image/svg+xml">
-                                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" />
-                                                </object>
-                                                <p><strong>Guardado</strong> otra vez</p>
-                                            </li>
-
-                                        </ul>
-                                        <p>
-                                            ¿verdad que si? y hasta has guardado el archivo con diferente nombre, 
-                                            no mientas.... jejejejeje. Eso es un sistema controlador de tus versiones
-                                            manual, 
-                                        </p>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li class="seq-step3" id="step3">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>¿ Qué es un Controlador de Versiones ?</h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-                                    <div class="seq-step">
-                                        <img src="{{ asset('images/course/vcs.png') }}" class="center-block" width="150" height="120"/>
-                                        <p> 
-                                            Un Controlador de Versiones (VCS en inglés) 
-                                            es un sistema que registra los cambios 
-                                            ocurridos durante la <strong>creación, guardado, 
-                                            editado y guardado</strong> nuevamente en uno o varios 
-                                            archivos. 
-                                        </p>
-                                        <br>
-                                        
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </li>
-                        
-                        
-                         <li class="seq-step4" id="step4">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Beneficios de usar VCS</h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-                                    <div class="seq-step">
-                                        <div>
-
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active"><a href="#colaboracion" aria-controls="colaboracion" role="tab" data-toggle="tab">Colaborar</a></li>
-                                                <li role="presentation"><a href="#restauracion" aria-controls="restauracion" role="tab" data-toggle="tab">Restaurar</a></li>
-                                                <li role="presentation"><a href="#conocer" aria-controls="conocer" role="tab" data-toggle="tab">Conocer</a></li>    
-                                                <li role="presentation"><a href="#respaldo" aria-controls="respaldo" role="tab" data-toggle="tab">Respaldar</a></li>    
-                                            </ul>
-
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane fade in active" id="colaboracion">
-                                                    Con un CVS puedes tu y tu equipo de trabajo pueden trabar libremente
-                                                    en el mismo archivo sin pisarse los pies y sin estar diciendo:
-                                                    "Esperen... nadie toque el archivo xyz que voy a realizar una modificación".
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade" id="restauracion">
-                                                    Ser capaz de recuperar la versión anterior de un archivo (o incluso de todo
-                                                    un proyecto) significa que: <strong>Es casi imposible equivocarse</strong>, por
-                                                    lo que puedes trabajar mas relajado en secciones claves de tu proyecto. Es como
-                                                    <strong>viajar en el tiempo....</strong>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade" id="conocer">
-                                                    cada vez que guardas un archivo, tu VCS te obliga a escribir una <strong>
-                                                    descripcion</strong> de ese o esos cambios y es capaz de mostrarte a su
-                                                    vez, los cambios entre las distintas versiones. <strong>Te cuenta
-                                                    la historia de tu proyecto</strong>
-                                                </div>
-
-                                                <div role="tabpanel" class="tab-pane fade" id="respaldo">
-                                                    Al usar Git, tu, tus colaboradores y el servidor central, tienen
-                                                    copias del proyecto.  Si alguno falla, hay muchas probabilidades
-                                                    de recuperar el proyecto desde cualquiera de esas fuentas.
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </li>
-                        
-                        
-
-                        <li class="seq-step5" id="step5">
-                            
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Tipos de Controladores de Versiones</h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-                                    <div class="seq-step">
-                                        <p>Lo interesante de <strong>Git</strong> radica en su forma de controlar las versiones, pero para entenderla, primero debemos familiarizarnos con los otros tipos existentes</p>
-                                        <br>
-
-                                        <p>Tipos de VCS: (hacer clic para ver animación)</p>
-                                        <a id="animacion_local" href="#" data-toggle="modal" data-target=".bs-modal-video"  class="seq-button seq-button-highlight">Local<i class="fa fa-laptop"></i></a>
-                                        <a href="#" data-toggle="modal" data-target=".bs-modal-video2" class="seq-button seq-button-link">Centralizado<i class="fa fa-download"></i></a>
-                                        <a href="#"  class="seq-button seq-button-highlight">Distribuido <i class="fa fa-github"></i></a>
-                                    </div>
-
-
-                                                                 
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="seq-step5" id="step5">
-                            
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>¿Cómo nació GIT? </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-
-
-                                    <div class="seq-step"> 
-                                        <p>La historia del nacimiento de GIT es muy interesante,a continuación se creó una revista digital para que puedes leer y conocer la historia. (usa las teclas de navegación para desplazarte en la páginas)</p>
-                                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".bs-example-modal-lg">Leer Historia de GIT</button>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-
-                        <li class="seq-step6" id="step6">
-                            
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-                                   
-
-                                    <div class="seq-step">
-
-                                        <br>
-                                        <img src="{{ asset('images/course/whatGit.png') }}" width="460" height="280" class="center-block"
-
-                                        
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="seq-step7" id="step7">
-                            
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Interprete de comandos </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-
-
-                                    <div class="seq-step">
-                                        
-                                        <div class="row">
-                                            
-                                            <img src="{{ asset('images/course/terminal.gif') }}" width="300" height="120" class="right" />
-                                        
-                                        
-                                                 
-                            
-                                            <p class="right"> En este curso en línea e interactivo, vamos
-                                            a utilizar el terminal para ejecutar los comandos 
-                                            de Git que vamos a ver en este curso.  </p>
-                                            <p class="seq-tip seq-bulb">
-                                            Existen
-                                            interfaces gráficas (GUI), pero te recomiendo aprender
-                                            a usar la consola porque puedes
-                                            exportar estos conocimientos a la GUI fácilmente,
-                                            pero no es el caso en viceversa. </p>
-                                            
-
-                                                                              
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-
-                        <li class="seq-step8" id="step8">
-                            
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Instalar GIT </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-
-
-                                    <div class="seq-step"> 
-                                        <p>
-                                            Antes de usar GIT, debes tenerlo disponible en
-                                            nuestras máquinas.
-                                        </p>       
-
-                                        <div>
-
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Linux</a></li>
-                                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mac</a></li>
-                                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Windows</a></li>    
-                                                <li role="presentation"><a href="#mas" aria-controls="messages" role="tab" data-toggle="tab">Más</a></li>    
-                                            </ul>
-
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane fade in active" id="home">
-                                                    Si usas Fedora puedes ejecutar:<br>
-                                                    <code>$ sudo yum install git-all</code><br>
-                                                    Si estas en debian u alguna distribución basada en Debian:<br>
-                                                    <code>$ sudo apt-get install git-all</code>          
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade" id="profile">
-                                                    La manera más sencilla sería instalar Xcode Command Line Tools y luego
-                                                    intentar correr git desde el terminal.  Si git no está instalado, entonces
-                                                    emergerá una ventana en donde se puede instalar.
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade" id="messages">
-                                                    Para instalarlo en Windows basta con dirigirse a la página de descarga
-                                                    de <a href="http://git-scm.com/download/win">git para windows</a> y
-                                                    ejecutar el instalador 
-                                                </div>
-
-                                                <div role="tabpanel" class="tab-pane fade" id="mas">
-                                                    Para mayor información sobre algun Sistema Operativo diferente a los
-                                                    mencionados u alguna otra forma de instalación, dirigirse a la página
-                                                    de <a href="https://git-scm.com/downloads"> descargas de git</a> donde
-                                                    encontraremos información extendida sobre el tema.
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-                        
-                        <li class="seq-step9" id="step9">
-                            
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Actividad número uno </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-
-
-                                    <div class="seq-step"> 
-                                        <p id="reto1">
-                                            Manos a la obra, Vamos a usar
-                                            la consola o terminal para ver
-                                            si tenemos Git Instalado.
-                                            
-                                            En el terminal de abajo escribe
-                                            el siguiente comando:<br>
-                                            <code>git --version</code>
-
-                                        </p>                                        
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li class="seq-step10" id="step10">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-
-
-
-
-
-
-                                    <div class="seq-step"> 
-
-
-                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingOne">
-                                                    <h4 class="panel-title">
-                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                            ¿Configurar GIT?
-                                                        </a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                                    <div class="panel-body">
-                                                        Ahora que tenemos GIT instalado, debemos configurar ciertos elementos del 
-                                                        ambiente de trabajo para controlar los aspectos de como opera y se ve GIT.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingTwo">
-                                                    <h4 class="panel-title">
-                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                            git config
-                                                        </a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                    <div class="panel-body">
-                                                        Git incluye una herramienta denominada <code>git config</code> la cual permite configuar las variables del entorno de trabajo.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingThree">
-                                                    <h4 class="panel-title">
-                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                            ¿Que vamos a configurar?
-                                                        </a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                    <div class="panel-body">
-                                                        <ul>
-                                                            <li>
-                                                                <strong>Nuestra identidad (usuario y correo):</strong> Git lo utiliza para amarrar tus datos a los commits.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Nuestro editor:</strong> Cual es nuestro editor de texto para escribir el mensaje de nuestros cambios.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Revisar la configuración:</strong> ¿Con cuál comando reviso mi información?
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-
-                        <li class="seq-step11" id="step11">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Los Comandos deben ejecutarse en la consola</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-
-
-
-
-
-
-                                    <div class="seq-step"> 
-
-                                        <p>Actividad en la Consola o Terminal</p>
-                                        <div id="wizard">
-                                            <h1>Primero</h1>
-                                            <div class="step-content">
-                                                <div class="text-center m-t-md">
-                                                    <h2>¿Git Instalado?</h2>
-                                                    <p>
-                                                        Para ver si git está instalado en nuestra
-                                                        computadora, preguntamos por su versión
-                                                        con el comando <br>
-                                                        <code>git --version</code>
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <h1>Segundo</h1>
-                                            <div class="step-content">
-                                                <div class="text-center m-t-md">
-                                                    <h2>¿Quien soy?</h2>
-                                                    <p>
-                                                        Debemos configurar nuestro nombre para que git sepa
-                                                        quien está realizando cambios<br>
-                                                        <code>git config --global user.name TuNombre</code>
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <h1>Tercero</h1>
-                                            <div class="step-content">
-                                                <div class="text-center m-t-md">
-                                                    <h2>¿cómo te ubico?</h2>
-                                                    <p>
-                                                        Para contactar al desarrolldor que hizo los cambios
-                                                        es importante configurar nuestro correo<br>
-                                                        <code>git config --global user.email TuMail</code>
-                                                </div>
-                                            </div>
-
-
-                                            <h1>Cuarto</h1>
-                                            <div class="step-content">
-                                                <div class="text-center m-t-md">
-                                                    <h2>¿Mi configuración?</h2>
-                                                    <p>
-                                                        Para revisar mi configuración basta
-                                                        con ejecutar <br>
-                                                        <code>git config --list</code>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-
-
-                        <li class="seq-step12" id="step12">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.browser-icon {</span>
-                                            <span class="seq-code-1">transform: scale(0);</span>
-                                            <span class="seq-code-1">transition: .2s;</span>
-                                            <span class="seq-code-1">transition-timing-function: cubic-bezier(.55,1.58,.63,.99);</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.seq-in .browser-icon {</span>
-                                            <span class="seq-code-1">transform: scale(1);</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">8</i>
-                                        <code>
-                                            <span>.seq-fallback {</span>
-                                            <span class="seq-code-1">/* Fallback specific styles */</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <h3>Supported in modern browsers</h3>
-                                    <ul class="seq-examples seq-browsers">
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-1" src="images/browsers/firefox_64x64.png" srcset="images/browsers/firefox_64x64.png 1x, images/browsers/firefox_128x128.png 2x" alt="Mozilla Firefox browser logo" width="64" height="64" />
-                                            <p>Firefox</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-2" src="images/browsers/opera_64x64.png" srcset="images/browsers/opera_64x64.png 1x, images/browsers/opera_128x128.png 2x" alt="Opera browser logo" width="64" height="64" />
-                                            <p>Opera</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-3" src="images/browsers/safari_64x64.png" srcset="images/browsers/safari_64x64.png 1x, images/browsers/safari_128x128.png 2x" alt="Apple Safari browser logo" width="64" height="64" />
-                                            <p>Safari</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-4" src="images/browsers/chrome_64x64.png" srcset="images/browsers/chrome_64x64.png 1x, images/browsers/chrome_128x128.png 2x" alt="Google Chrome browser logo" width="64" height="64" />
-                                            <p>Chrome</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-5" src="images/browsers/edge_64x64.png" srcset="images/browsers/edge_64x64.png 1x, images/browsers/edge_128x128.png 2x" alt="Microsoft Edge browser logo" width="64" height="64" />
-                                            <p>Edge/<br class="seq-small-break" />IE10+</p>
-                                        </li>
-                                    </ul>
-
-                                    <h3>With a fallback theme for legacy browsers</h3>
-                                    <div class="seq-step">
-                                        <p class="seq-tip seq-bulb">A traditional side-to-side slider is automatically shown when a browser doesn't support CSS transitions and transforms. Use the <code>.seq-fallback</code> class to style Sequence.js in older browsers<sup class="seq-step-icon">8</sup>.</p>
-                                    </div>
-
-                                    <ul class="seq-examples seq-browsers">
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-6" src="images/browsers/ie9_64x64.png" srcset="images/browsers/ie9_64x64.png 1x, images/browsers/ie9_128x128.png 2x" alt="Microsoft Internet Explorer 9 browser logo" width="64" height="64" />
-                                            <p>IE9</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-7" src="images/browsers/ie8_64x64.png" srcset="images/browsers/ie8_64x64.png 1x, images/browsers/ie8_128x128.png 2x" alt="Microsoft Internet Explorer 8 browser logo" width="64" height="64" />
-                                            <p>IE8</p>
-                                        </li>
-                                    </ul>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-
-                    </ul>
-                </div>
-
-                <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
-                    <button type="button" class="seq-prev" aria-label="Previous"><i class="fa fa-chevron-circle-left"></i> Ant.</button>
-                    <button type="button" class="seq-next" aria-label="Next">Sig <i class="fa fa-chevron-circle-right"></i></button>
-                </fieldset>
-            </div>
-
-            <ul role="navigation" aria-label="Pagination" aria-controls="sequence" class="seq-pagination">
-                <li class="seq-current"><a href="#step1" rel="step1" title="Go to slide 1: Intro"><i class="fa fa-bookmark"></i> <span>Intro</span></a></li>
-                <li><a href="#step2" rel="step2" title="Go to slide 2: How It Works"><i class="fa fa-info-circle"></i> <span>Crear</span></a></li>
-                <li><a href="#step3" rel="step3" title="Go to slide 3: Animation"><i class="fa fa-bolt"></i> <span>VCS</span></a></li>
-                <li><a href="#step4" rel="step4" title="Go to slide 4: Responsive/Touch"><i class="fa fa-expand"></i> <span>Tipos</span></a></li>
-                <li><a href="#step5" rel="step5" title="Go to slide 5: Features"><i class="fa fa-cog"></i> <span>Git</span></a></li>
-                <li><a href="#step6" rel="step6" title="Go to slide 6: Support"><i class="fa fa-tablet"></i> <span>Básico</span></a></li>
-                <li><a href="#step7" rel="step7" title="Go to slide 7: Download"><i class="fa fa-arrow-circle-down"></i> <span>Terminal</span></a></li>
-                <li><a href="#step8" rel="step8" title="Go to slide 8: Download"><i class="fa fa-arrow-circle-down"></i> <span>Instalar</span></a></li>
-                <li><a href="#step9" rel="step9" title="Go to slide 9: Download"><i class="fa fa-arrow-circle-down"></i> <span>Configurar</span></a></li>
-            </ul>
+        <div class="col-lg-7" style="height:400px" id="tour3" >
+
+           <div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Reveal.js</h1>
+					<h3>The HTML Presentation Framework</h3>
+					<p>
+						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Hello There</h2>
+					<p>
+						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Vertical Slides</h2>
+						<p>Slides can be nested inside of each other.</p>
+						<p>Use the <em>Space</em> key to navigate through all slides.</p>
+						<br>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Basement Level 1</h2>
+						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+					</section>
+					<section>
+						<h2>Basement Level 2</h2>
+						<p>That's it, time to go back up.</p>
+						<br>
+						<a href="#/2">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+
+				<section>
+					<h2>Slides</h2>
+					<p>
+						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
+					</p>
+				</section>
+
+				
+
+			</div>
+
+		</div> 
+
+            
 
 
         </div>
@@ -1136,9 +405,16 @@
 
     <div class="row">
         <div class="col-lg-7 acomodar" id="tour4">
-            <div id="console-panel" class="seq">
-
-                <div class="seq-screen">
+            
+                <div class="window" id="console-panel">
+                    <div class="topbar">
+                      <div class="icons">
+                        <div class="close"></div>
+                        <div class="hide"></div>
+                        <div class="maximize"></div>
+                      </div>
+                      <p class="wtitle">Terminal</p>
+                    </div>
 
                     <pre id="preConsole"></pre>
                     <form id="console">
@@ -1146,9 +422,9 @@
                         <div>{{ currentUser }}$></div>
                         <div id="command"><input id="inputConsole" type="text" value=""></div>
                     </form>
-
                 </div>
-            </div>
+                
+            
 
         </div>
 
@@ -1250,10 +526,9 @@
     <script src="{{ asset('assets/vendor/elfinder/js/elfinder.full.js') }}"type="text/javascript" ></script>
     <script src="{{ asset('assets/vendor/elfinder/js/i18n/elfinder.es.js') }}"type="text/javascript" ></script>
     
-    <script src="{{asset('assets/vendor/sequencejs/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/sequencejs/hammer.min.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/sequencejs/sequence.min.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/sequencejs/sequence-theme.intro.js')}}" type="text/javascript"></script>  
+    <script src="{{asset('assets/vendor/revealjs/lib/js/head.min.js')}}" type="text/javascript"></script>    
+    <script src="{{asset('assets/vendor/revealjs/js/reveal.js')}}" type="text/javascript"></script>    
+    
     <script src="{{asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/modernizr/modernizr.2.5.3.min.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/steps/jquery.steps.min.js')}}" type="text/javascript"></script>      
@@ -1279,6 +554,28 @@
     window.document.title = window.titlePattern.replace('*', window.currentDirName);
 
         jQuery(function ($) {
+            
+            
+            Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: "{{ asset('assets/vendor/revealjs/lib/js/classList.js') }}", condition: function() { return !document.body.classList; } },
+					{ src: "{{ asset('assets/vendor/revealjs/plugin/markdown/marked.js') }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: "{{ asset('assets/vendor/revealjs/plugin/markdown/markdown.js') }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: "{{ asset('assets/vendor/revealjs/plugin/highlight/highlight.js') }}", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: "{{ asset('assets/vendor/revealjs/plugin/zoom-js/zoom.js') }}", async: true },
+					{ src: "{{ asset('assets/vendor/revealjs/plugin/notes/notes.js') }}", async: true }
+				]
+			});
+
+            
           
             
         var screen = $('#preConsole');
