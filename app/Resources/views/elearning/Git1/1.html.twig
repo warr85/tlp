@@ -475,15 +475,47 @@
                                              
                                          </section>
                                          
-                                         <section>
-						<h2>Actividad en la Consola</h2>
-						<p>Vamos presionando la tecla para que aparezcan las instrucciones:</p>
-						<p class="fragment fade-up">En el terminal o consola</p>
-						<p class="fragment fade-left">escribe el siguiente comando</p>
-						<p ><pre class="fragment fade-right"><code class="hljs" style="word-wrap: break-word;">$ sudo yum install git-all</code></pre></p>
-						<p class="fragment fade-up">Luego sigues avanzando...</p>						
-						<p class="fragment fade-down">Semaforo <span class="fragment highlight-red">En sus marcas</span> <span class="fragment highlight-blue">Listos</span> <span class="fragment highlight-green">Fuera</span></p>
+                                         <section data-state="actividad1">
+						<h2>Actividad en la Consola 1</h2>
+						<p>Desplazamiento bloqueado hasta que termines la actividad</p>
+						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+						<p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
+						<p ><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git --version</code></pre></p>						
+                                                <p class="fragment fade-left" data-autoslide="2500">si git está instalado, este comando nos dará como resultado la versión instalada de git</p>
+						<p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red" data-autoslide="1000">En sus marcas</span> <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span class="fragment highlight-green">Fuera</span></p>
 					</section>
+                                         
+                                         <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                                             <h2>Felicitaciones... ya escribistes tu primer comando</h2>
+                                         </section>
+                                             
+                                             <section>
+                                                 <h2>Configurar Git</h2>
+                                                 <p>Luego de Instalado, hay un par de comandos que tienen
+                                                 que ser ejecutados antes de comenzar.  Debes colocar
+                                                 tu nombre y dirección de correo.
+                                                 </p>
+                                             </section>
+                                             
+                                             
+                                       <section data-state="actividad2">
+						<h2>Actividad en la Consola 2</h2>
+						<p>Cumple con la Actividad para Continuar</p>
+						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+						<p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando para configurar tu nombre</p>
+						<p ><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git config --global user.name "TuNombre"</code></pre></p>						
+                                                <p class="fragment fade-left" data-autoslide="2500">Luego este comando para configurar tu eamil</p>
+						<p ><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git config --global user.eamil "tuCorreo@tuProveedor.xxx"</code></pre></p>						                                                
+						<p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red" data-autoslide="1000">En sus marcas</span> <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span class="fragment highlight-green">Fuera</span></p>
+					</section>
+                                             
+                                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                                             <h2>Felicitaciones... Tenemos a git instalado y listo para usar.</h2>
+                                         </section>
+                                             
+                                             <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
+                                             <h2>Felicitaciones... Unidad Terminada.</h2>
+                                         </section>
                 </div>
 
             </div> 
@@ -791,7 +823,7 @@
 
 
 
-
+            var $configUser = false;
             var screen = $('#preConsole');
             var input = $('#inputConsole').focus();
             var form = $('#console');
@@ -833,12 +865,31 @@
                             $('#currentDirName').text(window.currentDirName);
                             window.document.title = window.titlePattern.replace('*', window.currentDirName);
                         } else {
-                            if (data.salida !== "") {
+                            if (data.error === "") {
                                 if (data.comando) {
                                     if (data.comando.match($gitVersion)) {
                                         toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');
+                                        toggleNav(true);
                                         $("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
                                     }
+                                    console.log("entra " + $configUser );
+                                    console.log(data.comando.match($gitConfigUser));
+                                    if (data.comando.match($gitConfigUser)) {
+                                        toastr.success("Has configurado tu nombre de usuario", 'Excelente');
+                                        $configUser = true;                                                                           
+                                    }else{
+                                        if(!$configUser){
+                                            screen.append("debes configuar primero el nombre de usuario");
+                                        }
+                                    }
+                                    
+                                    if (data.comando.match($gitConfigMail)) {
+                                        
+                                        toastr.success("Has configurado tu dirección de correo", 'Excelente');
+                                        toggleNav(true);                                        
+                                    }
+                                    
+                                    
                                 }
                                 screen.append(data.salida);
                             } else {
@@ -886,7 +937,7 @@
                 uiOptions: {
                     toolbar: [
                         // toolbar configuration
-                        ['open'],
+                        ['open', 'edit'],
                         ['home', 'up'],
                         ['info'],
                         ['reload'],
@@ -1282,6 +1333,44 @@
         $(window).load(function (e) {
             $("#inputConsole").click();
         });
+        
+        var actividades = {actividad1:false, actividad2:false, age:46};
+        
+        function toggleNav(b) {
+    Reveal.configure({
+        controls: b,
+        progress: b,
+        keyboard: b,
+        overview: b,
+        touch: b
+    });
+}
+        
+        Reveal.addEventListener('actividad1', function(event) {
+    if (!actividades['actividad1']) {
+        toggleNav(false);
+    }
+});
+
+Reveal.addEventListener('actividad2', function(event) {
+    if (!actividades['actividad2']) {
+        toggleNav(false);
+    }
+});
+        
+       //Debo estar pendiente si pasa a la lamina 15 sin hacer el ejercicio,
+       //devolverlo a la 14
+       Reveal.addEventListener( 'slidechanged', function( event ) {
+            // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+            var state = Reveal.getState();            
+            console.log(event.indexh);
+            console.log(state);
+            if (event.indexh === 14){
+                alert("hola");
+            }
+        } );
+        
+        
 
     </script>
 
