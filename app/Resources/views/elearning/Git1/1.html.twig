@@ -788,7 +788,7 @@
         window.topDir = '{{ currentDir }}';
         window.currentDir = '{{ currentDir }}';
         window.currentDirName = window.currentDir.split('/').pop();
-        window.currentUser = '{{ currentUser }}';
+        window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
 
@@ -912,13 +912,13 @@
                 return false;
             });
 
-
+            
 
             $('#elfinder').elfinder({
                 url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php')}}",
                 lang: 'es',
                 height: 250,
-                customData: {user: window.currentUser},
+                customData: { user: "wramones" },
                 handlers: {
                     dblclick: function (event, elfinderInstance) {
                         event.preventDefault();

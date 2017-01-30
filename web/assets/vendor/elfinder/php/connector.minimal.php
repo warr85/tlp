@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ALL); // Set E_ALL for debuging
+error_reporting(0); // Set E_ALL for debuging
 
 // load composer autoload before load elFinder autoload If you need composer
 //require './vendor/autoload.php';
@@ -86,16 +86,14 @@ elFinder::$netDrivers['ftp'] = 'FTP';
  * @param  string  $path  file path relative to volume root directory started with directory separator
  * @return bool|null
  **/
-
-//if(isset($_GET['user'])) $path = $_GET['user'];
-$user = filter_input(INPUT_GET, 'user', FILTER_SANITIZE_SPECIAL_CHARS);
-
 function access($attr, $path, $data, $volume) {
 	return strpos(basename($path), '.') === 0       // if file/folder begins with '.' (dot)
 		? !($attr == 'read' || $attr == 'write')    // set read+write to false, other (locked+hidden) set to true
 		:  null;                                    // else elFinder decide it itself
 }
 
+$filePath = '../files'; $startPath = $filePath;
+if(isset($_GET['user']) && !empty($_GET['user'])) { $startPath .= '/'.$_GET['user']; }
 
 // Documentation for connector options:
 // https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options
@@ -104,13 +102,22 @@ $opts = array(
 	'roots' => array(
 		array(
 			'driver'        => 'LocalFileSystem',           // driver for accessing file system (REQUIRED)
-			'path'          => '/var/www/html/octonautas/' . $user,                 // path to files (REQUIRED)
-			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../octonautas/' . $user, // URL to files (REQUIRED)
+			'path'          => '/var/www/html/octonautas/' ,                 // path to files (REQUIRED)
+                        'startPath'     => $_GET['user'],
+			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../files/' . $_GET['user'], // URL to files (REQUIRED)
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
 			'uploadAllow'   => array('image', 'text/plain'),// Mimetype `image` and `text/plain` allowed to upload
 			'uploadOrder'   => array('deny', 'allow'),      // allowed Mimetype `image` and `text/plain` only
 			//'accessControl' => 'access',                     // disable and hide dot starting files (OPTIONAL)
-                        'disabled' => array('rename', 'rm')
+                        'defaults'   => array('hidden' => true, 'read' => false, 'write' => false),
+                        'attributes' => array(
+                                array( // root must not be hidden
+                                    'pattern' => '/' . $_GET['user'] . '/',
+                                    'read' => true,
+                                    'write' => true,
+                                    'hidden' => false
+                                ),
+                        )
 		)
 	)
 );
