@@ -94,7 +94,6 @@ function access($attr, $path, $data, $volume) {
 
 $filePath = '../files'; $startPath = $filePath;
 if(isset($_GET['user']) && !empty($_GET['user'])) { $startPath .= '/'.$_GET['user']; }
-
 // Documentation for connector options:
 // https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options
 $opts = array(

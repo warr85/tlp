@@ -204,6 +204,8 @@ class AjaxController extends Controller {
              */
             $deny = array(
                 "rm*",
+                "sudo*",
+                "apt*"
             );
             
             

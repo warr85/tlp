@@ -236,13 +236,48 @@
                             <small>Creado por <a href="www.tecnolineaparaguana.com.ve">Wilmer Ramones</a> / <a href="http://twitter.com/wramonesr">@wramonesr</a></small>
                         </p>
                     </section>
+                        
+                        
+                    <section data-transition="concave" data-background="{{ asset('images/course/gif/earthRotation.gif') }}">
+                        
+                        <section >
+                            <h2>Presentación <strong style="color:white"> Multiespacial </strong></h2>
+                            <p>
+                                puedes controlar <strong style="color:white">la presentación con las teclas</strong> de
+                                dirección del <strong style="color:white">teclado, o con barra espaciadora</strong> para
+                                pasar <strong style="color:white">por todas y cada una de las láminas</strong>.</p>
+                            <a href="#" class="navigate-down">
+                                <img width="500" height="238" data-src="{{ asset('images/course/spacebar.png') }}" alt="Down arrow">
+                            </a>
+                            <p><strong style="color:white">Recomendable usar la barra espaciadora para que no te pierdas de nada</strong></p>
+                        </section>                        
+                        <section>
+                            <h2>Sótano nivel 2</h2>
+                            <p>Si presionas la tecla <strong style="color:white"><em>Esc</em>, puedes ver
+                                    en miniatura</strong> todas las <strong style="color:white">láminas de la presentación</strong></p>
+                            <br>
 
-                    <section data-transition="zoom">                        
-                        <h3>
+                        </section>
+
+                        <section>
+                            <h2>Sótano nivel 3</h2>
+                            <p>¿Estamos listos? <strong style="color:white">Continuemos con nuestra clase de GIT</strong>
+                                <br>
+                                <a href="#/3">
+                                    <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+                                </a>
+                        </section>
+                    </section>
+
+                    <section data-transition="zoom" data-background="{{ asset('images/course/gif/lightbulb2.gif') }}">                        
+                        <h2>
                             Gracias por encender tu conocimiento con Tecnolíne@
                             Paraguaná.
-                        </h3>
-                        <h4>En este Primera parte vamos a conocer:</h4>
+                        </h2>
+                    </section>
+                        
+                    <section>
+                        <h3>Objetivos de Este módulo:</h3>
                         <ul>
                             <li>¿Qué es Controlador de Versiones?</li>
                             <li>¿Qué es Git?</li>
@@ -253,41 +288,7 @@
                     </section>
 
                     <!-- Example of nested vertical slides -->
-                    <section data-transition="concave">
-                        <section >
-                            <h2>Presentación Multiespacial</h2>
-                            <p>Esta presentación puede ir en cualquier dirección,
-                                puedes controlar la presentación con las teclas de
-                                dirección del teclado, o con barra espaciadora para
-                                pasar por todas y cada una de las láminas.</p>
-
-                            <br>
-                            <a href="#" class="navigate-down">
-                                <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-                            </a>
-                        </section>
-                        <section>
-                            <h2>Sótano nivel 1</h2>
-                            <p>Puedes ir al princio o final de la presentación
-                                utiizando las teclas <em>inicio</em> o <em>fin</em>.</p>
-                        </section>
-                        <section>
-                            <h2>Sótano nivel 2</h2>
-                            <p>Si presionas la tecla <em>Esc</em>, puedes ver
-                                en miniatura todas las láminas de la presentación</p>
-                            <br>
-
-                        </section>
-
-                        <section>
-                            <h2>Sótano nivel 3</h2>
-                            <p>¿Estamos listos? Continuemos con nuestra clase de GIT
-                                <br>
-                                <a href="#/3">
-                                    <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-                                </a>
-                        </section>
-                    </section>
+                    
 
                     <section>
                         <section>
@@ -335,9 +336,11 @@
                                 sistema manual para controlar tus versiones </p>
                             </section>
                             
-                            <section>
+                            <section >
+                                <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                                <h2 style="color:black">¿Que es un Controlador de Versiones?</h2> 
+                                </section>
                                 <section>
-                                <h2>¿Que es un Controlador de Versiones?</h2> 
                                 <p>Un Controlador de Versiones (VCS en inglés) 
                                 es un sistema que registra los cambios 
                                 ocurridos durante la <strong>creación, guardado, 
@@ -405,15 +408,14 @@
                                  </section>
                                      
                                  <section>
-                                    <p>La historia del nacimiento de GIT es muy interesante,a continuación se creó una revista digital para que puedes leer y conocer la historia. (usa las teclas de navegación para desplazarte en la páginas)</p>
-                                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".bs-example-modal-lg">Leer Historia de GIT</button>
+                                     <h3>Nacimiento de GIT</h3>
+                                    <p>La historia del nacimiento de GIT es muy interesante,Te invitamos a leer la historia presionando en el botón</p>
+                                        <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Leer Historia de GIT</button>
                                  </section>
-                                     <section data-background="{{ asset('images/course/whatGit.png') }}">
-                                         
-                                     </section>
+                                     
                                      
                                      <section data-background="{{ asset('images/course/terminal.gif') }}">
-                                         <h2>Vamos a trabajar con la consola o terminal</h2>
+                                         <h2>Este curso usa la Consola o Terminal</h2>
                                      </section>
                                          <section>
                                              <h2>Interprete de comandos</h2>
@@ -427,8 +429,10 @@
                                             a la consola o terminal..</p>
                                          </section>
                                          
-                                         <section>
-                                             <p>Antes de usar Git, primer debemos instalarlo</p>
+                                         <section data-background="{{ asset('images/course/gif/installGit.gif') }}">
+                                             <h3>Antes de usar Git, primer debemos instalarlo</h3>
+                                         </section>
+                                             <section>
                                              <div>
 
                                             <!-- Nav tabs -->
