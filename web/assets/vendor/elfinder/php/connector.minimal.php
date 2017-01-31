@@ -92,8 +92,6 @@ function access($attr, $path, $data, $volume) {
 		:  null;                                    // else elFinder decide it itself
 }
 
-$filePath = '../files'; $startPath = $filePath;
-if(isset($_GET['user']) && !empty($_GET['user'])) { $startPath .= '/'.$_GET['user']; }
 // Documentation for connector options:
 // https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options
 $opts = array(
@@ -101,7 +99,7 @@ $opts = array(
 	'roots' => array(
 		array(
 			'driver'        => 'LocalFileSystem',           // driver for accessing file system (REQUIRED)
-			'path'          => '/var/www/html/octonautas' ,                 // path to files (REQUIRED)
+			'path'          => __DIR__ . '/../../../../../../octonautas/' ,
                         'startPath'     => $_GET['user'],
 			'URL'           => dirname($_SERVER['PHP_SELF']) . '../../../../octonautas/' . $_GET['user'], // URL to files (REQUIRED)
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
