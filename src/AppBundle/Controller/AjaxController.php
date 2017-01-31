@@ -228,7 +228,7 @@ class AjaxController extends Controller {
             
             
             $commands = array(
-                'git*' => '/usr/bin/git $1',
+                'git*' => $this->container->getParameter('git_directory') . 'git $1',
                 'composer*' => '/usr/local/bin/composer $1',
                 'symfony*' => './app/console $1',
                 '*' => '$1', // Allow any command. Must be at the end of the list.
@@ -316,6 +316,9 @@ class AjaxController extends Controller {
             
             
             $comando = $userCommand;
+            if(substr( $comando, 0, 3 ) === "git"){
+            	$userCommand = $this->container->getParameter('git_directory') . $userCommand;
+            }
             $userCommand = "cd $currentDir && $userCommand";
             
             $descriptors = array(
