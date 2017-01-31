@@ -101,20 +101,18 @@ $opts = array(
 	'roots' => array(
 		array(
 			'driver'        => 'LocalFileSystem',           // driver for accessing file system (REQUIRED)
-			'path'          => '/var/www/html/octonautas/' ,                 // path to files (REQUIRED)
+			'path'          => '/var/www/html/octonautas' ,                 // path to files (REQUIRED)
                         'startPath'     => $_GET['user'],
-			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../files/' . $_GET['user'], // URL to files (REQUIRED)
+			'URL'           => dirname($_SERVER['PHP_SELF']) . '../../../../octonautas/' . $_GET['user'], // URL to files (REQUIRED)
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
 			'uploadAllow'   => array('image', 'text/plain'),// Mimetype `image` and `text/plain` allowed to upload
 			'uploadOrder'   => array('deny', 'allow'),      // allowed Mimetype `image` and `text/plain` only
-			//'accessControl' => 'access',                     // disable and hide dot starting files (OPTIONAL)
-                        'defaults'   => array('hidden' => true, 'read' => false, 'write' => false),
+			'accessControl' => 'access',                     // disable and hide dot starting files (OPTIONAL)
+                        'defaults'   => array('hidden' => true),
                         'attributes' => array(
                                 array( // root must not be hidden
                                     'pattern' => '/' . $_GET['user'] . '/',
-                                    'read' => true,
-                                    'write' => true,
-                                    'hidden' => false
+                                    'hidden' => false,
                                 ),
                         )
 		)
