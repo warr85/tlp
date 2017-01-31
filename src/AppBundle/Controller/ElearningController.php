@@ -72,8 +72,8 @@ class ElearningController extends Controller {
         ));
                 
         $logrosObtenidos = $this->getDoctrine()->getRepository("AppBundle:InscripcionLogro")->findAll();                                        
-        $logrosDisponibles = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findByIdCursoModuloTema($temaActual->getId());
-        $directorio = '/var/www/html/octonautas/' . $this->getUser()->getUserName();    
+        $logrosDisponibles = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findByIdCursoModuloTema($temaActual->getId());        
+        $directorio = $this->container->getParameter('octonautas_directory') . $this->getUser()->getUserName();            
         if(!file_exists($directorio)){
             mkdir($directorio);
         }
