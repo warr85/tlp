@@ -105,7 +105,7 @@ $opts = array(
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
 			'uploadAllow'   => array('image', 'text/plain'),// Mimetype `image` and `text/plain` allowed to upload
 			'uploadOrder'   => array('deny', 'allow'),      // allowed Mimetype `image` and `text/plain` only
-			'accessControl' => 'access',                     // disable and hide dot starting files (OPTIONAL)
+			//'accessControl' => 'access',                     // disable and hide dot starting files (OPTIONAL)
                         'defaults'   => array('hidden' => true),
                         'attributes' => array(
                                 array( // root must not be hidden

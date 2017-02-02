@@ -316,9 +316,28 @@ class AjaxController extends Controller {
             
             
             $comando = $userCommand;
-            if(substr( $comando, 0, 3 ) === "git"){
-            	$userCommand = $this->container->getParameter('git_directory') . $userCommand;
+            $original = $userCommand;
+            if (strpos($comando, '--global') !== false) {
+                
+                $userCommand = str_replace("--global", "", $comando);                
             }
+            if(substr( $comando, 0, 3 ) === "git"){
+                if(ComandoToca($comando, $parametros['comandos'])){
+                    $userCommand = $this->container->getParameter('git_directory') . $comando;
+                }else{
+                    
+                    $response->setData(array(
+                        'response'      => 'error',
+                        'parametros'    => $userCommand,
+                        'error'         => "<span class='error'>Este Comando " . $userCommand . " Todavía no toca utilizarlo</span>",
+                        'salida'        => ""
+                    ));
+                    return $response;
+                    
+                }
+            }
+            
+            
             $userCommand = "cd $currentDir && $userCommand";
             
             $descriptors = array(
@@ -359,7 +378,7 @@ class AjaxController extends Controller {
                 'salida'        => $output,
                 'error'         => $error,
                 'code'          => $code,
-                'comando'       => $comando
+                'comando'       => $original
             ));
             return $response;
         }
@@ -386,3 +405,18 @@ function searchCommand($userCommand, array $commands, &$found = false, $inValues
     }
     return false;
 }
+
+
+function ComandoToca($userCommand, array $orden)
+{    
+    foreach ($orden as $key => $value) {   
+       if ($value === 'false'){             
+           if (strpos($userCommand, $key) !== false){ return true; }
+           else {return false; }
+       }else if ($value === 'true'){
+           if (strpos($userCommand, $key) !== false){ return true; }
+       }
+    }    
+    return false;
+}
+
