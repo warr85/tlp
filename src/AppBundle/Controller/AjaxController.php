@@ -274,7 +274,8 @@ class AjaxController extends Controller {
                     $response->setData(array(
                         'response'      => 'success',
                         'parametros'    => $userCommand,
-                        'salida'         => $salida,                       
+                        'error'         => $salida, 
+                        'salida'        => ""
                     ));
                     return $response; 
                 }
@@ -286,7 +287,8 @@ class AjaxController extends Controller {
                         $response->setData(array(
                             'response'      => 'success',
                             'parametros'    => $userCommand,
-                            'salida'         => $salida,                       
+                            'error'         => $salida, 
+                            'salida'        => ""
                         ));
                         return $response;
                     }

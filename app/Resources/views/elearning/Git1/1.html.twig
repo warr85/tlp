@@ -237,10 +237,17 @@
                         </p>
                     </section>
                         
+                        <section data-transition="zoom" data-background="{{ asset('images/course/gif/lightbulb2.gif') }}">                        
+                        <h2>
+                            Gracias por encender tu conocimiento con Tecnolíne@
+                            Paraguaná.
+                        </h2>
+                    </section>
+                        
                         
                     <section data-transition="concave" data-background="{{ asset('images/course/gif/earthRotation.gif') }}">
                         
-                        <section >
+                        
                             <h2>Presentación <strong style="color:white"> Multiespacial </strong></h2>
                             <p>
                                 puedes controlar <strong style="color:white">la presentación con las teclas</strong> de
@@ -251,38 +258,18 @@
                             </a>
                             <p><strong style="color:white">Recomendable usar la barra espaciadora para que no te pierdas de nada</strong></p>
                         </section>                        
-                        <section>
-                            <h2>Sótano nivel 2</h2>
-                            <p>Si presionas la tecla <strong style="color:white"><em>Esc</em>, puedes ver
-                                    en miniatura</strong> todas las <strong style="color:white">láminas de la presentación</strong></p>
-                            <br>
+                       
+                    
 
-                        </section>
-
-                        <section>
-                            <h2>Sótano nivel 3</h2>
-                            <p>¿Estamos listos? <strong style="color:white">Continuemos con nuestra clase de GIT</strong>
-                                <br>
-                                <a href="#/3">
-                                    <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-                                </a>
-                        </section>
-                    </section>
-
-                    <section data-transition="zoom" data-background="{{ asset('images/course/gif/lightbulb2.gif') }}">                        
-                        <h2>
-                            Gracias por encender tu conocimiento con Tecnolíne@
-                            Paraguaná.
-                        </h2>
-                    </section>
+                    
                         
                     <section>
                         <h3>Objetivos de Este módulo:</h3>
                         <ul>
-                            <li>¿Qué es Controlador de Versiones?</li>
-                            <li>¿Qué es Git?</li>
-                            <li>¿Cómo instalar Git?</li>
-                            <li>¿Como Configurar Git?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Qué es Controlador de Versiones?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Qué es Git?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Cómo instalar Git?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Como Configurar Git?</li>
                         </ul> 
 
                     </section>
@@ -1020,44 +1007,45 @@
                                 if (data.comando) {
                                     console.log(comandos);
                                     console.log(data.comando.match($gitConfigUser));
-                                    if (data.comando.match($gitVersion)) {
-                                        toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');
-                                        toggleNav(true);
-                                        $("#act1done").addClass('fa fa-check-circle');
-                                        comandos['version'] = true
-                                        actividades['actividad1'] = true;
-                                        $("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
-                                    }else if (data.comando.match($gitInit)){
-                                        if(comandos['version']){
-                                            $("#act2done").addClass('fa fa-check-circle');
-                                            actividades['actividad2'] = true;
-                                            toastr.success("Has Inicializado Correctamente un repositorio GIT", 'Excelente');
-                                            toggleNav(true);    
-                                            comandos['init'] = true;
+                                    if (data.comando.match($comandoGit)){
+                                        if (data.comando.match($gitVersion)) {
+                                            toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');
+                                            toggleNav(true);
+                                            $("#act1done").addClass('fa fa-check-circle');
+                                            comandos['version'] = true
+                                            actividades['actividad1'] = true;
+                                            $("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                        }else if (data.comando.match($gitInit)){
+                                            if(comandos['version']){
+                                                $("#act2done").addClass('fa fa-check-circle');
+                                                actividades['actividad2'] = true;
+                                                toastr.success("Has Inicializado Correctamente un repositorio GIT", 'Excelente');
+                                                toggleNav(true);    
+                                                comandos['init'] = true;
+                                            }else{
+                                               screen.append("debes verificar primero la instalacion de git con el comando git --version"); 
+                                            }
+                                        }else if (data.comando.match($gitConfigUser)) {
+
+                                            toastr.success("Has configurado tu nombre de usuario", 'Excelente');
+                                            $configUser = true; 
+                                            $("#act3-1done").addClass('fa fa-check-circle');                                        
+                                            comandos['name'] = true;
                                         }else{
-                                           screen.append("debes verificar primero la instalacion de git con el comando git --version"); 
+                                            if(!$configUser){
+                                                screen.append("debes configuar primero el nombre de usuario");
+                                            }
                                         }
-                                    }else if (data.comando.match($gitConfigUser)) {
-                                        
-                                        toastr.success("Has configurado tu nombre de usuario", 'Excelente');
-                                        $configUser = true; 
-                                        $("#act3-1done").addClass('fa fa-check-circle');                                        
-                                        comandos['name'] = true;
-                                    }else{
-                                        if(!$configUser){
-                                            screen.append("debes configuar primero el nombre de usuario");
+
+                                        if (data.comando.match($gitConfigMail)) {
+                                            $("#act3-2done").addClass('fa fa-check-circle');
+                                            actividades['actividad3'] = true
+                                            toastr.success("Has Inicializado Correctamente un repositorio GIT", 'Excelente');
+                                            toggleNav(true); 
+                                            comandos['email'] = true;
                                         }
+                                    
                                     }
-                                    
-                                    if (data.comando.match($gitConfigMail)) {
-                                        $("#act3-2done").addClass('fa fa-check-circle');
-                                        actividades['actividad3'] = true
-                                        toastr.success("Has Inicializado Correctamente un repositorio GIT", 'Excelente');
-                                        toggleNav(true); 
-                                        comandos['email'] = true;
-                                    }
-                                    
-                                    
                                 }
                                 screen.append(data.salida);
                             } else {
@@ -1249,6 +1237,7 @@
         });
 
         var $palabraGit = /^git$/g;
+        var $comandoGit = /^git+\s+?\w?/g;
         var $gitEspacio = /^git+\s/g;
         var $configEspacio = /\bconfig+\s/g;
         var $configGlobal = /\bconfig\s+--global+\s/g;
