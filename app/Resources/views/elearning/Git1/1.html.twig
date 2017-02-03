@@ -1532,12 +1532,41 @@ Reveal.addEventListener('qz', function(event) {
        //Debo estar pendiente si pasa a la lamina 15 sin hacer el ejercicio,
        //devolverlo a la 14
        Reveal.addEventListener( 'slidechanged', function( event ) {
-            // event.previousSlide, event.currentSlide, event.indexh, event.indexv
-            var state = Reveal.getState();            
+            // event.previousSlide, event.currentSlide, event.indexh, event.indexv                        
             console.log(event.indexh);
+            console.log(event.indexv);
+            console.log(Reveal.slide());
+            console.log(Reveal.getPreviousSlide());
+            console.log(event.previousSlide);
             console.log(state);
-            if (event.indexh === 14){
-                alert("hola");
+            if (event.indexh > 18 ){
+                if (!actividades['actividad1']) {
+                    Reveal.slide( 18 );
+                    var state = Reveal.getState();  
+                    Reveal.setState(state);
+                    toastr.error("es importante navegar por todas las láminas para cumplir con las actividades", "No debes saltar láminas");
+                    
+                }
+            }
+            
+            if (event.indexh > 21 ){
+                if (!actividades['actividad2']) {
+                    Reveal.slide( 21 );
+                    var state = Reveal.getState();  
+                    Reveal.setState(state);
+                    toastr.error("es importante navegar por todas las láminas para cumplir con las actividades", "No debes saltar láminas");
+                    
+                }
+            }
+            
+            if (event.indexh > 24 ){
+                if (!actividades['actividad3']) {
+                    Reveal.slide( 24 );
+                    var state = Reveal.getState();  
+                    Reveal.setState(state);
+                    toastr.error("es importante navegar por todas las láminas para cumplir con las actividades", "No debes saltar láminas");
+                    
+                }
             }
         } );
         
