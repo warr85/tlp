@@ -506,10 +506,10 @@
 						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
 						<p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
 						<div class="row">
-                                                   <div class="col-lg-10"> 
+                                                   <div class="col-xs-10"> 
                                                        <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git --version</code></pre></a>
                                                    </div>
-                                                <div class="col-lg-2">
+                                                <div class="col-xs-2">
                                                     <i id="act1done" style="color:greenyellow;" class=""></i>
                                                 </div>
                                                     </div>
@@ -528,14 +528,35 @@
                                                                                           
                                              
                                         <section>
-                                        <h2>Ahora Inicializar Git</h2>
-                                        <p>debemos inicializar git en cada directorio (o proyecto) que nosotros queramos que git le siga la pista,
-                                        esto sólo lo hacemos una sola vez por proyecto o directorio.
-                                        </p>
-                                        <p>
-                                            en estos momentos, estamos ubicados en el proyecto
-                                            que tiene por nombre tu nombre de usuario: {{ app.user.userName }}
-                                        </p>
+                                            <section>
+                                                <h2>Inicializar GIT</h2>
+                                                
+                                            </section>
+                                            <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
+                                                <h2>Si nosotros queremos que Git siga nuestro proyecto</h2>
+                                            </section>
+                                                
+                                            <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
+                                                <h2>debemos inicializar a git en dicho proyecto</h2>
+                                            </section>
+                                                
+                                                <section data-background="{{ asset('images/course/gif/detective.gif') }}">
+                                                <h2 style="color:black;">Así git podrá seguir como a un detective, nuestros cambios</h2>
+                                            </section>
+                                                <section>
+                                                    <h2>Pasos para inicialiar un proyecto GIT</h2>
+                                                    <ul>
+                                                        <li>Debes estar ubicado dentro del directorio del proyecto</li>
+                                                        <li>desde la consola o terminal debes ejecutar git init.</li>                                                        
+                                                    </ul>
+                                                    
+                                                <p>
+                                                Con git init no solo podemos crear 
+                                                un proyecto desde 0, también podemos
+                                                comenzar a seguir un proyecto ya iniciado                                                
+                                                </p>
+                                                    
+                                                </section>
                                     </section>
                                              
                                              
@@ -543,20 +564,59 @@
                                              
                                               <section data-state="actividad2">
 						<h2>Actividad en la Consola 2</h2>
-						<p class="fragment fade-up" data-autoslide="2500">Desplazamiento bloqueado hasta que termines la actividad</p>
+						<p class="fragment fade-up" data-autoslide="2500">Adivina que vamos a hacer.....</p>
 						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-						<p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
+						<p class="fragment fade-left" data-autoslide="2500">escribe el comando para inicializar a GIT</p>
 						<div class="row">
-                                                   <div class="col-lg-10"> 
+                                                   <div class="col-xs-10"> 
                                                        <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git init</code></pre></a>
                                                    </div>
-                                                <div class="col-lg-2">
+                                                <div class="col-xs-2">
                                                     <i id="act2done" style="color:greenyellow;" class=""></i>
                                                 </div>
                                                     </div>
                                                 <p class="fragment fade-left" data-autoslide="2500">para indicarle a git que le siga la pista a todo nuestro directorio</p>
 						<p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red" data-autoslide="1000">En sus marcas</span> <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span class="fragment highlight-green">Fuera</span></p>
 					</section>
+                                                
+                                                <section >
+                                                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
+                                                        <h3 style="background-color:black; color:white; opacity:0.6;">
+                                                            ¿Te distes cuenta del mensaje?
+                                                        </h3>
+                                                    </section>
+                                                        <section>                                                            
+                                                            <h3>"Veamos un ejemplo desde 0"</h3>                                                                                                                        
+                                                            <p>es decir, creamos la carpeta del proyecto, entramos a la 
+                                                            carpeta del proyecto e inicializamos git</p>
+                                                        </section>
+                                                        <section data-background-size="cover" data-background="{{ asset('images/course/gif/gitinit.gif') }}">
+                                                            <br><br><br><br><br>
+                                                           <ul>
+                                                               <li><strong>mkdir:</strong> para crear la carpeta</li>
+                                                               <li><strong>cd:</strong> para cambiar al directorio del proyecto</li>
+                                                               <li><strong>git init:</strong> para inicializar el proyecto</li>
+                                                               <li>y allí tenemos el mensaje</li>
+                                                            </ul>
+                                                        </section>
+                                                            <section>
+                                                                <h2>¿Que acaba de ocurrir?</h2>
+                                                                 <p>
+                                                                    Cuando ejecutamos git init, se creó
+                                                                    un directorio oculto .git en la raiz
+                                                                    de nuestro proyecto que contiene los
+                                                                    metadatos necesarios para seguir los
+                                                                    cambios de nuestro repositorio.
+                                                                </p>
+                                                            </section>
+                                                            
+                                                            <section>
+                                                                <h2>.git</h2>
+                                                                <p> puedes consultar el contenido del directorio
+                                                                oculto desde "tu directorio"</p>
+                                                                <p>A lo largo del curso explicaremos su contenido... no te preocupes</p>
+                                                            </section>
+                                                </section>
                                              
                                              <section data-background="{{ asset('images/course/gif/gitConfig2.gif') }}">
                                                  <h2 style="color:red">Configurar Git</h2>
@@ -580,19 +640,19 @@
 						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
 						<p class="fragment fade-left" data-autoslide="2500">Comando para configurar tu nombre</p>
 						<div class="row">
-                                                   <div class="col-lg-10"> 
+                                                   <div class="col-xs-10"> 
                                                        <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git config --global user.name "TuNombre"</code></pre></a>
                                                    </div>
-                                                <div class="col-lg-2">
+                                                <div class="col-xs-2">
                                                     <i id="act3-1done" style="color:greenyellow;" class=""></i>
                                                 </div>
                                                     </div>
                                                 <p class="fragment fade-left" data-autoslide="2500">Luego este comando para configurar tu email</p>
 						<div class="row">
-                                                   <div class="col-lg-10"> 
+                                                   <div class="col-xs-10"> 
                                                        <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git config --global user.eamil "tuCorreo@tuProveedor.xxx"</code></pre></a>
                                                    </div>
-                                                <div class="col-lg-2">
+                                                <div class="col-xs-2">
                                                     <i id="act3-2done" style="color:greenyellow;" class=""></i>
                                                 </div>
                                                     </div>
@@ -1577,9 +1637,9 @@ Reveal.addEventListener('qz', function(event) {
                 }
             }
             
-            if (event.indexh > 24 ){
+            if (event.indexh > 25 ){
                 if (!actividades['actividad3']) {
-                    Reveal.slide( 24 );
+                    Reveal.slide( 25 );
                     var state = Reveal.getState();  
                     Reveal.setState(state);
                     toastr.error("es importante navegar por todas las láminas para cumplir con las actividades", "No debes saltar láminas");
