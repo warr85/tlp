@@ -49,6 +49,14 @@ class CursoModuloTemaLogro
     /**
      * @var integer
      *
+     * @ORM\Column(name="cantidad_necesaria", type="integer", nullable=false, options={"comment" = "Numero de veces necesarias para obtener el logro"})
+     */
+    private $cantidadNecesaria;
+    
+    
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="badge", type="integer", nullable=false, options={"comment" = "número de seguidilla de logro"})
      */
     private $badge;
@@ -74,6 +82,17 @@ class CursoModuloTemaLogro
      * })
      */
     private $idCursoModuloTema;
+    
+    
+    /**
+     * @var \AppBundle\Entity\Estatus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estatus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_estatus", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idEstatus;
     
     
     
@@ -263,5 +282,51 @@ class CursoModuloTemaLogro
     public function getBadge()
     {
         return $this->badge;
+    }
+
+    /**
+     * Set cantidadNecesaria
+     *
+     * @param integer $cantidadNecesaria
+     * @return CursoModuloTemaLogro
+     */
+    public function setCantidadNecesaria($cantidadNecesaria)
+    {
+        $this->cantidadNecesaria = $cantidadNecesaria;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidadNecesaria
+     *
+     * @return integer 
+     */
+    public function getCantidadNecesaria()
+    {
+        return $this->cantidadNecesaria;
+    }
+
+    /**
+     * Set idEstatus
+     *
+     * @param \AppBundle\Entity\Estatus $idEstatus
+     * @return CursoModuloTemaLogro
+     */
+    public function setIdEstatus(\AppBundle\Entity\Estatus $idEstatus)
+    {
+        $this->idEstatus = $idEstatus;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstatus
+     *
+     * @return \AppBundle\Entity\Estatus 
+     */
+    public function getIdEstatus()
+    {
+        return $this->idEstatus;
     }
 }
