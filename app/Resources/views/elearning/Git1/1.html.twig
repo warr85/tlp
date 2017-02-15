@@ -312,20 +312,28 @@
                         </section>
                         <section data-background="http://i.giphy.com/90F8aUepslB84.gif" >
                             <h2>No mientas.... jejejej</h2>
-                            <p>te parece familiar el siguiente ejemplo...</p>
+                            <p style="color:black;">Vamos a ver el siguiente ejemplo a continuación:</p>
                             
                         </section>  
                                  
                         <section data-background="{{ asset('images/course/reguardado1.jpg') }}" >
-
+                            <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Terminas el Trabajo</p>
+                            <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Te hacen correcciones</p>
+                            <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Y al hacer las correcciones...</p>
+                            <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el trabajo</p>
                         </section> 
                             
                             <section data-background="{{ asset('images/course/reguardado2.jpg') }}" >
-     
+                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Te lo vuelven a corregir</p>
+                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Le haces los cambios</p>
+                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Y otra vez...</p>
+                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el trabajo</p>
                         </section> 
                             
                             <section data-background="{{ asset('images/course/reguardado3.jpg') }}" >
-
+                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Y así sucesivamente</p>
+                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Hasta tener un nombre largo</p>
+                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Difícil de manejar y controlar</p>                                    
                         </section> 
                     </section>
                                  
@@ -386,11 +394,10 @@
                                     <section data-background="{{ asset('images/course/gif/tellType.gif') }}">
                                         <h2 style="color:black;">Descripción</h2>
                                         <p style="background-color:black; color:white; opacity:0.6;">
-                                            cada vez que guardas un archivo, tu VCS es como un
-                                            entrenador en tu espalda quete obliga a escribir una <strong>
-                                                descripcion</strong> de los cambios.
-                                        </p>
-                                        <p style="background-color:black; color:white; opacity:0.6;"> 
+                                            cada vez que vas a guardar los cambios en tu VCS, este
+                                            te solicita que escribas una descripción de los cambios
+                                            que has realizado. <br>                                        
+                                        
                                             Luego, es capaz de mostrarte los cambios entre las 
                                             distintas versiones, es decir, <strong>Te cuenta
                                             la historia de tu proyecto</strong>
@@ -410,6 +417,10 @@
                                      <section id="vcs-local" data-background-video="{{ asset('assets/vendor/moovly/videos/local.webm') }}">
                                      
                                     </section>
+                                     
+                                     
+                                     <section data-background="{{ asset('images/course/gif/centralizedDistributed2.gif') }}">
+                                     </section>
                                  </section>
                                      
                                  <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
@@ -569,14 +580,13 @@
                                             </section>
                                                 <section>
                                                     <h2>Recuerda...</h2>
-                                                    <p>para inicializar un repositorio GIT</p>
-                                                    <p>Debes estar dentro del directorio del proyecto que deseas
-                                                    versionar</p>
-                                                    
+                                                    <p>Para inicializar GIT, debemos estar dentro del directorio
+                                                    de nuestro proyecto a versionar.</p>
+                                                    <h3>Importante:</h3>   
                                                 <p>
-                                                    no solo podemos inicializar un proyecto nuevo o vacío, 
-                                                    también podemos comenzar a versionar proyectos ya iniciados
-                                                    o en desarrollo.
+                                                    Si nuestro proyecto está avanzado o ya comenzado,
+                                                    también podemos comenzar a gestionarlo a través del
+                                                    mismo comando.
                                                 </p>
                                                     
                                                 </section>
@@ -660,7 +670,7 @@
                                              </section>
                                              
                                              
-                                       <section data-state="actividad3" class="fragment fade-up" data-autoslide="2500">
+                                       <section data-state="actividad3" class="fragment fade-up">
 						<h2 >Actividad en la Consola 3</h2>
 						<h3 class="fragment fade-up" data-autoslide="2500">Configuración inicial de GIT</h3>
 						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
@@ -676,7 +686,7 @@
                                                 <p class="fragment fade-left" data-autoslide="2500">Luego este comando para configurar tu email</p>
 						<div class="row">
                                                    <div class="col-xs-10"> 
-                                                       <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git config --global user.eamil "tuCorreo@tuProveedor.xxx"</code></pre></a>
+                                                       <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git config --global user.email "tuCorreo@tuProveedor.xxx"</code></pre></a>
                                                    </div>
                                                 <div class="col-xs-2">
                                                     <i id="act3-2done" style="color:greenyellow;" class=""></i>
@@ -1664,6 +1674,7 @@ Reveal.addEventListener('qz', function(event) {
             }
             
             if (event.indexh > 26 ){
+                alert(event.indexh);
                 if (!actividades['actividad3']) {
                     Reveal.slide( 26 );
                     var state = Reveal.getState();  
