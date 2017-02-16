@@ -1121,8 +1121,8 @@
                         } else {
                             if (data.error === "") {
                                 if (data.comando) {
-                                    console.log(comandos);
-                                    console.log(data.comando.match($gitConfigUser));
+                                    //console.log(comandos);
+                                    //console.log(data.comando.match($gitConfigUser));
                                     if (data.comando.match($comandoGit)){
                                         if (data.comando.match($gitVersion)) {
                                             toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');
@@ -1130,7 +1130,8 @@
                                             $("#act1done").addClass('fa fa-check-circle');
                                             comandos['version'] = true
                                             actividades['actividad1'] = true;
-                                            $("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                            add_experience("5", window.currentUser);
+                                            //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
                                         }else if (data.comando.match($gitInit)){
                                             if(comandos['version']){
                                                 $("#act2done").addClass('fa fa-check-circle');
@@ -1251,7 +1252,28 @@
                 "hideMethod": "fadeOut"
             };
 
+            function add_experience(xp, u){
+                var datos = {experience: xp, user: u};
+                $.ajax({
+                    method: "GET",
+                    url: "{{ url('gamificacion_add_xp') }}",                    
+                    data: datos,
+                    //timeout: 50000,
+                    success: function (data) {
+                        console.log(data);
+                     },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(errorThrown, textStatus, XMLHttpRequest);
 
+                        //setTimeout(waitForMsg, 300000);
+
+                    },
+                    complete: function () {                        
+                    }
+
+                });
+                
+            }
 
             $('#terminal').terminal(function (command, term) {
                 var $inter = evaluar(command);

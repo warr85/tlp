@@ -6,6 +6,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+Use Doctrine\Common\Collections\Criteria;
 
 
 /**
@@ -47,6 +48,13 @@ class Curso
     private $modulos;
     
     
+    /**
+     * @ORM\OneToMany(targetEntity="CursoNivel", mappedBy="idCurso", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $niveles;
+    
+    
      /**
      * @ORM\OneToMany(targetEntity="CursoGrupo", mappedBy="idCurso", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -85,7 +93,8 @@ class Curso
      * @var \DateTime
      */
     private $updatedAt;
-
+    
+    
     
     /**
      * Constructor
@@ -93,7 +102,12 @@ class Curso
     public function __construct()
     {
         $this->modulos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->niveles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->grupos = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    
+    
 
     /**
      * Set nombre
@@ -326,4 +340,53 @@ class Curso
     {
         return $this->nombreCorto;
     }
+
+    /**
+     * Add niveles
+     *
+     * @param \AppBundle\Entity\CursoNivel $niveles
+     * @return Curso
+     */
+    public function addNivele(\AppBundle\Entity\CursoNivel $niveles)
+    {
+        $this->niveles[] = $niveles;
+
+        return $this;
+    }
+
+    /**
+     * Remove niveles
+     *
+     * @param \AppBundle\Entity\CursoNivel $niveles
+     */
+    public function removeNivele(\AppBundle\Entity\CursoNivel $niveles)
+    {
+        $this->niveles->removeElement($niveles);
+    }
+
+    /**
+     * Get niveles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNiveles()
+    {
+        return $this->niveles;
+    }
+    
+    
+    /* @param Integer $exp
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNivelesByXp($exp)
+    {
+        $criteria = Criteria::create()
+            ->andWhere(Criteria::expr()->gte('experienciaNecesaria', $exp))
+            ->orderBy(array("id" => Criteria::ASC))
+            ->setFirstResult(0)
+            ->setMaxResults(1);
+        return $this->getNiveles()->matching($criteria);
+    }
+    
+
 }
