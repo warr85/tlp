@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-
+use AppBundle\Entity\InscripcionLogro;
 
 /**
  * Gamificador controller.
@@ -89,7 +89,7 @@ class GamificadorController extends Controller
             $curso = $this->getDoctrine()->getRepository("AppBundle:Curso")->findOneById(2);            
             $niveles = $curso->getNivelesByXp($exp);            
             //$nivel = $niveles->getNivelesByXp($exp);
-            if($niveles[0]->getId() != $inscripcion->getIdCursoNivel()->getId()){
+            if(($niveles[0]) && ($niveles[0]->getId() != $inscripcion->getIdCursoNivel()->getId())){
                 $inscripcion->setIdCursoNivel($niveles[0]);
                 $inscripcion->setExperiencia($exp);
             }else{
@@ -116,6 +116,100 @@ class GamificadorController extends Controller
         ));
         return $response;
     }
+    
+    
+    
+    /**
+     * @Route("/add_logro/{cantidad}", name="gamificacion_add_logro")
+     * @Method({"GET"})
+     */
+    public function addLogroAction($cantidad = 1, Request $request){
+        
+        
+            $encoders = array(new JsonEncoder());
+            $normalizers = array(new ObjectNormalizer());
+            $em = $this->getDoctrine()->getManager();
+            $serializer = new Serializer($normalizers, $encoders);
+            $response = new JsonResponse();
+            $inscripcion = $this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findOneByIdUsuario($this->getUser());
+            if($inscripcion){
+                $parametros = $request->query->all();
+                $corto = $parametros["corto"];
+                $logros = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findOneByNombreCorto($corto);                
+                if($logros){                    
+                    if($logros->getIdEstatus()->getId() == 1){
+                        $now = time();
+                        $insLogro = $this->getDoctrine()->getRepository("AppBundle:InscripcionLogro")->findOneBy(array(
+                            'idInscripcion' => $inscripcion->getId(),
+                            'idCursoModuloTemaLogro'       => $logros->getId()
+                        ));
+                        
+                        if($insLogro){
+                            if($insLogro->getIdEstatus()->getId() == 1){
+                                $cantidad += $insLogro->getContador();
+                                if($now >= $insLogro->getUltimaVez() + $logros->getPeridoTiempo()){
+                                    if($cantidad >= $logros->getCantidadNecesaria()){
+                                        $insLogro->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(5));
+                                        
+                                    }else{
+                                        $insLogro->setContador($cantidad);
+                                        $response->setData(array(
+                                            'response' => 'success',
+                                            'complete'  => true
+                                         ));
+                                    }
+                                    
+                                    $em->persist($insLogro);
+                                    $em->flush();
+                                    
+                                    $response->setStatusCode(200);
+                                    $response->setData(array(
+                                        'response' => 'success',
+                                        'complete'  => false
+                                    ));
+                                }
+                                
+                            }else{
+                                $response->setData(array(
+                                    'response' => 'done',
+                                    'complete'  => true
+                                 ));
+                                return $response;
+                            }
+                        }else{
+                            $insLogro = new InscripcionLogro();
+                            $insLogro->setContador($cantidad);
+                            $insLogro->setIdCursoModuloTemaLogro($logros);
+                            if($cantidad >= $logros->getCantidadNecesaria()){
+                                $insLogro->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(5));        
+                                $response->setData(array(
+                                    'response' => 'success',
+                                    'complete'  => true
+                                 ));
+                            }else{
+                                $insLogro->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(1));        
+                                $response->setData(array(
+                                    'response' => 'success',
+                                    'complete'  => false
+                                 ));
+                            }
+                            $insLogro->setIdInscripcion($inscripcion);
+                            $insLogro->setUltimaVez($now);
+                            
+                            $em->persist($insLogro);
+                            $em->flush();
+                        }
+                    }
+                }                                
+                return $response;
+            }
+        
+        
+    }
+    
+    
+    
+    
     
     
     

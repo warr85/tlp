@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="inscripcion_logro")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class InscripcionLogro
 {
@@ -52,6 +53,14 @@ class InscripcionLogro
     
     
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="ultima_vez", type="integer", nullable=false, options={"comment" = "saber cuando fue la ultima vez que ejecuto la acción"})
+     */
+    private $ultimaVez;
+    
+    
+    /**
      * @var \AppBundle\Entity\CursoModuloTemaLogro
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoModuloTemaLogro")
@@ -74,6 +83,18 @@ class InscripcionLogro
     
     
     
+    /**
+     * @var \AppBundle\Entity\Estatus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estatus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_estatus", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idEstatus;
+    
+    
+    
     
     
 
@@ -89,16 +110,12 @@ class InscripcionLogro
     }
 
     /**
-     * Set fechaLogro
-     *
-     * @param \DateTime $fechaLogro
-     * @return InscripcionLogro
-     */
-    public function setFechaLogro($fechaLogro)
+   * @ORM\PrePersist
+   */
+    public function setFechaLogro()
     {
-        $this->fechaLogro = $fechaLogro;
-
-        return $this;
+	    $this->fechaLogro = new \DateTime();
+	    $this->fechaActualizacion = new \DateTime();
     }
 
     /**
@@ -112,14 +129,11 @@ class InscripcionLogro
     }
 
     /**
-     * Set fechaActualizacion
-     *
-     * @param \DateTime $fechaActualizacion
-     * @return InscripcionLogro
-     */
-    public function setFechaActualizacion($fechaActualizacion)
+    * @ORM\PreUpdate
+    */
+    public function setFechaActualizacion()
     {
-        $this->fechaActualizacion = $fechaActualizacion;
+        $this->fechaActualizacion = new \DateTime();
 
         return $this;
     }
@@ -201,5 +215,51 @@ class InscripcionLogro
     public function getIdInscripcion()
     {
         return $this->idInscripcion;
+    }
+
+    /**
+     * Set idEstatus
+     *
+     * @param \AppBundle\Entity\Estatus $idEstatus
+     * @return InscripcionLogro
+     */
+    public function setIdEstatus(\AppBundle\Entity\Estatus $idEstatus)
+    {
+        $this->idEstatus = $idEstatus;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstatus
+     *
+     * @return \AppBundle\Entity\Estatus 
+     */
+    public function getIdEstatus()
+    {
+        return $this->idEstatus;
+    }
+
+    /**
+     * Set ultimaVez
+     *
+     * @param integer $ultimaVez
+     * @return InscripcionLogro
+     */
+    public function setUltimaVez($ultimaVez)
+    {
+        $this->ultimaVez = $ultimaVez;
+
+        return $this;
+    }
+
+    /**
+     * Get ultimaVez
+     *
+     * @return integer 
+     */
+    public function getUltimaVez()
+    {
+        return $this->ultimaVez;
     }
 }

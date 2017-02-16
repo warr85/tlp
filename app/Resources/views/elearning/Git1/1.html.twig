@@ -816,7 +816,7 @@
                             <h3 class="quizLevel"><strong>Nivel:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
                             <a class="next_class btn btn-success" id="next_class" <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente Clase!</a>
                                 <input id="inscripcion" type="hidden" value="{{ inscripcion.id }}" />
-                                <input id="url_ajax" type="hidden" value="{{ url('ajax_progreso') }}" />
+                                
                                 <input id="url_avance" type="hidden" value="{{ url('ajax_avance') }}" />
                                 <input id="tema_actual" type="hidden" value="{{ temaActual.id }}" />
                                 <input id="url_evaluacion" type="hidden" value="{{ url('ajax_evaluacion') }}" />
@@ -1130,7 +1130,8 @@
                                             $("#act1done").addClass('fa fa-check-circle');
                                             comandos['version'] = true
                                             actividades['actividad1'] = true;
-                                            add_experience("5", window.currentUser);
+                                            add_experience("5", "Escribir Comando");
+                                            add_logro("conceptos");
                                             //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
                                         }else if (data.comando.match($gitInit)){
                                             if(comandos['version']){
@@ -1274,6 +1275,32 @@
                 });
                 
             }
+            
+            
+            
+            
+            function add_logro(nombre){
+                var datos = {corto: nombre};
+                $.ajax({
+                    method: "GET",
+                    url: "{{ url('gamificacion_add_logro') }}",                    
+                    data: datos,
+                    //timeout: 50000,
+                    success: function (data) {
+                        console.log(data);
+                     },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(errorThrown, textStatus, XMLHttpRequest);
+
+                        //setTimeout(waitForMsg, 300000);
+
+                    },
+                    complete: function () {                        
+                    }
+
+                });
+                
+            }
 
             $('#terminal').terminal(function (command, term) {
                 var $inter = evaluar(command);
@@ -1297,43 +1324,7 @@
                 }
 
                 if ($inter.fin) {
-                    var data = {inscripcion: $('#inscripcion').val(), logro: 2};
-                    var url = $('#url_ajax').val();
-
-                    $("#btnQuiz").prop('disabled', false);
-                    $("#btnQuiz").attr('disabled', false);
-                    $.ajax({
-                        method: "GET",
-                        url: url,
-                        async: true,
-                        cache: false,
-                        data: data,
-                        //timeout: 50000,
-                        success: function (data) {
-                            $('.progress-bar').attr('aria-valuenow', '60');
-                            $('.progress-bar').css('width', '60%');
-                            $('.stat-percent').html('60%');
-
-                            console.log(data);
-                            /*if(posts.length > 0)
-                             {
-                             var html = "";
-                             for(d in posts)
-                             {
-                             html += "<p>" + JSON.stringify(posts[d]) + "</p>";
-                             }
-                             $("#contador_solicitudes").append(html);
-                             }*/
-                            //$("#contador_solicitudes").html(posts);
-                            //setTimeout(waitForMsg, 60000);
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            console.log(errorThrown, textStatus, XMLHttpRequest);
-                            //setTimeout(waitForMsg, 300000);
-
-                        }
-
-                    });
+                    
 
 
                     toastr.info("Has obtenido el logro de Primeros comandos en GIT", 'FELICITACIONES! Logro Desbloqueado!');
