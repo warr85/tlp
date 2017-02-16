@@ -42,49 +42,7 @@ use AppBundle\Entity\CursoAvanceEvaluacionResultado;
  */
 class AjaxController extends Controller {
     
-    /**
-     * @Route("/progreso", name="ajax_progreso")
-     * @Method({"GET"})
-     */
-    public function registrarProgresoAction(Request $request){
-        
-        if($request->isXmlHttpRequest()){
-            $encoders = array(new JsonEncoder());
-            $normalizers = array(new ObjectNormalizer());
- 
-            $serializer = new Serializer($normalizers, $encoders);
- 
-            $em = $this->getDoctrine()->getManager();
-            $parametros = $this->getRequest()->query->all();
-            //var_dump($parametros); exit;
-            $logro = $em->getRepository("AppBundle:InscripcionLogro")->findOneByIdCursoModuloTemaLogro($parametros['logro']);
-            if(!$logro ){
-
-                $inscripcion = $em->getRepository("AppBundle:Inscripcion")->findOneById($parametros['inscripcion']);
-                $logro = new InscripcionLogro();
-                $logro->setContador(1);
-                $logro->setFechaActualizacion(new \DateTime);
-                $logro->setFechaLogro(new \DateTime);  
-                $logro->setIdInscripcion($inscripcion);
-                $logro->setIdCursoModuloTemaLogro($em->getRepository("AppBundle:CursoModuloTemaLogro")->findOneById($parametros['logro']));               
-            }else{
-               $cuenta = $logro->getContador();
-               $cuenta++;
-               $logro->setContador($cuenta);
-               $logro->setFechaActualizacion(new \DateTime);
-            }            
-            $em->persist($logro);
-            $em->flush();
-                                
-            $response = new JsonResponse();
-            $response->setStatusCode(200);
-            $response->setData(array(
-                'response' => 'success',                
-            ));
-            return $response;
-       }
-        
-    }
+    
     
     
     /**
@@ -100,7 +58,7 @@ class AjaxController extends Controller {
             $serializer = new Serializer($normalizers, $encoders);
  
             $em = $this->getDoctrine()->getManager();
-            $parametros = $this->getRequest()->query->all();
+            $parametros = $request->query->all();
             
             $avance = $em->getRepository("AppBundle:CursoAvance")->findOneBy(array(
                'idInscripcion'      => $parametros['inscripcion'],
@@ -149,7 +107,7 @@ class AjaxController extends Controller {
             $serializer = new Serializer($normalizers, $encoders);
  
             $em = $this->getDoctrine()->getManager();
-            $parametros = $this->getRequest()->query->all();
+            $parametros = $request->query->all();
             
             $avance = $em->getRepository("AppBundle:CursoAvance")->findOneByIdCursoModuloTema($parametros['tema']);
             $evaluacion = $em->getRepository("AppBundle:CursoAvanceEvaluacion")->findOneByIdCursoAvance($avance);
@@ -217,7 +175,7 @@ class AjaxController extends Controller {
             $serializer = new Serializer($normalizers, $encoders);
  
             $em = $this->getDoctrine()->getManager();
-            $parametros = $this->getRequest()->query->all();
+            $parametros = $request->query->all();
             
             $currentDir = $parametros['cd'];
             $allowChangeDir = true;           
