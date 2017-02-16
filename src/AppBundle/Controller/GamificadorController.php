@@ -134,7 +134,8 @@ class GamificadorController extends Controller
             $inscripcion = $this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findOneByIdUsuario($this->getUser());
             if($inscripcion){
                 $parametros = $request->query->all();
-                $corto = $parametros["corto"];
+                //$corto = $parametros["corto"];
+                $corto = "conceptos";
                 $logros = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findOneByNombreCorto($corto);                
                 if($logros){                    
                     if($logros->getIdEstatus()->getId() == 1){
@@ -147,10 +148,10 @@ class GamificadorController extends Controller
                         if($insLogro){
                             if($insLogro->getIdEstatus()->getId() == 1){
                                 $cantidad += $insLogro->getContador();
-                                if($now >= $insLogro->getUltimaVez() + $logros->getPeridoTiempo()){
+                                if($now >= $insLogro->getUltimaVez() + $logros->getPeriodoTiempo()){
                                     if($cantidad >= $logros->getCantidadNecesaria()){
                                         $insLogro->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(5));
-                                        
+                                        $insLogro->setContador($cantidad);
                                     }else{
                                         $insLogro->setContador($cantidad);
                                         $response->setData(array(
@@ -167,6 +168,13 @@ class GamificadorController extends Controller
                                         'response' => 'success',
                                         'complete'  => false
                                     ));
+                                }else{
+                                    echo $now;
+                                    var_dump($insLogro->getUltimaVez());
+                                    var_dump($logros->getPeriodoTiempo());
+                                    echo "   " . ($insLogro->getUltimaVez() + $logros->getPeriodoTiempo());
+                                    
+                                    
                                 }
                                 
                             }else{
