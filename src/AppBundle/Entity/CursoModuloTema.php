@@ -67,6 +67,13 @@ class CursoModuloTema
     private $evaluaciones;
     
     
+    /**
+     * @ORM\OneToMany(targetEntity="CursoModuloTemaLogro", mappedBy="idCursoModuloTema", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $logros;
+    
+    
     
     
    
@@ -153,13 +160,7 @@ class CursoModuloTema
     public function __toString() {
         return $this->getIdTema()->getNombre();
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->evaluaciones = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    
 
     /**
      * Add evaluaciones
@@ -192,5 +193,46 @@ class CursoModuloTema
     public function getEvaluaciones()
     {
         return $this->evaluaciones;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->evaluaciones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->logros = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add logros
+     *
+     * @param \AppBundle\Entity\CursoModuloTemaLogro $logros
+     * @return CursoModuloTema
+     */
+    public function addLogro(\AppBundle\Entity\CursoModuloTemaLogro $logros)
+    {
+        $this->logros[] = $logros;
+
+        return $this;
+    }
+
+    /**
+     * Remove logros
+     *
+     * @param \AppBundle\Entity\CursoModuloTemaLogro $logros
+     */
+    public function removeLogro(\AppBundle\Entity\CursoModuloTemaLogro $logros)
+    {
+        $this->logros->removeElement($logros);
+    }
+
+    /**
+     * Get logros
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLogros()
+    {
+        return $this->logros;
     }
 }

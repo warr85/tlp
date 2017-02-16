@@ -57,6 +57,14 @@ class CursoModuloTemaLogro
     /**
      * @var integer
      *
+     * @ORM\Column(name="periodo_tiempo", type="integer", nullable=false, options={"comment" = "Tiempo necesario para el logro"})
+     */
+    private $periodoTiempo;
+    
+    
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="badge", type="integer", nullable=false, options={"comment" = "número de seguidilla de logro"})
      */
     private $badge;
@@ -76,7 +84,7 @@ class CursoModuloTemaLogro
     /**
      * @var \AppBundle\Entity\CursoModuloTema
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoModuloTema")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoModuloTema", inversedBy="logros")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_curso_modulo_tema", referencedColumnName="id", nullable=false)
      * })
@@ -328,5 +336,28 @@ class CursoModuloTemaLogro
     public function getIdEstatus()
     {
         return $this->idEstatus;
+    }
+
+    /**
+     * Set periodoTiempo
+     *
+     * @param integer $periodoTiempo
+     * @return CursoModuloTemaLogro
+     */
+    public function setPeriodoTiempo($periodoTiempo)
+    {
+        $this->periodoTiempo = $periodoTiempo;
+
+        return $this;
+    }
+
+    /**
+     * Get periodoTiempo
+     *
+     * @return integer 
+     */
+    public function getPeriodoTiempo()
+    {
+        return $this->periodoTiempo;
     }
 }
