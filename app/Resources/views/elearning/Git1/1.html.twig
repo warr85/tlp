@@ -541,7 +541,7 @@
 
                                         </div>
                                          </section>
-                                         <section data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                                         <section data-state="actividad0" data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
                                              <h2>Por fin... Manos a la obra</h2>
                                              
                                          </section>
@@ -1053,7 +1053,7 @@
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
-        var actividades = {actividad1:false, actividad2:false, actividad3: false};
+        var actividades = {actividad0:false, actividad1:false, actividad2:false, actividad3: false};
         var comandos = {version:false, init:false, name: false, email: false};
 
         jQuery(function ($) {
@@ -1139,22 +1139,18 @@
                                         if (data.comando.match($gitVersion)) {                                           
                                             toggleNav(true);
                                             $("#act1done").addClass('fa fa-check-circle');
-                                            comandos['version'] = true
+                                            if(!actividades['actividad1'])
+                                                add_logro("comandos");  
+                                            comandos['version'] = true;
                                             actividades['actividad1'] = true;
-                                            add_experience("5", "Escribir Comando");
-                                            add_logro("conceptos");
+                                                                                                                                 
                                             //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
                                         }else if (data.comando.match($gitInit)){
                                             if(comandos['version']){
                                                 $("#act2done").addClass('fa fa-check-circle');
-                                                actividades['actividad2'] = true;
-                                                add_experience("5", "Escribir Comando");
-                                                iziToast.success({
-                                                    color: 'dark',
-                                                    title: '+5',
-                                                    message: 'Has Inicializado Correctamente un repositorio GIT',
-                                                    position: 'center'
-                                                });                                                
+                                                if(!actividades['actividad2'])
+                                                    add_logro("comandos"); 
+                                                actividades['actividad2'] = true;                                                                                                                                             
                                                 toggleNav(true);    
                                                 comandos['init'] = true;
                                             }else{
@@ -1162,13 +1158,8 @@
                                             }
                                         }else if (data.comando.match($gitConfigUser)) {
 
-                                            add_experience("5", "Escribir Comando");
-                                                iziToast.success({
-                                                    color: 'dark',
-                                                    title: '+5',
-                                                    message: 'Has Configurado Correctamente tu nombre de usuario',
-                                                    position: 'center'
-                                                });
+                                            if(!comandos['name'])
+                                                    add_logro("comandos");
                                             $configUser = true; 
                                             $("#act3-1done").addClass('fa fa-check-circle');                                        
                                             comandos['name'] = true;
@@ -1180,14 +1171,9 @@
 
                                         if (data.comando.match($gitConfigMail)) {
                                             $("#act3-2done").addClass('fa fa-check-circle');
-                                            actividades['actividad3'] = true
-                                            add_experience("5", "Escribir Comando");
-                                                iziToast.success({
-                                                    color: 'dark',
-                                                    title: '+5',
-                                                    message: 'Has Configurado Correctamente tu dirección de Correo',
-                                                    position: 'center'
-                                                });
+                                            if(!actividades['actividad3'])
+                                                    add_logro("comandos");
+                                            actividades['actividad3'] = true                                           
                                             toggleNav(true); 
                                             comandos['email'] = true;
                                         }
@@ -1298,6 +1284,7 @@
                     data: datos,
                     //timeout: 50000,
                     success: function (data) {
+                        console.log("esto es data:");
                         console.log(data);
                         if(data.complete){                            
                             swal({                                                                                           
@@ -1315,16 +1302,37 @@
                                     function () {},
                                     // handling the promise rejection
                                     function (dismiss) {
+                                      toggleNav(true);
+                                      add_experience("15", "Escribir Comando");
                                       iziToast.show({
                                                 color: 'dark',
-                                                title: '+5 Puntos',
-                                                message: 'por haber escrito el comando git --version ',
+                                                title: '+15 Puntos',
+                                                message: 'por haber desbloqueado un logro ',
                                                 icon: 'fa fa-user-plus',                                                
                                                 transitionIn: 'bounceInUp',
                                                 position: 'center'
                                             });
                                     }
                                   );
+                        }else if(data.response === "success"){
+                            add_experience("5", "Escribir Comando");
+                            iziToast.show({
+                                                color: 'dark',
+                                                title: '+5 Puntos',
+                                                message: 'Escribir un Comando',
+                                                icon: 'fa fa-user-plus',                                                
+                                                transitionIn: 'bounceInUp',
+                                                position: 'center'
+                                            });
+                                    
+                        }else{
+                            iziToast.error({                                                
+                                                title: 'comando ejecutado',
+                                                message: 'por haber desbloqueado un logro ',
+                                                icon: 'fa fa-user-plus',                                                
+                                                transitionIn: 'bounceInUp',
+                                                position: 'center'
+                                            });
                         }
                      },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -1339,6 +1347,120 @@
                 });
                 
             }
+            
+Reveal.addEventListener('actividad0', function(event) {
+    if (!actividades['actividad0']) {
+        toggleNav(false);
+    }
+});
+            
+            
+Reveal.addEventListener('actividad1', function(event) {
+    if (!actividades['actividad1']) {
+        toggleNav(false);
+    }
+});
+
+Reveal.addEventListener('actividad2', function(event) {
+    if (!actividades['actividad2']) {
+        toggleNav(false);
+    }
+});
+
+Reveal.addEventListener('actividad3', function(event) {
+    if (!actividades['actividad3']) {
+        toggleNav(false);
+    }
+});
+
+
+Reveal.addEventListener('qz', function(event) {
+    if (!actividades['actividad4']) {
+        toggleNav(false);
+    }
+});
+        
+       //Debo estar pendiente si pasa a la lamina 15 sin hacer el ejercicio,
+       //devolverlo a la 14
+       Reveal.addEventListener( 'slidechanged', function( event ) {
+            // event.previousSlide, event.currentSlide, event.indexh, event.indexv                        
+            
+            
+            
+            console.log(event.indexh);
+            
+                
+                if (event.indexh === 18) {
+                    if (!actividades['actividad0']) {
+                        add_logro("conceptos");
+                        actividades['actividad0'] = true;
+                    }
+                }
+                
+                if (event.indexh > 18 ){
+                if (!actividades['actividad0']) {
+                    Reveal.slide( 1 );
+                    var state = Reveal.getState();  
+                    Reveal.setState(state);
+                    
+                    iziToast.error({
+                        title: 'No te adelantes tan rápido',
+                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                        position: 'topRight'
+                    });
+                                        
+                    
+                }
+                
+            }
+            
+            
+            
+            if (event.indexh > 19 ){
+                if (!actividades['actividad1']) {
+                    Reveal.slide( 19 );
+                    var state = Reveal.getState();  
+                    Reveal.setState(state);
+                    
+                    iziToast.error({
+                        title: 'No te adelantes tan rápido',
+                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                        position: 'topRight'
+                    });
+                                        
+                    
+                }
+            }
+            
+            if (event.indexh > 22 ){
+                if (!actividades['actividad2']) {
+                    Reveal.slide( 22 );
+                    var state = Reveal.getState();  
+                    Reveal.setState(state);
+                    iziToast.error({
+                        title: 'No te adelantes tan rápido',
+                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                        position: 'topRight'
+                    });
+                    
+                }
+            }
+            
+            if (event.indexh > 26 ){
+                alert(event.indexh);
+                if (!actividades['actividad3']) {
+                    Reveal.slide( 26 );
+                    var state = Reveal.getState();  
+                    Reveal.setState(state);
+                    iziToast.error({
+                        title: 'No te adelantes tan rápido',
+                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                        position: 'topRight'
+                    });
+                    
+                }
+            }
+        } );
 
             
 
@@ -1390,88 +1512,15 @@
         var $c = 0;
         var name = "";
         var email = "";
-        function evaluar(c) {
-            var $w = {};
-            console.log(c);
-            console.log(c.match($gitVersion));
-            if (c.match($gitVersion)) {
-                if ($c === 0) {
-                    $c = 1;
-                    $w = JSON.stringify({out: "git version 2.11.0", chk: true, msg: "Has ejecutado tu primer comando en git.  FELICITACIONES"});
-                } else if ($c > 0) {
-                    $w = JSON.stringify({out: "git version 2.11.0", chk: "done", msg: "El Comando GIT --VERSION ya lo has ejecutado"});
-                }
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-            if (c.match($gitConfigUser)) {
-
-                if ($c === 1) {
-
-                    $c = 2;
-                    $w = JSON.stringify({out: " ", chk: true, msg: "Git no muestra ningun mensaje al configurar correctamente alguna variable. Has configurado correctamente tu nombre de usuario"});
-                    name = c.substr(c.indexOf("user.name") + 9);
-                } else if ($c > 1) {
-                    $w = JSON.stringify({out: " ", chk: "done", msg: "Renombrado el usuario satisfactoriamente"});
-                    name = c.substr(c.indexOf("user.name") + 9);
-                } else {
-                    $w = JSON.stringify({out: "Error, debes ejecutar primero el comando de la version instalada de git", chk: false});
-                }
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-            if (c.match($gitConfigMail)) {
-                if ($c === 2) {
-                    $c = 3;
-                    $w = JSON.stringify({out: " ", chk: true, msg: "Has configurado correctamente tu dirección de Correo"});
-                    email = c.substr(c.indexOf("user.email") + 10);
-                } else if ($c > 2) {
-                    $w = JSON.stringify({out: " ", chk: "done", msg: "Cambiada la dirección satisfactoriamente"});
-                    email = c.substr(c.indexOf("user.email") + 10);
-                } else {
-                    $w = JSON.stringify({out: "Error, debes configurar primero tu nombre de usuario", chk: false});
-                }
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-            if (c.match($gitConfigList)) {
-                if ($c === 3) {
-                    $c = 4;
-                    $w = JSON.stringify({out: "user.email=" + email + "\nuser.name=" + name + "\ncolorui=auto", chk: "plain", msg: "Has revisado tu configuración", fin: true});
-                } else if ($c > 3) {
-                    $w = JSON.stringify({out: "user.email=" + email + "\nuser.name=" + name + "\ncolorui=auto", chk: "plain", msg: "Ya has ejecutado este comando, puedes verificar tu información para verificar los cambios"});
-                } else {
-                    $w = JSON.stringify({out: "Error, debes configurar primero tu dirección de correo", chk: false});
-                }
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-            if (c.match($gitHelp)) {
-                $w = JSON.stringify({out: "\n\nusage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [-c name=value] [--help]\n           <command> [<args>]\n\n The most commonly used git commands are:\n   add        Add file contents to the index\n   bisect     Find by binary search the change that introduced a bug\n   branch     List, create, or delete branches\n   checkout   Checkout a branch or paths to the working tree\n   clone      Clone a repository into a new directory\n   commit     Record changes to the repository\n   diff       Show changes between commits, commit and working tree, etc\n   fetch      Download objects and refs from another repository\n   grep       Print lines matching a pattern\n   init       Create an empty git repository or reinitialize an existing one\n   log        Show commit logs\n   merge      Join two or more development histories together\n   mv         Move or rename a file, a directory, or a symlink\n   pull       Fetch from and merge with another repository or a local branch\n   push       Update remote refs along with associated objects\n   rebase     Forward-port local commits to the updated upstream head\n   reset      Reset current HEAD to the specified state\n   rm         Remove files from the working tree and from the index\n   show       Show various types of objects\n   status     Show the working tree status\n   tag        Create, list, delete or verify a tag object signed with GPG\n\nSee 'git help <command>' for more information on a specific command.", chk: "plain", msg: "Siempre es bueno consultar la ayuda. "});
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-
-            $w = JSON.stringify({out: "Error", chk: false});
-            var respuesta = JSON.parse($w);
-            return (respuesta);
-
-        }
-
-
+        
 
         $(document).ready(function () {
 
 
             videojs.options.flash.swf = "{{ asset('assets/vendor/moovly/js/videojs/video-js.swf') }}";
-            alert(videojs);
+            //alert(videojs);
             $contador = $("#contadorObtenidos").val();
-            alert($contador);
+            //alert($contador);
             for (var $i = 0; $i < $contador; $i++) {
                 $('.progress-bar').css('width', $contador * 30 + '%');
                 $('.stat-percent').html($contador * 30 + '%');
@@ -1537,16 +1586,6 @@
                 // Start the tour
                 // tour.start();
             });
-
-        });
-
-
-
-
-
-        $("#animacion_local").click(function () {
-
-
 
         });
 
@@ -1637,84 +1676,7 @@
     });
 }
         
-  Reveal.addEventListener('actividad1', function(event) {
-    if (!actividades['actividad1']) {
-        toggleNav(false);
-    }
-});
-
-Reveal.addEventListener('actividad2', function(event) {
-    if (!actividades['actividad2']) {
-        toggleNav(false);
-    }
-});
-
-Reveal.addEventListener('actividad3', function(event) {
-    if (!actividades['actividad3']) {
-        toggleNav(false);
-    }
-});
-
-
-Reveal.addEventListener('qz', function(event) {
-    if (!actividades['actividad4']) {
-        toggleNav(false);
-    }
-});
-        
-       //Debo estar pendiente si pasa a la lamina 15 sin hacer el ejercicio,
-       //devolverlo a la 14
-       Reveal.addEventListener( 'slidechanged', function( event ) {
-            // event.previousSlide, event.currentSlide, event.indexh, event.indexv                        
-            console.log(event.indexh);
-            console.log(event.indexv);
-            console.log(event.previousSlide);
-            
-            if (event.indexh > 19 ){
-                if (!actividades['actividad1']) {
-                    Reveal.slide( 19 );
-                    var state = Reveal.getState();  
-                    Reveal.setState(state);
-                    
-                    iziToast.error({
-                        title: 'No te adelantes tan rápido',
-                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                        position: 'topRight'
-                    });
-                                        
-                    
-                }
-            }
-            
-            if (event.indexh > 22 ){
-                if (!actividades['actividad2']) {
-                    Reveal.slide( 22 );
-                    var state = Reveal.getState();  
-                    Reveal.setState(state);
-                    iziToast.error({
-                        title: 'No te adelantes tan rápido',
-                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                        position: 'topRight'
-                    });
-                    
-                }
-            }
-            
-            if (event.indexh > 26 ){
-                alert(event.indexh);
-                if (!actividades['actividad3']) {
-                    Reveal.slide( 26 );
-                    var state = Reveal.getState();  
-                    Reveal.setState(state);
-                    iziToast.error({
-                        title: 'No te adelantes tan rápido',
-                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                        position: 'topRight'
-                    });
-                    
-                }
-            }
-        } );
+  
         
         
 
