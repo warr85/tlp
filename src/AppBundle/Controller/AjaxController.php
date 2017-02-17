@@ -279,11 +279,11 @@ class AjaxController extends Controller {
             $original = $userCommand;
             if (strpos($comando, '--global') !== false) {
                 
-                $userCommand = str_replace("--global", "", $comando);                
+                $userCommand = str_replace("--global", "", $userCommand);                
             }
             if(substr( $comando, 0, 3 ) === "git"){
                 if(ComandoToca($comando, $parametros['comandos'])){
-                    $userCommand = $this->container->getParameter('git_directory') . $comando;
+                    $userCommand = $this->container->getParameter('git_directory') . $userCommand;
                 }else{
                     
                     $response->setData(array(
