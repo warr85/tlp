@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/elfinder.full.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/theme.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/sweetAlert/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/animate/animate.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/slickQuiz.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/master.css') }}">
@@ -22,7 +23,16 @@
 
     <style>
 
-
+        .swal2-modal{
+            min-height: 487px!important;
+            max-height: 487px!important;
+        }
+        
+        
+        .swal2-image{
+            margin-top: 120px!important;
+        }
+        
         .window {
 
             height: 300px;
@@ -1127,7 +1137,7 @@
                                     //console.log(data.comando.match($gitConfigUser));
                                     if (data.comando.match($comandoGit)){
                                         if (data.comando.match($gitVersion)) {
-                                            toastr.success("has ejecutado tu primer comando en GIT", 'Excelente');
+                                            toastr.success("Recibes experiencia al ejecutar codigo", '5+');
                                             toggleNav(true);
                                             $("#act1done").addClass('fa fa-check-circle');
                                             comandos['version'] = true
@@ -1242,12 +1252,12 @@
                 "debug": true,
                 "newestOnTop": false,
                 "progressBar": true,
-                "positionClass": "toast-top-center",
+                "positionClass": "toast-bottom-right",
                 "preventDuplicates": true,
                 "onclick": null,
                 "showDuration": "50000",
                 "hideDuration": "1000",
-                "timeOut": "5000",
+                "timeOut": "7000",
                 "extendedTimeOut": "1000",
                 "showEasing": "swing",
                 "hideEasing": "linear",
@@ -1290,6 +1300,20 @@
                     //timeout: 50000,
                     success: function (data) {
                         console.log(data);
+                        if(data.complete){                            
+                            swal({                                                                                           
+                                imageUrl: "{{ asset('images/badge/conceptosSombra.png') }}",
+                                padding: 30,
+                                imageWidth: 160,
+                                imageHeight: 160,
+                                showCloseButton: true,
+                                showCancelButton: false,
+                                showConfirmButton: false,                                
+                                animation: false,
+                                customClass: 'animated tada',                                 
+                                background: "url({{ asset('images/course/bg_logro.png') }})"
+                              });
+                        }
                      },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         console.log(errorThrown, textStatus, XMLHttpRequest);
