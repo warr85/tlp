@@ -1148,7 +1148,13 @@
                                             if(comandos['version']){
                                                 $("#act2done").addClass('fa fa-check-circle');
                                                 actividades['actividad2'] = true;
-                                                toastr.success("Has Inicializado Correctamente un repositorio GIT", 'Excelente');
+                                                add_experience("5", "Escribir Comando");
+                                                iziToast.success({
+                                                    color: 'dark',
+                                                    title: '+5',
+                                                    message: 'Has Inicializado Correctamente un repositorio GIT',
+                                                    position: 'center'
+                                                });                                                
                                                 toggleNav(true);    
                                                 comandos['init'] = true;
                                             }else{
@@ -1156,7 +1162,13 @@
                                             }
                                         }else if (data.comando.match($gitConfigUser)) {
 
-                                            toastr.success("Has configurado tu nombre de usuario", 'Excelente');
+                                            add_experience("5", "Escribir Comando");
+                                                iziToast.success({
+                                                    color: 'dark',
+                                                    title: '+5',
+                                                    message: 'Has Configurado Correctamente tu nombre de usuario',
+                                                    position: 'center'
+                                                });
                                             $configUser = true; 
                                             $("#act3-1done").addClass('fa fa-check-circle');                                        
                                             comandos['name'] = true;
@@ -1169,7 +1181,13 @@
                                         if (data.comando.match($gitConfigMail)) {
                                             $("#act3-2done").addClass('fa fa-check-circle');
                                             actividades['actividad3'] = true
-                                            toastr.success("Has Inicializado Correctamente un repositorio GIT", 'Excelente');
+                                            add_experience("5", "Escribir Comando");
+                                                iziToast.success({
+                                                    color: 'dark',
+                                                    title: '+5',
+                                                    message: 'Has Configurado Correctamente tu dirección de Correo',
+                                                    position: 'center'
+                                                });
                                             toggleNav(true); 
                                             comandos['email'] = true;
                                         }
@@ -1244,25 +1262,7 @@
                 }
             });
 
-
-
-            toastr.options = {
-                "closeButton": true,
-                "debug": true,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-bottom-right",
-                "preventDuplicates": true,
-                "onclick": null,
-                "showDuration": "50000",
-                "hideDuration": "1000",
-                "timeOut": "7000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "slideDown",
-                "hideMethod": "fadeOut"
-            };
+           
 
             function add_experience(xp, u){
                 var datos = {experience: xp, user: u};
@@ -1318,7 +1318,7 @@
                                       iziToast.show({
                                                 color: 'dark',
                                                 title: '+5 Puntos',
-                                                message: 'por haber escrito el comando git --version',
+                                                message: 'por haber escrito el comando git --version ',
                                                 icon: 'fa fa-user-plus',                                                
                                                 transitionIn: 'bounceInUp',
                                                 position: 'center'
@@ -1340,45 +1340,7 @@
                 
             }
 
-            $('#terminal').terminal(function (command, term) {
-                var $inter = evaluar(command);
-
-                if ($inter.chk === true) {
-                    term.echo("[[;green;]" + $inter.out + "]");
-                    setTimeout(function () {
-                        toastr.success($inter.msg, 'Excelente');
-                    }, 1200);
-                } else if ($inter.chk === "done") {
-                    term.echo("[[;green;]" + $inter.out + "]");
-                    toastr.info($inter.msg, 'Ya ejecutado!');
-                } else if ($inter.chk === "plain") {
-                    term.echo($inter.out);
-                    setTimeout(function () {
-                        toastr.success($inter.msg, 'Excelente');
-                    }, 1200);
-
-                } else {
-                    term.echo("[[;red;]" + $inter.out + "]");
-                }
-
-                if ($inter.fin) {
-                    
-
-
-                    toastr.info("Has obtenido el logro de Primeros comandos en GIT", 'FELICITACIONES! Logro Desbloqueado!');
-                    $("#comandos").removeClass("fa-inverse").addClass("text-warning animated rubberBand");
-                    toastr.success("Quiz Disponible", 'Felicitaciones, has desbloqueado el Quiz de este nivel!');
-                }
-
-                //var $x = evaluar(command);
-            }, {
-                greetings: 'Interprete de Comandos del Curso, --help-- para ayuda de comandos',
-                name: 'curso_git',
-                prompt: 'curso_git$> ',
-                onBlur: function () {
-                    return false;
-                }
-            });
+            
 
 
 
@@ -1397,7 +1359,11 @@
             } else {
                 var isDisabled = $('#btnQuiz').is('[disabled=disabled]');
                 if (isDisabled) {
-                    toastr.error("Para desbloquearlo, debes obtener los dos primeros logros de este nivel", "Quiz Bloqueado");
+                    iziToast.error({
+                        title: 'Quiz todavía bloqueado',
+                        message: 'Para desbloquearlo, debes obtener los dos primeros logros de este nivel',
+                        position: 'topRight'
+                    });                    
                 }
             }
 
@@ -1709,7 +1675,13 @@ Reveal.addEventListener('qz', function(event) {
                     Reveal.slide( 19 );
                     var state = Reveal.getState();  
                     Reveal.setState(state);
-                    toastr.error("es importante navegar por todas las láminas para cumplir con las actividades", "No debes saltar láminas");
+                    
+                    iziToast.error({
+                        title: 'No te adelantes tan rápido',
+                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                        position: 'topRight'
+                    });
+                                        
                     
                 }
             }
@@ -1719,7 +1691,11 @@ Reveal.addEventListener('qz', function(event) {
                     Reveal.slide( 22 );
                     var state = Reveal.getState();  
                     Reveal.setState(state);
-                    toastr.error("es importante navegar por todas las láminas para cumplir con las actividades", "No debes saltar láminas");
+                    iziToast.error({
+                        title: 'No te adelantes tan rápido',
+                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                        position: 'topRight'
+                    });
                     
                 }
             }
@@ -1730,7 +1706,11 @@ Reveal.addEventListener('qz', function(event) {
                     Reveal.slide( 26 );
                     var state = Reveal.getState();  
                     Reveal.setState(state);
-                    toastr.error("es importante navegar por todas las láminas para cumplir con las actividades", "No debes saltar láminas");
+                    iziToast.error({
+                        title: 'No te adelantes tan rápido',
+                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                        position: 'topRight'
+                    });
                     
                 }
             }
