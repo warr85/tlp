@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/slickQuiz.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/master.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/steps/jquery.steps.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/iziToast/dist/css/iziToast.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/moovly/css/videojs/video-js.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/moovly/css/main.css') }}">
 
@@ -976,7 +976,7 @@
     <script src="{{asset('assets/vendor/quiz/slickQuiz-config.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/quiz/slickQuiz.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/quiz/master.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/toastr/toastr.min.js')}}" type="text/javascript"></script>  
+    <script src="{{asset('assets/vendor/iziToast/dist/js/iziToast.min.js')}}" type="text/javascript"></script>  
     <script src="{{asset('assets/vendor/moovly/js/videojs/video.js')}}" type="text/javascript"></script>
 
 
@@ -1136,8 +1136,7 @@
                                     //console.log(comandos);
                                     //console.log(data.comando.match($gitConfigUser));
                                     if (data.comando.match($comandoGit)){
-                                        if (data.comando.match($gitVersion)) {
-                                            toastr.success("Recibes experiencia al ejecutar codigo", '5+');
+                                        if (data.comando.match($gitVersion)) {                                           
                                             toggleNav(true);
                                             $("#act1done").addClass('fa fa-check-circle');
                                             comandos['version'] = true
@@ -1312,7 +1311,20 @@
                                 animation: false,
                                 customClass: 'animated tada',                                 
                                 background: "url({{ asset('images/course/bg_logro.png') }})"
-                              });
+                              }).then(
+                                    function () {},
+                                    // handling the promise rejection
+                                    function (dismiss) {
+                                      iziToast.show({
+                                                color: 'dark',
+                                                title: '+5 Puntos',
+                                                message: 'por haber escrito el comando git --version',
+                                                icon: 'fa fa-user-plus',                                                
+                                                transitionIn: 'bounceInUp',
+                                                position: 'center'
+                                            });
+                                    }
+                                  );
                         }
                      },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
