@@ -1,7 +1,7 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block stylesheets %} 
-    {{ parent() }}    
+{% block stylesheets %}
+    {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/bombillo.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/reveal.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/theme/moon.css') }}">
@@ -23,16 +23,15 @@
 
     <style>
 
-        .swal2-modal{
-            min-height: 487px!important;
-            max-height: 487px!important;
+        .swal2-modal {
+            min-height: 487px !important;
+            max-height: 487px !important;
         }
-        
-        
-        .swal2-image{
-            margin-top: 120px!important;
+
+        .swal2-image {
+            margin-top: 120px !important;
         }
-        
+
         .window {
 
             height: 300px;
@@ -40,6 +39,7 @@
             -webkit-transition: 1s;
             transition: 1s;
         }
+
         .window .topbar {
             height: 40px;
             width: 100%;
@@ -54,20 +54,20 @@
 
             border-bottom: 1px solid #302f2c;
         }
+
         .window .topbar p {
             color: #dfdbd0;
             margin-left: 20px;
         }
+
         .window .topbar .icons {
             background-image: -webkit-linear-gradient(#363632, #4e4d48);
             background-image: linear-gradient(#363632, #4e4d48);
             margin-left: 15px;
             border-radius: 500px;
-            padding-top: 2px;
-            padding-bottom: 1px;
-            padding-left: 3px;
-            padding-right: 3px;
+            padding: 2px 3px 1px 3px;
         }
+
         .window .topbar .icons .close {
             width: 20px;
             height: 20px;
@@ -76,10 +76,12 @@
             background-image: linear-gradient(#f79674, #df5106);
             display: inline-block;
         }
+
         .window .topbar .icons .close:hover {
             background-image: -webkit-linear-gradient(#f8a082, #f85c09);
             background-image: linear-gradient(#f8a082, #f85c09);
         }
+
         .window .topbar .icons .hide,
         .window .topbar .icons .maximize {
             width: 20px;
@@ -90,14 +92,15 @@
             background-image: linear-gradient(#989792, #5a5a55);
             display: inline-block;
         }
+
         .window .topbar .icons .hide:hover,
         .window .topbar .icons .maximize:hover {
             background-image: -webkit-linear-gradient(#a2a19d, #6b6b65);
             background-image: linear-gradient(#a2a19d, #6b6b65);
         }
 
-        .window .wtitle{
-            font-size:14px;
+        .window .wtitle {
+            font-size: 14px;
             font-weight: bold;
         }
 
@@ -114,15 +117,13 @@
             color: #dfdbd0;
         }
 
-
-        .acomodar{
-            margin-top: 10px;             
+        .acomodar {
+            margin-top: 10px;
         }
 
         .seq {
             z-index: 1;
         }
-
 
         #console {
             margin: 0;
@@ -132,15 +133,14 @@
             white-space: nowrap;
             color: #FFFFFF;
             background-color: #281022;
-            height: 15px;        
+            height: 15px;
         }
 
-        #console-panel{
-            background-color: #281022; 
+        #console-panel {
+            background-color: #281022;
             overflow-y: scroll;
             height: 300px;
         }
-
 
         #console div {
             display: table-cell;
@@ -164,7 +164,7 @@
 
         #preConsole {
             border: none;
-            margin:0;
+            margin: 0;
             /*padding-top: 50px;*/
             white-space: pre;
             background-color: #281022;
@@ -182,7 +182,6 @@
         }
 
 
-
     </style>
 
 
@@ -190,26 +189,31 @@
 
 {% block tituloCurso %} Bienvido a tu curso: {{ inscripcion.idCursoGrupo.idCurso.nombre }} {% endblock %}
 
-{% block mainTitle %} 
+{% block mainTitle %}
     <div class="row wrapper border-bottom white-bg page-heading" id="tour1">
 
-        <div class="col-sm-4" >                     
+        <div class="col-sm-4">
             <ol class="breadcrumb">
                 <li>
 
-                    <h4><img id="guardado" src="{{ asset('images/course/lightbulbOn6.png') }}" width="36px" /><img id="loadingBulb" src="{{ asset('images/course/bulb.gif') }}" width="36px" /> Progreso del Curso</h4>
+                    <h4><img id="guardado" src="{{ asset('images/course/lightbulbOn6.png') }}" width="36px"/><img
+                                id="loadingBulb" src="{{ asset('images/course/bulb.gif') }}" width="36px"/> Progreso del
+                        Curso</h4>
                 </li>
 
 
-                <li class="tooltip-demo" id="tour2">                        
-                    {% for temas in cursoModulo.temas %} 
-                        {% if temas.orden < avance  %}
-                            <a class="fa fa-github fa-2x encendido" data-toggle="tooltip" data-placement="top" title="{{ temas.orden}}: {{temas.idTema.nombre}}"></a>
+                <li class="tooltip-demo" id="tour2">
+                    {% for temas in cursoModulo.temas %}
+                        {% if temas.orden < avance %}
+                            <a class="fa fa-github fa-2x encendido" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
                         {% elseif temas.orden == avance %}
-                            <a class="fa fa-github fa-2x current" data-toggle="tooltip" data-placement="top"  title="{{ temas.orden}}: {{temas.idTema.nombre}}"></a>
-                        {% elseif temas.orden > avance  %}
-                            <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"  title="{{ temas.orden}}: {{temas.idTema.nombre}}"></a>
-                        {% endif %}                            
+                            <a class="fa fa-github fa-2x current" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
+                        {% elseif temas.orden > avance %}
+                            <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
+                        {% endif %}
                     {% endfor %}
 
 
@@ -229,12 +233,12 @@
 
 
 
-{% block body %} 
+{% block body %}
 
 
 
     <div class="row">
-        <div class="col-lg-7" style="height:400px" id="tour3" >
+        <div class="col-lg-7" style="height:400px" id="tour3">
 
             <div class="reveal">
 
@@ -244,36 +248,37 @@
                         <h1>Fundamentos de GIT</h1>
                         <h3>El Controlador de versiones distribuido Libre</h3>
                         <p>
-                            <small>Creado por <a href="www.tecnolineaparaguana.com.ve">Wilmer Ramones</a> / <a href="http://twitter.com/wramonesr">@wramonesr</a></small>
+                            <small>Creado por <a href="www.tecnolineaparaguana.com.ve">Wilmer Ramones</a> / <a
+                                        href="http://twitter.com/wramonesr">@wramonesr</a></small>
                         </p>
                     </section>
-                        
-                        <section data-transition="zoom" data-background="{{ asset('images/course/gif/lightbulb2.gif') }}">                        
+
+                    <section data-transition="zoom" data-background="{{ asset('images/course/gif/lightbulb2.gif') }}">
                         <h2>
                             Gracias por encender tu conocimiento con Tecnolíne@
                             Paraguaná.
                         </h2>
                     </section>
-                        
-                        
-                    <section data-transition="concave" data-background="{{ asset('images/course/gif/earthRotation.gif') }}">
-                        
-                        
-                            <h2>Presentación <strong style="color:white"> Multiespacial </strong></h2>
-                            <p>
-                                puedes controlar <strong style="color:white">la presentación con las teclas</strong> de
-                                dirección del <strong style="color:white">teclado, o con barra espaciadora</strong> para
-                                pasar <strong style="color:white">por todas y cada una de las láminas</strong>.</p>
-                            <a href="#" class="navigate-down">
-                                <img width="500" height="238" data-src="{{ asset('images/course/spacebar.png') }}" alt="Down arrow">
-                            </a>
-                            <p><strong style="color:white">Recomendable usar la barra espaciadora para que no te pierdas de nada</strong></p>
-                        </section>                        
-                       
-                    
 
-                    
-                        
+
+                    <section data-transition="concave"
+                             data-background="{{ asset('images/course/gif/earthRotation.gif') }}">
+
+
+                        <h2>Presentación <strong style="color:white"> Multiespacial </strong></h2>
+                        <p>
+                            puedes controlar <strong style="color:white">la presentación con las teclas</strong> de
+                            dirección del <strong style="color:white">teclado, o con barra espaciadora</strong> para
+                            pasar <strong style="color:white">por todas y cada una de las láminas</strong>.</p>
+                        <a href="#" class="navigate-down">
+                            <img width="500" height="238" data-src="{{ asset('images/course/spacebar.png') }}"
+                                 alt="Down arrow">
+                        </a>
+                        <p><strong style="color:white">Recomendable usar la barra espaciadora para que no te pierdas de
+                                nada</strong></p>
+                    </section>
+
+
                     <section>
                         <h3>Objetivos de Este módulo:</h3>
                         <ul>
@@ -281,447 +286,502 @@
                             <li class="fragment fade-left" data-autoslide="2500">¿Qué es Git?</li>
                             <li class="fragment fade-left" data-autoslide="2500">¿Cómo instalar Git?</li>
                             <li class="fragment fade-left" data-autoslide="2500">¿Como Configurar Git?</li>
-                        </ul> 
+                        </ul>
 
                     </section>
 
                     <!-- Example of nested vertical slides -->
-                    
+
 
                     <section>
                         <section>
-                        <h2>Trabajo Creativo</h2>
-                        <p>
-                            Si eres un diseñador, desarrollador o programados, 
-                            entonces has pasado por los pasos de:
-                        </p>
+                            <h2>Trabajo Creativo</h2>
+                            <p>
+                                Si eres un diseñador, desarrollador o programados,
+                                entonces has pasado por los pasos de:
+                            </p>
 
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" class="animated infinite bounce" />                                                
-                                <p><small><strong>crear</strong></small></p>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                         height="42" class="animated infinite bounce"/>
+                                    <p>
+                                        <small><strong>crear</strong></small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                         height="42" class="animated infinite flip"/>
+                                    <p>
+                                        <small><strong>Guardar</strong></small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                         height="42" class="animated infinite bounce"/>
+                                    <p>
+                                        <small><strong>Editar</strong></small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                         height="42" class="animated infinite flip"/>
+                                    <p>
+                                        <small><strong>Guardar Nuevamente</strong></small>
+                                    </p>
+                                </div>
+
                             </div>
-                            <div class="col-xs-3">
-                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" class="animated infinite flip" />                                                
-                                 <p><small><strong>Guardar</strong></small></p>
-                            </div>
-                            <div class="col-xs-3">
-                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" class="animated infinite bounce" />                                                
-                                 <p><small><strong>Editar</strong></small></p>
-                            </div>
-                            <div class="col-xs-3">
-                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42" height="42" class="animated infinite flip" />                                                
-                                 <p><small><strong>Guardar Nuevamente</strong></small></p>
+
+                            <h4>¿Verdad que sí?</h4>
+                            <p>Incluso me atrevo a decir que
+                                has guardado el mismo documento
+                                con otro nombre... ¿verdad?</p>
+                        </section>
+                        <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+                            <h2>No mientas.... jejejej</h2>
+                            <p style="color:black;">Vamos a ver el siguiente ejemplo a continuación:</p>
+
+                        </section>
+
+                        <section data-background="{{ asset('images/course/reguardado1.jpg') }}">
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Terminas el Trabajo</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Te hacen correcciones</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Y al hacer las
+                                correcciones...</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el
+                                trabajo</p>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/reguardado2.jpg') }}">
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Te lo vuelven a corregir</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Le haces los cambios</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Y otra vez...</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el
+                                trabajo</p>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/reguardado3.jpg') }}">
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Y así sucesivamente</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Hasta tener un nombre largo</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Difícil de manejar y
+                                controlar</p>
+                        </section>
+                    </section>
+
+                    <section>
+                        <h2>Te ha pasado ¿verdad?</h2>
+                        <p>Sin darte cuenta, estabas utilizando tu propio
+                            sistema manual para controlar tus versiones, pero es
+                            muy difícil de controlar y por eso nacieron los
+                            controladores de versiones automáticos</p>
+                    </section>
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="color:black">¿Que es un Controlador de Versiones?</h2>
+                        </section>
+                        <section>
+                            <p>Un Controlador de Versiones (VCS en inglés)
+                                es un sistema que registra los cambios
+                                ocurridos durante la <strong>creación, guardado,
+                                    editado y guardado</strong> nuevamente en uno o varios
+                                archivos. </p>
+                        </section>
+                        <section
+                                data-background="http://33.media.tumblr.com/d6e357b4974443d8e972bd39a87ec17a/tumblr_n4f2rhFzgC1tvnszbo2_250.gif">
+                            <h2>Excelente verdad... y no has <strong>visto los beneficios</strong></h2>
+                        </section>
+                    </section>
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/benefits.gif') }}">
+                            <h2><strong>Algunos Beneficios al usar Controladores de Versiones</strong></h2>
+                        </section>
+                        <section data-background="{{ asset('images/course/gif/equipo.gif') }}">
+                            <h2><strong>Colaboración</strong></h2>
+                            <p style="background-color:black; color:white; opacity:0.6;">
+                                Con un CVS tu equipo de trabajo o tu, pueden trabar libremente
+                                en el mismo archivo sin pisarse los pies y sin estar diciendo:
+                                "Esperen... nadie toque el archivo xyz que voy a realizar una modificación".
+                            </p>
+                        </section>
+                        <section data-background="{{ asset('images/course/gif/tranquilo.gif') }}">
+                            <h2>Respaldar</h2>
+                            <p style="background-color:black; color:white; opacity:0.6;">
+                                Si hay un incendio o perdistes la información, puedes trabajar
+                                tranquilo.... es casi imposible equivocarse o perder por
+                                completo el trabajo. Puedes trabajar relajado
+                            </p>
+
+                        </section>
+
+                        <section data-background="{{ asset('images/course/incendioGit.jpg') }}">
+                            <h3>
+
+                            </h3>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/tellType.gif') }}">
+                            <h2 style="color:black;">Descripción</h2>
+                            <p style="background-color:black; color:white; opacity:0.6;">
+                                cada vez que vas a guardar los cambios en tu VCS, este
+                                te solicita que escribas una descripción de los cambios
+                                que has realizado. <br>
+
+                                Luego, es capaz de mostrarte los cambios entre las
+                                distintas versiones, es decir, <strong>Te cuenta
+                                    la historia de tu proyecto</strong>
+                            </p>
+                        </section>
+
+
+                    </section>
+                    <section>
+                        <section>
+                            <h2>Tipos de Controlador de Versiones</h2>
+                            <p>Tipos de VCS: (hacer clic para ver animación)</p>
+                            <a id="animacion_local" href="#vcs-local" data-toggle="modal" data-target=".bs-modal-video"
+                               class="btn btn-primary btn-lg">Local<i class="fa fa-laptop"></i></a>
+                            <a href="#" data-toggle="modal" data-target=".bs-modal-video2" class="btn btn-warning">Centralizado<i
+                                        class="fa fa-download"></i></a>
+                            <a href="#" class="btn btn-success btn-lg">Distribuido <i class="fa fa-github"></i></a>
+                        </section>
+                        <section id="vcs-local"
+                                 data-background-video="{{ asset('assets/vendor/moovly/videos/local.webm') }}">
+
+                        </section>
+
+
+                        <section data-background="{{ asset('images/course/gif/centralizedDistributed2.gif') }}">
+                        </section>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
+                        <h3 style="background-color:black; color:white; opacity:0.6;">Nacimiento de GIT</h3>
+                        <p style="background-color:black; color:white; opacity:0.6;">
+                            La historia del nacimiento de GIT es muy interesante.
+                            Te invitamos a leer la historia presionando en el botón
+                        </p>
+                        <a class="btn btn-primary btn-block btn-lg" data-toggle="modal"
+                           data-target=".bs-example-modal-lg">Leer Historia de GIT</a>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/queGit.jpg') }}">
+                        <h1 style="color:black;">Entonces <br>¿Que es GIT?</h1>
+                    </section>
+
+                    <section>
+                        <h2>GIT</h2>
+                        <p>
+                            Git <em>(pronunciado "guit")</em> es un software de control de versiones
+                            diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad
+                            del mantenimiento de versiones de aplicaciones cuando éstas tienen un gran
+                            número de archivos de código fuente.
+                        </p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/terminal.gif') }}">
+                        <h2>Este curso usa la Consola o Terminal</h2>
+                        <p>Las acciones de git serán ejecutadas en la consola y
+                            <strong>vamos a aprender a usarla</strong></p>
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/noTeVayas.gif') }}">
+                        <h2>Alto!!!!!</h2>
+                        <p style="background-color:black; color:white; opacity:0.6;">
+                            No te vayas todavía.... Espera
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Es cierto</h2>
+                        <p>
+                            Existen interfaces gráficas, pero, pero... pero...<br>
+                            te recomiendo aprender
+                            a usar la <strong>consola</strong>.<br>
+                            Te explico, si usas la consola puedes
+                            exportar todos esos conocimientos cualquier software gráfico de git,
+                            pero no es el caso en viceversa.... </p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/terminal.gif') }}">
+                        <p style="background-color:white; color:black; opacity:0.6;">
+                            Así que sin miedo <br> a usar
+                            la consola o terminal..
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/installGit.gif') }}">
+                        <h3>Antes de usar Git, primero debemos instalarlo</h3>
+                        <p style="background-color:black; color:white; opacity:0.6;">
+                            En este curso, <strong>GIT ya está instalado</strong> y listo para
+                            usar (no tienes que instarlo en tu máquina si no quieres), de todas formaspero te mostramos
+                            los pasos en los distintos Sistemas Operativos para que lo instales y pongas
+                            en práctica lo aprendido.</p>
+                    </section>
+                    <section>
+                        <h3>Instalación de GIT</h3>
+                        <div>
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                                          data-toggle="tab">Linux</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                                           data-toggle="tab">Mac</a></li>
+                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                                           data-toggle="tab">Windows</a></li>
+                                <li role="presentation"><a href="#mas" aria-controls="messages" role="tab"
+                                                           data-toggle="tab">Más</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                    Si usas Fedora puedes ejecutar:<br>
+                                    <pre><code class="hljs"
+                                               style="word-wrap: break-word;">$ sudo yum install git-all</code></pre>
+
+                                    En el caso "Debian" u alguna distribución basada en él:<br>
+                                    <pre><code class="hljs" style="word-wrap: break-word;">$ sudo apt-get install git-all</code></pre>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="profile">
+                                    La manera más sencilla sería instalar Xcode Command Line Tools y luego
+                                    intentar correr git desde el terminal. Si git no está instalado, entonces
+                                    emergerá una ventana en donde se puede instalar.
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="messages">
+                                    Para instalarlo en Windows basta con dirigirse a la página de descarga
+                                    de <a href="http://git-scm.com/download/win">git para windows</a> y
+                                    ejecutar el instalador
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade" id="mas">
+                                    Para mayor información sobre algun Sistema Operativo diferente a los
+                                    mencionados u alguna otra forma de instalación, dirigirse a la página
+                                    de <a href="https://git-scm.com/downloads"> descargas de git</a> donde
+                                    encontraremos información extendida sobre el tema.
+                                </div>
+
                             </div>
 
                         </div>
-
-                                 <h4>¿Verdad que sí?</h4>
-                                 <p>Incluso me atrevo a decir que
-                                 has guardado el mismo documento
-                                 con otro nombre... ¿verdad?</p>
-                        </section>
-                        <section data-background="http://i.giphy.com/90F8aUepslB84.gif" >
-                            <h2>No mientas.... jejejej</h2>
-                            <p style="color:black;">Vamos a ver el siguiente ejemplo a continuación:</p>
-                            
-                        </section>  
-                                 
-                        <section data-background="{{ asset('images/course/reguardado1.jpg') }}" >
-                            <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Terminas el Trabajo</p>
-                            <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Te hacen correcciones</p>
-                            <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Y al hacer las correcciones...</p>
-                            <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el trabajo</p>
-                        </section> 
-                            
-                            <section data-background="{{ asset('images/course/reguardado2.jpg') }}" >
-                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Te lo vuelven a corregir</p>
-                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Le haces los cambios</p>
-                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Y otra vez...</p>
-                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el trabajo</p>
-                        </section> 
-                            
-                            <section data-background="{{ asset('images/course/reguardado3.jpg') }}" >
-                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Y así sucesivamente</p>
-                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Hasta tener un nombre largo</p>
-                                    <p class="fragment fade-left" data-autoslide="2500" style="background-color:black; color:white; opacity:0.6;">Difícil de manejar y controlar</p>                                    
-                        </section> 
                     </section>
-                                 
-                                 <section>
-                                <h2>Te ha pasado ¿verdad?</h2> 
-                                <p>Sin darte cuenta, estabas utilizando tu propio
-                                sistema manual para controlar tus versiones, pero es
-                                muy difícil de controlar y por eso nacieron los
-                                controladores de versiones automáticos</p>
-                            </section>
-                            
-                            <section >
-                                <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
-                                <h2 style="color:black">¿Que es un Controlador de Versiones?</h2> 
-                                </section>
-                                <section>
-                                <p>Un Controlador de Versiones (VCS en inglés) 
-                                es un sistema que registra los cambios 
-                                ocurridos durante la <strong>creación, guardado, 
-                                editado y guardado</strong> nuevamente en uno o varios 
-                                archivos. </p>
-                                </section>
-                                <section data-background="http://33.media.tumblr.com/d6e357b4974443d8e972bd39a87ec17a/tumblr_n4f2rhFzgC1tvnszbo2_250.gif">
-                                    <h2>Excelente verdad... y no has <strong>visto los beneficios</strong></h2>                                    
-                                </section>
-                            </section>
-                            
-                           
-                            
-                            <section>
-                                <section data-background="{{ asset('images/course/gif/benefits.gif') }}">
-                                    <h2 ><strong>Algunos Beneficios al usar Controladores de Versiones</strong></h2>
-                                </section>
-                                    <section data-background="{{ asset('images/course/gif/equipo.gif') }}">
-                                        <h2><strong>Colaboración</strong></h2>
-                                    <p style="background-color:black; color:white; opacity:0.6;">
-                                        Con un CVS tu equipo de trabajo o tu, pueden trabar libremente
-                                        en el mismo archivo sin pisarse los pies y sin estar diciendo:
-                                        "Esperen... nadie toque el archivo xyz que voy a realizar una modificación".
-                                    </p>
-                                </section >
-                                <section data-background="{{ asset('images/course/gif/tranquilo.gif') }}">
-                                    <h2>Respaldar</h2>
-                                        <p style="background-color:black; color:white; opacity:0.6;">
-                                            Si hay un incendio o perdistes la información, puedes trabajar
-                                            tranquilo.... es casi imposible equivocarse o perder por
-                                            completo el trabajo.  Puedes trabajar relajado
-                                        </p>
-                                        
-                                </section>
-                                    
-                                    <section data-background="{{ asset('images/course/incendioGit.jpg') }}">
-                                        <h3>
-                                            
-                                        </h3>
-                                    </section>
-                                                                               
-                                    <section data-background="{{ asset('images/course/gif/tellType.gif') }}">
-                                        <h2 style="color:black;">Descripción</h2>
-                                        <p style="background-color:black; color:white; opacity:0.6;">
-                                            cada vez que vas a guardar los cambios en tu VCS, este
-                                            te solicita que escribas una descripción de los cambios
-                                            que has realizado. <br>                                        
-                                        
-                                            Luego, es capaz de mostrarte los cambios entre las 
-                                            distintas versiones, es decir, <strong>Te cuenta
-                                            la historia de tu proyecto</strong>
-                                        </p>
-                                    </section>                                    
-                                                                          
-                                
-                            </section>
-                                 <section>
-                                     <section>
-                                     <h2>Tipos de Controlador de Versiones</h2>
-                                     <p>Tipos de VCS: (hacer clic para ver animación)</p>
-                                        <a id="animacion_local" href="#/vcs-local" data-toggle="modal" data-target=".bs-modal-video"  class="btn btn-primary btn-lg">Local<i class="fa fa-laptop"></i></a>
-                                        <a href="#" data-toggle="modal" data-target=".bs-modal-video2" class="btn btn-warning">Centralizado<i class="fa fa-download"></i></a>
-                                        <a href="#"  class="btn btn-success btn-lg">Distribuido <i class="fa fa-github"></i></a>
-                                        </section>
-                                     <section id="vcs-local" data-background-video="{{ asset('assets/vendor/moovly/videos/local.webm') }}">
-                                     
-                                    </section>
-                                     
-                                     
-                                     <section data-background="{{ asset('images/course/gif/centralizedDistributed2.gif') }}">
-                                     </section>
-                                 </section>
-                                     
-                                 <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
-                                     <h3 style="background-color:black; color:white; opacity:0.6;">Nacimiento de GIT</h3>
-                                    <p style="background-color:black; color:white; opacity:0.6;">
-                                        La historia del nacimiento de GIT es muy interesante. 
-                                        Te invitamos a leer la historia presionando en el botón
-                                    </p>
-                                   <a class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Leer Historia de GIT</a>
-                                 </section>
-                                     
-                                     <section data-background="{{ asset('images/course/queGit.jpg') }}">
-                                         <h1 style="color:black;">Entonces <br>¿Que es GIT?</h1>
-                                     </section>
-                                         
-                                     <section >
-                                         <h2>GIT</h2>
-                                         <p>
-                                             Git <em>(pronunciado "guit")</em> es un software de control de versiones 
-                                             diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad 
-                                             del mantenimiento de versiones de aplicaciones cuando éstas tienen un gran 
-                                             número de archivos de código fuente.
-                                         </p>
-                                     </section>    
-                                     
-                                     <section data-background="{{ asset('images/course/terminal.gif') }}">
-                                         <h2>Este curso usa la Consola o Terminal</h2>
-                                         <p>Las acciones de git serán ejecutadas en la consola y
-                                             <strong>vamos a aprender a usarla</strong></p>
-                                     </section>
-                                         
-                                         
-                                     <section data-background="{{ asset('images/course/gif/noTeVayas.gif') }}">
-                                         <h2>Alto!!!!!</h2>
-                                         <p style="background-color:black; color:white; opacity:0.6;">
-                                             No te vayas todavía.... Espera
-                                         </p>
-                                     </section>
-                                         
-                                         <section>
-                                             <h2>Es cierto</h2>
-                                             <p>
-                                                 Existen interfaces gráficas, pero, pero... pero...<br>
-                                                 te recomiendo aprender
-                                                 a usar la <strong>consola</strong>.<br>
-                                                 Te explico, si usas la consola puedes
-                                            exportar todos esos conocimientos cualquier software gráfico de git,
-                                            pero no es el caso en viceversa.... </p>
-                                         </section>
-                                         
-                                         <section data-background="{{ asset('images/course/terminal.gif') }}">
-                                            <p style="background-color:white; color:black; opacity:0.6;">
-                                                Así que sin miedo <br> a usar
-                                             la consola o terminal..
-                                         </section>
-                                                                                         
-                                         
-                                         
-                                         <section data-background="{{ asset('images/course/gif/installGit.gif') }}">
-                                             <h3>Antes de usar Git, primero debemos instalarlo</h3>
-                                             <p style="background-color:black; color:white; opacity:0.6;">
-                                                 En este curso, <strong>GIT ya está instalado</strong> y listo para
-                                                 usar (no tienes que instarlo en tu máquina si no quieres), de todas formaspero te mostramos
-                                             los pasos en los distintos Sistemas Operativos para que lo instales y pongas
-                                             en práctica lo aprendido.</p>
-                                         </section>
-                                             <section>
-                                                 <h3>Instalación de GIT</h3>
-                                             <div>
+                    <section data-state="actividad0"
+                             data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h2>Por fin... Manos a la obra</h2>
 
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Linux</a></li>
-                                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mac</a></li>
-                                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Windows</a></li>    
-                                                <li role="presentation"><a href="#mas" aria-controls="messages" role="tab" data-toggle="tab">Más</a></li>    
-                                            </ul>
+                    </section>
 
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane fade in active" id="home">
-                                                    Si usas Fedora puedes ejecutar:<br>
-                                                    <pre><code class="hljs" style="word-wrap: break-word;">$ sudo yum install git-all</code></pre>
-                                                    
-                                                    En el caso "Debian" u alguna distribución basada en él:<br>
-                                                    <pre><code class="hljs" style="word-wrap: break-word;">$ sudo apt-get install git-all</code></pre>          
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade" id="profile">
-                                                    La manera más sencilla sería instalar Xcode Command Line Tools y luego
-                                                    intentar correr git desde el terminal.  Si git no está instalado, entonces
-                                                    emergerá una ventana en donde se puede instalar.
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade" id="messages">
-                                                    Para instalarlo en Windows basta con dirigirse a la página de descarga
-                                                    de <a href="http://git-scm.com/download/win">git para windows</a> y
-                                                    ejecutar el instalador 
-                                                </div>
+                    <section data-state="actividad1">
+                        <h2>Actividad en la Consola 1</h2>
+                        <h3>Comprobar si git está instalado</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+                        <p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git --version</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="act1done" style="color:greenyellow;" class=""></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-left" data-autoslide="2500">si git está instalado, este comando nos dará
+                            como resultado la versión instalada de git</p>
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
 
-                                                <div role="tabpanel" class="tab-pane fade" id="mas">
-                                                    Para mayor información sobre algun Sistema Operativo diferente a los
-                                                    mencionados u alguna otra forma de instalación, dirigirse a la página
-                                                    de <a href="https://git-scm.com/downloads"> descargas de git</a> donde
-                                                    encontraremos información extendida sobre el tema.
-                                                </div>
 
-                                            </div>
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2>Felicitaciones... ya escribistes tu primer comando</h2>
+                    </section>
 
-                                        </div>
-                                         </section>
-                                         <section data-state="actividad0" data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
-                                             <h2>Por fin... Manos a la obra</h2>
-                                             
-                                         </section>
-                                         
-                                         <section data-state="actividad1">
-						<h2>Actividad en la Consola 1</h2>
-						<h3>Comprobar si git está instalado</h3>
-						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-						<p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
-						<div class="row">
-                                                   <div class="col-xs-10"> 
-                                                       <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git --version</code></pre></a>
-                                                   </div>
-                                                <div class="col-xs-2">
-                                                    <i id="act1done" style="color:greenyellow;" class=""></i>
-                                                </div>
-                                                    </div>
-                                                <p class="fragment fade-left" data-autoslide="2500">si git está instalado, este comando nos dará como resultado la versión instalada de git</p>
-						<p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red" data-autoslide="1000">En sus marcas</span> <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span class="fragment highlight-green">Fuera</span></p>
-					</section>
-                                             
-                                             
-                                             
-                                         
-                                         <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
-                                             <h2>Felicitaciones... ya escribistes tu primer comando</h2>
-                                         </section>
-                                             
-                                             
-                                                                                          
-                                             
-                                        <section>
-                                            <section>
-                                                <h2>Inicializar GIT</h2>
-                                                
-                                            </section>
-                                            <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
-                                                <h2>Si nosotros queremos que Git siga y <strong>versione</strong> nuestro proyecto</h2>
-                                            </section>
-                                                
-                                            <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
-                                                <h2>debemos inicializarlo <strong><u>dentro del directorio raiz del proyecto</u></strong></h2>
-                                            </section>
-                                                
-                                                <section data-background="{{ asset('images/course/gif/detective.gif') }}">
-                                                <h2 style="color:black;">Así git podrá seguir como a un detective, nuestros cambios</h2>
-                                            </section>
-                                                <section>
-                                                    <h2>Recuerda...</h2>
-                                                    <p>Para inicializar GIT, debemos estar dentro del directorio
-                                                    de nuestro proyecto a versionar.</p>
-                                                    <h3>Importante:</h3>   
-                                                <p>
-                                                    Si nuestro proyecto está avanzado o ya comenzado,
-                                                    también podemos comenzar a gestionarlo a través del
-                                                    mismo comando.
-                                                </p>
-                                                    
-                                                </section>
-                                    </section>
-                                             
-                                             
-                                             
-                                             
-                                              <section data-state="actividad2">
-						<h2>Actividad en la Consola 2</h2>                                                
-						<h3 class="fragment fade-up" data-autoslide="2500">Adivina que vamos a hacer.....</h3>
-						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-						<p class="fragment fade-left" data-autoslide="2500">escribe el comando para inicializar a GIT</p>
-						<div class="row">
-                                                   <div class="col-xs-10"> 
-                                                       <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git init</code></pre></a>
-                                                   </div>
-                                                <div class="col-xs-2">
-                                                    <i id="act2done" style="color:greenyellow;" class=""></i>
-                                                </div>
-                                                    </div>
-                                                <p class="fragment fade-left" data-autoslide="2500">
-                                                    para indicarle a git que le siga la pista a todo nuestro directorio.
-                                                    En nuestro caso el proyecto tiene como nombre tu usuario ("{{ app.user.userName }} ")
-                                                </p>
-						<p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red" data-autoslide="1000">En sus marcas</span> <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span class="fragment highlight-green">Fuera</span></p>
-					</section>
-                                                
-                                                <section >
-                                                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
-                                                        <h3 style="background-color:black; color:white; opacity:0.6;">
-                                                            ¿Te distes cuenta del mensaje?
-                                                        </h3>
-                                                    </section>
-                                                        <section>                                                            
-                                                            <h3>"Veamos un ejemplo desde 0"</h3>                                                                                                                        
-                                                            <p>es decir, creamos la carpeta del proyecto, entramos a la 
-                                                            carpeta del proyecto e inicializamos git</p>
-                                                        </section>
-                                                        <section data-background-size="cover" data-background="{{ asset('images/course/gif/gitinit.gif') }}">
-                                                            <br><br><br><br><br>
-                                                           <ul>
-                                                               <li><strong>mkdir:</strong> para crear la carpeta</li>
-                                                               <li><strong>cd:</strong> para cambiar al directorio del proyecto</li>
-                                                               <li><strong>git init:</strong> para inicializar el proyecto</li>
-                                                               <li>y allí tenemos el mensaje</li>
-                                                            </ul>
-                                                        </section>
-                                                            <section>
-                                                                <h2>¿Que acaba de ocurrir?</h2>
-                                                                 <p>
-                                                                    Cuando ejecutamos git init, se creó
-                                                                    un directorio oculto <strong><u>.git</u></strong> en la raiz
-                                                                    de nuestro proyecto que contiene los
-                                                                    metadatos necesarios para seguir los
-                                                                    cambios de nuestro repositorio.
-                                                                </p>
-                                                            </section>
-                                                            
-                                                            <section>
-                                                                <h2>.git</h2>
-                                                                <p> puedes consultar el contenido del directorio
-                                                                oculto desde "tu directorio". A lo largo del curso explicaremos su contenido... 
-                                                                no te preocupes</p>
-                                                            </section>
-                                                </section>
-                                             
-                                             <section data-background="{{ asset('images/course/gif/gitConfig2.gif') }}">
-                                                 <h2 style="color:red">Configurar Git</h2>
-                                                 <p style="color:black">Luego de Instalado, git debe saber <strong>quien eres</strong>
-                                                     y donde <strong>ubicarte</strong>, para cuando sea hora de registrar los cambios
-                                                     esa información quede registratada también...<br>Debemos configurar
-                                                     nuestro nombre y nuestra dirección de correo.
-                                                 </p>
-                                             </section>
-                                                 
-                                                 <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
-                                                     <br><br><br><br>
-                                                     <h3 style="background-color:black; color:white; opacity:0.6;">Espero estes tomando <strong style="color:red">nota...</strong>
-                                                         (esto sale en <strong style="color:red">el quiz)</strong></h3>                                                 
-                                             </section>
-                                             
-                                             
-                                       <section data-state="actividad3" class="fragment fade-up">
-						<h2 >Actividad en la Consola 3</h2>
-						<h3 class="fragment fade-up" data-autoslide="2500">Configuración inicial de GIT</h3>
-						<p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-						<p class="fragment fade-left" data-autoslide="2500">Comando para configurar tu nombre</p>
-						<div class="row">
-                                                   <div class="col-xs-10"> 
-                                                       <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git config --global user.name "TuNombre"</code></pre></a>
-                                                   </div>
-                                                <div class="col-xs-2">
-                                                    <i id="act3-1done" style="color:greenyellow;" class=""></i>
-                                                </div>
-                                                    </div>
-                                                <p class="fragment fade-left" data-autoslide="2500">Luego este comando para configurar tu email</p>
-						<div class="row">
-                                                   <div class="col-xs-10"> 
-                                                       <a><pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git config --global user.email "tuCorreo@tuProveedor.xxx"</code></pre></a>
-                                                   </div>
-                                                <div class="col-xs-2">
-                                                    <i id="act3-2done" style="color:greenyellow;" class=""></i>
-                                                </div>
-                                                    </div>
-						<p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red" data-autoslide="1000">En sus marcas</span> <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span class="fragment highlight-green">Fuera</span></p>
-					</section>
-                                             
-                                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
-                                             <h2>Felicitaciones... Tenemos a git instalado y listo para usar.</h2>
-                                         </section>
-                                             
-                                             <section data-state="qz" data-background="{{ asset('images/course/gif/typing2.gif') }}">
-                                                 <h2>Ahora a realizar el Quiz</h2>
-                                             </section>
-                                             
-                                             <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
-                                             <h2>Felicitaciones... Unidad Terminada.</h2>
-                                         </section>
+
+                    <section>
+                        <section>
+                            <h2>Inicializar GIT</h2>
+
+                        </section>
+                        <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
+                            <h2>Si nosotros queremos que Git siga y <strong>versione</strong> nuestro proyecto</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
+                            <h2>debemos inicializarlo <strong><u>dentro del directorio raiz del proyecto</u></strong>
+                            </h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/detective.gif') }}">
+                            <h2 style="color:black;">Así git podrá seguir como a un detective, nuestros cambios</h2>
+                        </section>
+                        <section>
+                            <h2>Recuerda...</h2>
+                            <p>Para inicializar GIT, debemos estar dentro del directorio
+                                de nuestro proyecto a versionar.</p>
+                            <h3>Importante:</h3>
+                            <p>
+                                Si nuestro proyecto está avanzado o ya comenzado,
+                                también podemos comenzar a gestionarlo a través del
+                                mismo comando.
+                            </p>
+
+                        </section>
+                    </section>
+
+
+                    <section data-state="actividad2">
+                        <h2>Actividad en la Consola 2</h2>
+                        <h3 class="fragment fade-up" data-autoslide="2500">Adivina que vamos a hacer.....</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+                        <p class="fragment fade-left" data-autoslide="2500">escribe el comando para inicializar a
+                            GIT</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git init</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="act2done" style="color:greenyellow;" class=""></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-left" data-autoslide="2500">
+                            para indicarle a git que le siga la pista a todo nuestro directorio.
+                            En nuestro caso el proyecto tiene como nombre tu usuario ("{{ app.user.userName }} ")
+                        </p>
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
+                            <h3 style="background-color:black; color:white; opacity:0.6;">
+                                ¿Te distes cuenta del mensaje?
+                            </h3>
+                        </section>
+                        <section>
+                            <h3>"Veamos un ejemplo desde 0"</h3>
+                            <p>es decir, creamos la carpeta del proyecto, entramos a la
+                                carpeta del proyecto e inicializamos git</p>
+                        </section>
+                        <section data-background-size="cover"
+                                 data-background="{{ asset('images/course/gif/gitinit.gif') }}">
+                            <br><br><br><br><br>
+                            <ul>
+                                <li><strong>mkdir:</strong> para crear la carpeta</li>
+                                <li><strong>cd:</strong> para cambiar al directorio del proyecto</li>
+                                <li><strong>git init:</strong> para inicializar el proyecto</li>
+                                <li>y allí tenemos el mensaje</li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h2>¿Que acaba de ocurrir?</h2>
+                            <p>
+                                Cuando ejecutamos git init, se creó
+                                un directorio oculto <strong><u>.git</u></strong> en la raiz
+                                de nuestro proyecto que contiene los
+                                metadatos necesarios para seguir los
+                                cambios de nuestro repositorio.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2>.git</h2>
+                            <p> puedes consultar el contenido del directorio
+                                oculto desde "tu directorio". A lo largo del curso explicaremos su contenido...
+                                no te preocupes</p>
+                        </section>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/gitConfig2.gif') }}">
+                        <h2 style="color:red">Configurar Git</h2>
+                        <p style="color:black">Luego de Instalado, git debe saber <strong>quien eres</strong>
+                            y donde <strong>ubicarte</strong>, para cuando sea hora de registrar los cambios
+                            esa información quede registratada también...<br>Debemos configurar
+                            nuestro nombre y nuestra dirección de correo.
+                        </p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
+                        <br><br><br><br>
+                        <h3 style="background-color:black; color:white; opacity:0.6;">Espero estes tomando <strong
+                                    style="color:red">nota...</strong>
+                            (esto sale en <strong style="color:red">el quiz)</strong></h3>
+                    </section>
+
+
+                    <section data-state="actividad3" class="fragment fade-up">
+                        <h2>Actividad en la Consola 3</h2>
+                        <h3 class="fragment fade-up" data-autoslide="2500">Configuración inicial de GIT</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+                        <p class="fragment fade-left" data-autoslide="2500">Comando para configurar tu nombre</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git config --global user.name "TuNombre"</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="act3-1done" style="color:greenyellow;" class=""></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-left" data-autoslide="2500">Luego este comando para configurar tu
+                            email</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git config --global user.email "tuCorreo@tuProveedor.xxx"</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="act3-2done" style="color:greenyellow;" class=""></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2>Felicitaciones... Tenemos a git instalado y listo para usar.</h2>
+                    </section>
+
+                    <section data-state="qz" data-background="{{ asset('images/course/gif/typing2.gif') }}">
+                        <h2>Ahora a realizar el Quiz</h2>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
+                        <h2>Felicitaciones... Unidad Terminada.</h2>
+                    </section>
                 </div>
 
-            </div> 
-
-
+            </div>
 
 
         </div>
@@ -733,7 +793,8 @@
                     <small>Progreso de este nivel</small>
                     <div class="stat-percent">0%</div>
                     <div class="progress progress-mini">
-                        <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 10%;" class="progress-bar"></div>
+                        <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                             style="width: 10%;" class="progress-bar"></div>
                     </div>
                 </li>
                 <li>
@@ -742,26 +803,30 @@
                             Logros disponibles en este Nivel:
                         </div>
                         <div class="col-lg-7">
-                            <div class="tooltip-demo">                        
+                            <div class="tooltip-demo">
                                 {% set contadorObtenidos = 0 %}
                                 {% for logroD in logrosDisponibles %}
                                     {% set obtenido = false %}
-                                    {% for logroO in logrosObtenidos %}                                
+                                    {% for logroO in logrosObtenidos %}
                                         {% if logroO.idCursoModuloTemaLogro.id == logroD.id %}
                                             {% set contadorObtenidos = contadorObtenidos + 1 %}
                                             {% set obtenido = true %}
-                                        {% endif %}                                    
+                                        {% endif %}
                                     {% endfor %}
                                     {% if not obtenido %}
-                                        <span id="{{ logroD.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logroD.nombre }}" class="fa-stack has-badge" data-count="{{ logroD.badge }}">
+                                        <span id="{{ logroD.nombreCorto }}" data-toggle="tooltip" data-placement="top"
+                                              title="{{ logroD.nombre }}" class="fa-stack has-badge"
+                                              data-count="{{ logroD.badge }}">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
                                         </span>
-                                    {% else %}                                                                
+                                    {% else %}
                                         {% if logroD.id == 2 %}
-                                            <input type="hidden" id="quizOpen" value="true" />
+                                            <input type="hidden" id="quizOpen" value="true"/>
                                         {% endif %}
-                                        <span id="{{ logroD.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logroD.nombre }}" class="fa-stack has-badge" data-count="{{ logroD.badge }}">
+                                        <span id="{{ logroD.nombreCorto }}" data-toggle="tooltip" data-placement="top"
+                                              title="{{ logroD.nombre }}" class="fa-stack has-badge"
+                                              data-count="{{ logroD.badge }}">
                                             <i class="fa fa-circle fa-stack-2x text-warning"></i>
                                             <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
                                         </span>
@@ -769,7 +834,7 @@
                                 {% endfor %}
 
                                 {% if contadorObtenidos > 0 %}
-                                    <input type="hidden" id="contadorObtenidos" value="{{ contadorObtenidos }}" /> 
+                                    <input type="hidden" id="contadorObtenidos" value="{{ contadorObtenidos }}"/>
                                 {% endif %}
 
                             </div>
@@ -780,7 +845,6 @@
 
             </ul>
         </div>
-
 
 
         <div class="col-lg-5 acomodar">
@@ -824,16 +888,19 @@
                         <div class="quizResults">
                             <h3 class="quizScore">Tus Puntos: <span><!-- where the quiz score goes --></span></h3>
 
-                            <h3 class="quizLevel"><strong>Nivel:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
-                            <a class="next_class btn btn-success" id="next_class" <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente Clase!</a>
-                                <input id="inscripcion" type="hidden" value="{{ inscripcion.id }}" />
-                                
-                                <input id="url_avance" type="hidden" value="{{ url('ajax_avance') }}" />
-                                <input id="tema_actual" type="hidden" value="{{ temaActual.id }}" />
-                                <input id="url_evaluacion" type="hidden" value="{{ url('ajax_evaluacion') }}" />
-                                <div class="quizResultsCopy">
-                                    <!-- where the quiz result copy goes -->
-                                </div>
+                            <h3 class="quizLevel"><strong>Nivel:</strong> <span><!-- where the quiz ranking level goes --></span>
+                            </h3>
+                            <a class="next_class btn btn-success" id="next_class"
+                               href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente
+                                Clase!</a>
+                            <input id="inscripcion" type="hidden" value="{{ inscripcion.id }}"/>
+
+                            <input id="url_avance" type="hidden" value="{{ url('ajax_avance') }}"/>
+                            <input id="tema_actual" type="hidden" value="{{ temaActual.id }}"/>
+                            <input id="url_evaluacion" type="hidden" value="{{ url('ajax_evaluacion') }}"/>
+                            <div class="quizResultsCopy">
+                                <!-- where the quiz result copy goes -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -858,13 +925,11 @@
 
                 <pre id="preConsole"></pre>
                 <form id="console">
-                    <div id="currentDirName">{{ currentDirName }}/ </div>
+                    <div id="currentDirName">{{ currentDirName }}/</div>
                     <div>{{ currentUser }}$></div>
-                    <div id="command"><input id="inputConsole" type="text" value=""autocomplete="off"></div>
+                    <div id="command"><input id="inputConsole" type="text" value="" autocomplete="off"></div>
                 </form>
             </div>
-
-
 
         </div>
 
@@ -929,11 +994,17 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
-                <video id="myMoov" poster="{{ asset('assets/vendor/moovly/videos/local.jpg') }}"  width="854" height="481" class="video-js vjs-default-skin vjs-big-play-centered vjs-controls-enabled vjs-has-started vjs-user-active" controls preload="none" data-setup='{"children": { "loadingSpinner": true, "controlBar": { "children": {"currentTimeDisplay": false, "timeDivider": false, "durationDisplay": false ,"volumeControl":false, "muteToggle":false}}}}'>                    
+                <video id="myMoov" poster="{{ asset('assets/vendor/moovly/videos/local.jpg') }}" width="854"
+                       height="481"
+                       class="video-js vjs-default-skin vjs-big-play-centered vjs-controls-enabled vjs-has-started vjs-user-active"
+                       controls preload="none"
+                       data-setup='{"children": { "loadingSpinner": true, "controlBar": { "children": {"currentTimeDisplay": false, "timeDivider": false, "durationDisplay": false ,"volumeControl":false, "muteToggle":false}}}}'>
                     <source src="{{ asset('assets/vendor/moovly/videos/local.webm') }}" type='video/webm'/>
                     <source src="{{ asset('assets/vendor/moovly/videos/local.mp4') }}" type='video/mp4'/>
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.ogg') }}" type='video/ogg'/>
-                    <p class="vjs-no-js">Para poder ver este video, necesita tener habilitado javascript y un navegador actualizado <a href="http://videojs.com/html5-video-support/" target="_blank">que soporte video con HTML 5</a></p>
+                    <source src="{{ asset('assets/vendor/moovly/videos/local.ogv') }}" type='video/ogv'/>
+                    <p class="vjs-no-js">Para poder ver este video, necesita tener habilitado javascript y un navegador
+                        actualizado <a href="http://videojs.com/html5-video-support/" target="_blank">que soporte video
+                            con HTML 5</a></p>
                 </video>
 
             </div>
@@ -945,11 +1016,17 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
-                <video id="myMoov" poster="{{ asset('assets/vendor/moovly/videos/local.jpg') }}"  width="854" height="481" class="video-js vjs-default-skin vjs-big-play-centered vjs-controls-enabled vjs-has-started vjs-user-active" controls preload="none" data-setup='{"children": { "loadingSpinner": true, "controlBar": { "children": {"currentTimeDisplay": false, "timeDivider": false, "durationDisplay": false ,"volumeControl":false, "muteToggle":false}}}}'>                    
+                <video id="myMoov" poster="{{ asset('assets/vendor/moovly/videos/local.jpg') }}" width="854"
+                       height="481"
+                       class="video-js vjs-default-skin vjs-big-play-centered vjs-controls-enabled vjs-has-started vjs-user-active"
+                       controls preload="none"
+                       data-setup='{"children": { "loadingSpinner": true, "controlBar": { "children": {"currentTimeDisplay": false, "timeDivider": false, "durationDisplay": false ,"volumeControl":false, "muteToggle":false}}}}'>
                     <source src="{{ asset('assets/vendor/moovly/videos/central.webm') }}" type='video/webm'/>
                     <source src="{{ asset('assets/vendor/moovly/videos/central.mp4') }}" type='video/mp4'/>
-                    <source src="{{ asset('assets/vendor/moovly/videos/central.ogg') }}" type='video/ogg'/>
-                    <p class="vjs-no-js">Para poder ver este video, necesita tener habilitado javascript y un navegador actualizado <a href="http://videojs.com/html5-video-support/" target="_blank">que soporte video con HTML 5</a></p>
+                    <source src="{{ asset('assets/vendor/moovly/videos/central.ogv') }}" type='video/ogv'/>
+                    <p class="vjs-no-js">Para poder ver este video, necesita tener habilitado javascript y un navegador
+                        actualizado <a href="http://videojs.com/html5-video-support/" target="_blank">que soporte video
+                            con HTML 5</a></p>
                 </video>
 
             </div>
@@ -960,89 +1037,87 @@
 
 {% endblock %}
 
-{% block javascripts %} 
-    {{ parent() }}    
+{% block javascripts %}
+    {{ parent() }}
 
-    <script src="{{ asset('assets/vendor/elfinder/js/elfinder.full.js') }}"type="text/javascript" ></script>
-    <script src="{{ asset('assets/vendor/elfinder/js/i18n/elfinder.es.js') }}"type="text/javascript" ></script>
+    <script src="{{ asset('assets/vendor/elfinder/js/elfinder.full.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/elfinder/js/i18n/elfinder.es.js') }}" type="text/javascript"></script>
 
-    <script src="{{asset('assets/vendor/revealjs/lib/js/head.min.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/revealjs/js/reveal.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/sweetAlert/sweetalert.min.js')}}" type="text/javascript"></script>    
+    <script src="{{ asset('assets/vendor/revealjs/lib/js/head.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/revealjs/js/reveal.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/sweetAlert/sweetalert.min.js') }}" type="text/javascript"></script>
 
-    <script src="{{asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/modernizr/modernizr.2.5.3.min.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/steps/jquery.steps.min.js')}}" type="text/javascript"></script>      
-    <script src="{{asset('assets/vendor/quiz/slickQuiz-config.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/quiz/slickQuiz.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/quiz/master.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/iziToast/dist/js/iziToast.min.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/moovly/js/videojs/video.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/modernizr/modernizr.2.5.3.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/steps/jquery.steps.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/master.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/moovly/js/videojs/video.js') }}" type="text/javascript"></script>
 
 
 
 
     <script type="text/javascript">
-        
-        
-         /**
-     *  History of commands.
-     */
-    (function ($) {
-        var maxHistory = 100;
-        var position = -1;
-        var currentCommand = '';
-        var addCommand = function (command) {
-            var ls = localStorage['commands'];
-            var commands = ls ? JSON.parse(ls) : [];
-            if (commands.length > maxHistory) {
-                commands.shift();
-            }
-            commands.push(command);
-            localStorage['commands'] = JSON.stringify(commands);
-        };
-        var getCommand = function (at) {
-            var ls = localStorage['commands'];
-            var commands = ls ? JSON.parse(ls) : [];
-            if (at < 0) {
-                position = at = -1;
-                return currentCommand;
-            }
-            if (at >= commands.length) {
-                position = at = commands.length - 1;
-            }
-            return commands[commands.length - at - 1];
-        };
 
-        $.fn.history = function () {
-            var input = $(this);
-            input.keydown(function (e) {
-                var code = (e.keyCode ? e.keyCode : e.which);
 
-                if (code == 38) { // Up
-                    if (position == -1) {
-                        currentCommand = input.val();
-                    }
-                    input.val(getCommand(++position));
-                    return false;
-                } else if (code == 40) { // Down
-                    input.val(getCommand(--position));
-                    return false;
-                } else {
-                    position = -1;
+        /**
+         *  History of commands.
+         */
+        (function ($) {
+            var maxHistory = 100;
+            var position = -1;
+            var currentCommand = '';
+            var addCommand = function (command) {
+                var ls = localStorage['commands'];
+                var commands = ls ? JSON.parse(ls) : [];
+                if (commands.length > maxHistory) {
+                    commands.shift();
                 }
-            });
+                commands.push(command);
+                localStorage['commands'] = JSON.stringify(commands);
+            };
+            var getCommand = function (at) {
+                var ls = localStorage['commands'];
+                var commands = ls ? JSON.parse(ls) : [];
+                if (at < 0) {
+                    position = at = -1;
+                    return currentCommand;
+                }
+                if (at >= commands.length) {
+                    position = at = commands.length - 1;
+                }
+                return commands[commands.length - at - 1];
+            };
 
-            return input;
-        };
+            $.fn.history = function () {
+                var input = $(this);
+                input.keydown(function (e) {
+                    var code = (e.keyCode ? e.keyCode : e.which);
 
-        $.fn.addHistory = function (command) {
-            addCommand(command);
-        };
-    })(jQuery);
+                    if (code == 38) { // Up
+                        if (position == -1) {
+                            currentCommand = input.val();
+                        }
+                        input.val(getCommand(++position));
+                        return false;
+                    } else if (code == 40) { // Down
+                        input.val(getCommand(--position));
+                        return false;
+                    } else {
+                        position = -1;
+                    }
+                });
 
-    
-        
+                return input;
+            };
+
+            $.fn.addHistory = function (command) {
+                addCommand(command);
+            };
+        })(jQuery);
+
 
         /**
          * Windows variables.
@@ -1053,8 +1128,8 @@
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
-        var actividades = {actividad0:false, actividad1:false, actividad2:false, actividad3: false};
-        var comandos = {version:false, init:false, name: false, email: false};
+        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false};
+        var comandos = {version: false, init: false, name: false, email: false};
 
         jQuery(function ($) {
 
@@ -1063,41 +1138,49 @@
                 controls: true,
                 progress: true,
                 history: false,
-                center: true,                 
+                center: true,
                 autoSlideStoppable: false,
-                slideNumber: false,                                
+                slideNumber: false,
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
 
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [
-                    {src: "{{ asset('assets/vendor/revealjs/lib/js/classList.js') }}", condition: function () {
-                            return !document.body.classList;
-                        }},
-                    {src: "{{ asset('assets/vendor/revealjs/plugin/markdown/marked.js') }}", condition: function () {
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/lib/js/classList.js') }}", condition: function () {
+                        return !document.body.classList;
+                    }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/markdown/marked.js') }}", condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/markdown/markdown.js') }}",
+                        condition: function () {
                             return !!document.querySelector('[data-markdown]');
-                        }},
-                    {src: "{{ asset('assets/vendor/revealjs/plugin/markdown/markdown.js') }}", condition: function () {
-                            return !!document.querySelector('[data-markdown]');
-                        }},
-                    {src: "{{ asset('assets/vendor/revealjs/plugin/highlight/highlight.js') }}", async: true, callback: function () {
+                        }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/highlight/highlight.js') }}",
+                        async: true,
+                        callback: function () {
                             hljs.initHighlightingOnLoad();
-                        }},
+                        }
+                    },
                     {src: "{{ asset('assets/vendor/revealjs/plugin/zoom-js/zoom.js') }}", async: true},
                     {src: "{{ asset('assets/vendor/revealjs/plugin/notes/notes.js') }}", async: true}
                 ]
             });
 
 
-
             var $configUser = false;
             var screen = $('#preConsole');
             var input = $('#inputConsole').focus();
             var form = $('#console');
-            var scroll = function () {
-                window.scrollTo(0, document.body.scrollHeight);
-            };
+
             input.history();
-            
+
             form.submit(function () {
 
 
@@ -1135,49 +1218,49 @@
                                 if (data.comando) {
                                     //console.log(comandos);
                                     //console.log(data.comando.match($gitConfigUser));
-                                    if (data.comando.match($comandoGit)){
-                                        if (data.comando.match($gitVersion)) {                                           
+                                    if (data.comando.match($comandoGit)) {
+                                        if (data.comando.match($gitVersion)) {
                                             toggleNav(true);
                                             $("#act1done").addClass('fa fa-check-circle');
-                                            if(!actividades['actividad1'])
-                                                add_logro("comandos");  
+                                            if (!actividades['actividad1'])
+                                                add_logro("comandos");
                                             comandos['version'] = true;
                                             actividades['actividad1'] = true;
-                                                                                                                                 
-                                            //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
-                                        }else if (data.comando.match($gitInit)){
-                                            if(comandos['version']){
-                                                $("#act2done").addClass('fa fa-check-circle');
-                                                if(!actividades['actividad2'])
-                                                    add_logro("comandos"); 
-                                                actividades['actividad2'] = true;                                                                                                                                             
-                                                toggleNav(true);    
-                                                comandos['init'] = true;
-                                            }else{
-                                               screen.append("debes verificar primero la instalacion de git con el comando git --version"); 
-                                            }
-                                        }else if (data.comando.match($gitConfigUser)) {
 
-                                            if(!comandos['name'])
+                                            //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                        } else if (data.comando.match($gitInit)) {
+                                            if (comandos['version']) {
+                                                $("#act2done").addClass('fa fa-check-circle');
+                                                if (!actividades['actividad2'])
                                                     add_logro("comandos");
-                                            $configUser = true; 
-                                            $("#act3-1done").addClass('fa fa-check-circle');                                        
+                                                actividades['actividad2'] = true;
+                                                toggleNav(true);
+                                                comandos['init'] = true;
+                                            } else {
+                                                screen.append("debes verificar primero la instalacion de git con el comando git --version");
+                                            }
+                                        } else if (data.comando.match($gitConfigUser)) {
+
+                                            if (!comandos['name'])
+                                                add_logro("comandos");
+                                            $configUser = true;
+                                            $("#act3-1done").addClass('fa fa-check-circle');
                                             comandos['name'] = true;
-                                        }else{
-                                            if(!$configUser){
+                                        } else {
+                                            if (!$configUser) {
                                                 screen.append("debes configuar primero el nombre de usuario");
                                             }
                                         }
 
                                         if (data.comando.match($gitConfigMail)) {
                                             $("#act3-2done").addClass('fa fa-check-circle');
-                                            if(!actividades['actividad3'])
-                                                    add_logro("comandos");
-                                            actividades['actividad3'] = true                                           
-                                            toggleNav(true); 
+                                            if (!actividades['actividad3'])
+                                                add_logro("comandos");
+                                            actividades['actividad3'] = true
+                                            toggleNav(true);
                                             comandos['email'] = true;
                                         }
-                                    
+
                                     }
                                 }
                                 screen.append(data.salida);
@@ -1201,23 +1284,22 @@
                 return false;
             });
 
-            
 
             $('#elfinder').elfinder({
-                url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php')}}",
+                url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php') }}",
                 lang: 'es',
                 height: 250,
-                customData: { user: "wramones" },
+                customData: {user: "wramones"},
                 handlers: {
                     dblclick: function (event, elfinderInstance) {
                         event.preventDefault();
                         elfinderInstance.exec('getfile')
-                                .done(function () {
-                                    elfinderInstance.exec('quicklook');
-                                })
-                                .fail(function () {
-                                    elfinderInstance.exec('open');
-                                });
+                            .done(function () {
+                                elfinderInstance.exec('quicklook');
+                            })
+                            .fail(function () {
+                                elfinderInstance.exec('open');
+                            });
                     }
                 },
                 getFileCallback: function (files, fm) {
@@ -1248,225 +1330,215 @@
                 }
             });
 
-           
 
-            function add_experience(xp, u){
+            function add_experience(xp, u) {
                 var datos = {experience: xp, user: u};
                 $.ajax({
                     method: "GET",
-                    url: "{{ url('gamificacion_add_xp') }}",                    
+                    url: "{{ url('gamificacion_add_xp') }}",
                     data: datos,
                     //timeout: 50000,
                     success: function (data) {
                         console.log(data);
-                     },
+                    },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         console.log(errorThrown, textStatus, XMLHttpRequest);
 
                         //setTimeout(waitForMsg, 300000);
 
                     },
-                    complete: function () {                        
+                    complete: function () {
                     }
 
                 });
-                
+
             }
-            
-            
-            
-            
-            function add_logro(nombre){
+
+
+            function add_logro(nombre) {
                 var datos = {corto: nombre};
                 $.ajax({
                     method: "GET",
-                    url: "{{ url('gamificacion_add_logro') }}",                    
+                    url: "{{ url('gamificacion_add_logro') }}",
                     data: datos,
                     //timeout: 50000,
                     success: function (data) {
                         console.log("esto es data:");
                         console.log(data);
-                        if(data.complete){                            
-                            swal({                                                                                           
+                        if (data.complete) {
+                            swal({
                                 imageUrl: "{{ asset('images/badge/conceptosSombra.png') }}",
                                 padding: 30,
                                 imageWidth: 160,
                                 imageHeight: 160,
                                 showCloseButton: true,
                                 showCancelButton: false,
-                                showConfirmButton: false,                                
+                                showConfirmButton: false,
                                 animation: false,
-                                customClass: 'animated tada',                                 
+                                customClass: 'animated tada',
                                 background: "url({{ asset('images/course/bg_logro.png') }})"
-                              }).then(
-                                    function () {},
-                                    // handling the promise rejection
-                                    function (dismiss) {
-                                      toggleNav(true);
-                                      add_experience("15", "Escribir Comando");
-                                      iziToast.show({
-                                                color: 'dark',
-                                                title: '+15 Puntos',
-                                                message: 'por haber desbloqueado un logro ',
-                                                icon: 'fa fa-user-plus',                                                
-                                                transitionIn: 'bounceInUp',
-                                                position: 'center'
-                                            });
-                                    }
-                                  );
-                        }else if(data.response === "success"){
+                            }).then(
+                                function () {
+                                },
+                                // handling the promise rejection
+                                function (dismiss) {
+                                    toggleNav(true);
+                                    add_experience("15", "Escribir Comando");
+                                    iziToast.show({
+                                        color: 'dark',
+                                        title: '+15 Puntos',
+                                        message: 'por haber desbloqueado un logro ',
+                                        icon: 'fa fa-user-plus',
+                                        transitionIn: 'bounceInUp',
+                                        position: 'center'
+                                    });
+                                }
+                            );
+                        } else if (data.response === "success") {
                             add_experience("5", "Escribir Comando");
                             iziToast.show({
-                                                color: 'dark',
-                                                title: '+5 Puntos',
-                                                message: 'Escribir un Comando',
-                                                icon: 'fa fa-user-plus',                                                
-                                                transitionIn: 'bounceInUp',
-                                                position: 'center'
-                                            });
-                                    
-                        }else{
-                            iziToast.error({                                                
-                                                title: 'comando ejecutado',
-                                                message: 'por haber desbloqueado un logro ',
-                                                icon: 'fa fa-user-plus',                                                
-                                                transitionIn: 'bounceInUp',
-                                                position: 'center'
-                                            });
+                                color: 'dark',
+                                title: '+5 Puntos',
+                                message: 'Escribir un Comando',
+                                icon: 'fa fa-user-plus',
+                                transitionIn: 'bounceInUp',
+                                position: 'center'
+                            });
+
+                        } else {
+                            iziToast.error({
+                                title: 'comando ejecutado',
+                                message: 'por haber desbloqueado un logro ',
+                                icon: 'fa fa-user-plus',
+                                transitionIn: 'bounceInUp',
+                                position: 'center'
+                            });
                         }
-                     },
+                    },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         console.log(errorThrown, textStatus, XMLHttpRequest);
 
                         //setTimeout(waitForMsg, 300000);
 
                     },
-                    complete: function () {                        
+                    complete: function () {
                     }
 
                 });
-                
+
             }
-            
-Reveal.addEventListener('actividad0', function(event) {
-    if (!actividades['actividad0']) {
-        toggleNav(false);
-    }
-});
-            
-            
-Reveal.addEventListener('actividad1', function(event) {
-    if (!actividades['actividad1']) {
-        toggleNav(false);
-    }
-});
 
-Reveal.addEventListener('actividad2', function(event) {
-    if (!actividades['actividad2']) {
-        toggleNav(false);
-    }
-});
-
-Reveal.addEventListener('actividad3', function(event) {
-    if (!actividades['actividad3']) {
-        toggleNav(false);
-    }
-});
+            Reveal.addEventListener('actividad0', function (event) {
+                if (!actividades['actividad0']) {
+                    toggleNav(false);
+                }
+            });
 
 
-Reveal.addEventListener('qz', function(event) {
-    if (!actividades['actividad4']) {
-        toggleNav(false);
-    }
-});
-        
-       //Debo estar pendiente si pasa a la lamina 15 sin hacer el ejercicio,
-       //devolverlo a la 14
-       Reveal.addEventListener( 'slidechanged', function( event ) {
-            // event.previousSlide, event.currentSlide, event.indexh, event.indexv                        
-            
-            
-            
-            console.log(event.indexh);
-            
-                
+            Reveal.addEventListener('actividad1', function (event) {
+                if (!actividades['actividad1']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad2', function (event) {
+                if (!actividades['actividad2']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad3', function (event) {
+                if (!actividades['actividad3']) {
+                    toggleNav(false);
+                }
+            });
+
+
+            Reveal.addEventListener('qz', function (event) {
+                if (!actividades['actividad4']) {
+                    toggleNav(false);
+                }
+            });
+
+            //Debo estar pendiente si pasa a la lamina 15 sin hacer el ejercicio,
+            //devolverlo a la 14
+            Reveal.addEventListener('slidechanged', function (event) {
+                // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+
+
+                console.log(event.indexh);
+
+
                 if (event.indexh === 18) {
                     if (!actividades['actividad0']) {
                         add_logro("conceptos");
                         actividades['actividad0'] = true;
                     }
                 }
-                
-                if (event.indexh > 18 ){
-                if (!actividades['actividad0']) {
-                    Reveal.slide( 1 );
-                    var state = Reveal.getState();  
-                    Reveal.setState(state);
-                    
-                    iziToast.error({
-                        title: 'No te adelantes tan rápido',
-                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                        position: 'topRight'
-                    });
-                                        
-                    
+
+                if (event.indexh > 18) {
+                    if (!actividades['actividad0']) {
+                        Reveal.slide(1);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+
+                    }
+
                 }
-                
-            }
-            
-            
-            
-            if (event.indexh > 19 ){
-                if (!actividades['actividad1']) {
-                    Reveal.slide( 19 );
-                    var state = Reveal.getState();  
-                    Reveal.setState(state);
-                    
-                    iziToast.error({
-                        title: 'No te adelantes tan rápido',
-                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                        position: 'topRight'
-                    });
-                                        
-                    
+
+
+                if (event.indexh > 19) {
+                    if (!actividades['actividad1']) {
+                        Reveal.slide(19);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+
+                    }
                 }
-            }
-            
-            if (event.indexh > 22 ){
-                if (!actividades['actividad2']) {
-                    Reveal.slide( 22 );
-                    var state = Reveal.getState();  
-                    Reveal.setState(state);
-                    iziToast.error({
-                        title: 'No te adelantes tan rápido',
-                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                        position: 'topRight'
-                    });
-                    
+
+                if (event.indexh > 22) {
+                    if (!actividades['actividad2']) {
+                        Reveal.slide(22);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
                 }
-            }
-            
-            if (event.indexh > 26 ){
-                alert(event.indexh);
-                if (!actividades['actividad3']) {
-                    Reveal.slide( 26 );
-                    var state = Reveal.getState();  
-                    Reveal.setState(state);
-                    iziToast.error({
-                        title: 'No te adelantes tan rápido',
-                        message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                        position: 'topRight'
-                    });
-                    
+
+                if (event.indexh > 26) {
+                    alert(event.indexh);
+                    if (!actividades['actividad3']) {
+                        Reveal.slide(26);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
                 }
-            }
-        } );
-
-            
-
-
-
-
+            });
 
 
         });
@@ -1485,7 +1557,7 @@ Reveal.addEventListener('qz', function(event) {
                         title: 'Quiz todavía bloqueado',
                         message: 'Para desbloquearlo, debes obtener los dos primeros logros de este nivel',
                         position: 'topRight'
-                    });                    
+                    });
                 }
             }
 
@@ -1512,7 +1584,7 @@ Reveal.addEventListener('qz', function(event) {
         var $c = 0;
         var name = "";
         var email = "";
-        
+
 
         $(document).ready(function () {
 
@@ -1532,13 +1604,13 @@ Reveal.addEventListener('qz', function(event) {
             // Instance the tour
             var tour = new Tour({
                 steps: [{
-                        title: "Bienvenido",
-                        content: "¿Es la primera vez que ingresas verdad? Pues Entonces <strong>¡Bienvenido!</strong>  A través de esta guía te enseñaremos como está distribuida <i>Tu aula virtual</i> para que comiences de una vez a encender tu conocimiento.<br><br> Puedes utilizar las teclas de navegación izquiera y derecha para desplazarte a lo largo del tour. <br><br><img src='{{ asset('images/course/left-right-arrows.png') }}' alt='An opening code bracket' />",
-                        placement: "bottom",
-                        backdrop: true,
-                        backdropContainer: '#wrapper',
-                        orphan: true,
-                    },
+                    title: "Bienvenido",
+                    content: "¿Es la primera vez que ingresas verdad? Pues Entonces <strong>¡Bienvenido!</strong>  A través de esta guía te enseñaremos como está distribuida <i>Tu aula virtual</i> para que comiences de una vez a encender tu conocimiento.<br><br> Puedes utilizar las teclas de navegación izquiera y derecha para desplazarte a lo largo del tour. <br><br><img src='{{ asset('images/course/left-right-arrows.png') }}' alt='An opening code bracket' />",
+                    placement: "bottom",
+                    backdrop: true,
+                    backdropContainer: '#wrapper',
+                    orphan: true,
+                },
                     {
                         element: "#tour1",
                         title: "¿En donde estoy?",
@@ -1575,7 +1647,8 @@ Reveal.addEventListener('qz', function(event) {
                         backdrop: true,
                         backdropContainer: '#wrapper'
                     }
-                ]});
+                ]
+            });
 
             // Initialize the tour
             tour.init();
@@ -1588,8 +1661,6 @@ Reveal.addEventListener('qz', function(event) {
             });
 
         });
-
-
 
 
         $(document).keydown(function (e) {
@@ -1636,7 +1707,7 @@ Reveal.addEventListener('qz', function(event) {
             });
         }
 
-// Load the HTML4 version if there's not CSS transform
+        // Load the HTML4 version if there's not CSS transform
 
         yepnope({
             test: Modernizr.csstransforms,
@@ -1650,35 +1721,31 @@ Reveal.addEventListener('qz', function(event) {
         var $loading = $('#loadingBulb').hide();
         var $guardado = $('#guardado').show();
         $(document)
-                .ajaxStart(function () {
-                    $guardado.hide();
-                    $loading.show();
-                })
-                .ajaxStop(function () {
-                    $loading.hide();
-                    $guardado.show();
-                });
+            .ajaxStart(function () {
+                $guardado.hide();
+                $loading.show();
+            })
+            .ajaxStop(function () {
+                $loading.hide();
+                $guardado.show();
+            });
 
 
         $(window).load(function (e) {
             $("#inputConsole").click();
         });
-        
-        
-        
+
+
         function toggleNav(b) {
-    Reveal.configure({
-        controls: b,
-        progress: b,
-        keyboard: b,
-        overview: b,
-        touch: b
-    });
-}
-        
-  
-        
-        
+            Reveal.configure({
+                controls: b,
+                progress: b,
+                keyboard: b,
+                overview: b,
+                touch: b
+            });
+        }
+
 
     </script>
 
