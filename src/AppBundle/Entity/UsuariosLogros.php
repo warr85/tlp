@@ -7,15 +7,15 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * Estatus
+ * UsuariosLogros
  *
- * @ORM\Table(name="inscripcion_logro")
+ * @ORM\Table(name="usuario_logro")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class InscripcionLogro
+class UsuariosLogros
 {
-        
+
 
     /**
      * @var integer
@@ -26,40 +26,40 @@ class InscripcionLogro
      * @ORM\SequenceGenerator(sequenceName="estatus_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-    
-    
+
+
     /**
      * @ORM\Column(name="fecha_logro", type="datetime", nullable=false)
      *
      * @var \DateTime
      */
     private $fechaLogro;
-    
-    
+
+
     /**
      * @ORM\Column(name="fecha_actualizacion", type="datetime", nullable=false)
      *
      * @var \DateTime
      */
     private $fechaActualizacion;
-    
-    
+
+
     /**
      * @var integer
      *
      * @ORM\Column(name="contador", type="integer", nullable=false, options={"comment" = "Contador de cuantas veces ha repasado el logro"})
      */
     private $contador;
-    
-    
+
+
     /**
      * @var integer
      *
      * @ORM\Column(name="ultima_vez", type="integer", nullable=false, options={"comment" = "saber cuando fue la ultima vez que ejecuto la acción"})
      */
     private $ultimaVez;
-    
-    
+
+
     /**
      * @var \AppBundle\Entity\CursoModuloTemaLogro
      *
@@ -69,20 +69,20 @@ class InscripcionLogro
      * })
      */
     private $idCursoModuloTemaLogro;
-    
-    
+
+
     /**
-     * @var \AppBundle\Entity\Inscripcion
+     * @var \AppBundle\Entity\Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Inscripcion")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_inscripcion", referencedColumnName="id", nullable=false)
      * })
      */
-    private $idInscripcion;
-    
-    
-    
+    private $idUsuario;
+
+
+
     /**
      * @var \AppBundle\Entity\Estatus
      *
@@ -92,17 +92,17 @@ class InscripcionLogro
      * })
      */
     private $idEstatus;
-    
-    
-    
-    
-    
+
+
+
+
+
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -110,18 +110,18 @@ class InscripcionLogro
     }
 
     /**
-   * @ORM\PrePersist
-   */
+     * @ORM\PrePersist
+     */
     public function setFechaLogro()
     {
-	    $this->fechaLogro = new \DateTime();
-	    $this->fechaActualizacion = new \DateTime();
+        $this->fechaLogro = new \DateTime();
+        $this->fechaActualizacion = new \DateTime();
     }
 
     /**
      * Get fechaLogro
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaLogro()
     {
@@ -129,8 +129,8 @@ class InscripcionLogro
     }
 
     /**
-    * @ORM\PreUpdate
-    */
+     * @ORM\PreUpdate
+     */
     public function setFechaActualizacion()
     {
         $this->fechaActualizacion = new \DateTime();
@@ -141,18 +141,20 @@ class InscripcionLogro
     /**
      * Get fechaActualizacion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaActualizacion()
     {
         return $this->fechaActualizacion;
     }
 
+
+
     /**
      * Set contador
      *
      * @param integer $contador
-     * @return InscripcionLogro
+     * @return UsuariosLogros
      */
     public function setContador($contador)
     {
@@ -172,10 +174,33 @@ class InscripcionLogro
     }
 
     /**
+     * Set ultimaVez
+     *
+     * @param integer $ultimaVez
+     * @return UsuariosLogros
+     */
+    public function setUltimaVez($ultimaVez)
+    {
+        $this->ultimaVez = $ultimaVez;
+
+        return $this;
+    }
+
+    /**
+     * Get ultimaVez
+     *
+     * @return integer 
+     */
+    public function getUltimaVez()
+    {
+        return $this->ultimaVez;
+    }
+
+    /**
      * Set idCursoModuloTemaLogro
      *
      * @param \AppBundle\Entity\CursoModuloTemaLogro $idCursoModuloTemaLogro
-     * @return InscripcionLogro
+     * @return UsuariosLogros
      */
     public function setIdCursoModuloTemaLogro(\AppBundle\Entity\CursoModuloTemaLogro $idCursoModuloTemaLogro)
     {
@@ -195,33 +220,33 @@ class InscripcionLogro
     }
 
     /**
-     * Set idInscripcion
+     * Set idUsuario
      *
-     * @param \AppBundle\Entity\Inscripcion $idInscripcion
-     * @return InscripcionLogro
+     * @param \AppBundle\Entity\Usuarios $idUsuario
+     * @return UsuariosLogros
      */
-    public function setIdInscripcion(\AppBundle\Entity\Inscripcion $idInscripcion)
+    public function setIdUsuario(\AppBundle\Entity\Usuarios $idUsuario)
     {
-        $this->idInscripcion = $idInscripcion;
+        $this->idUsuario = $idUsuario;
 
         return $this;
     }
 
     /**
-     * Get idInscripcion
+     * Get idUsuario
      *
-     * @return \AppBundle\Entity\Inscripcion 
+     * @return \AppBundle\Entity\Usuarios 
      */
-    public function getIdInscripcion()
+    public function getIdUsuario()
     {
-        return $this->idInscripcion;
+        return $this->idUsuario;
     }
 
     /**
      * Set idEstatus
      *
      * @param \AppBundle\Entity\Estatus $idEstatus
-     * @return InscripcionLogro
+     * @return UsuariosLogros
      */
     public function setIdEstatus(\AppBundle\Entity\Estatus $idEstatus)
     {
@@ -238,28 +263,5 @@ class InscripcionLogro
     public function getIdEstatus()
     {
         return $this->idEstatus;
-    }
-
-    /**
-     * Set ultimaVez
-     *
-     * @param integer $ultimaVez
-     * @return InscripcionLogro
-     */
-    public function setUltimaVez($ultimaVez)
-    {
-        $this->ultimaVez = $ultimaVez;
-
-        return $this;
-    }
-
-    /**
-     * Get ultimaVez
-     *
-     * @return integer 
-     */
-    public function getUltimaVez()
-    {
-        return $this->ultimaVez;
     }
 }

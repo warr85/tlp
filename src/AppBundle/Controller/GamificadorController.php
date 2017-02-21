@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\UsuariosLogros;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -12,7 +13,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use AppBundle\Entity\InscripcionLogro;
 
 /**
  * Gamificador controller.
@@ -78,25 +78,30 @@ class GamificadorController extends Controller
             $normalizers = array(new ObjectNormalizer());
  
             $serializer = new Serializer($normalizers, $encoders);
-        $inscripcion = $this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findOneByIdUsuario($this->getUser());
-        if($inscripcion){
+        $usuario = $this->getDoctrine()->getRepository("AppBundle:Usuarios")->findOneById($this->getUser());
+        if($usuario){
             $parametros = $request->query->all();
             $exp = $parametros['experience'];
             
-            $exp += $inscripcion->getExperiencia();
+            $exp += $usuario->getExperiencia();
             
 
             $curso = $this->getDoctrine()->getRepository("AppBundle:Curso")->findOneById(2);            
-            $niveles = $curso->getNivelesByXp($exp);            
-            //$nivel = $niveles->getNivelesByXp($exp);
-            if(($niveles[0]) && ($niveles[0]->getId() != $inscripcion->getIdCursoNivel()->getId())){
-                $inscripcion->setIdCursoNivel($niveles[0]);
-                $inscripcion->setExperiencia($exp);
-            }else{
-                $inscripcion->setExperiencia($exp);
+            $niveles = $curso->getNivelesByXp($exp);
+            if(!$usuario->getIdCursoNivel()){
+                $usuario->setIdCursoNivel($niveles[0]);
+                $usuario->setExperiencia($exp);
+            }else {
+
+                if (($niveles[0]) && ($niveles[0]->getId() != $usuario->getIdCursoNivel()->getId())) {
+                    $usuario->setIdCursoNivel($niveles[0]);
+                    $usuario->setExperiencia($exp);
+                } else {
+                    $usuario->setExperiencia($exp);
+                }
             }
             $em = $this->getDoctrine()->getManager();
-            $em->persist($inscripcion);
+            $em->persist($usuario);
             $em->flush();
             
             $response = new JsonResponse();
@@ -126,13 +131,13 @@ class GamificadorController extends Controller
     public function addLogroAction($cantidad = 1, Request $request){
         
         
-            $encoders = array(new JsonEncoder());
-            $normalizers = array(new ObjectNormalizer());
-            $em = $this->getDoctrine()->getManager();
-            $serializer = new Serializer($normalizers, $encoders);
-            $response = new JsonResponse();
-            $inscripcion = $this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findOneByIdUsuario($this->getUser());
-            if($inscripcion){
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $em = $this->getDoctrine()->getManager();
+        $serializer = new Serializer($normalizers, $encoders);
+        $response = new JsonResponse();
+        $usuario = $this->getDoctrine()->getRepository("AppBundle:Usuarios")->findOneById($this->getUser());
+            if($usuario){
                 $parametros = $request->query->all();
                 $corto = $parametros["corto"];
                // $corto = "conceptos";
@@ -140,8 +145,8 @@ class GamificadorController extends Controller
                 if($logros){                    
                     if($logros->getIdEstatus()->getId() == 1){
                         $now = time();
-                        $insLogro = $this->getDoctrine()->getRepository("AppBundle:InscripcionLogro")->findOneBy(array(
-                            'idInscripcion' => $inscripcion->getId(),
+                        $insLogro = $this->getDoctrine()->getRepository("AppBundle:UsuariosLogros")->findOneBy(array(
+                            'idUsuario' => $usuario->getId(),
                             'idCursoModuloTemaLogro'       => $logros->getId()
                         ));
                         
@@ -186,7 +191,7 @@ class GamificadorController extends Controller
                                 return $response;
                             }
                         }else{
-                            $insLogro = new InscripcionLogro();
+                            $insLogro = new UsuariosLogros();
                             $insLogro->setContador($cantidad);
                             $insLogro->setIdCursoModuloTemaLogro($logros);
                             if($cantidad >= $logros->getCantidadNecesaria()){
@@ -202,7 +207,7 @@ class GamificadorController extends Controller
                                     'complete'  => false
                                  ));
                             }
-                            $insLogro->setIdInscripcion($inscripcion);
+                            $insLogro->setIdUsuario($usuario);
                             $insLogro->setUltimaVez($now);
                             
                             $em->persist($insLogro);

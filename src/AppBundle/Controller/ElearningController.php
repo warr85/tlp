@@ -71,7 +71,7 @@ class ElearningController extends Controller {
             'orden'         => $avance
         ));
                 
-        $logrosObtenidos = $this->getDoctrine()->getRepository("AppBundle:InscripcionLogro")->findByIdEstatus(5);                                        
+        $logrosObtenidos = $this->getDoctrine()->getRepository("AppBundle:UsuariosLogros")->findByIdEstatus(5);
         $logrosDisponibles = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findByIdCursoModuloTema($temaActual->getId());        
         $directorio = $this->container->getParameter('octonautas_directory') . $this->getUser()->getUserName();            
         if(!file_exists($directorio)){

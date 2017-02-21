@@ -52,6 +52,26 @@ class Usuarios implements UserInterface, \Serializable
     private $inscripciones;
 
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="experiencia", type="integer", nullable=true, options={"comment" = "Experiencia Acumulada del participante en esa inscripcion"})
+     */
+    private $experiencia;
+
+
+
+    /**
+     * @var \AppBundle\Entity\CursoNivel
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoNivel")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_curso_nivel", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $idCursoNivel;
+
+
 
     /**
      * @var integer
@@ -311,5 +331,53 @@ class Usuarios implements UserInterface, \Serializable
     public function getInscripciones()
     {
         return $this->inscripciones;
+    }
+
+
+
+    /**
+     * Set experiencia
+     *
+     * @param integer $experiencia
+     * @return Usuarios
+     */
+    public function setExperiencia($experiencia)
+    {
+        $this->experiencia = $experiencia;
+
+        return $this;
+    }
+
+    /**
+     * Get experiencia
+     *
+     * @return integer 
+     */
+    public function getExperiencia()
+    {
+        return $this->experiencia;
+    }
+
+    /**
+     * Set idCursoNivel
+     *
+     * @param \AppBundle\Entity\CursoNivel $idCursoNivel
+     * @return Usuarios
+     */
+    public function setIdCursoNivel(\AppBundle\Entity\CursoNivel $idCursoNivel = null)
+    {
+        $this->idCursoNivel = $idCursoNivel;
+
+        return $this;
+    }
+
+    /**
+     * Get idCursoNivel
+     *
+     * @return \AppBundle\Entity\CursoNivel 
+     */
+    public function getIdCursoNivel()
+    {
+        return $this->idCursoNivel;
     }
 }
