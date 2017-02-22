@@ -21,8 +21,8 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Inscripcion;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**
@@ -38,8 +38,9 @@ class ElearningController extends Controller {
     
     /**
      * @Route("/", name="estudiante_homepage")
+     * @return Response
      */
-    public function indexAction(Request $request){
+    public function indexAction(){
         
         $inscripcion = $this->getDoctrine()->getRepository('AppBundle:Inscripcion')->findBy(array(
            'idUsuario'  => $this->getUser() 
@@ -59,20 +60,22 @@ class ElearningController extends Controller {
     
     
     /**
+     * @param Inscripcion $inscripcion
      * @Route("/curso/programacion/{id}/reto/{avance}", name="estudiante_curso_programacion")
+     * @return Response
      */
-    public function cursoProgramacionAction(Inscripcion $inscripcion, $avance, Request $request){
+    public function cursoProgramacionAction(Inscripcion $inscripcion, $avance ){
         
         $tema = $inscripcion->getAvances()->first();
-        
-        $cursoModulo = $this->getDoctrine()->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
-        $temaActual = $this->getDoctrine()->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
+        $em = $this->getDoctrine()->getManager();
+        $cursoModulo = $em->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
+        $temaActual = $em->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
            'idCursoModulo'  => $cursoModulo,
             'orden'         => $avance
         ));
                 
-        $logrosObtenidos = $this->getDoctrine()->getRepository("AppBundle:UsuariosLogros")->findByIdEstatus(5);
-        $logrosDisponibles = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findBy(
+        $logrosObtenidos = $em->getRepository("AppBundle:UsuariosLogros")->findByIdEstatus(5);
+        $logrosDisponibles = $em->getRepository("AppBundle:CursoModuloTemaLogro")->findBy(
             array("idCursoModuloTema" => $temaActual->getId()),
             array('id' => 'ASC')
         );
