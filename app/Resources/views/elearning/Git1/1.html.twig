@@ -1227,7 +1227,7 @@
                                             toggleNav(true);
                                             $("#act1done").addClass('fa fa-check-circle');
                                             if (!actividades['actividad1'])
-                                                add_logro("comandos");
+                                                add_logro("comandos", "comandos1.png");
                                             comandos['version'] = true;
                                             actividades['actividad1'] = true;
 
@@ -1236,7 +1236,7 @@
                                             if (comandos['version']) {
                                                 $("#act2done").addClass('fa fa-check-circle');
                                                 if (!actividades['actividad2'])
-                                                    add_logro("comandos");
+                                                    add_logro("comandos", "comandos1.png");
                                                 actividades['actividad2'] = true;
                                                 toggleNav(true);
                                                 comandos['init'] = true;
@@ -1246,7 +1246,7 @@
                                         } else if (data.comando.match($gitConfigUser)) {
 
                                             if (!comandos['name'])
-                                                add_logro("comandos");
+                                                add_logro("comandos", "comandos1.png");
                                             $configUser = true;
                                             $("#act3-1done").addClass('fa fa-check-circle');
                                             comandos['name'] = true;
@@ -1259,7 +1259,7 @@
                                         if (data.comando.match($gitConfigMail)) {
                                             $("#act3-2done").addClass('fa fa-check-circle');
                                             if (!actividades['actividad3'])
-                                                add_logro("comandos");
+                                                add_logro("comandos", "comandos1.png");
                                             actividades['actividad3'] = true
                                             toggleNav(true);
                                             comandos['email'] = true;
@@ -1358,9 +1358,9 @@
 
             }
 
-
-            function add_logro(nombre) {
-                var datos = {corto: nombre};
+            {% set badge = "prueba" %}
+            function add_logro(nombre, badge) {
+                var datos = {corto: nombre, badge:badge};
                 $.ajax({
                     method: "GET",
                     url: "{{ url('gamificacion_add_logro') }}",
@@ -1371,7 +1371,7 @@
                         console.log(data);
                         if (data.complete) {
                             swal({
-                                imageUrl: "{{ asset('images/badge/conceptosSombra.png') }}",
+                                imageUrl: data.badge,
                                 padding: 30,
                                 imageWidth: 160,
                                 imageHeight: 160,
@@ -1380,14 +1380,14 @@
                                 showConfirmButton: false,
                                 animation: false,
                                 customClass: 'animated tada',
-                                background: "url({{ asset('images/course/bg_logro.png') }})"
+                                background: 'url(' + data.background + ')'
                             }).then(
                                 function () {
                                 },
                                 // handling the promise rejection
                                 function (dismiss) {
                                     toggleNav(true);
-                                    add_experience("15", "Escribir Comando");
+                                    add_experience("15", data.motive);
                                     iziToast.show({
                                         color: 'dark',
                                         title: '+15 Puntos',
@@ -1409,7 +1409,16 @@
                                 position: 'center'
                             });
 
-                        } else {
+                        } else if (data.response === "done") {
+                            toggleNav(true);
+                            iziToast.warning({
+                                title: 'comando o logro ya completado',
+                                message: 'esta actividad la habias compeltado previamente',
+                                icon: 'fa fa-user-plus',
+                                transitionIn: 'bounceInUp',
+                                position: 'center'
+                            });
+                        } else{
                             iziToast.error({
                                 title: 'comando ejecutado',
                                 message: 'por haber desbloqueado un logro ',
@@ -1475,7 +1484,7 @@
 
                 if (event.indexh === 18) {
                     if (!actividades['actividad0']) {
-                        add_logro("conceptos");
+                        add_logro("conceptos", "conceptos1.png");
                         actividades['actividad0'] = true;
                     }
                 }

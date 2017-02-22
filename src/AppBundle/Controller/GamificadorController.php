@@ -140,6 +140,9 @@ class GamificadorController extends Controller
             if($usuario){
                 $parametros = $request->query->all();
                 $corto = $parametros["corto"];
+                $badge = $parametros["badge"];
+                $image = '../../../../../../images/badge/' . $badge;
+                $fondo = '../../../../../../images/course/bg_logro.png';
                // $corto = "conceptos";
                 $logros = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findOneByNombreCorto($corto);                
                 if($logros){                    
@@ -157,11 +160,17 @@ class GamificadorController extends Controller
                                     if($cantidad >= $logros->getCantidadNecesaria()){
                                         $insLogro->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(5));
                                         $insLogro->setContador($cantidad);
+                                        $response->setData(array(
+                                            'response' => 'success',
+                                            'complete'  => true,
+                                            'background' => $fondo,
+                                            'badge' =>  $image
+                                        ));
                                     }else{
                                         $insLogro->setContador($cantidad);
                                         $response->setData(array(
                                             'response' => 'success',
-                                            'complete'  => true
+                                            'complete'  => false,
                                          ));
                                     }
                                     
@@ -169,10 +178,6 @@ class GamificadorController extends Controller
                                     $em->flush();
                                     
                                     $response->setStatusCode(200);
-                                    $response->setData(array(
-                                        'response' => 'success',
-                                        'complete'  => false
-                                    ));
                                     return $response;
                                 }else{
                                    $response->setData(array(
@@ -185,12 +190,12 @@ class GamificadorController extends Controller
                                 
                             }else{
                                 $response->setData(array(
-                                    'response' => 'done',
-                                    'complete'  => true
+                                    'response' => 'done'
                                  ));
                                 return $response;
                             }
                         }else{
+
                             $insLogro = new UsuariosLogros();
                             $insLogro->setContador($cantidad);
                             $insLogro->setIdCursoModuloTemaLogro($logros);
@@ -198,7 +203,9 @@ class GamificadorController extends Controller
                                 $insLogro->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(5));        
                                 $response->setData(array(
                                     'response' => 'success',
-                                    'complete'  => true
+                                    'complete'  => true,
+                                    'background' => $fondo,
+                                    'badge' =>  $image
                                  ));
                             }else{
                                 $insLogro->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(1));        
@@ -212,6 +219,7 @@ class GamificadorController extends Controller
                             
                             $em->persist($insLogro);
                             $em->flush();
+                            return $response;
                         }
                     }
                 }                                
