@@ -41,19 +41,31 @@ class ElearningController extends Controller {
      * @return Response
      */
     public function indexAction(){
-        
-        $inscripcion = $this->getDoctrine()->getRepository('AppBundle:Inscripcion')->findBy(array(
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $inscripcion = $em->getRepository('AppBundle:Inscripcion')->findBy(array(
            'idUsuario'  => $this->getUser() 
         ));
+
+        if(!$inscripcion){
+            $this->addFlash('warning', 'debes tener un curso inscrito para poder ingresar al área de estudiante');
+            return $this->render('portal/index.html.twig');
+        }
+
+
         //Para saber en que parte del curso se encuentra esta inscripcion
-        $avance = $this->getDoctrine()->getRepository('AppBundle:CursoAvance')->findOneBy(array(
+        $avance = $em->getRepository('AppBundle:CursoAvance')->findOneBy(array(
            'idInscripcion'  => $inscripcion,
             'idEstatus'     => 1            
         ));
-        
+        $notificaciones = 0; $cuenta = 0;
         return $this->render('estudiante/index.html.twig', array(
             'inscripciones' => $inscripcion,
-            'avance'        => $avance
+            'avance'        => $avance,
+            'notificaciones' => $notificaciones,
+            'cuenta'        => $cuenta
         ));
         
     }

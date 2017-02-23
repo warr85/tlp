@@ -68,8 +68,7 @@ class InscripcionController extends Controller
             $avance->setIdCursoModuloTema($cursoModuloTemas);
             $avance->setFechaAvance(new \DateTime());
             $inscripcion->setFechaInscripcion(new \DateTime());
-            
-            $suscripcion->setFechaPago(new \DateTime());
+
             $suscripcion->setIdInscripcion($inscripcion);
             $suscripcion->setIdEstatus($em->getRepository('AppBundle:Estatus')->findOneById(2));
             $suscripcion->setIdCostoCursoModulo($cursoModulo->getIdCostoCursoModulo());
@@ -134,6 +133,53 @@ class InscripcionController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
+
+    /**
+     * Displays a form to edit an existing Suscripcion entity.
+     *
+     * @Route("/suscripcion/{id}", name="suscripcion_show")
+     * @Method({"GET", "POST"})
+     */
+    public function showSuscripcionAction( Suscripcion $suscripcion)
+    {
+        $form = $this->createForm('AppBundle\Form\SuscripcionType');
+        return $this->render('suscripcion/show.html.twig', array(
+            'suscripcion'   => $suscripcion,
+            'form'          => $form->createView()
+        ));
+    }
+
+
+
+    /**
+     * Displays a form to edit an existing Inscripcion entity.
+     *
+     * @Route("/suscripcion/{id}/edit", name="suscripcion_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editSuscripcionAction(Request $request, Suscripcion $suscripcion)
+    {
+
+        $editForm = $this->createForm('AppBundle\Form\SuscripcionType', $suscripcion);
+        $editForm->handleRequest($request);
+        //var_dump($editForm->isValid()); exit;
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $suscripcion->setIdEstatus($this->getDoctrine()->getRepository("AppBundle:Estatus")->findOneById(6));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($suscripcion);
+            $em->flush();
+
+            return $this->redirectToRoute('estudiante_homepage');
+        }
+
+        return $this->render('suscripcion/show.html.twig', array(
+            'suscripcion' => $suscripcion,
+            'form' => $editForm->createView(),
+        ));
+    }
+
 
     /**
      * Deletes a Inscripcion entity.

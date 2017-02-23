@@ -13,6 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="suscripcion")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class Suscripcion
 {
@@ -43,11 +44,27 @@ class Suscripcion
     
     
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(name="fecha_suscripcion", type="datetime", nullable=false)
+     *
+     * @var \DateTime
+     */
+    private $FechaSuscripcion;
+
+
+    /**
+     * @ORM\Column(name="fecha_pago", type="datetime", nullable=true)
      *
      * @var \DateTime
      */
     private $FechaPago;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referencia", type="string", length=255, nullable=true, options={"comment" = "codigo del voucher del deposito, transferencia o mercado pago"})
+     */
+    private $referencia;
     
     
       
@@ -72,6 +89,17 @@ class Suscripcion
      * })
      */
     private $idFormaPago;
+
+
+    /**
+     * @var \AppBundle\Entity\Banco
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Banco")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_banco", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $idBanco;
         
     
 
@@ -84,18 +112,15 @@ class Suscripcion
      * @ORM\SequenceGenerator(sequenceName="estatus_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-    
- 
+
+
 
     /**
-     * Set FechaPago
-     *
-     * @param \DateTime $fechaPago
-     * @return Suscripcion
+     * @ORM\PrePersist
      */
-    public function setFechaPago($fechaPago)
+    public function setFechaSuscripcion($fechaSuscripcion)
     {
-        $this->FechaPago = $fechaPago;
+        $this->FechaSuscripcion = new \DateTime();;
 
         return $this;
     }
@@ -105,9 +130,9 @@ class Suscripcion
      *
      * @return \DateTime 
      */
-    public function getFechaPago()
+    public function getFechaSuscripcion()
     {
-        return $this->FechaPago;
+        return $this->FechaSuscripcion;
     }
 
     /**
@@ -210,5 +235,71 @@ class Suscripcion
     public function getIdFormaPago()
     {
         return $this->idFormaPago;
+    }
+
+    /**
+     * Set referencia
+     *
+     * @param string $referencia
+     * @return Suscripcion
+     */
+    public function setReferencia($referencia)
+    {
+        $this->referencia = $referencia;
+
+        return $this;
+    }
+
+    /**
+     * Get referencia
+     *
+     * @return string 
+     */
+    public function getReferencia()
+    {
+        return $this->referencia;
+    }
+
+    /**
+     * Set idBanco
+     *
+     * @param \AppBundle\Entity\Banco $idBanco
+     * @return Suscripcion
+     */
+    public function setIdBanco(\AppBundle\Entity\Banco $idBanco = null)
+    {
+        $this->idBanco = $idBanco;
+
+        return $this;
+    }
+
+    /**
+     * Get idBanco
+     *
+     * @return \AppBundle\Entity\Banco 
+     */
+    public function getIdBanco()
+    {
+        return $this->idBanco;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setFechaPago()
+    {
+        $this->FechaPago = new \DateTime();
+
+        return $this;
+    }
+
+    /**
+     * Get FechaPago
+     *
+     * @return \DateTime 
+     */
+    public function getFechaPago()
+    {
+        return $this->FechaPago;
     }
 }

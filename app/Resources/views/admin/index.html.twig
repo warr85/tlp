@@ -1,1 +1,130 @@
 {% extends 'base_admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/AppBundle/css/module-colors-background.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">Mensual {{ date() | date('M') }}</span>
+                        <h5>Ingreso</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">40 886,200</h1>
+                        <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                        <small>Total Ingreso</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">Annual</span>
+                        <h5>Orders</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">275,800</h1>
+                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                        <small>New orders</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">Today</span>
+                        <h5>Vistits</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">106,120</h1>
+                        <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                        <small>New visits</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-danger pull-right">Low value</span>
+                        <h5>User activity</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">80,600</h1>
+                        <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
+                        <small>In first month</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+        {% block javascripts %}
+        {{ parent() }}
+        <script>
+
+
+
+
+                function waitForMsg() {
+
+
+
+                    $.ajax({
+                        method: "GET",
+                        url: "{{ url('ajax_contador_solicitudes') }}",
+                        timeout: 50000,
+                        success: function (data) {
+                            console.log(data);
+                            var cantidad = 0;
+
+                            /*if(posts.length > 0)
+                             {
+                             var html = "";
+                             for(d in posts)
+                             {
+                             html += "<p>" + JSON.stringify(posts[d]) + "</p>";
+                             }
+                             $("#contador_solicitudes").append(html);
+                             }*/
+                            if (data.suscripciones){
+                                $(".show_suscripciones").removeClass("hidden");
+                                $("#suscripciones").html(" " + data.suscripciones + " suscripciones pendientes");
+                                cantidad = cantidad + data.suscripciones;
+                            }
+
+                            if (data.pagos){
+                                $(".show_pagos").removeClass("hidden");
+                                $("#pagos").html(" " + data.pagos + " pagos por aprobar");
+                                cantidad = cantidad + data.pagos;
+                            }
+
+
+                            if(cantidad > 0){
+                                $("#alertas").html(cantidad);
+                            }
+
+                            setTimeout(waitForMsg, 10000);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(errorThrown);
+                            setTimeout(waitForMsg, 10000);
+
+                        }
+
+                    });
+
+                };
+
+
+
+
+            </script>
+
+        {%  endblock %}

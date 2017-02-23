@@ -41,9 +41,48 @@ use AppBundle\Entity\CursoAvanceEvaluacionResultado;
  * @Route("/ajax")
  */
 class AjaxController extends Controller {
-    
-    
-    
+
+
+
+
+
+    /**
+     * @Route("/contador_solicitudes", name="ajax_contador_solicitudes")
+     * @Method({"GET"})
+     */
+    public function contadorSolicitudesAction(Request $request){
+        if($request->isXmlHttpRequest()){
+            $encoders = array(new JsonEncoder());
+            $normalizers = array(new ObjectNormalizer());
+
+            $serializer = new Serializer($normalizers, $encoders);
+
+            $em = $this->getDoctrine()->getManager();
+
+
+            $suscripciones = $em->getRepository("AppBundle:Suscripcion")->findBy(array(
+                "idEstatus" => "2"
+            ));
+
+            $pagos = $em->getRepository("AppBundle:Suscripcion")->findBy(array(
+                "idEstatus" => "6"
+            ));
+
+            $suscripciones_pendientes = count($suscripciones);
+            $pagos_pendientes = count($pagos);
+
+            $response = new JsonResponse();
+            $response->setStatusCode(200);
+            $response->setData(array(
+                'suscripciones' => $suscripciones_pendientes,
+                'pagos' => $pagos_pendientes,
+            ));
+            return $response;
+        }
+    }
+
+
+
     
     /**
      * @Route("/avance", name="ajax_avance")

@@ -5,33 +5,34 @@
     <link href="{{ asset('bundles/AppBundle/css/module-colors-background.css') }}" rel="stylesheet">
 {% endblock %}
 
-{% block mainTitle %} 
+{% block mainTitle %}
     <div class="row wrapper border-bottom white-bg page-heading">
-        
+
         <div class="col-sm-4">
-        <h2>Curso de Programación</h2>
-        <ol class="breadcrumb">
-            <li>
-                <a href="index.html">adsf is</a>
-            </li>
-            <li class="active">
-                <strong>Breadcrumb</strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-sm-8">
-        <div class="title-action">
-            <a href="" class="btn btn-primary">This is action area</a>
+            <h2>Área de Estudiante</h2>
+            {#<ol class="breadcrumb">
+                <li>
+                    <a href="index.html">Estatus suscripción</a>
+                </li>
+                <li class="active">
+                    <strong>{{ suscripcion.idEstatus }}</strong>
+                </li>
+            </ol>#}
         </div>
-    </div>
-        
+
+        <div class="col-sm-8">
+            <div class="title-action">
+                <a href="" class="btn btn-primary">This is action area</a>
+            </div>
+        </div>
+
     </div>
 
 {% endblock %}
 
 
 
-{% block body %} 
+{% block body %}
 
 
 
@@ -40,72 +41,94 @@
         <div class="col-md-6">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Cursos <small>Estatus y avance.</small></h5>
+                    <h5>Cursos
+                        <small>Estatus y avance.</small>
+                    </h5>
                 </div>
                 <div class="ibox-content">
-                {% for inscripcion in inscripciones %}
+                    {% for inscripcion in inscripciones %}
+                        {% for suscripcion in inscripcion.suscripciones %}
+                            {% if suscripcion.idEstatus.id == 1 %}
+                                <div>
+                                    <div>
+                                        <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance.idCursoModuloTema.orden }) }}"><span> {{ inscripcion.idCursoGrupo.idCurso.nombre }} </span></a>
+                                        <small class="pull-right">10/100 %</small>
+                                    </div>
+                                    <div class="progress progress-small">
+                                        <div style="width: 10%;" class="progress-bar"></div>
+                                    </div>
+
+                                </div>
+                                {% elseif suscripcion.idEstatus.id == 2 %}
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <a ><span> {{ inscripcion.idCursoGrupo.idCurso.nombre }} </span></a>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <a href="{{ path("suscripcion_show", {'id':suscripcion.id})}}" class="btn btn-primary btn-sm">Informar pago </a>
+                                    </div>
+                                </div>
+                            {% elseif suscripcion.idEstatus.id == 6 %}
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <a ><span> {{ inscripcion.idCursoGrupo.idCurso.nombre }} </span></a>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <a class="btn btn-warning btn-sm">Espera de Aprobación </a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+
+            </div>
+
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Examenes / Quizz
+                        <small> Resultados.</small>
+                    </h5>
+                </div>
+                <div class="ibox-content">
                     <div>
-                        <div>
-                           
-                                
-                                <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance.idCursoModuloTema.orden }) }}"><span > {{inscripcion.idCursoGrupo.idCurso.nombre}} </span></a>
-                           
-                            
-                            
-                            
-                            <small class="pull-right">10/100 %</small>
-                        </div>
-                        <div class="progress progress-small">
-                            <div style="width: 10%;" class="progress-bar"></div>
-                        </div>
-                        
-                    </div>
-                {% endfor %}
+                        <div class="feed-activity-list">
 
+                            <div class="feed-element">
+                                <a href="profile.html" class="pull-left">
+                                    <i class="fa fa-2x fa-html5">&nbsp;</i>
+                                </a>
+                                <div class="media-body ">
+                                    <a class="pull-right">10/10 <br>
+                                        <small class="text-muted">Excelente</small>
+                                    </a>
+                                    <strong> Introducción a GIT</strong> Curso de GIT. <br>
+                                    <small class="text-muted"> Today 5:60 pm - 12.06.2014</small>
 
-                </div>
-            </div>
-            
-             
-        <div class="ibox">
-            <div class="ibox-title">
-                <h5>Examenes / Quizz <small> Resultados.</small></h5>
-            </div>
-            <div class="ibox-content">
-                <div>
-                    <div class="feed-activity-list">
-
-                        <div class="feed-element">
-                            <a href="profile.html" class="pull-left">
-                                <i class="fa fa-2x fa-html5">&nbsp;</i>
-                            </a> 
-                            <div class="media-body ">
-                                <a class="pull-right">10/10 <br> <small class="text-muted">Excelente</small></a>
-                                <strong> Introducción a GIT</strong> Curso de GIT. <br>
-                                <small class="text-muted"> Today 5:60 pm - 12.06.2014</small>
-
+                                </div>
                             </div>
+
+
                         </div>
 
 
                     </div>
-
-
-
                 </div>
             </div>
-        </div>
 
-    
-            
-            
+
         </div>
         <!-- Fin de Cursos Suscritos -->
 
         <div class="col-md-6">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Recompensas <small> Tus Logros recientemente alcanzados  .</small></h5>
+                    <h5>Recompensas
+                        <small> Tus Logros recientemente alcanzados .</small>
+                    </h5>
                 </div>
                 <div class="ibox-content">
 
@@ -119,15 +142,21 @@
 
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Certificados <small> Tus Cursos Terminados.</small></h5>
+                    <h5>Certificados
+                        <small> Tus Cursos Terminados.</small>
+                    </h5>
                 </div>
                 <div class="ibox-content">
 
                     <div class="tooltip-demo">
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><i class="fa fa-file-text fa-2x"></i></button>
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fa fa-file-text fa-2x"></i></button>
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fa fa-file-text fa-2x"></i></button>
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right"><i class="fa fa-file-text fa-2x"></i></button>
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left"
+                                title="Tooltip on left"><i class="fa fa-file-text fa-2x"></i></button>
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top"
+                                title="Tooltip on top"><i class="fa fa-file-text fa-2x"></i></button>
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom"
+                                title="Tooltip on bottom"><i class="fa fa-file-text fa-2x"></i></button>
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right"
+                                title="Tooltip on right"><i class="fa fa-file-text fa-2x"></i></button>
                     </div>
 
 
@@ -137,14 +166,10 @@
         </div>
 
 
-
-
+    </div>
 
 
     </div>
-
-   
-</div>
-</div>
-</div>
+    </div>
+    </div>
 {% endblock %}

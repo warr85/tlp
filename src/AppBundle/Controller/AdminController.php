@@ -36,8 +36,18 @@ class AdminController extends Controller {
      * @Route("/", name="admin_homepage")
      */
     public function indexAction(Request $request){
-        
-        return $this->render('admin/index.html.twig');
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $notificaciones = $em->getRepository("AppBundle:Notificacion")->findBy(
+            array("leida" => false)
+        );
+        $cuenta = count($notificaciones);
+        return $this->render('admin/index.html.twig', array(
+            'cuenta' => $cuenta,
+            'notificaciones' => $notificaciones
+        ));
         
     }
     
