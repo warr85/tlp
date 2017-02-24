@@ -66,6 +66,13 @@ class Notificacion
      */
     private $leida;
 
+    /**
+     * @ORM\Column(name="id_notificacion", type="integer", nullable=true)
+     *
+     * @var \Integer
+     */
+    private $idNotificacion;
+
 
 
     /**
@@ -165,5 +172,30 @@ class Notificacion
     public function getIdEstatus()
     {
         return $this->idEstatus;
+    }
+
+
+
+    /**
+     * Set idNotificacion
+     *
+     * @param integer $idNotificacion
+     * @return Notificacion
+     */
+    public function setIdNotificacion($idNotificacion)
+    {
+        $this->idNotificacion = $idNotificacion;
+
+        return $this;
+    }
+
+    /**
+     * Get idNotificacion
+     *
+     * @return integer 
+     */
+    public function getIdNotificacion()
+    {
+        return $this->idNotificacion;
     }
 }

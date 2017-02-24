@@ -19,6 +19,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Suscripcion;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,6 +50,20 @@ class AdminController extends Controller {
             'notificaciones' => $notificaciones
         ));
         
+    }
+
+
+    /**
+     * @Route("/suscripciones/{id}/show", name="suscripcion_admin_show")
+     */
+    public function suscripcionShowAction(Suscripcion $suscripcion){
+
+
+        return $this->render('admin/index.html.twig', array(
+            'cuenta' => $cuenta,
+            'notificaciones' => $notificaciones
+        ));
+
     }
     
     

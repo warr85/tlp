@@ -29,6 +29,14 @@ class TipoNotificacion
     private $nombre;
 
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ruta", type="string", length=255, nullable=false, options={"comment" = "ruta para el url"})
+     */
+    private $ruta;
+
+
 
     /**
      * @var integer
@@ -72,5 +80,28 @@ class TipoNotificacion
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set ruta
+     *
+     * @param string $ruta
+     * @return TipoNotificacion
+     */
+    public function setRuta($ruta)
+    {
+        $this->ruta = $ruta;
+
+        return $this;
+    }
+
+    /**
+     * Get ruta
+     *
+     * @return string 
+     */
+    public function getRuta()
+    {
+        return $this->ruta;
     }
 }

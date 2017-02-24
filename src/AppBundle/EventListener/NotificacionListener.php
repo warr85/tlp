@@ -24,6 +24,7 @@ class NotificacionListener
             $notificar->setIdEstatus($entity->getIdEstatus());
             $notificar->setIdTipoNotificacion($em->getRepository("AppBundle:TipoNotificacion")->findOneById(1));
             $notificar->setLeida(false);
+            $notificar->setIdNotificacion($entity->getId());
         }
 
         $em->persist($notificar);

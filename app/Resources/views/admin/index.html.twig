@@ -65,66 +65,8 @@
 
 {% endblock %}
 
-        {% block javascripts %}
-        {{ parent() }}
-        <script>
+{% block javascripts %}
+    {{ parent() }}
 
 
-
-
-                function waitForMsg() {
-
-
-
-                    $.ajax({
-                        method: "GET",
-                        url: "{{ url('ajax_contador_solicitudes') }}",
-                        timeout: 50000,
-                        success: function (data) {
-                            console.log(data);
-                            var cantidad = 0;
-
-                            /*if(posts.length > 0)
-                             {
-                             var html = "";
-                             for(d in posts)
-                             {
-                             html += "<p>" + JSON.stringify(posts[d]) + "</p>";
-                             }
-                             $("#contador_solicitudes").append(html);
-                             }*/
-                            if (data.suscripciones){
-                                $(".show_suscripciones").removeClass("hidden");
-                                $("#suscripciones").html(" " + data.suscripciones + " suscripciones pendientes");
-                                cantidad = cantidad + data.suscripciones;
-                            }
-
-                            if (data.pagos){
-                                $(".show_pagos").removeClass("hidden");
-                                $("#pagos").html(" " + data.pagos + " pagos por aprobar");
-                                cantidad = cantidad + data.pagos;
-                            }
-
-
-                            if(cantidad > 0){
-                                $("#alertas").html(cantidad);
-                            }
-
-                            setTimeout(waitForMsg, 10000);
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            console.log(errorThrown);
-                            setTimeout(waitForMsg, 10000);
-
-                        }
-
-                    });
-
-                };
-
-
-
-
-            </script>
-
-        {%  endblock %}
+{%  endblock %}

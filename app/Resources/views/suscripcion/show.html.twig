@@ -34,7 +34,7 @@
                         <i class="fa fa-cc-discover text-danger"></i>
                     </div>
                     <h5 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Tipo de Pago: {{ suscripcion.idFormaPago.nombre }}</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Estatus Suscripción: {{ suscripcion.idEstatus.nombre }}</a>
                     </h5>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse in">
@@ -43,18 +43,20 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <h2>Resumen</h2>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <strong>Datos del Cliente:</strong>: {{ suscripcion.idInscripcion.idUsuario.username }}<br/>
+                                {% endif %}
                                 <strong>Curso:</strong>: {{ suscripcion.idInscripcion.idCursoGrupo.idCurso.nombre }}<br/>
                                 <strong>Inversión:</strong>: <span class="text-navy">Bsf. {{ suscripcion.idCostoCursoModulo.costo }}</span>
-
                                 <p class="m-t">
                                     {{ suscripcion.idInscripcion.idCursoGrupo.idCurso.descripcion }}
 
                                 </p>
 
                             </div>
+                            {% if not is_granted('ROLE_ADMIN') %}
+                            {% if suscripcion.idEstatus.id == 2 %}
                             <div class="col-md-8">
-
-
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="form-group">
@@ -74,7 +76,28 @@
                                 {{ form_end(form) }}
 
                             </div>
+                            {% endif %}
+                            {% elseif is_granted('ROLE_ADMIN') %}
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <h2>Datos del Pago</h2>
+                                        <strong>Tipo de Pago:</strong> {{ suscripcion.idFormaPago }}<br>
+                                        <strong>Banco:</strong> {{ suscripcion.idBanco.nombre }}<br>
+                                        <strong>N° de Referencia:</strong>{{ suscripcion.referencia }}
+                                    </div>
 
+                                </div>
+                                <div class="col-xs-4">
+                                    <h2>Acciones</h2>
+                                    {% if suscripcion.idEstatus.id == 6 or suscripcion.idEstatus.id == 8 %}
+                                        <a data-loading-text="Actualizando Pago..." class="ladda-button ladda-apr btn btn-primary gestion_pago" data-aprobar="true" href="{{ path("ajax_aprobar_pago") }}">Aprobar</a>
+                                    {% endif %}
+                                    {% if suscripcion.idEstatus.id == 6 or suscripcion.idEstatus.id == 7 %}
+                                        <a class="btn btn-danger gestion_pago" data-aprobar="false" href="{{ path("ajax_aprobar_pago")}}" >Rechazar</a>
+                                    {% endif %}
+                                </div>
+
+                            {% endif %}
                         </div>
 
 
@@ -171,4 +194,26 @@
 
 
 </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        var id = {{ suscripcion.id }};
+
+        $('.gestion_pago').on('click', function(e) {
+            var $button = $(this);
+            // prevents the browser from "following" the link
+            e.preventDefault();
+            // Start loading
+
+            $button.button('loading');
+            var url = $(this).attr('href');
+            var aprobar = $(this).data("aprobar");
+            $.get(url, { id: id, aprobar:aprobar }, function(data) {
+                $button.button('reset');
+            });
+        });
+
+    </script>
 {% endblock %}

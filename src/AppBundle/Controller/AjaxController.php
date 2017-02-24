@@ -51,34 +51,62 @@ class AjaxController extends Controller {
      * @Method({"GET"})
      */
     public function contadorSolicitudesAction(Request $request){
-        if($request->isXmlHttpRequest()){
-            $encoders = array(new JsonEncoder());
-            $normalizers = array(new ObjectNormalizer());
 
-            $serializer = new Serializer($normalizers, $encoders);
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $em = $this->getDoctrine()->getManager();
 
-            $em = $this->getDoctrine()->getManager();
+        $noLeidas = count($em->getRepository("AppBundle:Notificacion")->findBy(
+            array('leida' => false)
+        ));
+
+        $notificaciones = $em->getRepository("AppBundle:Notificacion")->findBy(
+            array(),
+            array('leida' => 'ASC')
+        );
+
+        $response = new JsonResponse();
+        $response->setStatusCode(200);
+        $response->setData(array(
+            'notificaciones' => $serializer->serialize($notificaciones, 'json'),
+            'noLeidas' => $noLeidas,
+        ));
+        return $response;
+
+    }
 
 
-            $suscripciones = $em->getRepository("AppBundle:Suscripcion")->findBy(array(
-                "idEstatus" => "2"
-            ));
+    /**
+     * @Route("/aprobar_pago", name="ajax_aprobar_pago")
+     * @Method({"GET"})
+     */
+    public function aprobarPagoAction(Request $request){
 
-            $pagos = $em->getRepository("AppBundle:Suscripcion")->findBy(array(
-                "idEstatus" => "6"
-            ));
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
 
-            $suscripciones_pendientes = count($suscripciones);
-            $pagos_pendientes = count($pagos);
+        $em = $this->getDoctrine()->getManager();
+        $parametros = $request->query->all();
 
-            $response = new JsonResponse();
-            $response->setStatusCode(200);
-            $response->setData(array(
-                'suscripciones' => $suscripciones_pendientes,
-                'pagos' => $pagos_pendientes,
-            ));
-            return $response;
+        $suscripcion = $em->getRepository("AppBundle:Suscripcion")->findOneById($parametros['id']);
+        if($parametros["aprobar"] === "true") {
+            $suscripcion->setIdEstatus($em->getRepository("AppBundle:Estatus")->findOneById(7));
+        }else{
+            $suscripcion->setIdEstatus($em->getRepository("AppBundle:Estatus")->findOneById(8));
         }
+
+        $em->persist($suscripcion);
+        $em->flush();
+
+
+        $response = new JsonResponse();
+        $response->setStatusCode(200);
+        $response->setData(array(
+            'response' => 'success'
+        ));
+        return $response;
+
     }
 
 

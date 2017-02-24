@@ -48,7 +48,7 @@
                 <div class="ibox-content">
                     {% for inscripcion in inscripciones %}
                         {% for suscripcion in inscripcion.suscripciones %}
-                            {% if suscripcion.idEstatus.id == 1 %}
+                            {% if suscripcion.idEstatus.id == 7 %}
                                 <div>
                                     <div>
                                         <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance.idCursoModuloTema.orden }) }}"><span> {{ inscripcion.idCursoGrupo.idCurso.nombre }} </span></a>
@@ -77,6 +77,16 @@
 
                                     <div class="col-lg-4">
                                         <a class="btn btn-warning btn-sm">Espera de Aprobación </a>
+                                    </div>
+                                </div>
+                            {% elseif suscripcion.idEstatus.id == 8 %}
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <a ><span> {{ inscripcion.idCursoGrupo.idCurso.nombre }} </span></a>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <a class="btn btn-danger btn-sm">Pago Rechazado </a>
                                     </div>
                                 </div>
                             {% endif %}
