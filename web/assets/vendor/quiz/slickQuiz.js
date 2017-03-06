@@ -605,12 +605,7 @@
                 key = internal.method.getKey (1); // how many notches == how many jQ animations you will run
                 keyNotch = internal.method.getKeyNotch; // a function that returns a jQ animation callback function
                 kN = keyNotch; // you specify the notch, you get a callback function for your animation
-                iziToast.success({                                                
-		                  title: 'Felicitaciones',
-		                  message: 'has terminado el QUIZ y has conseguido todos los logros de este nivel.',		                  
-		                  position: 'center'
-		              });
-                
+
                 $("logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
                 $nextClass.show();
                 var score        = $(_element + ' ' + _correct).length,
@@ -653,39 +648,15 @@
                         $('.progress-bar').attr('aria-valuenow', '100');
                         $("#logro_quiz").removeClass('fa-inverse').addClass('text-warning animated rubberBand');
                         var data = {inscripcion : $('#inscripcion').val(), logro: 3, tema : $('#tema_actual').val()};
-                        var urlLogro = $('#url_ajax').val();
+
                         var urlAvance = $('#url_avance').val();
                         var urlEvaluacion = $('#url_evaluacion').val();
-                        $.ajax({
-                             method: "GET",
-                             url: urlLogro,
-                             async: true,
-                             cache: false,
-                             data: data,
-                             //timeout: 50000,
-                             success: function (data) {
-                                      $('.progress-bar').css('width', '100%');
-                                      $('.stat-percent').html('100%');
-                                      console.log(data);                   
-                                     /*if(posts.length > 0)
-                                      {
-                                          var html = "";
-                                          for(d in posts)
-                                          {
-                                              html += "<p>" + JSON.stringify(posts[d]) + "</p>";
-                                          }
-                                          $("#contador_solicitudes").append(html);
-                                      }*/
-                                     //$("#contador_solicitudes").html(posts);
-                                      //setTimeout(waitForMsg, 60000);
-                              },
-                             error: function (XMLHttpRequest, textStatus, errorThrown) { 
-                                   console.log(errorThrown, textStatus, XMLHttpRequest);
-                                   //setTimeout(waitForMsg, 300000);
 
-                             }
-
-                         });
+                        add_logro("quiz1", "quiz1.png");
+                        $("#quiz1").addClass("animated bounce infinite text-warning").delay(5000).queue(function(next){
+                            $(this).removeClass("animated bounce infinite");
+                            next();
+                        });
                          
                          $.ajax({
                              method: "GET",
@@ -753,7 +724,12 @@
 		                  title: 'Quiz terminado',
 		                  message: 'debes practicar un poco mas, pero puedes avanzar.',		                  
 		                  position: 'center'
-		              }); 
+		              });
+                        add_logro("quiz1", "quiz1.png");
+                        $("#quiz1").addClass("animated bounce infinite text-warning").delay(5000).queue(function(next){
+                            $(this).removeClass("animated bounce infinite");
+                            next();
+                        });
                         
                         $('.progress-bar').css('width', '100%');
                         $('.stat-percent').html('100%');

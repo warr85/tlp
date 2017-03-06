@@ -25,10 +25,11 @@ class NotificacionListener
             $notificar->setIdTipoNotificacion($em->getRepository("AppBundle:TipoNotificacion")->findOneById(1));
             $notificar->setLeida(false);
             $notificar->setIdNotificacion($entity->getId());
+            $em->persist($notificar);
+            $em->flush();
         }
 
-        $em->persist($notificar);
-        $em->flush();
+
 
 
 

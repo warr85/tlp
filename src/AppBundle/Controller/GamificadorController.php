@@ -107,7 +107,7 @@ class GamificadorController extends Controller
             $response = new JsonResponse();
             $response->setStatusCode(200);
             $response->setData(array(
-                'response' => 'success',                
+                'response' => 'success'
             ));
             return $response;
             
@@ -141,8 +141,9 @@ class GamificadorController extends Controller
                 $parametros = $request->query->all();
                 $corto = $parametros["corto"];
                 $badge = $parametros["badge"];
-                $image = '../../../../../../images/badge/' . $badge;
-                $fondo = '../../../../../../images/course/bg_logro.png';
+                $bg = "bg_logro.png";
+                $image =  '../../../../../../images/badge/'  . $badge;
+                $fondo = '../../../../../../images/course/' . $bg;
                // $corto = "conceptos";
                 $logros = $this->getDoctrine()->getRepository("AppBundle:CursoModuloTemaLogro")->findOneByNombreCorto($corto);                
                 if($logros){                    

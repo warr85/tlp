@@ -507,6 +507,113 @@
                 };
 
 
+
+                function add_experience(xp, u) {
+                    var datos = {experience: xp, user: u};
+                    $.ajax({
+                        method: "GET",
+                        url: $('#url_exp').val(),
+                        data: datos,
+                        //timeout: 50000,
+                        success: function (data) {
+                            console.log("exp:" + data);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(errorThrown, textStatus, XMLHttpRequest);
+
+                            //setTimeout(waitForMsg, 300000);
+
+                        },
+                        complete: function () {
+                        }
+
+                    });
+
+                }
+
+                function add_logro(nombre, badge) {
+                    var datos = {corto: nombre, badge:badge};
+                    $.ajax({
+                        method: "GET",
+                        url: $('#url_logro').val(),
+                        data: datos,
+                        //timeout: 50000,
+                        success: function (data) {
+                            console.log("esto es data:");
+                            console.log(data);
+                            if (data.complete) {
+                                swal({
+                                    imageUrl: data.badge,
+                                    padding: 30,
+                                    imageWidth: 160,
+                                    imageHeight: 160,
+                                    showCloseButton: true,
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                    animation: false,
+                                    customClass: 'animated tada',
+                                    background: 'url(' + data.background + ')'
+                                }).then(
+                                    function () {
+                                    },
+                                    // handling the promise rejection
+                                    function (dismiss) {
+                                        toggleNav(true);
+                                        add_experience("15", "Logro Desbloqueado");
+                                        iziToast.show({
+                                            color: 'dark',
+                                            title: '+15 Puntos',
+                                            message: 'por haber desbloqueado un logro ',
+                                            icon: 'fa fa-user-plus',
+                                            transitionIn: 'bounceInUp',
+                                            position: 'center'
+                                        });
+                                    }
+                                );
+                            } else if (data.response === "success") {
+                                add_experience("5", "Escribir Comando");
+                                iziToast.show({
+                                    color: 'dark',
+                                    title: '+5 Puntos',
+                                    message: 'Escribir un Comando ',
+                                    icon: 'fa fa-user-plus',
+                                    transitionIn: 'bounceInUp',
+                                    position: 'center'
+                                });
+
+                            } else if (data.response === "done") {
+                                toggleNav(true);
+                                iziToast.warning({
+                                    title: 'comando o logro ya completado',
+                                    message: 'esta actividad la habias compeltado previamente',
+                                    icon: 'fa fa-user-plus',
+                                    transitionIn: 'bounceInUp',
+                                    position: 'center'
+                                });
+                            } else{
+                                iziToast.error({
+                                    title: 'Error',
+                                    message: 'Debes seguir el orden de la clase',
+                                    icon: 'fa fa-user-plus',
+                                    transitionIn: 'bounceInUp',
+                                    position: 'center'
+                                });
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(errorThrown, textStatus, XMLHttpRequest);
+
+                            //setTimeout(waitForMsg, 300000);
+
+                        },
+                        complete: function () {
+                        }
+
+                    });
+
+                }
+
+
             </script>
 
         {% endblock %}
