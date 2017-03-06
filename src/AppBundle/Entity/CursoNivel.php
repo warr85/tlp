@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CursoNivel
  *
- * @ORM\Table(name="curso_nivel", uniqueConstraints={@ORM\UniqueConstraint(name="uq_curso_nivel", columns={"id_curso"})}, indexes={@ORM\Index(name="fki_curso_nivel", columns={"id_curso"})})
+ * @ORM\Table(name="curso_nivel")
  * @ORM\Entity
  */
 class CursoNivel
@@ -25,15 +25,7 @@ class CursoNivel
      */
     private $id;
 
-    /**
-     * @var \AppBundle\Entity\Curso
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Curso", inversedBy="niveles")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_curso", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $idCurso;
+
     
     
     /**
@@ -50,6 +42,14 @@ class CursoNivel
      * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del Grupo"})
      */
     private $nombre;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sobre_nombre", type="string", length=255, nullable=false, options={"comment" = "Sobre nombre del Nivel"})
+     */
+    private $sobreNombre;
    
 
     
@@ -114,29 +114,27 @@ class CursoNivel
         return $this->nombre;
     }
 
+
     /**
-     * Set idCurso
+     * Set sobreNombre
      *
-     * @param \AppBundle\Entity\Curso $idCurso
+     * @param string $sobreNombre
      * @return CursoNivel
      */
-    public function setIdCurso(\AppBundle\Entity\Curso $idCurso)
+    public function setSobreNombre($sobreNombre)
     {
-        $this->idCurso = $idCurso;
+        $this->sobreNombre = $sobreNombre;
 
         return $this;
     }
 
     /**
-     * Get idCurso
+     * Get sobreNombre
      *
-     * @return \AppBundle\Entity\Curso 
+     * @return string 
      */
-    public function getIdCurso()
+    public function getSobreNombre()
     {
-        return $this->idCurso;
+        return $this->sobreNombre;
     }
-    
-    
-    
 }
