@@ -50,6 +50,12 @@ class CursoNivel
      * @ORM\Column(name="sobre_nombre", type="string", length=255, nullable=false, options={"comment" = "Sobre nombre del Nivel"})
      */
     private $sobreNombre;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Usuarios", mappedBy="idCursoNivel", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $usuarios;
    
 
     
@@ -136,5 +142,32 @@ class CursoNivel
     public function getSobreNombre()
     {
         return $this->sobreNombre;
+    }
+
+
+
+
+
+    /**
+     * Set modulos
+     *
+     * @param \AppBundle\Entity\Usuarios $usuarios
+     * @return CursoNivel
+     */
+    public function setUsuarios(\AppBundle\Entity\Usuarios $usuarios = null)
+    {
+        $this->usuarios = $usuarios;
+
+        return $this;
+    }
+
+    /**
+     * Get modulos
+     *
+     * @return \AppBundle\Entity\Usuarios 
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
     }
 }

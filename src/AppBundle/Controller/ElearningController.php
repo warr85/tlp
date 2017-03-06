@@ -79,6 +79,8 @@ class ElearningController extends Controller {
     public function cursoProgramacionAction(Inscripcion $inscripcion, $avance ){
         
         $tema = $inscripcion->getAvances()->first();
+        //echo $this->getUser()->getIdCursoNivel()->getId(); exit;
+        $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId() + 1);
         $em = $this->getDoctrine()->getManager();
         $cursoModulo = $em->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
         $temaActual = $em->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(

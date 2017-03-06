@@ -84,17 +84,37 @@ class GamificadorController extends Controller
             $exp = $parametros['experience'];
             
             $exp += $usuario->getExperiencia();
-            
 
-            $curso = $this->getDoctrine()->getRepository("AppBundle:Curso")->findOneById(2);            
-            $niveles = $curso->getNivelesByXp($exp);
+            $qb = $this->getDoctrine()->getManager();
+
+            $qb = $qb->createQueryBuilder();
+            $qb->select('MAX(cn.experienciaNecesaria)');
+            $qb->from('AppBundle:CursoNivel', 'cn');
+            $qb->where('cn.experienciaNecesaria <= :exp')->setParameter('exp', $exp);
+
+            $nivel = $qb->getQuery()->getSingleResult();
+
+            $repository = $this->getDoctrine()
+                ->getRepository('AppBundle:CursoNivel');
+            $query = $repository->createQueryBuilder('cn')
+                ->where('cn.experienciaNecesaria = :act')
+                ->setParameter('act', $nivel[1])
+                ->orderBy('cn.id', 'ASC')
+                ->getQuery();
+
+
+            $nivel = $query->getSingleResult();
+
+
+
+
+
             if(!$usuario->getIdCursoNivel()){
-                $usuario->setIdCursoNivel($niveles[0]);
+                $usuario->setIdCursoNivel($nivel);
                 $usuario->setExperiencia($exp);
             }else {
-
-                if (($niveles[0]) && ($niveles[0]->getId() != $usuario->getIdCursoNivel()->getId())) {
-                    $usuario->setIdCursoNivel($niveles[0]);
+                if (($nivel) && ($nivel->getNombre() != $usuario->getIdCursoNivel()->getNombre())) {
+                    $usuario->setIdCursoNivel($nivel);
                     $usuario->setExperiencia($exp);
                 } else {
                     $usuario->setExperiencia($exp);

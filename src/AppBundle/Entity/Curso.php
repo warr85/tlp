@@ -46,15 +46,8 @@ class Curso
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $modulos;
-    
-    
-    /**
-     * @ORM\OneToMany(targetEntity="CursoNivel", mappedBy="idCurso", cascade={"all"})
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
-    private $niveles;
-    
-    
+
+
      /**
      * @ORM\OneToMany(targetEntity="CursoGrupo", mappedBy="idCurso", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -102,7 +95,6 @@ class Curso
     public function __construct()
     {
         $this->modulos = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->niveles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->grupos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -367,14 +359,14 @@ class Curso
     /**
      * Get niveles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getNiveles()
     {
         return $this->niveles;
     }
-    
-    
+
+
     /* @param Integer $exp
      * @return \Doctrine\Common\Collections\Collection
      */
