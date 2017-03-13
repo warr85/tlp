@@ -911,16 +911,15 @@
                                 </ul>
                             </li>
 
-
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-                                    <div id="progress" class="avatar-container" data="55">
+                                    <div id="progress" class="avatar-container" data="{{ porcentajePxNivel }}">
                                         <img src="https://s3.amazonaws.com/uifaces/faces/twitter/_shahedk/128.jpg" alt="" class="avatar"/>
                                     </div><!--.avatar-container-->
                                     <div class="profile-details">
                                         {{ app.user }}
-                                        <span class="badge badge-primary">Nivel: {{ app.user.idCursoNivel.id }} Exp.: {{ app.user.experiencia }} </span>
+                                        <span class="badge badge-primary">Nivel: <span id="nivel_usuario">{{ app.user.idCursoNivel.id }}</span> Exp.: <span id="exp_usuario">{{ app.user.experiencia }}</span> </span>
                                     </div>
 
 
@@ -1060,7 +1059,10 @@
                         data: datos,
                         //timeout: 50000,
                         success: function (data) {
-                            console.log("exp:" + data);
+                            console.log(data);
+                            $("#progress").attr("data", data.avatar);
+                            $("#nivel_usuario").html(data.nivel);
+                            $("#exp_usuario").html(data.exp);
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
                             console.log(errorThrown, textStatus, XMLHttpRequest);

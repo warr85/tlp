@@ -85,6 +85,7 @@ class GamificadorController extends Controller
             
             $exp += $usuario->getExperiencia();
 
+
             $qb = $this->getDoctrine()->getManager();
 
             $qb = $qb->createQueryBuilder();
@@ -104,6 +105,7 @@ class GamificadorController extends Controller
 
 
             $nivel = $query->getSingleResult();
+            $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($nivel->getId()+ 1);
 
 
 
@@ -111,23 +113,40 @@ class GamificadorController extends Controller
 
             if(!$usuario->getIdCursoNivel()){
                 $usuario->setIdCursoNivel($nivel);
+                $avatar = (($exp - $usuario->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1);
                 $usuario->setExperiencia($exp);
             }else {
                 if (($nivel) && ($nivel->getNombre() != $usuario->getIdCursoNivel()->getNombre())) {
+
+
                     $usuario->setIdCursoNivel($nivel);
                     $usuario->setExperiencia($exp);
+                    if($proximoNivel) {
+                        $avatar = (($exp - $usuario->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1);
+                    }else{
+                        $avatar = 100;
+                    }
+
                 } else {
                     $usuario->setExperiencia($exp);
+                    if($proximoNivel) {
+                        $avatar = (($exp - $usuario->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1);
+                    }else{
+                        $avatar = 100;
+                    }
                 }
             }
             $em = $this->getDoctrine()->getManager();
             $em->persist($usuario);
             $em->flush();
-            
+            $avatar = round($avatar,0);
             $response = new JsonResponse();
             $response->setStatusCode(200);
             $response->setData(array(
-                'response' => 'success'
+                'response' => 'success',
+                'avatar'    => $avatar,
+                'nivel' => $usuario->getIdCursoNivel()->getId(),
+                'exp'   => $usuario->getExperiencia()
             ));
             return $response;
             
@@ -161,7 +180,7 @@ class GamificadorController extends Controller
                 $parametros = $request->query->all();
                 $corto = $parametros["corto"];
                 $badge = $parametros["badge"];
-                $bg = "bg_logro.png";
+                $bg = "bg_logro_" . $badge;
                 $image =  '../../../../../../images/badge/'  . $badge;
                 $fondo = '../../../../../../images/course/' . $bg;
                // $corto = "conceptos";

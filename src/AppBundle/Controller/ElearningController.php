@@ -80,14 +80,16 @@ class ElearningController extends Controller {
         
         $tema = $inscripcion->getAvances()->first();
         //echo $this->getUser()->getIdCursoNivel()->getId(); exit;
-        $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId() + 1);
+        $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
+        $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
         $em = $this->getDoctrine()->getManager();
         $cursoModulo = $em->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
         $temaActual = $em->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
            'idCursoModulo'  => $cursoModulo,
             'orden'         => $avance
         ));
-                
+
+        $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
         $logrosObtenidos = $em->getRepository("AppBundle:UsuariosLogros")->findByIdEstatus(5);
         $logrosDisponibles = $em->getRepository("AppBundle:CursoModuloTemaLogro")->findBy(
             array("idCursoModuloTema" => $temaActual->getId()),
@@ -107,7 +109,8 @@ class ElearningController extends Controller {
             'logrosObtenidos'   => $logrosObtenidos,   
             'currentDirName'    => "octonauta",
             'currentUser'       => $this->getUser()->getUserName(),
-            'currentDir'        => $directorio     
+            'currentDir'        => $directorio,
+            'porcentajePxNivel' => $ppn
         ));
         
     }
