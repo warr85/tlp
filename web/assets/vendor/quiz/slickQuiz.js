@@ -731,9 +731,9 @@
                             next();
                         });
                         
-                        $('.progress-bar').css('width', '100%');
+                        $('#progressbar').css('width', '100%');
                         $('.stat-percent').html('100%');
-                        $('.progress-bar').attr('aria-valuenow', '100');
+                        $('#progress-bar').attr('aria-valuenow', '100');
                         $("#logro_quiz").removeClass("btn-outline").addClass("btn-success-done animated rubberBand");
                         var data = {inscripcion : $('#inscripcion').val(), logro: 3};
                         var url = $('#url_ajax').val();
@@ -745,9 +745,7 @@
                              data: data,
                              //timeout: 50000,
                              success: function (data) {
-                                     
-                                    $('.progress-bar').css('width', '100%');
-                                    $('.stat-percent').html('100%');
+
                                       
                                       console.log(data);                   
                                      /*if(posts.length > 0)

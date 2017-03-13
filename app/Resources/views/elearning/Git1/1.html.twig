@@ -787,7 +787,7 @@
                     <small>Progreso de este nivel</small>
                     <div class="stat-percent">0%</div>
                     <div class="progress progress-mini">
-                        <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                        <div id="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
                              style="width: 10%;" class="progress-bar"></div>
                     </div>
                 </li>
@@ -1177,6 +1177,9 @@
                                                 add_logro("comandos", "comandos1.png");
                                                 comandos['version'] = true;
                                                 actividades['actividad1'] = true;
+                                                $("#progressbar").css("width", "35%");
+                                                $("#progressbar").attr("aria-valuenow", "35%");
+                                                $('.stat-percent').html('35%');
 
                                             //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
                                         } else if (data.comando.match($gitInit)) {
@@ -1187,6 +1190,9 @@
                                                 actividades['actividad2'] = true;
                                                 toggleNav(true);
                                                 comandos['init'] = true;
+                                                $("#progressbar").css("width", "45%");
+                                                $("#progressbar").attr("aria-valuenow", "45%");
+                                                $('.stat-percent').html('45%');
                                             } else {
                                                 screen.append("debes verificar primero la instalacion de git con el comando git --version");
                                             }
@@ -1197,6 +1203,9 @@
                                             $configUser = true;
                                             $("#act3-1done").addClass('fa fa-check-circle');
                                             comandos['name'] = true;
+                                            $("#progressbar").css("width", "55%");
+                                            $("#progressbar").attr("aria-valuenow", "55%");
+                                            $('.stat-percent').html('55%');
                                         } else {
                                             if (!$configUser) {
                                                 screen.append("debes configuar primero el nombre de usuario");
@@ -1207,9 +1216,12 @@
                                             $("#act3-2done").addClass('fa fa-check-circle');
                                             if (!actividades['actividad3'])
                                                 add_logro("comandos", "comandos1.png");
-                                            actividades['actividad3'] = true
+                                            actividades['actividad3'] = true;
                                             toggleNav(true);
                                             comandos['email'] = true;
+                                            $("#progressbar").css("width", "70%");
+                                            $("#progressbar").attr("aria-valuenow", "70%");
+                                            $('.stat-percent').html('70%');
                                             $("#comandos").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
                                                 $(this).removeClass("animated bounce infinite");
                                                 next();
@@ -1334,6 +1346,9 @@
                     if (!actividades['actividad0']) {
                         add_logro("conceptos", "conceptos1.png");
                         actividades['actividad0'] = true;
+                        $("#progressbar").css("width", "25%");
+                        $("#progressbar").attr("aria-valuenow", "25%");
+                        $('.stat-percent').html('25%');
                         $("#conceptos").addClass("animated bounce text-warning");
 
                         $("#conceptos").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
@@ -1625,6 +1640,10 @@
         }
 
 
+
+
     </script>
+
+
 
 {% endblock %}
