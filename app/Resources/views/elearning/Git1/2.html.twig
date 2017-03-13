@@ -1,64 +1,223 @@
 {% extends 'base_admin.html.twig' %}
 
-{% block stylesheets %} 
+{% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/terminal/jquery.terminal.css') }}">    
     <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/bombillo.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/sequencejs/sequence-theme.intro.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/reveal.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/theme/moon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/lib/css/zenburn.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-ui/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/elfinder.full.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetAlert/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/animate/animate.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/slickQuiz.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/master.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/steps/jquery.steps.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/iziToast/dist/css/iziToast.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/moovly/css/videojs/video-js.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/moovly/css/main.css') }}">
 
 
     <style>
-        #terminal{
-            height:350px;         
-            margin-top: 20px; 
+
+
+
+
+
+        .swal2-modal {
+            min-height: 487px !important;
+            max-height: 487px !important;
         }
 
-        .acomodar{
-            margin-top: 10px;                        
+        .swal2-image {
+            margin-top: 120px !important;
+        }
+
+        .window {
+
+            height: 300px;
+            background-color: #f2f1f0;
+            -webkit-transition: 1s;
+            transition: 1s;
+        }
+
+        .window .topbar {
+            height: 40px;
+            width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background-image: -webkit-linear-gradient(#65645e, #3c3b37);
+            background-image: linear-gradient(#65645e, #3c3b37);
+
+            border-bottom: 1px solid #302f2c;
+        }
+
+        .window .topbar p {
+            color: #dfdbd0;
+            margin-left: 20px;
+        }
+
+        .window .topbar .icons {
+            background-image: -webkit-linear-gradient(#363632, #4e4d48);
+            background-image: linear-gradient(#363632, #4e4d48);
+            margin-left: 15px;
+            border-radius: 500px;
+            padding: 2px 3px 1px 3px;
+        }
+
+        .window .topbar .icons .close {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-image: -webkit-linear-gradient(#f79674, #df5106);
+            background-image: linear-gradient(#f79674, #df5106);
+            display: inline-block;
+        }
+
+        .window .topbar .icons .close:hover {
+            background-image: -webkit-linear-gradient(#f8a082, #f85c09);
+            background-image: linear-gradient(#f8a082, #f85c09);
+        }
+
+        .window .topbar .icons .hide,
+        .window .topbar .icons .maximize {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: 5px;
+            background-image: -webkit-linear-gradient(#989792, #5a5a55);
+            background-image: linear-gradient(#989792, #5a5a55);
+            display: inline-block;
+        }
+
+        .window .topbar .icons .hide:hover,
+        .window .topbar .icons .maximize:hover {
+            background-image: -webkit-linear-gradient(#a2a19d, #6b6b65);
+            background-image: linear-gradient(#a2a19d, #6b6b65);
+        }
+
+        .window .wtitle {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .window .tools {
+            height: 30px;
+            width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background-color: #3c3b37;
+            color: #dfdbd0;
+        }
+
+        .acomodar {
+            margin-top: 10px;
         }
 
         .seq {
             z-index: 1;
         }
 
+        #console {
+            margin: 0;
+            padding: 0;
+            display: table;
+            width: 100%;
+            white-space: nowrap;
+            color: #FFFFFF;
+            background-color: #281022;
+            height: 15px;
+        }
+
+        #console-panel {
+            background-color: #281022;
+            overflow-y: scroll;
+            height: 300px;
+        }
+
+        #console div {
+            display: table-cell;
+            width: auto;
+        }
+
+        #console #command {
+            width: 100%;
+        }
+
+        #console input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+        }
+
+        #console input:focus {
+            outline: none;
+        }
+
+        #preConsole {
+            border: none;
+            margin: 0;
+            /*padding-top: 50px;*/
+            white-space: pre;
+            background-color: #281022;
+            color: white;
+        }
+
+        #preCode {
+            color: gray;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .error {
+            color: red;
+        }
+
+
     </style>
 
 
 {% endblock %}
 
-{% block tituloCurso %} Bienvido a tu curso: {{ inscripcion.idCursoGrupo.idCurso.nombre }} {% endblock %}
+{% block tituloCurso  %} Bienvenido a tu curso: {{ inscripcion.idCursoGrupo.idCurso.nombre }} {% endblock %}
 
-{% block mainTitle %} 
+{% block mainTitle %}
     <div class="row wrapper border-bottom white-bg page-heading" id="tour1">
 
-        <div class="col-sm-4" >                     
+        <div class="col-sm-4">
             <ol class="breadcrumb">
                 <li>
-                    
-                    <h4><img id="guardado" src="{{ asset('images/course/lightbulbOn6.png') }}" width="36px" /><img id="loadingBulb" src="{{ asset('images/course/bulb.gif') }}" width="36px" /> Progreso del Curso</h4>
+
+                    <h4><img id="guardado" src="{{ asset('images/course/lightbulbOn6.png') }}" width="36px"/><img
+                                id="loadingBulb" src="{{ asset('images/course/bulb.gif') }}" width="36px"/> Progreso del
+                        Curso</h4>
                 </li>
 
 
-                <li class="tooltip-demo" id="tour2">                        
-                    {% for temas in cursoModulo.temas %} 
-                        {% if temas.orden < avance  %}
-                            <a class="fa fa-github fa-2x encendido" data-toggle="tooltip" data-placement="top" title="{{ temas.orden}}: {{temas.idTema.nombre}}"></a>
+                <li class="tooltip-demo" id="tour2">
+                    {% for temas in cursoModulo.temas %}
+                        {% if temas.orden < avance %}
+                            <a class="fa fa-github fa-2x encendido" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
                         {% elseif temas.orden == avance %}
-                            <a class="fa fa-github fa-2x current" data-toggle="tooltip" data-placement="top"  title="{{ temas.orden}}: {{temas.idTema.nombre}}"></a>
-                        {% elseif temas.orden > avance  %}
-                            <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"  title="{{ temas.orden}}: {{temas.idTema.nombre}}"></a>
-                        {% endif %}                            
+                            <a class="fa fa-github fa-2x current" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
+                        {% elseif temas.orden > avance %}
+                            <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
+                        {% endif %}
                     {% endfor %}
 
 
@@ -78,1025 +237,545 @@
 
 
 
-{% block body %} 
+{% block body %}
 
 
 
     <div class="row">
-        <div class="col-lg-7" id="tour3" >
+        <div class="col-lg-7" style="height:400px" id="tour3">
 
-            <div id="sequence" class="seq">
+            <div class="reveal">
 
-                <div class="seq-screen">
-                    <ul class="seq-canvas">
+                <!-- Any section element inside of this container is displayed as a slide -->
+                <div class="slides">
+                    <section data-background-image="{{ asset('images/course/bg_git.jpg') }}">
+                        <h1>Fundamentos de GIT</h1>
+                        <h3>El Controlador de versiones distribuido Libre</h3>
+                        <p>
+                            <small>Creado por <a href="www.tecnolineaparaguana.com.ve">Wilmer Ramones</a> / <a
+                                        href="http://twitter.com/wramonesr">@wramonesr</a></small>
+                        </p>
+                    </section>
 
-                        <li class="seq-step1 seq-in" id="step1">
+                    <section data-transition="zoom" data-background="{{ asset('images/course/gif/lightbulb2.gif') }}">
+                        <h2 style="background-color: #3e495f; opacity: 0.6;">
+                            Gracias por encender tu conocimiento con Tecnolíne@
+                            Paraguaná.
+                        </h2>
+                    </section>
 
-                            <div class="seq-code-pane seq-valign">
 
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
+                    <section data-transition="concave"
+                             data-background="{{ asset('images/course/gif/earthRotation.gif') }}">
 
-                                <div class="seq-code">
 
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span><strong>Objetivo de este módulo</strong></span>
-                                            <span>Inicializar Repositorio</span>
+                        <h2 style="color:white; background-color: #3e495f; opacity: 0.6;">Presentación <strong > Multiespacial </strong></h2>
+                        <p style="color:white; background-color: #3e495f; opacity: 0.6;">
+                            Para navegar por todas la láminas es recomendable utilizar "Barra Espaciadora"
+                            para disfrutar de todas las diapositivas.
+                        </p>
+                    </section>
 
-                                            <span class="seq-code-1">¿Que es un Repositorio?</span>
-                                        </code>
-                                    </div>
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
 
-                                            <span class="seq-code-1">Obtener un repositorio GIT</span>
+                    <section>
+                        <h3>Objetivos de Este módulo:</h3>
+                        <ul>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Qué es Controlador de Versiones?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Qué es Git?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Cómo instalar Git?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Como Configurar Git?</li>
+                        </ul>
 
-                                        </code>
-                                    </div>
+                    </section>
+
+                    <!-- Example of nested vertical slides -->
+
+
+                    <section>
+                        <section>
+                            <h2>Trabajo Creativo</h2>
+                            <p>
+                                Si eres un diseñador, desarrollador o programador,
+                                entonces has pasado por los pasos de:
+                            </p>
+
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                         height="42" class="animated infinite bounce"/>
+                                    <p>
+                                        <small><strong>crear</strong></small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                         height="42" class="animated infinite flip"/>
+                                    <p>
+                                        <small><strong>Guardar</strong></small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                         height="42" class="animated infinite bounce"/>
+                                    <p>
+                                        <small><strong>Editar</strong></small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                         height="42" class="animated infinite flip"/>
+                                    <p>
+                                        <small><strong>Guardar Nuevamente</strong></small>
+                                    </p>
                                 </div>
 
                             </div>
 
-                            <div class="seq-content seq-valign" data-seq>
+                            <h4>¿Verdad que sí?</h4>
+                            <p>Incluso me atrevo a decir que
+                                has guardado el mismo documento
+                                con otro nombre... ¿verdad?</p>
+                        </section>
+                        <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+                            <h2>No mientas.... jejejej</h2>
+                            <p style="background-color: #3e495f; opacity: 0.6; color:white;">Algo como esto hemos hecho alguna vez en nuestra vidas</p>
 
-                                <div class="seq-instruction">
+                        </section>
 
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
+                        <section data-background="{{ asset('images/course/reguardado1.jpg') }}">
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Terminas el Trabajo</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Te hacen correcciones</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Y al hacer las
+                                correcciones...</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el
+                                trabajo</p>
+                        </section>
 
-                                        <h2>{{ inscripcion.idCursoGrupo.idCurso.nombre }}</h2>
+                        <section data-background="{{ asset('images/course/reguardado2.jpg') }}">
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Te lo vuelven a corregir</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Le haces los cambios</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Y otra vez...</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el
+                                trabajo</p>
+                        </section>
 
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
+                        <section data-background="{{ asset('images/course/reguardado3.jpg') }}">
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Y así sucesivamente</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Hasta tener un nombre largo</p>
+                            <p class="fragment fade-left" data-autoslide="2500"
+                               style="background-color:black; color:white; opacity:0.6;">Difícil de manejar y
+                                controlar</p>
+                        </section>
+                    </section>
 
-                                    <h3>Obteniendo un Repositorio.</h3>
+                    <section>
+                        <h2>Te ha pasado ¿verdad?</h2>
+                        <p>Sin darte cuenta, estabas utilizando tu propio
+                            sistema manual para manejar los cambios de tus archivos...
+                            pero es muy difícil de controlar.  Por eso nacieron los sistemas
+                            automatizados controladores de versiones.</p>
+                    </section>
 
-                                    <div class="seq-step">
-                                        <p>
-                                            Podemos obtener un proyecto GIT de dos maneras.
-                                            La primera sería tener un proyecto o un directorio (carpeta)
-                                            e inicializarlo con GIT.<br>  La segunda manera sería "clonar"
-                                            un repositorio Git existente desde otro servidor.                                            
-                                            <a href="#" title="" class="seq-next">
-                                                Primera manera →</a>
-                                        </p>
-                                    </div>
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="color:black">¿Que es un Controlador de Versiones?</h2>
+                        </section>
+                        <section>
+                            <p>Un Controlador de Versiones (VCS en inglés)
+                                es un sistema que registra los cambios
+                                ocurridos durante la <strong>creación, guardado,
+                                    editado y guardado</strong> nuevamente en uno o varios
+                                archivos. </p>
+                        </section>
+                        <section
+                                data-background="http://33.media.tumblr.com/d6e357b4974443d8e972bd39a87ec17a/tumblr_n4f2rhFzgC1tvnszbo2_250.gif">
+                            <h2 style="color:white; background-color: #3e495f; opacity: 0.6;">Excelente verdad... y no has <strong>visto los beneficios</strong></h2>
+                        </section>
+                    </section>
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/benefits.gif') }}">
+                            <h2 style="color:white; background-color: #3e495f; opacity: 0.6;"><strong>Algunos Beneficios al usar Controladores de Versiones</strong></h2>
+                        </section>
+                        <section data-background="{{ asset('images/course/gif/equipo.gif') }}">
+                            <h2><strong>Colaboración</strong></h2>
+                            <p style="background-color:black; color:white; opacity:0.6;">
+                                Con un CVS tu equipo de trabajo o tu, pueden trabar libremente
+                                en el mismo archivo sin tropezarse, esperar que alguno termine y sin pisarse los pies".
+                            </p>
+                        </section>
+                        <section data-background="{{ asset('images/course/gif/tranquilo.gif') }}">
+                            <h2>Respaldar</h2>
+                            <p style="background-color:black; color:white; opacity:0.6;">
+                                Si hay un incendio o perdistes la información, puedes trabajar
+                                tranquilo.... es casi imposible equivocarse o perder por
+                                completo el trabajo. <strong>Puedes trabajar relajado.</strong>
+                            </p>
+
+                        </section>
+
+                        <section data-background="{{ asset('images/course/incendioGit.jpg') }}">
+                            <h3>
+
+                            </h3>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/tellType.gif') }}">
+                            <h2 style="color:black;">Descripción</h2>
+                            <p style="background-color:black; color:white; opacity:0.6;">
+                                cada vez que vas a guardar los cambios en tu VCS, este
+                                te solicita que escribas una descripción de los cambios
+                                que has realizado y así tener la "historia" de los cambios
+                                de tu proyecto.
+                            </p>
+                        </section>
+
+
+                    </section>
+                    <section>
+                        <section>
+                            <h2>Tipos de Controlador de Versiones</h2>
+                            <p>(barra espaciadora para ver cada animación)</p>
+
+                        </section>
+                        <section id="vcs-local"
+                                 data-background-video="{{ asset('assets/vendor/moovly/videos/local.webm') }}">
+
+                        </section>
+                        <section id="vcs-centralizado"
+                                 data-background-video="{{ asset('assets/vendor/moovly/videos/central.webm') }}">
+
+                        </section>
+
+
+                        <section data-background="{{ asset('images/course/gif/centralizedDistributed2.gif') }}">
+                        </section>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
+                        <h3 style="background-color:black; color:white; opacity:0.6;">Nacimiento de GIT</h3>
+                        <p style="background-color:black; color:white; opacity:0.6;">
+                            La historia del nacimiento de GIT es muy interesante.
+                            Te invitamos a leer la historia presionando en el botón
+                        </p>
+                        <a class="btn btn-primary btn-block btn-lg" data-toggle="modal"
+                           data-target=".bs-example-modal-lg">Leer Historia de GIT</a>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/queGit.jpg') }}">
+                        <h1 style="color:black;">Entonces <br>¿Que es GIT?</h1>
+                    </section>
+
+                    <section>
+                        <h2>GIT</h2>
+                        <p>
+                            Git <em>(pronunciado "guit")</em> es un software de control de versiones
+                            diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad
+                            del mantenimiento de versiones de aplicaciones cuando éstas tienen un gran
+                            número de archivos de código fuente.
+                        </p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/terminal.gif') }}">
+                        <h2>¡Advertencia! Este curso usa extensivamente el Terminal</h2>
+                        <p style="background-color:black; color:white; opacity:0.6;">Los comandos de git serán ejecutadas en la consola  o terminal y
+                            <strong>debemos aprender a usarla</strong></p>
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/noTeVayas.gif') }}">
+                        <h2>Alto!!!!!</h2>
+                        <p style="background-color:black; color:white; opacity:0.6;">
+                            No te vayas todavía.... Espera
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Es cierto</h2>
+                        <p>
+                            Existen interfaces gráficas, pero, pero... pero...<br>
+                            te recomiendo aprender
+                            a usar la <strong>consola</strong>.<br>
+                            Te explico, si usas la consola puedes
+                            exportar todos esos conocimientos cualquier software gráfico de git,
+                            pero no pasa lo mismo si es viceversa... </p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/terminal.gif') }}">
+                        <p style="background-color:white; color:black; opacity:0.6;">
+                            Así que sin miedo <br> a usar
+                            la consola o terminal..
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/installGit.gif') }}">
+                        <h3>Antes de usar Git, primero debemos instalarlo</h3>
+                        <p style="background-color:black; color:white; opacity:0.6;">
+                            En este curso, <strong>GIT ya está instalado</strong> y listo para
+                            usar (no tienes que instarlo en tu máquina si no quieres), de todas formaspero te mostramos
+                            los pasos en los distintos Sistemas Operativos para que lo instales y pongas
+                            en práctica lo aprendido.</p>
+                    </section>
+                    <section>
+                        <h3>Instalación de GIT</h3>
+                        <div>
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                                          data-toggle="tab">Linux</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                                           data-toggle="tab">Mac</a></li>
+                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                                           data-toggle="tab">Windows</a></li>
+                                <li role="presentation"><a href="#mas" aria-controls="messages" role="tab"
+                                                           data-toggle="tab">Más</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                    Si usas Fedora puedes ejecutar:<br>
+                                    <pre><code class="hljs"
+                                               style="word-wrap: break-word;">$ sudo yum install git-all</code></pre>
+
+                                    En el caso "Debian" u alguna distribución basada en él:<br>
+                                    <pre><code class="hljs" style="word-wrap: break-word;">$ sudo apt-get install git-all</code></pre>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="profile">
+                                    La manera más sencilla sería instalar Xcode Command Line Tools y luego
+                                    intentar correr git desde el terminal. Si git no está instalado, entonces
+                                    emergerá una ventana en donde se puede instalar.
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="messages">
+                                    Para instalarlo en Windows basta con dirigirse a la página de descarga
+                                    de <a href="http://git-scm.com/download/win">git para windows</a> y
+                                    ejecutar el instalador
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade" id="mas">
+                                    Para mayor información sobre algun Sistema Operativo diferente a los
+                                    mencionados u alguna otra forma de instalación, dirigirse a la página
+                                    de <a href="https://git-scm.com/downloads"> descargas de git</a> donde
+                                    encontraremos información extendida sobre el tema.
                                 </div>
 
                             </div>
-                        </li>
 
-                        <li class="seq-step2" id="step2">
-                            <div class="seq-code-pane seq-valign">
+                        </div>
+                    </section>
+                    <section data-state="actividad0"
+                             data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h2>Por fin... Manos a la obra</h2>
 
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
+                    </section>
 
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>.seq-out .content {</span>
-                                            <span class="seq-code-1">transform: translateY(-100%);</span>
-                                            <span class="seq-code-1">transition: .2s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>.content {</span>
-                                            <span class="seq-code-1">transform: translateY(100%);</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>.seq-in .content {</span>
-                                            <span class="seq-code-1">transform: translateY(0);</span>
-                                            <span class="seq-code-1">transition: .25s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-                                </div>
-
+                    <section data-state="actividad1">
+                        <h2>Actividad en la Consola 1</h2>
+                        <h3>Comprobar si git está instalado</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+                        <p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git --version</code></pre>
+                                </a>
                             </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Repositorio directorio existente </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-                                    <div class="seq-step">                                        
-                                        
-                                        <p>
-                                            Si queremos comenzar a seguir, mantener y/o vigilar
-                                            un proyecto con GIT, necesitamos ubicarnos 
-                                            primeramente dentro de ese directorio y escribir 
-                                            el comando <code>git init</code><br>
-                                            para nuestro ejemplo, vamos a empezar
-                                            a crear un repositorio Git en un
-                                            directorio denominado "Octonautas"
-                                            <a href="#" title="" class="seq-next">
-                                                Hagamos el ejercicio →</a>
-                                        </p>
-                                        
-
-
-                                    </div>
-                                </div>
-
+                            <div class="col-xs-2">
+                                <i id="act1done" style="color:greenyellow;" class=""></i>
                             </div>
-                        </li>
+                        </div>
+                        <p class="fragment fade-left" data-autoslide="2500">si git está instalado, este comando nos dará
+                            como resultado la versión instalada de git</p>
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
 
-                        <li class="seq-step3" id="step3">
-                            <div class="seq-code-pane seq-valign">
 
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2>Felicitaciones... ya escribistes tu primer comando</h2>
+                    </section>
 
-                                <div class="seq-code">
 
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.seq-in .rotate {</span>
-                                            <span class="seq-code-1">animation-name: rotate;</span>
-                                            <span class="seq-code-1">animation-duration: 1s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
+                    <section>
+                        <section>
+                            <h2>Inicializar GIT</h2>
 
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.seq-in .fade {</span>
-                                            <span class="seq-code-1">animation-name: fade;</span>
-                                            <span class="seq-code-1">animation-duration: 1s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
+                        </section>
+                        <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
+                            <h2>Si nosotros queremos que Git siga y <strong>versione</strong> nuestro proyecto</h2>
+                        </section>
 
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.seq-in .threed {</span>
-                                            <span class="seq-code-1">animation-name: threed;</span>
-                                            <span class="seq-code-1">animation-duration: 1s;</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-                                </div>
+                        <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
+                            <h2>debemos inicializarlo <strong><u>dentro del directorio raiz del proyecto</u></strong>
+                            </h2>
+                        </section>
 
+                        <section data-background="{{ asset('images/course/gif/detective.gif') }}">
+                            <h2 style="color:black;">Así git podrá seguir como a un detective, nuestros cambios</h2>
+                        </section>
+                        <section>
+                            <h2>Recuerda...</h2>
+                            <p>Para inicializar GIT, debemos estar dentro del directorio
+                                de nuestro proyecto a versionar.</p>
+                            <h3>Importante:</h3>
+                            <p>
+                                Si nuestro proyecto está avanzado o ya comenzado,
+                                también podemos comenzar a gestionarlo a través del
+                                mismo comando.
+                            </p>
+
+                        </section>
+                    </section>
+
+
+                    <section data-state="actividad2">
+                        <h2>Actividad en la Consola 2</h2>
+                        <h3 class="fragment fade-up" data-autoslide="2500">Adivina que vamos a hacer.....</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+                        <p class="fragment fade-left" data-autoslide="2500">escribe el comando para inicializar a
+                            GIT</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git init</code></pre>
+                                </a>
                             </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>¿ Sistema Controlador de Versiones (VCS)?</h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-                                    <div class="seq-step">
-                                        <p> 
-                                            Un Controlador de Versiones (VCS en inglés) 
-                                            es un sistema que registra los cambios 
-                                            ocurridos durante la creación, guardado, 
-                                            editado y guardado nuevamente en uno o varios 
-                                            archivos. 
-                                        </p>
-                                        <br>
-                                        <p class="seq-tip seq-bulb">
-                                            Tip: Al usar un controlador de versiones 
-                                            significa también que si te equivocas o pierdes
-                                            el/los archivo(s), puedes recuperarlos 
-                                            facilmente.
-                                        </p>
-                                    </div>
-
-
-                                </div>
+                            <div class="col-xs-2">
+                                <i id="act2done" style="color:greenyellow;" class=""></i>
                             </div>
-                        </li>
+                        </div>
+                        <p class="fragment fade-left" data-autoslide="2500">
+                            para indicarle a git que le siga la pista a todo nuestro directorio.
+                            En nuestro caso el proyecto tiene como nombre tu usuario ("{{ app.user.userName }} ")
+                        </p>
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
 
-                        <li class="seq-step4" id="step4">
-                            <div class="seq-code-pane seq-valign">
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
+                            <h3 style="background-color:black; color:white; opacity:0.6;">
+                                ¿Te distes cuenta del mensaje?
+                            </h3>
+                        </section>
+                        <section>
+                            <h3>"Veamos un ejemplo desde 0"</h3>
+                            <p>es decir, creamos la carpeta del proyecto, entramos a la
+                                carpeta del proyecto e inicializamos git</p>
+                        </section>
+                        <section data-background-size="cover"
+                                 data-background="{{ asset('images/course/gif/gitinit.gif') }}">
+                            <br><br><br><br><br>
+                            <ul>
+                                <li><strong>mkdir:</strong> para crear la carpeta</li>
+                                <li><strong>cd:</strong> para cambiar al directorio del proyecto</li>
+                                <li><strong>git init:</strong> para inicializar el proyecto</li>
+                                <li>y allí tenemos el mensaje</li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h2>¿Que acaba de ocurrir?</h2>
+                            <p>
+                                Cuando ejecutamos git init, se creó
+                                un directorio oculto <strong><u>.git</u></strong> en la raiz
+                                de nuestro proyecto que contiene los
+                                metadatos necesarios para seguir los
+                                cambios de nuestro repositorio.
+                            </p>
+                        </section>
 
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Mostar Código
-                                </button>
+                        <section>
+                            <h2>.git</h2>
+                            <p> puedes consultar el contenido del directorio
+                                oculto desde "tu directorio". A lo largo del curso explicaremos su contenido...
+                                no te preocupes</p>
+                        </section>
+                    </section>
 
-                                <div class="seq-code">
+                    <section data-background="{{ asset('images/course/gif/gitConfig2.gif') }}">
+                        <h2 style="color:red">Configurar Git</h2>
+                        <p style="color:black">Luego de Instalado, git debe saber <strong>quien eres</strong>
+                            y donde <strong>ubicarte</strong>, para cuando sea hora de registrar los cambios
+                            esa información quede registratada también...<br>Debemos configurar
+                            nuestro nombre y nuestra dirección de correo.
+                        </p>
+                    </section>
 
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span><strong>Local</strong></span>
-                                            <span class="seq-code-1">Ocurre dentro de tu sólo computadora</span>                                           
-                                        </code>
-                                    </div>
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-
-                                            <span><strong>Centralizado</strong></span>
-                                            <span class="seq-code-1">Un Servidor Central</span>
-                                            <span class="seq-code-1">Multiple clientes</span>
+                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
+                        <br><br><br><br>
+                        <h3 style="background-color:black; color:white; opacity:0.6;">Espero estes tomando <strong
+                                    style="color:red">nota...</strong>
+                            (esto sale en <strong style="color:red">el quiz)</strong></h3>
+                    </section>
 
 
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-
-                                            <span><strong>Distribuido</strong></span>
-                                            <span>Todas la máquinas tienen registro de los cambios</span>
-
-                                        </code>
-                                    </div>
-                                </div>
-
+                    <section data-state="actividad3" class="fragment fade-up">
+                        <h2>Actividad en la Consola 3</h2>
+                        <h3 class="fragment fade-up" data-autoslide="2500">Configuración inicial de GIT</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+                        <p class="fragment fade-left" data-autoslide="2500">Comando para configurar tu nombre</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git config --global user.name "TuNombre"</code></pre>
+                                </a>
                             </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Tipos de Controladores de Versiones</h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-                                    <div class="seq-step">
-                                        <p>Lo interesante de Git Radica en su tipo de Sistema Controlador, pero para entenderlo, primero debemos familiarizarnos con los otros tipos existentes</p>
-                                        <br>
-
-                                        <p>Tipos de VCS: (hacer clic para ver animación)</p>
-                                        <a id="animacion_local" href="#" data-toggle="modal" data-target=".bs-modal-video"  class="seq-button seq-button-highlight">Local<i class="fa fa-laptop"></i></a>
-                                        <a href="#" data-toggle="modal" data-target=".bs-modal-video2" class="seq-button seq-button-link">Centralizado<i class="fa fa-download"></i></a>
-                                        <a href="#"  class="seq-button seq-button-highlight">Distribuido <i class="fa fa-github"></i></a>
-                                    </div>
-
-
-                                                                 
-                                </div>
+                            <div class="col-xs-2">
+                                <i id="act3-1done" style="color:greenyellow;" class=""></i>
                             </div>
-                        </li>
-
-                        <li class="seq-step5" id="step5">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
+                        </div>
+                        <p class="fragment fade-left" data-autoslide="2500">Luego este comando para configurar tu
+                            email</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git config --global user.email "tuCorreo@tuProveedor.xxx"</code></pre>
+                                </a>
                             </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>La historia de GIT </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-
-
-                                    <div class="seq-step"> 
-                                        <p>Es muy interesante la historia de como se originó GIT y para ello
-                                            te la vamos a presentar a través de una revista digital (que posiblemente
-                                            haga menos aburrido tener que leer) puedes pasar las páginas con el ratón o a través
-                                            de las teclas de dirección en el teclado.</p>
-                                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".bs-example-modal-lg">Leer Historia de GIT</button>
-
-
-                                    </div>
-                                </div>
-
+                            <div class="col-xs-2">
+                                <i id="act3-2done" style="color:greenyellow;" class=""></i>
                             </div>
-                        </li>
-
-
-                        <li class="seq-step6" id="step6">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span><strong>Local</strong></span>
-                                            <span class="seq-code-1">Ocurre dentro de tu sólo computadora</span>                                           
-                                        </code>
-                                    </div>
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-
-                                            <span><strong>Centralizado</strong></span>
-                                            <span class="seq-code-1">Un Servidor Central</span>
-                                            <span class="seq-code-1">Multiple clientes</span>
-
-
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-
-                                            <span><strong>Distribuido</strong></span>
-                                            <span>Todas la máquinas tienen registro de los cambios</span>
-
-                                        </code>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Nociones básicas de Git</h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-                                    <div class="seq-step">
-                                        <p>Es muy importante tener recordar como funciona GIT, como registra la información y como piensa para que nuestro aprendizaje sea mas fluido.</p>
-                                        <br>
-
-                                        <p>¿Cómo funciona GIT?: (hacer clic para ver animación)</p>
-                                        <a id="animacion_local" href="#"  class="seq-button seq-button-highlight">Fotografías<i class="fa fa-laptop"></i></a>
-                                        <a href="#" class="seq-button seq-button-link">Local<i class="fa fa-download"></i></a>
-                                        <a href="#"  class="seq-button seq-button-highlight">Los Estados <i class="fa fa-github"></i></a>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="seq-step7" id="step7">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>La linea de  comandos </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-
-
-                                    <div class="seq-step"> 
-                                        <p>
-                                            En este curso interactivo, vamos
-                                            a utilizar el interprete de comandos o terminal, debido 
-                                            a que en él, se pueden ejecutar todos los
-                                            comandos de GIT  (la mayoría de las interfaces
-                                            gráficas u otros clientes, sólo implemente un grupo de comandos).
-                                            Si aprendes a usar el Terminal entonces es muy sencillo aprender
-                                            a utilizar un cliente de GIT mientras que al revés es practicamente imposible.
-
-                                        </p>                                        
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-
-                        <li class="seq-step8" id="step8">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <div class="seq-title">
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-open.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-open.png') }}" alt="An opening code bracket" />
-                                        </object>
-
-                                        <h2>Instalar GIT </h2>
-
-                                        <object class="seq-instruction-icon" data="{{ asset('images/course/bracket-close.svg') }}" type="image/svg+xml">
-                                            <img src="{{ asset('images/course/bracket-close.png') }}" alt="A closing code bracket" />
-                                        </object>
-                                    </div>
-
-
-
-
-
-                                    <div class="seq-step"> 
-                                        <p>
-                                            Antes de usar GIT, debes tenerlo disponible en
-                                            nuestras máquinas.
-                                        </p>       
-
-                                        <div>
-
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Linux</a></li>
-                                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Mac</a></li>
-                                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Windows</a></li>    
-                                                <li role="presentation"><a href="#mas" aria-controls="messages" role="tab" data-toggle="tab">Más</a></li>    
-                                            </ul>
-
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane fade in active" id="home">
-                                                    Si usas Fedora puedes ejecutar:<br>
-                                                    <code>$ sudo yum install git-all</code><br>
-                                                    Si estas en debian u alguna distribución basada en Debian:<br>
-                                                    <code>$ sudo apt-get install git-all</code>          
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade" id="profile">
-                                                    La manera más sencilla sería instalar Xcode Command Line Tools y luego
-                                                    intentar correr git desde el terminal.  Si git no está instalado, entonces
-                                                    emergerá una ventana en donde se puede instalar.
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane fade" id="messages">
-                                                    Para instalarlo en Windows basta con dirigirse a la página de descarga
-                                                    de <a href="http://git-scm.com/download/win">git para windows</a> y
-                                                    ejecutar el instalador 
-                                                </div>
-
-                                                <div role="tabpanel" class="tab-pane fade" id="mas">
-                                                    Para mayor información sobre algun Sistema Operativo diferente a los
-                                                    mencionados u alguna otra forma de instalación, dirigirse a la página
-                                                    de <a href="https://git-scm.com/downloads"> descargas de git</a> donde
-                                                    encontraremos información extendida sobre el tema.
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li class="seq-step9" id="step9">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Este es nuestro directorio</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-
-
-
-
-
-
-                                    <div class="seq-step"> 
-
-
-                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingOne">
-                                                    <h4 class="panel-title">
-                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                            ¿Configurar GIT?
-                                                        </a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                                    <div class="panel-body">
-                                                        Ahora que tenemos GIT instalado, debemos configurar ciertos elementos del 
-                                                        ambiente de trabajo para controlar los aspectos de como opera y se ve GIT.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingTwo">
-                                                    <h4 class="panel-title">
-                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                            git config
-                                                        </a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                    <div class="panel-body">
-                                                        Git incluye una herramienta denominada <code>git config</code> la cual permite configuar las variables del entorno de trabajo.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingThree">
-                                                    <h4 class="panel-title">
-                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                            ¿Que vamos a configurar?
-                                                        </a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                    <div class="panel-body">
-                                                        <ul>
-                                                            <li>
-                                                                <strong>Nuestra identidad (usuario y correo):</strong> Git lo utiliza para amarrar tus datos a los commits.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Nuestro editor:</strong> Cual es nuestro editor de texto para escribir el mensaje de nuestros cambios.
-                                                            </li>
-                                                            <li>
-                                                                <strong>Revisar la configuración:</strong> ¿Con cuál comando reviso mi información?
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-
-                        <li class="seq-step10" id="step10">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq id="local1">
-                                        <i class="seq-step-icon">1</i>
-                                        <code>
-                                            <span>Los Comandos deben ejecutarse en la consola</span>                                            
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local2">
-                                        <i class="seq-step-icon">2</i>
-                                        <code>
-                                            <span>Este es el archivo que vamos a trabajar</span>                                                                                       
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local3">
-                                        <i class="seq-step-icon">3</i>
-                                        <code>
-                                            <span>Hacemos unos cambios y los guardamos</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local4">
-                                        <i class="seq-step-icon">4</i>
-                                        <code>
-                                            <span>Hacemos más cambios y los guardamos nuevamente</span>                                           
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq id="local5">
-                                        <i class="seq-step-icon">5</i>
-                                        <code>
-                                            <span>Y así sucesivamente hasta terminar.</span>
-                                        </code>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-
-
-
-
-
-
-                                    <div class="seq-step"> 
-
-                                        <p>Actividad en la Consola o Terminal</p>
-                                        <div id="wizard">
-                                            <h1>Primero</h1>
-                                            <div class="step-content">
-                                                <div class="text-center m-t-md">
-                                                    <h2>¿Git Instalado?</h2>
-                                                    <p>
-                                                        Para ver si git está instalado en nuestra
-                                                        computadora, preguntamos por su versión
-                                                        con el comando <br>
-                                                        <code>git --version</code>
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <h1>Segundo</h1>
-                                            <div class="step-content">
-                                                <div class="text-center m-t-md">
-                                                    <h2>¿Quien soy?</h2>
-                                                    <p>
-                                                        Debemos configurar nuestro nombre para que git sepa
-                                                        quien está realizando cambios<br>
-                                                        <code>git config --global user.name TuNombre</code>
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <h1>Tercero</h1>
-                                            <div class="step-content">
-                                                <div class="text-center m-t-md">
-                                                    <h2>¿cómo te ubico?</h2>
-                                                    <p>
-                                                        Para contactar al desarrolldor que hizo los cambios
-                                                        es importante configurar nuestro correo<br>
-                                                        <code>git config --global user.email TuMail</code>
-                                                </div>
-                                            </div>
-
-
-                                            <h1>Cuarto</h1>
-                                            <div class="step-content">
-                                                <div class="text-center m-t-md">
-                                                    <h2>¿Mi configuración?</h2>
-                                                    <p>
-                                                        Para revisar mi configuración basta
-                                                        con ejecutar <br>
-                                                        <code>git config --list</code>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </li>
-
-
-
-                        <li class="seq-step11" id="step11">
-                            <div class="seq-code-pane seq-valign">
-
-                                <button type="button" class="seq-view-code">
-                                    <i class="fa fa-angle-double-up"></i> Show Code
-                                </button>
-
-                                <div class="seq-code">
-
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.browser-icon {</span>
-                                            <span class="seq-code-1">transform: scale(0);</span>
-                                            <span class="seq-code-1">transition: .2s;</span>
-                                            <span class="seq-code-1">transition-timing-function: cubic-bezier(.55,1.58,.63,.99);</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <code>
-                                            <span>.seq-in .browser-icon {</span>
-                                            <span class="seq-code-1">transform: scale(1);</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                    <div class="seq-code-block" data-seq>
-                                        <i class="seq-step-icon">8</i>
-                                        <code>
-                                            <span>.seq-fallback {</span>
-                                            <span class="seq-code-1">/* Fallback specific styles */</span>
-                                            <span>}</span>
-                                        </code>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="seq-content seq-valign" data-seq>
-
-                                <div class="seq-instruction">
-
-                                    <h3>Supported in modern browsers</h3>
-                                    <ul class="seq-examples seq-browsers">
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-1" src="images/browsers/firefox_64x64.png" srcset="images/browsers/firefox_64x64.png 1x, images/browsers/firefox_128x128.png 2x" alt="Mozilla Firefox browser logo" width="64" height="64" />
-                                            <p>Firefox</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-2" src="images/browsers/opera_64x64.png" srcset="images/browsers/opera_64x64.png 1x, images/browsers/opera_128x128.png 2x" alt="Opera browser logo" width="64" height="64" />
-                                            <p>Opera</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-3" src="images/browsers/safari_64x64.png" srcset="images/browsers/safari_64x64.png 1x, images/browsers/safari_128x128.png 2x" alt="Apple Safari browser logo" width="64" height="64" />
-                                            <p>Safari</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-4" src="images/browsers/chrome_64x64.png" srcset="images/browsers/chrome_64x64.png 1x, images/browsers/chrome_128x128.png 2x" alt="Google Chrome browser logo" width="64" height="64" />
-                                            <p>Chrome</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-5" src="images/browsers/edge_64x64.png" srcset="images/browsers/edge_64x64.png 1x, images/browsers/edge_128x128.png 2x" alt="Microsoft Edge browser logo" width="64" height="64" />
-                                            <p>Edge/<br class="seq-small-break" />IE10+</p>
-                                        </li>
-                                    </ul>
-
-                                    <h3>With a fallback theme for legacy browsers</h3>
-                                    <div class="seq-step">
-                                        <p class="seq-tip seq-bulb">A traditional side-to-side slider is automatically shown when a browser doesn't support CSS transitions and transforms. Use the <code>.seq-fallback</code> class to style Sequence.js in older browsers<sup class="seq-step-icon">8</sup>.</p>
-                                    </div>
-
-                                    <ul class="seq-examples seq-browsers">
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-6" src="images/browsers/ie9_64x64.png" srcset="images/browsers/ie9_64x64.png 1x, images/browsers/ie9_128x128.png 2x" alt="Microsoft Internet Explorer 9 browser logo" width="64" height="64" />
-                                            <p>IE9</p>
-                                        </li>
-                                        <li>
-                                            <img class="seq-browser-icon seq-browser-icon-7" src="images/browsers/ie8_64x64.png" srcset="images/browsers/ie8_64x64.png 1x, images/browsers/ie8_128x128.png 2x" alt="Microsoft Internet Explorer 8 browser logo" width="64" height="64" />
-                                            <p>IE8</p>
-                                        </li>
-                                    </ul>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-
-                    </ul>
+                        </div>
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2>Felicitaciones... Tenemos a git instalado y listo para usar.</h2>
+                    </section>
+
+                    <section data-state="qz" data-background="{{ asset('images/course/gif/typing2.gif') }}">
+                        <h2 style="background-color: #B0125E;">Ahora a realizar el Quiz</h2>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
+                        <h2>Felicitaciones... Unidad Terminada.</h2>
+                    </section>
                 </div>
 
-                <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
-                    <button type="button" class="seq-prev" aria-label="Previous"><i class="fa fa-chevron-circle-left"></i> Ant.</button>
-                    <button type="button" class="seq-next" aria-label="Next">Sig <i class="fa fa-chevron-circle-right"></i></button>
-                </fieldset>
             </div>
-
-            <ul role="navigation" aria-label="Pagination" aria-controls="sequence" class="seq-pagination">
-                <li class="seq-current"><a href="#step1" rel="step1" title="Go to slide 1: Intro"><i class="fa fa-bookmark"></i> <span>Intro</span></a></li>
-                <li><a href="#step2" rel="step2" title="Go to slide 2: How It Works"><i class="fa fa-info-circle"></i> <span>Crear</span></a></li>
-                <li><a href="#step3" rel="step3" title="Go to slide 3: Animation"><i class="fa fa-bolt"></i> <span>VCS</span></a></li>
-                <li><a href="#step4" rel="step4" title="Go to slide 4: Responsive/Touch"><i class="fa fa-expand"></i> <span>Tipos</span></a></li>
-                <li><a href="#step5" rel="step5" title="Go to slide 5: Features"><i class="fa fa-cog"></i> <span>Git</span></a></li>
-                <li><a href="#step6" rel="step6" title="Go to slide 6: Support"><i class="fa fa-tablet"></i> <span>Básico</span></a></li>
-                <li><a href="#step7" rel="step7" title="Go to slide 7: Download"><i class="fa fa-arrow-circle-down"></i> <span>Terminal</span></a></li>
-                <li><a href="#step8" rel="step8" title="Go to slide 8: Download"><i class="fa fa-arrow-circle-down"></i> <span>Instalar</span></a></li>
-                <li><a href="#step9" rel="step9" title="Go to slide 9: Download"><i class="fa fa-arrow-circle-down"></i> <span>Configurar</span></a></li>
-            </ul>
 
 
         </div>
@@ -1108,47 +787,52 @@
                     <small>Progreso de este nivel</small>
                     <div class="stat-percent">0%</div>
                     <div class="progress progress-mini">
-                        <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 10%;" class="progress-bar"></div>
+                        <div id="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                             style="width: 10%;" class="progress-bar"></div>
                     </div>
                 </li>
                 <li>
                     <div class="row">
                         <div class="col-lg-5">
-                    Logros disponibles en este Nivel:
-                    </div>
-                        <div class="col-lg-7">
-                    <div class="tooltip-demo">                        
-                        {% set contadorObtenidos = 0 %}
-                        {% for logroD in logrosDisponibles %}
-                            {% set obtenido = false %}
-                            {% for logroO in logrosObtenidos %}                                
-                                {% if logroO.idCursoModuloTemaLogro.id == logroD.id %}
-                                    {% set contadorObtenidos = contadorObtenidos + 1 %}
-                                    {% set obtenido = true %}
-                                {% endif %}                                    
-                            {% endfor %}
-                            {% if not obtenido %}
-                                <span id="{{ logroD.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logroD.nombre }}" class="fa-stack has-badge" data-count="{{ logroD.badge }}">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
-                                </span>
-                            {% else %}                                                                
-                                {% if logroD.id == 2 %}
-                                   <input type="hidden" id="quizOpen" value="true" />
-                                {% endif %}
-                                <span id="{{ logroD.nombreCorto }}"  data-toggle="tooltip" data-placement="top" title="{{ logroD.nombre }}" class="fa-stack has-badge" data-count="{{ logroD.badge }}">
-                                        <i class="fa fa-circle fa-stack-2x text-warning"></i>
-                                        <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
-                                </span>
-                            {% endif %}
-                        {% endfor %}
-                        
-                           {% if contadorObtenidos > 0 %}
-                              <input type="hidden" id="contadorObtenidos" value="{{ contadorObtenidos }}" /> 
-                           {% endif %}
-                    
+                            Logros disponibles en este Nivel:
                         </div>
+                        <div class="col-lg-7">
+                            <div class="tooltip-demo">
+                                {% set contadorObtenidos = 0 %}
+                                {% for logroD in logrosDisponibles %}
+                                    {% set obtenido = false %}
+                                    {% for logroO in logrosObtenidos %}
+                                        {% if logroO.idCursoModuloTemaLogro.id == logroD.id %}
+                                            {% set contadorObtenidos = contadorObtenidos + 1 %}
+                                            {% set obtenido = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if not obtenido %}
+                                        <span id="{{ logroD.nombreCorto }}" data-toggle="tooltip" data-placement="top"
+                                              title="{{ logroD.nombre }}" class="fa-stack has-badge"
+                                              data-count="{{ logroD.badge }}">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    {% else %}
+                                        {% if logroD.id == 2 %}
+                                            <input type="hidden" id="quizOpen" value="true"/>
+                                        {% endif %}
+                                        <span id="{{ logroD.nombreCorto }}" data-toggle="tooltip" data-placement="top"
+                                              title="{{ logroD.nombre }}" class="fa-stack has-badge"
+                                              data-count="{{ logroD.badge }}">
+                                            <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if contadorObtenidos > 0 %}
+                                    <input type="hidden" id="contadorObtenidos" value="{{ contadorObtenidos }}"/>
+                                {% endif %}
+
                             </div>
+                        </div>
                     </div>
                 </li>
 
@@ -1157,7 +841,6 @@
         </div>
 
 
-                        
         <div class="col-lg-5 acomodar">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -1190,7 +873,7 @@
                                 <!-- where the quiz main copy goes -->
 
                                 <a class="button_quiz startQuiz" id="btnQuiz" href="#">Comenzar Quiz!</a>
-                                
+
                             </div>
 
                             <!-- where the quiz gets built -->
@@ -1199,13 +882,17 @@
                         <div class="quizResults">
                             <h3 class="quizScore">Tus Puntos: <span><!-- where the quiz score goes --></span></h3>
 
-                            <h3 class="quizLevel"><strong>Nivel:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
-                            <a class="next_class btn btn-success" id="next_class" <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente Clase!</a>
-                                <input id="inscripcion" type="hidden" value="{{ inscripcion.id }}" />
-                                <input id="url_ajax" type="hidden" value="{{ url('ajax_progreso') }}" />
-                                <input id="url_avance" type="hidden" value="{{ url('ajax_avance') }}" />
-                                <input id="tema_actual" type="hidden" value="{{ temaActual.id }}" />
-                                <input id="url_evaluacion" type="hidden" value="{{ url('ajax_evaluacion') }}" />
+                            <h3 class="quizLevel"><strong>Nivel:</strong> <span><!-- where the quiz ranking level goes --></span>
+                            </h3>
+                            <a class="next_class btn btn-success" id="next_class"
+                               href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente
+                                Clase!</a>
+                            <input id="inscripcion" type="hidden" value="{{ inscripcion.id }}"/>
+                            <input id="url_exp" type="hidden" value="{{ url('gamificacion_add_xp') }}"/>
+                            <input id="url_logro" type="hidden" value="{{ url('gamificacion_add_logro') }}"/>
+                            <input id="url_avance" type="hidden" value="{{ url('ajax_avance') }}"/>
+                            <input id="tema_actual" type="hidden" value="{{ temaActual.id }}"/>
+                            <input id="url_evaluacion" type="hidden" value="{{ url('ajax_evaluacion') }}"/>
                             <div class="quizResultsCopy">
                                 <!-- where the quiz result copy goes -->
                             </div>
@@ -1220,13 +907,23 @@
 
     <div class="row">
         <div class="col-lg-7 acomodar" id="tour4">
-            <div id="sequence" class="seq">
 
-                <div class="seq-screen">
-
-                    <div id="terminal"></div>
-
+            <div class="window" id="console-panel">
+                <div class="topbar">
+                    <div class="icons">
+                        <div class="close"></div>
+                        <div class="hide"></div>
+                        <div class="maximize"></div>
+                    </div>
+                    <p class="wtitle">Terminal</p>
                 </div>
+
+                <pre id="preConsole"></pre>
+                <form id="console">
+                    <div id="currentDirName">{{ currentDirName }}/</div>
+                    <div>{{ currentUser }}$></div>
+                    <div id="command"><input id="inputConsole" type="text" value="" autocomplete="off"></div>
+                </form>
             </div>
 
         </div>
@@ -1283,220 +980,484 @@
             </div>
         </div>
     </div>
-                        
-                        
-                        
-                        
-                        
-    <div class="modal fade bs-modal-video" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
 
-                <video id="myMoov" poster="{{ asset('assets/vendor/moovly/videos/local.jpg') }}"  width="854" height="481" class="video-js vjs-default-skin vjs-big-play-centered vjs-controls-enabled vjs-has-started vjs-user-active" controls preload="none" data-setup='{"children": { "loadingSpinner": true, "controlBar": { "children": {"currentTimeDisplay": false, "timeDivider": false, "durationDisplay": false ,"volumeControl":false, "muteToggle":false}}}}'>                    
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.webm') }}" type='video/webm'/>
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.mp4') }}" type='video/mp4'/>
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.ogg') }}" type='video/ogg'/>
-                    <p class="vjs-no-js">Para poder ver este video, necesita tener habilitado javascript y un navegador actualizado <a href="http://videojs.com/html5-video-support/" target="_blank">que soporte video con HTML 5</a></p>
-                </video>
 
-            </div>
-        </div>
-    </div>
-                    
-                    
-    <div class="modal fade bs-modal-video2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
 
-                <video id="myMoov" poster="{{ asset('assets/vendor/moovly/videos/local.jpg') }}"  width="854" height="481" class="video-js vjs-default-skin vjs-big-play-centered vjs-controls-enabled vjs-has-started vjs-user-active" controls preload="none" data-setup='{"children": { "loadingSpinner": true, "controlBar": { "children": {"currentTimeDisplay": false, "timeDivider": false, "durationDisplay": false ,"volumeControl":false, "muteToggle":false}}}}'>                    
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.webm') }}" type='video/webm'/>
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.mp4') }}" type='video/mp4'/>
-                    <source src="{{ asset('assets/vendor/moovly/videos/local.ogg') }}" type='video/ogg'/>
-                    <p class="vjs-no-js">Para poder ver este video, necesita tener habilitado javascript y un navegador actualizado <a href="http://videojs.com/html5-video-support/" target="_blank">que soporte video con HTML 5</a></p>
-                </video>
-
-            </div>
-        </div>
-    </div>
 
 
 
 {% endblock %}
 
-{% block javascripts %} 
-    {{ parent() }}    
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="{{ asset('assets/vendor/elfinder/js/elfinder.full.js') }}"type="text/javascript" ></script>
-    <script src="{{ asset('assets/vendor/elfinder/js/i18n/elfinder.es.js') }}"type="text/javascript" ></script>
-    <script src="{{asset('assets/vendor/terminal/jquery.terminal-min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('assets/vendor/terminal/jquery.mousewheel-min.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/sequencejs/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/sequencejs/hammer.min.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/sequencejs/sequence.min.js')}}" type="text/javascript"></script>    
-    <script src="{{asset('assets/vendor/sequencejs/sequence-theme.intro.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/modernizr/modernizr.2.5.3.min.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/steps/jquery.steps.min.js')}}" type="text/javascript"></script>      
-    <script src="{{asset('assets/vendor/quiz/slickQuiz-config.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/quiz/slickQuiz.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/quiz/master.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/toastr/toastr.min.js')}}" type="text/javascript"></script>  
-    <script src="{{asset('assets/vendor/moovly/js/videojs/video.js')}}" type="text/javascript"></script>
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/vendor/elfinder/js/elfinder.full.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/elfinder/js/i18n/elfinder.es.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('assets/vendor/revealjs/lib/js/head.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/revealjs/js/reveal.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/sweetAlert/sweetalert.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/modernizr/modernizr.2.5.3.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/steps/jquery.steps.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/master.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/moovly/js/videojs/video.js') }}" type="text/javascript"></script>
+
 
 
 
     <script type="text/javascript">
 
+
+        /**
+         *  History of commands.
+         */
+        (function ($) {
+            var maxHistory = 100;
+            var position = -1;
+            var currentCommand = '';
+            var addCommand = function (command) {
+                var ls = localStorage['commands'];
+                var commands = ls ? JSON.parse(ls) : [];
+                if (commands.length > maxHistory) {
+                    commands.shift();
+                }
+                commands.push(command);
+                localStorage['commands'] = JSON.stringify(commands);
+            };
+            var getCommand = function (at) {
+                var ls = localStorage['commands'];
+                var commands = ls ? JSON.parse(ls) : [];
+                if (at < 0) {
+                    position = at = -1;
+                    return currentCommand;
+                }
+                if (at >= commands.length) {
+                    position = at = commands.length - 1;
+                }
+                return commands[commands.length - at - 1];
+            };
+
+            $.fn.history = function () {
+                var input = $(this);
+                input.keydown(function (e) {
+                    var code = (e.keyCode ? e.keyCode : e.which);
+
+                    if (code == 38) { // Up
+                        if (position == -1) {
+                            currentCommand = input.val();
+                        }
+                        input.val(getCommand(++position));
+                        return false;
+                    } else if (code == 40) { // Down
+                        input.val(getCommand(--position));
+                        return false;
+                    } else {
+                        position = -1;
+                    }
+                });
+
+                return input;
+            };
+
+            $.fn.addHistory = function (command) {
+                addCommand(command);
+            };
+        })(jQuery);
+
+
+        /**
+         * Windows variables.
+         */
+        window.topDir = '{{ currentDir }}';
+        window.currentDir = '{{ currentDir }}';
+        window.currentDirName = window.currentDir.split('/').pop();
+        window.currentUser = "{{ app.user.username }}";
+        window.titlePattern = "* — console";
+        window.document.title = window.titlePattern.replace('*', window.currentDirName);
+        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false};
+        var comandos = {version: false, init: false, name: false, email: false};
+
         jQuery(function ($) {
-            
-            
+
+
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                center: true,
+                autoSlideStoppable: false,
+                slideNumber: false,
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/lib/js/classList.js') }}", condition: function () {
+                        return !document.body.classList;
+                    }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/markdown/marked.js') }}", condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/markdown/markdown.js') }}",
+                        condition: function () {
+                            return !!document.querySelector('[data-markdown]');
+                        }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/highlight/highlight.js') }}",
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    },
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/zoom-js/zoom.js') }}", async: true},
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/notes/notes.js') }}", async: true}
+                ]
+            });
+
+
+            var $configUser = false;
+            var screen = $('#preConsole');
+            var input = $('#inputConsole').focus();
+            var form = $('#console');
+
+            input.history();
+
+            form.submit(function () {
+
+
+                var command = $.trim(input.val());
+                if (command == '') {
+                    return false;
+                }
+
+                $("<code id='preCode'>" + window.currentDirName + "&nbsp;" + window.currentUser + "$&nbsp;" + command + "</code><br>").appendTo(screen);
+
+                //scroll();
+                input.val('');
+                form.hide();
+                input.addHistory(command);
+                var data3 = {command: command, cd: window.currentDir, user: window.currentUser, comandos: comandos};
+                $.ajax({
+                    method: "GET",
+                    url: "{{ url('ajax_console') }}",
+                    async: true,
+                    cache: false,
+                    data: data3,
+                    //timeout: 50000,
+                    success: function (data) {
+                        console.log(data);
+
+                        var pattern = /^set current directory (.+?)$/i;
+                        if (matches = data.salida.match(pattern)) {
+                            console.log(matches);
+                            window.currentDir = matches[1];
+                            window.currentDirName = window.currentDir.split('/').pop() + "/";
+                            $('#currentDirName').text(window.currentDirName);
+                            window.document.title = window.titlePattern.replace('*', window.currentDirName);
+                        } else {
+                            if (data.error === "") {
+                                if (data.comando) {
+                                    //console.log(comandos);
+                                    //console.log(data.comando.match($gitConfigUser));
+                                    if (data.comando.match($comandoGit)) {
+                                        if (data.comando.match($gitVersion)) {
+                                            toggleNav(true);
+                                            $("#act1done").addClass('fa fa-check-circle');
+                                            if (!actividades['actividad1'])
+                                                add_logro("comandos", "comandos1.png");
+                                            comandos['version'] = true;
+                                            actividades['actividad1'] = true;
+                                            $("#progressbar").css("width", "35%");
+                                            $("#progressbar").attr("aria-valuenow", "35%");
+                                            $('.stat-percent').html('35%');
+
+                                            //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                        } else if (data.comando.match($gitInit)) {
+                                            if (comandos['version']) {
+                                                $("#act2done").addClass('fa fa-check-circle');
+                                                if (!actividades['actividad2'])
+                                                    add_logro("comandos", "comandos1.png");
+                                                actividades['actividad2'] = true;
+                                                toggleNav(true);
+                                                comandos['init'] = true;
+                                                $("#progressbar").css("width", "45%");
+                                                $("#progressbar").attr("aria-valuenow", "45%");
+                                                $('.stat-percent').html('45%');
+                                            } else {
+                                                screen.append("debes verificar primero la instalacion de git con el comando git --version");
+                                            }
+                                        } else if (data.comando.match($gitConfigUser)) {
+
+                                            if (!comandos['name'])
+                                                add_logro("comandos", "comandos1.png");
+                                            $configUser = true;
+                                            $("#act3-1done").addClass('fa fa-check-circle');
+                                            comandos['name'] = true;
+                                            $("#progressbar").css("width", "55%");
+                                            $("#progressbar").attr("aria-valuenow", "55%");
+                                            $('.stat-percent').html('55%');
+                                        } else {
+                                            if (!$configUser) {
+                                                screen.append("debes configuar primero el nombre de usuario");
+                                            }
+                                        }
+
+                                        if (data.comando.match($gitConfigMail)) {
+                                            $("#act3-2done").addClass('fa fa-check-circle');
+                                            if (!actividades['actividad3'])
+                                                add_logro("comandos", "comandos1.png", "bg_logro2.png");
+                                            actividades['actividad3'] = true;
+                                            toggleNav(true);
+                                            comandos['email'] = true;
+                                            $("#progressbar").css("width", "70%");
+                                            $("#progressbar").attr("aria-valuenow", "70%");
+                                            $('.stat-percent').html('70%');
+                                            $("#comandos").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
+                                                $(this).removeClass("animated bounce infinite");
+                                                next();
+                                            });
+
+                                        }
+
+                                    }
+                                }
+                                screen.append(data.salida);
+                            } else {
+                                screen.append(data.error);
+                            }
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(errorThrown, textStatus, XMLHttpRequest);
+
+                        //setTimeout(waitForMsg, 300000);
+
+                    },
+                    complete: function () {
+                        form.show();
+                        $('#inputConsole').focus();
+                    }
+
+                });
+                return false;
+            });
+
+
             $('#elfinder').elfinder({
-					url : "{{ asset('assets/vendor/elfinder/php/connector.minimal.php')}}", 
-					lang: 'es',
-                                        height: 200,
-					uiOptions: {
-                    toolbar : [
+                url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php') }}",
+                lang: 'es',
+                height: 250,
+                customData: {user: "wramones"},
+                handlers: {
+                    dblclick: function (event, elfinderInstance) {
+                        event.preventDefault();
+                        elfinderInstance.exec('getfile')
+                            .done(function () {
+                                elfinderInstance.exec('quicklook');
+                            })
+                            .fail(function () {
+                                elfinderInstance.exec('open');
+                            });
+                    }
+                },
+                getFileCallback: function (files, fm) {
+                    return false;
+                },
+                uiOptions: {
+                    toolbar: [
                         // toolbar configuration
-                        ['open'],                                              
+                        ['open', 'edit'],
+                        ['home', 'up'],
                         ['info'],
-                        ['quicklook'],                                                                        
+                        ['reload'],
+                        ['quicklook'],
                         ['view'],
                         ['help']
                     ]
                 },
-                
-                contextmenu : {
-    // navbarfolder menu
-    navbar : ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
-
-    // current directory menu
-    cwd    : [ 'back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
-
-    // current directory file menu
-    files  : [
-        'open', 'quicklook', '|',
-        'rm', '|', 'edit', 'rename', 'info'
-    ]
-},
-				});
-            
-           toastr.options = {
-            "closeButton": true,
-            "debug": true,
-            "newestOnTop": false,
-            "progressBar": true,
-            "positionClass": "toast-top-center",
-            "preventDuplicates": true,
-            "onclick": null,
-            "showDuration": "50000",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "slideDown",
-            "hideMethod": "fadeOut"            
-          };
-            
-            
-            
-            $('#terminal').terminal(function (command, term) {
-                var $inter = evaluar(command);
-                if ($inter.chk === true) {
-                    term.echo("[[;green;]" + $inter.out + "]");
-                    setTimeout(function () {
-                        toastr.success($inter.msg, 'Excelente');
-                    }, 1200);
-                } else if ($inter.chk === "done") {
-                    term.echo("[[;green;]" + $inter.out + "]");
-                    toastr.info($inter.msg,'Ya ejecutado!');
-                } else if ($inter.chk === "plain") {
-                    term.echo($inter.out);
-                    setTimeout(function () {
-                        toastr.success($inter.msg, 'Excelente');
-                    }, 1200);
-
-                } else {
-                    term.echo("[[;red;]" + $inter.out + "]");
+                contextmenu: {
+                    // navbarfolder menu
+                    navbar: ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+                    // current directory menu
+                    cwd: ['back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
+                    // current directory file menu
+                    files: [
+                        'open', 'quicklook', '|',
+                        'rm', '|', 'edit', 'rename', 'info'
+                    ]
                 }
-                
-                if($inter.fin){  
-                    var data = {inscripcion : $('#inscripcion').val(), logro: 2};
-                    var url = $('#url_ajax').val();
-                    
-                    $("#btnQuiz").prop('disabled', false);
-                    $("#btnQuiz").attr('disabled', false);                    
-                    $.ajax({
-                        method: "GET",
-                        url: url,
-                        async: true,
-                        cache: false,
-                        data: data,
-                        //timeout: 50000,
-                        success: function (data) {
-                                 $('.progress-bar').attr('aria-valuenow', '60');
-                                 $('.progress-bar').css('width', '60%');
-                                 $('.stat-percent').html('60%');
-                                 
-                                 console.log(data);                   
-                                /*if(posts.length > 0)
-                                 {
-                                     var html = "";
-                                     for(d in posts)
-                                     {
-                                         html += "<p>" + JSON.stringify(posts[d]) + "</p>";
-                                     }
-                                     $("#contador_solicitudes").append(html);
-                                 }*/
-                                //$("#contador_solicitudes").html(posts);
-                                 //setTimeout(waitForMsg, 60000);
-                         },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) { 
-                              console.log(errorThrown, textStatus, XMLHttpRequest);
-                              //setTimeout(waitForMsg, 300000);
-
-                        }
-
-                    });
-                    
-                    
-                    toastr.info("Has obtenido el logro de Primeros comandos en GIT",'FELICITACIONES! Logro Desbloqueado!');
-                    $("#comandos").removeClass("fa-inverse").addClass("text-warning animated rubberBand");
-                    toastr.success("Quiz Disponible",'Felicitaciones, has desbloqueado el Quiz de este nivel!');           
-                }
-
-                //var $x = evaluar(command);
-            }, {
-                greetings: 'Interprete de Comandos del Curso, --help-- para ayuda de comandos',
-                name: 'curso_git',
-                prompt: 'octonautas$> '
-                
             });
-            
-            
-            
-                         
-            
-            
+
+
+
+
+            Reveal.addEventListener('actividad0', function (event) {
+                if (!actividades['actividad0']) {
+                    toggleNav(false);
+                }
+            });
+
+
+            Reveal.addEventListener('actividad1', function (event) {
+                if (!actividades['actividad1']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad2', function (event) {
+                if (!actividades['actividad2']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad3', function (event) {
+                if (!actividades['actividad3']) {
+                    toggleNav(false);
+                }
+            });
+
+
+            Reveal.addEventListener('qz', function (event) {
+                if (!actividades['actividad4']) {
+                    toggleNav(false);
+                }
+            });
+
+            //Debo estar pendiente si pasa a la lamina 15 sin hacer el ejercicio,
+            //devolverlo a la 14
+            Reveal.addEventListener('slidechanged', function (event) {
+                // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+
+
+                console.log(event.indexh);
+
+
+                if (event.indexh === 18) {
+                    if (!actividades['actividad0']) {
+                        add_logro("conceptos", "conceptos1.png");
+                        actividades['actividad0'] = true;
+                        $("#progressbar").css("width", "25%");
+                        $("#progressbar").attr("aria-valuenow", "25%");
+                        $('.stat-percent').html('25%');
+                        $("#conceptos").addClass("animated bounce text-warning");
+
+                        $("#conceptos").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
+                            $(this).removeClass("animated bounce infinite");
+                            next();
+                        });
+                    }
+                }
+
+                if (event.indexh > 18) {
+                    if (!actividades['actividad0']) {
+                        Reveal.slide(1);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+
+                    }
+
+                }
+
+
+                if (event.indexh > 19) {
+                    if (!actividades['actividad1']) {
+                        Reveal.slide(19);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+
+                    }
+                }
+
+                if (event.indexh > 22) {
+                    if (!actividades['actividad2']) {
+                        Reveal.slide(22);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
+                if (event.indexh > 26) {
+                    alert(event.indexh);
+                    if (!actividades['actividad3']) {
+                        Reveal.slide(26);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
+                if (event.indexh == 28) {
+                    $("#btnQuiz").addClass("animated bounce infinite").delay(5000).queue(function(next){
+                        $(this).removeClass("animated bounce infinite");
+                        next();
+
+                        $("#btnQuiz").prop('disabled', false);
+                        $("#btnQuiz").attr('disabled', false);
+                    });
+                }
+
+            });
+
+
         });
         $("#btnQuiz").prop('disabled', true);
         $("#btnQuiz").attr('disabled', 'disabled');
-        
-        $( "#btnQuiz" ).click(function() {
-             var $open = $("#quizOpen").val();
-             if($open){
-                 $("#btnQuiz").prop('disabled', false);
-                 $("#btnQuiz").attr('disabled', false);
-             }else{
-                var isDisabled = $('#btnQuiz').is('[disabled=disabled]');           
-                if (isDisabled){
-                    toastr.error("Para desbloquearlo, debes obtener los dos primeros logros de este nivel","Quiz Bloqueado");           
+
+        $("#btnQuiz").click(function () {
+            var $open = $("#quizOpen").val();
+            if ($open) {
+                $("#btnQuiz").prop('disabled', false);
+                $("#btnQuiz").attr('disabled', false);
+            } else {
+                var isDisabled = $('#btnQuiz').is('[disabled=disabled]');
+                if (isDisabled) {
+                    iziToast.error({
+                        title: 'Quiz todavía bloqueado',
+                        message: 'Para desbloquearlo, debes obtener los dos primeros logros de este nivel',
+                        position: 'topRight'
+                    });
                 }
             }
-            
-        });   
-        
+
+        });
+
         var $palabraGit = /^git$/g;
+        var $comandoGit = /^git+\s+?\w?/g;
         var $gitEspacio = /^git+\s/g;
         var $configEspacio = /\bconfig+\s/g;
         var $configGlobal = /\bconfig\s+--global+\s/g;
@@ -1504,6 +1465,7 @@
         var $configUserMail = /\b\s+user.email+\s/g;
         var $respuesta = /\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
         var $gitHelp = /^git+\s+\bhelp\s?\w?/g;
+        var $gitInit = /^git+\s+\binit/g;
         var $gitConfigUser = /^git+\s+\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
         var $gitVersion = /^git+\s+--version$/g;
         var $gitConfigMail = /^git+\s+\bconfig\s+--global+\s+user.email+\s+"?\w{3,}"?/g;
@@ -1515,102 +1477,33 @@
         var $c = 0;
         var name = "";
         var email = "";
-        function evaluar(c) {
-            var $w = {};
-            if (c.match($gitVersion)) {
-                if ($c === 0) {
-                    $c = 1;
-                    $w = JSON.stringify({out: "git version 2.10.2", chk: true, msg: "Has ejecutado tu primer comando en git.  FELICITACIONES"});
-                } else if ($c > 0) {
-                    $w = JSON.stringify({out: "git version 2.10.2", chk: "done", msg: "El Comando GIT --VERSION ya lo has ejecutado"});
-                }
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-            if (c.match($gitConfigUser)) {
-
-                if ($c === 1) {
-
-                    $c = 2;
-                    $w = JSON.stringify({out: " ", chk: true, msg: "Git no muestra ningun mensaje al configurar correctamente alguna variable. Has configurado correctamente tu nombre de usuario"});
-                    name = c.substr(c.indexOf("user.name") + 9);
-                } else if ($c > 1) {
-                    $w = JSON.stringify({out: " ", chk: "done", msg: "Renombrado el usuario satisfactoriamente"});
-                    name = c.substr(c.indexOf("user.name") + 9);
-                } else {
-                    $w = JSON.stringify({out: "Error, debes ejecutar primero el comando de la version instalada de git", chk: false});
-                }
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-            if (c.match($gitConfigMail)) {
-                if ($c === 2) {
-                    $c = 3;
-                    $w = JSON.stringify({out: " ", chk: true, msg: "Has configurado correctamente tu dirección de Correo"});
-                    email = c.substr(c.indexOf("user.email") + 10);
-                } else if ($c > 2) {
-                    $w = JSON.stringify({out: " ", chk: "done", msg: "Cambiada la dirección satisfactoriamente"});
-                    email = c.substr(c.indexOf("user.email") + 10);
-                } else {
-                    $w = JSON.stringify({out: "Error, debes configurar primero tu nombre de usuario", chk: false});
-                }
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-            if (c.match($gitConfigList)) {
-                if ($c === 3) {
-                    $c = 4;
-                    $w = JSON.stringify({out: "user.email=" + email + "\nuser.name=" + name + "\ncolorui=auto", chk: "plain", msg: "Has revisado tu configuración", fin: true});
-                } else if ($c > 3) {
-                    $w = JSON.stringify({out: "user.email=" + email + "\nuser.name=" + name + "\ncolorui=auto", chk: "plain", msg: "Ya has ejecutado este comando, puedes verificar tu información para verificar los cambios"});
-                } else {
-                    $w = JSON.stringify({out: "Error, debes configurar primero tu dirección de correo", chk: false});
-                }
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-
-            if (c.match($gitHelp)) {
-                $w = JSON.stringify({out: "\n\nusage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [-c name=value] [--help]\n           <command> [<args>]\n\n The most commonly used git commands are:\n   add        Add file contents to the index\n   bisect     Find by binary search the change that introduced a bug\n   branch     List, create, or delete branches\n   checkout   Checkout a branch or paths to the working tree\n   clone      Clone a repository into a new directory\n   commit     Record changes to the repository\n   diff       Show changes between commits, commit and working tree, etc\n   fetch      Download objects and refs from another repository\n   grep       Print lines matching a pattern\n   init       Create an empty git repository or reinitialize an existing one\n   log        Show commit logs\n   merge      Join two or more development histories together\n   mv         Move or rename a file, a directory, or a symlink\n   pull       Fetch from and merge with another repository or a local branch\n   push       Update remote refs along with associated objects\n   rebase     Forward-port local commits to the updated upstream head\n   reset      Reset current HEAD to the specified state\n   rm         Remove files from the working tree and from the index\n   show       Show various types of objects\n   status     Show the working tree status\n   tag        Create, list, delete or verify a tag object signed with GPG\n\nSee 'git help <command>' for more information on a specific command.", chk: "plain", msg: "Siempre es bueno consultar la ayuda. "});
-                var respuesta = JSON.parse($w);
-                return (respuesta);
-            }
-                      
-
-            $w = JSON.stringify({out: "Error", chk: false});
-            var respuesta = JSON.parse($w);
-            return (respuesta);
-
-        }
-
 
 
         $(document).ready(function () {
+
+
             videojs.options.flash.swf = "{{ asset('assets/vendor/moovly/js/videojs/video-js.swf') }}";
-            alert(videojs);
+            //alert(videojs);
             $contador = $("#contadorObtenidos").val();
-            alert($contador);
-            for (var $i = 0; $i < $contador; $i++){
-                $('.progress-bar').css('width', $contador * 30 + '%'); 
+            //alert($contador);
+            for (var $i = 0; $i < $contador; $i++) {
+                $('.progress-bar').css('width', $contador * 30 + '%');
                 $('.stat-percent').html($contador * 30 + '%');
                 $('.progress-bar').attr('aria-valuenow', $contador * 30);
             }
-            
+
             $("#wizard").steps();
-            
+
             // Instance the tour
             var tour = new Tour({
                 steps: [{
-                        title: "Bienvenido",
-                        content: "¿Es la primera vez que ingresas verdad? Pues Entonces <strong>¡Bienvenido!</strong>  A través de esta guía te enseñaremos como está distribuida <i>Tu aula virtual</i> para que comiences de una vez a encender tu conocimiento.<br><br> Puedes utilizar las teclas de navegación izquiera y derecha para desplazarte a lo largo del tour. <br><br><img src='{{ asset('images/course/left-right-arrows.png') }}' alt='An opening code bracket' />",
-                        placement: "bottom",
-                        backdrop: true,
-                        backdropContainer: '#wrapper',
-                        orphan: true,
-                    },
+                    title: "Bienvenido",
+                    content: "¿Es la primera vez que ingresas verdad? Pues Entonces <strong>¡Bienvenido!</strong>  A través de esta guía te enseñaremos como está distribuida <i>Tu aula virtual</i> para que comiences de una vez a encender tu conocimiento.<br><br> Puedes utilizar las teclas de navegación izquiera y derecha para desplazarte a lo largo del tour. <br><br><img src='{{ asset('images/course/left-right-arrows.png') }}' alt='An opening code bracket' />",
+                    placement: "bottom",
+                    backdrop: true,
+                    backdropContainer: '#wrapper',
+                    orphan: true,
+                },
                     {
                         element: "#tour1",
                         title: "¿En donde estoy?",
@@ -1647,7 +1540,8 @@
                         backdrop: true,
                         backdropContainer: '#wrapper'
                     }
-                ]});
+                ]
+            });
 
             // Initialize the tour
             tour.init();
@@ -1661,18 +1555,6 @@
 
         });
 
-
-       
-
-
-        $("#animacion_local").click(function () {
-
-            
-
-        });
-
-
-        
 
         $(document).keydown(function (e) {
 
@@ -1718,7 +1600,7 @@
             });
         }
 
-// Load the HTML4 version if there's not CSS transform
+        // Load the HTML4 version if there's not CSS transform
 
         yepnope({
             test: Modernizr.csstransforms,
@@ -1727,21 +1609,41 @@
             both: ['{{ asset("assets/vendor/turnjs/basic.css") }}'],
             complete: loadApp
         });
-        
-        
+
+
         var $loading = $('#loadingBulb').hide();
         var $guardado = $('#guardado').show();
         $(document)
-          .ajaxStart(function () {              
-              $guardado.hide();
-              $loading.show();
-           })
-          .ajaxStop(function () {
-            $loading.hide();
-            $guardado.show();
-          });
+            .ajaxStart(function () {
+                $guardado.hide();
+                $loading.show();
+            })
+            .ajaxStop(function () {
+                $loading.hide();
+                $guardado.show();
+            });
+
+
+        $(window).load(function (e) {
+            $("#inputConsole").click();
+        });
+
+
+        function toggleNav(b) {
+            Reveal.configure({
+                controls: b,
+                progress: b,
+                keyboard: b,
+                overview: b,
+                touch: b
+            });
+        }
+
+
 
 
     </script>
+
+
 
 {% endblock %}
