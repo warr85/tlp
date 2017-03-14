@@ -661,8 +661,9 @@
                             </div>
                         </div>
                         <p class="fragment fade-left" data-autoslide="2500">
-                            para indicarle a git que le siga la pista a todo nuestro directorio.
-                            En nuestro caso el proyecto tiene como nombre tu usuario ("{{ app.user.userName }} ")
+                            Con este comando, le dicimos a git que tenga todo listo para comenzar a realizar seguimiento.
+                            Recuerden que lo primero es estar ubicado dentro de nuestro proyecto, en nuestro caso el proyecto
+                              tiene como nombre tu nombre de usuario ("{{ app.user.userName }} ")
                         </p>
                         <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
                                                                                  data-autoslide="1000">En sus marcas</span>
@@ -678,17 +679,16 @@
                         </section>
                         <section>
                             <h3>"Veamos un ejemplo desde 0"</h3>
-                            <p>es decir, creamos la carpeta del proyecto, entramos a la
-                                carpeta del proyecto e inicializamos git</p>
+                            <p>comenzando desde la creación del direcotrio del proyecto, hasta
+                            inicializar GIT (en la consola por su puesto...)</p>
                         </section>
                         <section data-background-size="cover"
                                  data-background="{{ asset('images/course/gif/gitinit.gif') }}">
                             <br><br><br><br><br>
                             <ul>
-                                <li><strong>mkdir:</strong> para crear la carpeta</li>
-                                <li><strong>cd:</strong> para cambiar al directorio del proyecto</li>
-                                <li><strong>git init:</strong> para inicializar el proyecto</li>
-                                <li>y allí tenemos el mensaje</li>
+                                <li><strong>mkdir + nombre_del_proyecto:</strong> para crear el direcotrio del proyecto</li>
+                                <li><strong>cd nombre_del_proyecto:</strong> ingresar al directorio.</li>
+                                <li><strong>git init:</strong> para inicializar git y siga todo lo que entre, salga y los cambios que hagamos</li>
                             </ul>
                         </section>
                         <section>
@@ -705,7 +705,7 @@
                         <section>
                             <h2>.git</h2>
                             <p> puedes consultar el contenido del directorio
-                                oculto desde "tu directorio". A lo largo del curso explicaremos su contenido...
+                                oculto desde "tu directorio" virtual o desde la consola. En el próximo video explicaremos el contenido...
                                 no te preocupes</p>
                         </section>
                     </section>
