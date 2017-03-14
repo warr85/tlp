@@ -22,18 +22,6 @@
     <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/git.css') }}" >
 
 
-    <style>
-
-
-
-
-
-
-
-
-    </style>
-
-
 {% endblock %}
 
 {% block tituloCurso  %} Bienvenido a tu curso: {{ inscripcion.idCursoGrupo.idCurso.nombre }} {% endblock %}
@@ -102,33 +90,16 @@
                         </p>
                     </section>
 
-                    <section data-transition="zoom" data-background="{{ asset('images/course/gif/lightbulb2.gif') }}">
-                        <h2 style="background-color: #3e495f; opacity: 0.6;">
-                            Gracias por encender tu conocimiento con Tecnolíne@
-                            Paraguaná.
-                        </h2>
-                    </section>
-
-
-                    <section data-transition="concave"
-                             data-background="{{ asset('images/course/gif/earthRotation.gif') }}">
-
-
-                        <h2 style="color:white; background-color: #3e495f; opacity: 0.6;">Presentación <strong > Multiespacial </strong></h2>
-                        <p style="color:white; background-color: #3e495f; opacity: 0.6;">
-                            Para navegar por todas la láminas es recomendable utilizar "Barra Espaciadora"
-                            para disfrutar de todas las diapositivas.
-                        </p>
-                    </section>
-
 
                     <section>
                         <h3>Objetivos de Este módulo:</h3>
                         <ul>
-                            <li class="fragment fade-left" data-autoslide="2500">¿Qué es Controlador de Versiones?</li>
-                            <li class="fragment fade-left" data-autoslide="2500">¿Qué es Git?</li>
-                            <li class="fragment fade-left" data-autoslide="2500">¿Cómo instalar Git?</li>
-                            <li class="fragment fade-left" data-autoslide="2500">¿Como Configurar Git?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">Conocer la estructura de GIT</li>
+                            <li class="fragment fade-left" data-autoslide="2500">Flujo de Trabajo con GIT</li>
+                            <li class="fragment fade-left" data-autoslide="2500">Conocer el estatus de un proyecto</li>
+                            <li class="fragment fade-left" data-autoslide="2500">Rastrear Archivos</li>
+                            <li class="fragment fade-left" data-autoslide="2500">Ignorar Archivos</li>
+                            <li class="fragment fade-left" data-autoslide="2500">Confirmar los Cambios</li>
                         </ul>
 
                     </section>
@@ -138,104 +109,165 @@
 
                     <section>
                         <section>
-                            <h2>Trabajo Creativo</h2>
+                            <h2>Hablemos sobre repositorio</h2>
                             <p>
-                                Si eres un diseñador, desarrollador o programador,
-                                entonces has pasado por los pasos de:
+                                Repositorio de Git se le llama a la acción de tener la estructura
+                                inicializada de Git dentro de un directorio.  Existen dos formas
+                                de hacerlo.
                             </p>
 
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
-                                         height="42" class="animated infinite bounce"/>
-                                    <p>
-                                        <small><strong>crear</strong></small>
-                                    </p>
-                                </div>
-                                <div class="col-xs-3">
-                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
-                                         height="42" class="animated infinite flip"/>
-                                    <p>
-                                        <small><strong>Guardar</strong></small>
-                                    </p>
-                                </div>
-                                <div class="col-xs-3">
-                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
-                                         height="42" class="animated infinite bounce"/>
-                                    <p>
-                                        <small><strong>Editar</strong></small>
-                                    </p>
-                                </div>
-                                <div class="col-xs-3">
-                                    <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
-                                         height="42" class="animated infinite flip"/>
-                                    <p>
-                                        <small><strong>Guardar Nuevamente</strong></small>
-                                    </p>
-                                </div>
+                            <h4>Git init</h4>
+                            <h4>Git Clone</h4>
 
-                            </div>
-
-                            <h4>¿Verdad que sí?</h4>
-                            <p>Incluso me atrevo a decir que
-                                has guardado el mismo documento
-                                con otro nombre... ¿verdad?</p>
                         </section>
                         <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-                            <h2>No mientas.... jejejej</h2>
-                            <p style="background-color: #3e495f; opacity: 0.6; color:white;">Algo como esto hemos hecho alguna vez en nuestra vidas</p>
-
+                            <h2>git init</h2>
+                            <p style="background-color: #3e495f; opacity: 0.6; color:white;">Si quieres empezar a seguir los cambios en
+                            un proyecto (empezando o adelantado), deber ir al directorio
+                            del proyecto y usar el comando </p>
+                            <pre ><code class="hljs" style="word-wrap: break-word;">$ git init</code></pre>
                         </section>
 
-                        <section data-background="{{ asset('images/course/reguardado1.jpg') }}">
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Terminas el Trabajo</p>
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Te hacen correcciones</p>
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Y al hacer las
-                                correcciones...</p>
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el
-                                trabajo</p>
+                        <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+                            <h2>git clone</h2>
+                            <p style="background-color: #3e495f; opacity: 0.6; color:white;">Si deseamos una copia de un repositorio git existente,
+                            (por ejemplo un proyecto en el que quieras colaborar) el comando a utilizar es</p>
+                            <pre ><code class="hljs" style="word-wrap: break-word;">$ git clone [url]</code></pre>
+                            donde [URL] es la dirección web en donde se encuentra el repositorio GIT.
+                            <p>Ejemplo: <pre ><code class="hljs" style="word-wrap: break-word;">$ git clone https://github.com/libgit2/libgit2</code></pre>
+                            </p>
+                            <p>hace todo el trabajo anterior por ti, crear un directorio denomiado libgit2, inicializar
+                            un reposotorio y por ultimo crear una copia de trabajo de la última versión.</p>
                         </section>
 
-                        <section data-background="{{ asset('images/course/reguardado2.jpg') }}">
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Te lo vuelven a corregir</p>
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Le haces los cambios</p>
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Y otra vez...</p>
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Le colocas otro nombre el
-                                trabajo</p>
-                        </section>
+                    </section>
 
-                        <section data-background="{{ asset('images/course/reguardado3.jpg') }}">
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Y así sucesivamente</p>
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Hasta tener un nombre largo</p>
-                            <p class="fragment fade-left" data-autoslide="2500"
-                               style="background-color:black; color:white; opacity:0.6;">Difícil de manejar y
-                                controlar</p>
-                        </section>
+                    <section
+                             data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h2>Manos a la obra</h2>
+
+                    </section>
+
+
+
+                    <section data-state="actividad0">
+                        <h3>Creación de un nuevo archivo desde el directorio virtual</h3>
+                        <div class="row">
+                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Click derecho en nuestro directorio virtual</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Seleccionamos "nuevo archivo de texto"</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Colocamos de nombre LEEME.txt</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Editar archivo</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Escribimos lo que deseen</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Guardar y Salir</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2>Felicitaciones... Creamos un nuevo archivo</h2>
+                    </section>
+
+                    <section
+                            data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h2>Nuevamente Manos a la obra</h2>
+
+                    </section>
+
+
+                    <section data-state="actividad1">
+                        <h3>Añadir y Confirmar (en consola)</h3>
+                        <div class="row">
+                            <div class="col-xs-10 fragment fade-up" data-autoslide="2500">desde la consola le vamos a decir a git que registre todos los cambios</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="row">
+                                <div class="col-xs-10">
+                                    <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git add .</code></pre>
+                                    </a>
+                                </div>
+                                <div class="col-xs-2">
+                                    <i id="act1done" style="color:greenyellow;" class=""></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-10 fragment fade-up" data-autoslide="2500">El "." es el atajo para decir, añade "todo"</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Luego confirmamos los cambios de forma permanente en el repositorio</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="row">
+                                <div class="col-xs-10">
+                                    <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git commit -m "mensaje"</code></pre>
+                                    </a>
+                                </div>
+                                <div class="col-xs-2">
+                                    <i id="act1done" style="color:greenyellow;" class=""></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-10 fragment fade-up" data-autoslide="2500">El mensaje debe tener relación con los cambios que hicistes</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2>Felicitaciones... confirmastes tu primer archivo en GIT</h2>
                     </section>
 
                     <section>
-                        <h2>Te ha pasado ¿verdad?</h2>
-                        <p>Sin darte cuenta, estabas utilizando tu propio
-                            sistema manual para manejar los cambios de tus archivos...
-                            pero es muy difícil de controlar.  Por eso nacieron los sistemas
-                            automatizados controladores de versiones.</p>
+                        <h2>El trabajo con Git</h2>
+                        <p>
+                            Casi siempre esta va a ser nuestra forma de trabajar los cambios en
+                            nuestro proyecto a través de Git:
+                        </p>
+
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="64"
+                                     height="64" class="animated infinite bounce"/>
+                                <p>
+                                    <small><strong>Creamos</strong></small>
+                                </p>
+                            </div>
+                            <div class="col-xs-3">
+                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                     height="42" class="animated infinite flip"/>
+                                <p>
+                                    <small><strong>Modificamos</strong></small>
+                                </p>
+                            </div>
+                            <div class="col-xs-3">
+                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                     height="42" class="animated infinite bounce"/>
+                                <p>
+                                    <small><strong>Registramos</strong></small>
+                                </p>
+                            </div>
+                            <div class="col-xs-3">
+                                <img src="{{ asset('images/course/square.png') }}" alt="A blue square" width="42"
+                                     height="42" class="animated infinite flip"/>
+                                <p>
+                                    <small><strong>Confirmamos</strong></small>
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                        <h2 style="color:black">Excelente, hemos creado un nuevo archivo</h2>
                     </section>
 
                     <section>
-                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
-                            <h2 style="color:black">¿Que es un Controlador de Versiones?</h2>
-                        </section>
+
                         <section>
+                            <h2 style="color:black">vamos a añadirlo a git</h2>
                             <p>Un Controlador de Versiones (VCS en inglés)
                                 es un sistema que registra los cambios
                                 ocurridos durante la <strong>creación, guardado,
@@ -777,7 +809,7 @@
         <div class="col-lg-5 acomodar">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Mi directorio</h5>
+                    <h5>Directorio Virtual</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -925,7 +957,8 @@
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
         var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false};
-        var comandos = {version: false, init: false, name: false, email: false};
+        var comandos = {add: false, commit: false};
+        var directorio = {crear: false, modificar: false};
 
         jQuery(function ($) {
 
@@ -1012,65 +1045,35 @@
                         } else {
                             if (data.error === "") {
                                 if (data.comando) {
-                                    //console.log(comandos);
-                                    //console.log(data.comando.match($gitConfigUser));
+                                    console.log(comandos);
+                                    console.log("Esto es match: " + data.comando.match($gitCommit));
                                     if (data.comando.match($comandoGit)) {
-                                        if (data.comando.match($gitVersion)) {
-                                            toggleNav(true);
-                                            $("#act1done").addClass('fa fa-check-circle');
+                                        if (data.comando.match($gitAdd)) {
+                                            $("#act3done").addClass('fa fa-check-circle');
                                             if (!actividades['actividad1'])
-                                                add_logro("comandos", "comandos1.png");
-                                            comandos['version'] = true;
-                                            actividades['actividad1'] = true;
-                                            $("#progressbar").css("width", "35%");
-                                            $("#progressbar").attr("aria-valuenow", "35%");
-                                            $('.stat-percent').html('35%');
+                                                add_logro("comandos2", "comandos2.png");
+                                            comandos['add'] = true;
+                                            $("#progressbar").css("width", "60%");
+                                            $("#progressbar").attr("aria-valuenow", "60%");
+                                            $('.stat-percent').html('60%');
 
                                             //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
-                                        } else if (data.comando.match($gitInit)) {
-                                            if (comandos['version']) {
-                                                $("#act2done").addClass('fa fa-check-circle');
-                                                if (!actividades['actividad2'])
-                                                    add_logro("comandos", "comandos1.png");
-                                                actividades['actividad2'] = true;
+                                        } else if (data.comando.match($gitCommit)) {
+                                            if (comandos['add']) {
+                                                $("#act4done").addClass('fa fa-check-circle');
+                                                if (!actividades['actividad1']) {
+                                                    add_logro("comandos2", "comandos2.png");
+                                                    add_logro("commit1", "commit1.png")
+                                                }
+                                                actividades['actividad1'] = true;
                                                 toggleNav(true);
-                                                comandos['init'] = true;
-                                                $("#progressbar").css("width", "45%");
-                                                $("#progressbar").attr("aria-valuenow", "45%");
-                                                $('.stat-percent').html('45%');
+                                                comandos['commit'] = true;
+                                                $("#progressbar").css("width", "70%");
+                                                $("#progressbar").attr("aria-valuenow", "70%");
+                                                $('.stat-percent').html('70%');
                                             } else {
-                                                screen.append("debes verificar primero la instalacion de git con el comando git --version");
+                                                screen.append("debes añadir primero todos los cambios antes de confirmar");
                                             }
-                                        } else if (data.comando.match($gitConfigUser)) {
-
-                                            if (!comandos['name'])
-                                                add_logro("comandos", "comandos1.png");
-                                            $configUser = true;
-                                            $("#act3-1done").addClass('fa fa-check-circle');
-                                            comandos['name'] = true;
-                                            $("#progressbar").css("width", "55%");
-                                            $("#progressbar").attr("aria-valuenow", "55%");
-                                            $('.stat-percent').html('55%');
-                                        } else {
-                                            if (!$configUser) {
-                                                screen.append("debes configuar primero el nombre de usuario");
-                                            }
-                                        }
-
-                                        if (data.comando.match($gitConfigMail)) {
-                                            $("#act3-2done").addClass('fa fa-check-circle');
-                                            if (!actividades['actividad3'])
-                                                add_logro("comandos", "comandos1.png", "bg_logro2.png");
-                                            actividades['actividad3'] = true;
-                                            toggleNav(true);
-                                            comandos['email'] = true;
-                                            $("#progressbar").css("width", "70%");
-                                            $("#progressbar").attr("aria-valuenow", "70%");
-                                            $('.stat-percent').html('70%');
-                                            $("#comandos").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
-                                                $(this).removeClass("animated bounce infinite");
-                                                next();
-                                            });
 
                                         }
 
@@ -1113,6 +1116,39 @@
                             .fail(function () {
                                 elfinderInstance.exec('open');
                             });
+                    },
+                    add   : function(event) {
+                        console.log(event.data);
+                        if (event.data.added){
+                            if (event.data.added[0].name != "{{ app.user.userName }}") {
+                                console.log("archivo creado");
+
+
+                                if (!actividades['actividad0'])
+                                    add_logro("directorio_virtual", "directorio1.png");
+                                directorio['crear'] = true;
+
+                                $("#progressbar").css("width", "35%");
+                                $("#progressbar").attr("aria-valuenow", "35%");
+                                $('.stat-percent').html('35%');
+                            }
+
+                        }
+                    },
+                    change   : function(event) {
+                        console.log(event.data);
+                        if (event.data.changed[0].size > 0){
+                            console.log("archivo modificado");
+                            toggleNav(true);
+                            $("#act1done").addClass('fa fa-check-circle');
+                            if (!actividades['actividad0'])
+                                add_logro("directorio_virtual", "directorio1.png");
+                            directorio['modificar'] = true;
+                            actividades['actividad0'] = true;
+                            $("#progressbar").css("width", "50%");
+                            $("#progressbar").attr("aria-valuenow", "50%");
+                            $('.stat-percent').html('50%');
+                        }
                     }
                 },
                 getFileCallback: function (files, fm) {
@@ -1311,6 +1347,8 @@
         var $respuesta = /\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
         var $gitHelp = /^git+\s+\bhelp\s?\w?/g;
         var $gitInit = /^git+\s+\binit/g;
+        var $gitAdd = /^git+\s+\badd\s+./g;
+        var $gitCommit = /^git+\s+\bcommit\s+-m\s+"\w+( +\w+)*"/g;
         var $gitConfigUser = /^git+\s+\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
         var $gitVersion = /^git+\s+--version$/g;
         var $gitConfigMail = /^git+\s+\bconfig\s+--global+\s+user.email+\s+"?\w{3,}"?/g;

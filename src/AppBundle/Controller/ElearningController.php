@@ -53,8 +53,9 @@ class ElearningController extends Controller {
             $this->addFlash('warning', 'debes tener un curso inscrito para poder ingresar al área de estudiante');
             return $this->render('portal/index.html.twig');
         }
-
-
+        $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
+        $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
+        $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
         //Para saber en que parte del curso se encuentra esta inscripcion
         $avance = $em->getRepository('AppBundle:CursoAvance')->findOneBy(array(
            'idInscripcion'  => $inscripcion,
@@ -65,7 +66,8 @@ class ElearningController extends Controller {
             'inscripciones' => $inscripcion,
             'avance'        => $avance,
             'notificaciones' => $notificaciones,
-            'cuenta'        => $cuenta
+            'cuenta'        => $cuenta,
+            'porcentajePxNivel' => $ppn
         ));
         
     }
