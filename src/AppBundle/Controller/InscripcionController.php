@@ -144,10 +144,14 @@ class InscripcionController extends Controller
      */
     public function showSuscripcionAction( Suscripcion $suscripcion)
     {
+        $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
+        $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
+        $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
         $form = $this->createForm('AppBundle\Form\SuscripcionType');
         return $this->render('suscripcion/show.html.twig', array(
             'suscripcion'   => $suscripcion,
-            'form'          => $form->createView()
+            'form'          => $form->createView(),
+            'porcentajePxNivel' => $ppn
         ));
     }
 
