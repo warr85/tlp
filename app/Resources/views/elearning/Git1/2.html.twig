@@ -110,11 +110,11 @@
                         <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Repositorio Git?</h2>
                         </section>
-                        <section>
-                            <p>
+                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
                                 se le llama Repositorio Git a la acción de tener la estructura
-                                de archivos de git dentro de un
-                                directorio. Puedes crear esos directorios como lo vimos en el módulo
+                                de archivos .git dentro de un
+                                directorio. Puedes crear esa estructura como lo vimos en el módulo
                                 pasado con <strong>git init</strong>
                             </p>
 
@@ -127,8 +127,7 @@
 
                         </section>
                         <section>
-                            <p style="background-color: #3e495f; opacity: 0.6; color:white;">Si deseamos una copia de un repositorio git,
-                                el comando a utilizar es</p>
+                            <h2 style="background-color: #3e495f; opacity: 0.6; color:white;">Para clonar un repositorio</h2>
                             <pre ><code class="hljs" style="word-wrap: break-word;">$ git clone [url]</code></pre>
                             [URL] es la dirección en donde se encuentra alojado el repositorio.
                             <p><pre ><code class="hljs" style="word-wrap: break-word;">$ git clone https://github.com/libgit2/libgit2</code></pre>
@@ -269,8 +268,8 @@
                             entender la arquitectura y el flujo trabajo de GIT. El siguiente
                             video explica de manera no tan aburrida (espero...) dicha arquitectura</p>
                         </section>
-                        <section id="vcs-local"
-                                 data-background-video="{{ asset('assets/vendor/moovly/videos/local.webm') }}">
+                        <section id="vcs-arbol" data-state="videoArbol"
+                                 data-background-video="{{ asset('assets/vendor/moovly/videos/3arbol.mp4') }}">
 
                         </section>
 
@@ -755,6 +754,9 @@
                                 elfinderInstance.exec('open');
                             });
                     },
+                    init : function(event){
+                        console.log(event);
+                    },
                     add   : function(event) {
                         console.log(event.data);
                         if (event.data.added){
@@ -846,9 +848,25 @@
             });
 
 
+            Reveal.addEventListener('videoArbol', function (event) {
+                    actividades['actividad3'] = true;
+                    $("#btnQuiz").prop('disabled', false);
+                    $("#btnQuiz").attr('disabled', false);
+
+            });
+
+
             Reveal.addEventListener('qz', function (event) {
-                if (!actividades['actividad4']) {
-                    toggleNav(false);
+                if (!actividades['actividad3']) {
+                    Reveal.slide(11);
+                    var state = Reveal.getState();
+                    Reveal.setState(state);
+
+                    iziToast.error({
+                        title: 'Alto',
+                        message: 'Debes ver el video primero para poder realizar el QUIZ',
+                        position: 'topRight'
+                    });
                 }
             });
 
@@ -940,15 +958,7 @@
                     }
                 }
 
-                if (event.indexh == 28) {
-                    $("#btnQuiz").addClass("animated bounce infinite").delay(5000).queue(function(next){
-                        $(this).removeClass("animated bounce infinite");
-                        next();
 
-                        $("#btnQuiz").prop('disabled', false);
-                        $("#btnQuiz").attr('disabled', false);
-                    });
-                }
 
             });
 
