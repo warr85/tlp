@@ -98,7 +98,6 @@
                             <li class="fragment fade-left" data-autoslide="2500">Flujo de Trabajo con GIT</li>
                             <li class="fragment fade-left" data-autoslide="2500">Conocer el estatus de un proyecto</li>
                             <li class="fragment fade-left" data-autoslide="2500">Rastrear Archivos</li>
-                            <li class="fragment fade-left" data-autoslide="2500">Ignorar Archivos</li>
                             <li class="fragment fade-left" data-autoslide="2500">Confirmar los Cambios</li>
                         </ul>
 
@@ -108,50 +107,48 @@
 
 
                     <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Repositorio Git?</h2>
+                        </section>
                         <section>
-                            <h2>Hablemos sobre repositorio</h2>
                             <p>
-                                Repositorio de Git se le llama a la acción de tener la estructura
-                                inicializada de Git dentro de un directorio.  Existen dos formas
-                                de hacerlo.
+                                se le llama Repositorio Git a la acción de tener la estructura
+                                de archivos de git dentro de un
+                                directorio. Puedes crear esos directorios como lo vimos en el módulo
+                                pasado con <strong>git init</strong>
                             </p>
 
-                            <h4>Git init</h4>
-                            <h4>Git Clone</h4>
-
-                        </section>
-                        <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-                            <h2>git init</h2>
-                            <p style="background-color: #3e495f; opacity: 0.6; color:white;">Si quieres empezar a seguir los cambios en
-                            un proyecto (empezando o adelantado), deber ir al directorio
-                            del proyecto y usar el comando </p>
-                            <pre ><code class="hljs" style="word-wrap: break-word;">$ git init</code></pre>
                         </section>
 
-                        <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-                            <h2>git clone</h2>
-                            <p style="background-color: #3e495f; opacity: 0.6; color:white;">Si deseamos una copia de un repositorio git existente,
-                            (por ejemplo un proyecto en el que quieras colaborar) el comando a utilizar es</p>
+
+                        <section data-background-size="cover"
+                                 data-background="{{ asset('images/course/gif/clonar.gif') }}">
+                            <h2>o puedes clonar un repositorio</h2>
+
+                        </section>
+                        <section>
+                            <p style="background-color: #3e495f; opacity: 0.6; color:white;">Si deseamos una copia de un repositorio git,
+                                el comando a utilizar es</p>
                             <pre ><code class="hljs" style="word-wrap: break-word;">$ git clone [url]</code></pre>
-                            donde [URL] es la dirección web en donde se encuentra el repositorio GIT.
-                            <p>Ejemplo: <pre ><code class="hljs" style="word-wrap: break-word;">$ git clone https://github.com/libgit2/libgit2</code></pre>
+                            [URL] es la dirección en donde se encuentra alojado el repositorio.
+                            <p><pre ><code class="hljs" style="word-wrap: break-word;">$ git clone https://github.com/libgit2/libgit2</code></pre>
                             </p>
-                            <p>hace todo el trabajo anterior por ti, crear un directorio denomiado libgit2, inicializar
-                            un reposotorio y por ultimo crear una copia de trabajo de la última versión.</p>
+                            <p>con esto git crea el directorio del proyecto, inicializa su estructura
+                                y crea una copia de trabajo con los archivos en su versión más reciente.</p>
                         </section>
 
                     </section>
 
                     <section
                              data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
-                        <h2>Manos a la obra</h2>
+                        <h2 style="background-color:#D33581; opacity:0.8;">Con este término claro, vamos manos a la obra</h2>
 
                     </section>
 
 
 
                     <section data-state="actividad0">
-                        <h3>Creación de un nuevo archivo desde el directorio virtual</h3>
+                        <h3>Vamos a crear un Archivo</h3>
                         <div class="row">
                         <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Click derecho en nuestro directorio virtual</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                         <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Seleccionamos "nuevo archivo de texto"</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
@@ -180,7 +177,7 @@
 
 
                     <section data-state="actividad1">
-                        <h3>Añadir y Confirmar (en consola)</h3>
+                        <h3>Añadir y Confirmar cambios en GIT</h3>
                         <div class="row">
                             <div class="col-xs-10 fragment fade-up" data-autoslide="2500">desde la consola le vamos a decir a git que registre todos los cambios</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                             <div class="row">
@@ -261,395 +258,36 @@
                     </section>
 
                     <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
-                        <h2 style="color:black">Excelente, hemos creado un nuevo archivo</h2>
+                        <h2 style="color:black">¿Que fue lo que acabamos de hacer?</h2>
                     </section>
 
                     <section>
 
                         <section>
-                            <h2 style="color:black">vamos a añadirlo a git</h2>
-                            <p>Un Controlador de Versiones (VCS en inglés)
-                                es un sistema que registra los cambios
-                                ocurridos durante la <strong>creación, guardado,
-                                    editado y guardado</strong> nuevamente en uno o varios
-                                archivos. </p>
-                        </section>
-                        <section
-                                data-background="http://33.media.tumblr.com/d6e357b4974443d8e972bd39a87ec17a/tumblr_n4f2rhFzgC1tvnszbo2_250.gif">
-                            <h2 style="color:white; background-color: #3e495f; opacity: 0.6;">Excelente verdad... y no has <strong>visto los beneficios</strong></h2>
-                        </section>
-                    </section>
-
-
-                    <section>
-                        <section data-background="{{ asset('images/course/gif/benefits.gif') }}">
-                            <h2 style="color:white; background-color: #3e495f; opacity: 0.6;"><strong>Algunos Beneficios al usar Controladores de Versiones</strong></h2>
-                        </section>
-                        <section data-background="{{ asset('images/course/gif/equipo.gif') }}">
-                            <h2><strong>Colaboración</strong></h2>
-                            <p style="background-color:black; color:white; opacity:0.6;">
-                                Con un CVS tu equipo de trabajo o tu, pueden trabar libremente
-                                en el mismo archivo sin tropezarse, esperar que alguno termine y sin pisarse los pies".
-                            </p>
-                        </section>
-                        <section data-background="{{ asset('images/course/gif/tranquilo.gif') }}">
-                            <h2>Respaldar</h2>
-                            <p style="background-color:black; color:white; opacity:0.6;">
-                                Si hay un incendio o perdistes la información, puedes trabajar
-                                tranquilo.... es casi imposible equivocarse o perder por
-                                completo el trabajo. <strong>Puedes trabajar relajado.</strong>
-                            </p>
-
-                        </section>
-
-                        <section data-background="{{ asset('images/course/incendioGit.jpg') }}">
-                            <h3>
-
-                            </h3>
-                        </section>
-
-                        <section data-background="{{ asset('images/course/gif/tellType.gif') }}">
-                            <h2 style="color:black;">Descripción</h2>
-                            <p style="background-color:black; color:white; opacity:0.6;">
-                                cada vez que vas a guardar los cambios en tu VCS, este
-                                te solicita que escribas una descripción de los cambios
-                                que has realizado y así tener la "historia" de los cambios
-                                de tu proyecto.
-                            </p>
-                        </section>
-
-
-                    </section>
-                    <section>
-                        <section>
-                            <h2>Tipos de Controlador de Versiones</h2>
-                            <p>(barra espaciadora para ver cada animación)</p>
-
+                            <p>Para descubrir que fue lo que hicimos al registrar los cambios
+                                (<strong>git add .</strong>) y confirmarlos (<strong>git commit</strong>), tenemos que
+                            entender la arquitectura y el flujo trabajo de GIT. El siguiente
+                            video explica de manera no tan aburrida (espero...) dicha arquitectura</p>
                         </section>
                         <section id="vcs-local"
                                  data-background-video="{{ asset('assets/vendor/moovly/videos/local.webm') }}">
 
                         </section>
-                        <section id="vcs-centralizado"
-                                 data-background-video="{{ asset('assets/vendor/moovly/videos/central.webm') }}">
-
-                        </section>
 
 
-                        <section data-background="{{ asset('images/course/gif/centralizedDistributed2.gif') }}">
-                        </section>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
-                        <h3 style="background-color:black; color:white; opacity:0.6;">Nacimiento de GIT</h3>
-                        <p style="background-color:black; color:white; opacity:0.6;">
-                            La historia del nacimiento de GIT es muy interesante.
-                            Te invitamos a leer la historia presionando en el botón
-                        </p>
-                        <a class="btn btn-primary btn-block btn-lg" data-toggle="modal"
-                           data-target=".bs-example-modal-lg">Leer Historia de GIT</a>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/queGit.jpg') }}">
-                        <h1 style="color:black;">Entonces <br>¿Que es GIT?</h1>
-                    </section>
-
-                    <section>
-                        <h2>GIT</h2>
-                        <p>
-                            Git <em>(pronunciado "guit")</em> es un software de control de versiones
-                            diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad
-                            del mantenimiento de versiones de aplicaciones cuando éstas tienen un gran
-                            número de archivos de código fuente.
-                        </p>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/terminal.gif') }}">
-                        <h2>¡Advertencia! Este curso usa extensivamente el Terminal</h2>
-                        <p style="background-color:black; color:white; opacity:0.6;">Los comandos de git serán ejecutadas en la consola  o terminal y
-                            <strong>debemos aprender a usarla</strong></p>
                     </section>
 
 
-                    <section data-background="{{ asset('images/course/gif/noTeVayas.gif') }}">
-                        <h2>Alto!!!!!</h2>
-                        <p style="background-color:black; color:white; opacity:0.6;">
-                            No te vayas todavía.... Espera
-                        </p>
+
+                    <section data-background="{{ asset('images/course/gif/malabar2.gif') }}">
+                        <h4 style="color:white; background-color: #3e495f; opacity: 0.6;"><strong>Excelente, ya conoces la arquitectura tres árboles de git. Mas adelante jugaremos y haremos malabares con ella</strong></h4>
                     </section>
 
-                    <section>
-                        <h2>Es cierto</h2>
-                        <p>
-                            Existen interfaces gráficas, pero, pero... pero...<br>
-                            te recomiendo aprender
-                            a usar la <strong>consola</strong>.<br>
-                            Te explico, si usas la consola puedes
-                            exportar todos esos conocimientos cualquier software gráfico de git,
-                            pero no pasa lo mismo si es viceversa... </p>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/terminal.gif') }}">
-                        <p style="background-color:white; color:black; opacity:0.6;">
-                            Así que sin miedo <br> a usar
-                            la consola o terminal..
-                    </section>
-
-
-                    <section data-background="{{ asset('images/course/gif/installGit.gif') }}">
-                        <h3>Antes de usar Git, primero debemos instalarlo</h3>
-                        <p style="background-color:black; color:white; opacity:0.6;">
-                            En este curso, <strong>GIT ya está instalado</strong> y listo para
-                            usar (no tienes que instarlo en tu máquina si no quieres), de todas formaspero te mostramos
-                            los pasos en los distintos Sistemas Operativos para que lo instales y pongas
-                            en práctica lo aprendido.</p>
-                    </section>
-                    <section>
-                        <h3>Instalación de GIT</h3>
-                        <div>
-
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                                                                          data-toggle="tab">Linux</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
-                                                           data-toggle="tab">Mac</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
-                                                           data-toggle="tab">Windows</a></li>
-                                <li role="presentation"><a href="#mas" aria-controls="messages" role="tab"
-                                                           data-toggle="tab">Más</a></li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade in active" id="home">
-                                    Si usas Fedora puedes ejecutar:<br>
-                                    <pre><code class="hljs"
-                                               style="word-wrap: break-word;">$ sudo yum install git-all</code></pre>
-
-                                    En el caso "Debian" u alguna distribución basada en él:<br>
-                                    <pre><code class="hljs" style="word-wrap: break-word;">$ sudo apt-get install git-all</code></pre>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="profile">
-                                    La manera más sencilla sería instalar Xcode Command Line Tools y luego
-                                    intentar correr git desde el terminal. Si git no está instalado, entonces
-                                    emergerá una ventana en donde se puede instalar.
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="messages">
-                                    Para instalarlo en Windows basta con dirigirse a la página de descarga
-                                    de <a href="http://git-scm.com/download/win">git para windows</a> y
-                                    ejecutar el instalador
-                                </div>
-
-                                <div role="tabpanel" class="tab-pane fade" id="mas">
-                                    Para mayor información sobre algun Sistema Operativo diferente a los
-                                    mencionados u alguna otra forma de instalación, dirigirse a la página
-                                    de <a href="https://git-scm.com/downloads"> descargas de git</a> donde
-                                    encontraremos información extendida sobre el tema.
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </section>
-                    <section data-state="actividad0"
-                             data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
-                        <h2>Por fin... Manos a la obra</h2>
-
-                    </section>
-
-                    <section data-state="actividad1">
-                        <h2>Actividad en la Consola 1</h2>
-                        <h3>Comprobar si git está instalado</h3>
-                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-                        <p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
-                                                                                                 style="word-wrap: break-word;">$ git --version</code></pre>
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="act1done" style="color:greenyellow;" class=""></i>
-                            </div>
-                        </div>
-                        <p class="fragment fade-left" data-autoslide="2500">si git está instalado, este comando nos dará
-                            como resultado la versión instalada de git</p>
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
-                    </section>
-
-
-                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
-                        <h2>Felicitaciones... ya escribistes tu primer comando</h2>
-                    </section>
-
-
-                    <section>
-                        <section>
-                            <h2>Inicializar GIT</h2>
-
-                        </section>
-                        <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
-                            <h2>Si nosotros queremos que Git siga y <strong>versione</strong> nuestro proyecto</h2>
-                        </section>
-
-                        <section data-background="{{ asset('images/course/gif/seguir.gif') }}">
-                            <h2>debemos inicializarlo <strong><u>dentro del directorio raiz del proyecto</u></strong>
-                            </h2>
-                        </section>
-
-                        <section data-background="{{ asset('images/course/gif/detective.gif') }}">
-                            <h2 style="color:black;">Así git podrá seguir como a un detective, nuestros cambios</h2>
-                        </section>
-                        <section>
-                            <h2>Recuerda...</h2>
-                            <p>Para inicializar GIT, debemos estar dentro del directorio
-                                de nuestro proyecto a versionar.</p>
-                            <h3>Importante:</h3>
-                            <p>
-                                Si nuestro proyecto está avanzado o ya comenzado,
-                                también podemos comenzar a gestionarlo a través del
-                                mismo comando.
-                            </p>
-
-                        </section>
-                    </section>
-
-
-                    <section data-state="actividad2">
-                        <h2>Actividad en la Consola 2</h2>
-                        <h3 class="fragment fade-up" data-autoslide="2500">Adivina que vamos a hacer.....</h3>
-                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-                        <p class="fragment fade-left" data-autoslide="2500">escribe el comando para inicializar a
-                            GIT</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
-                                                                                                 style="word-wrap: break-word;">$ git init</code></pre>
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="act2done" style="color:greenyellow;" class=""></i>
-                            </div>
-                        </div>
-                        <p class="fragment fade-left" data-autoslide="2500">
-                            para indicarle a git que le siga la pista a todo nuestro directorio.
-                            En nuestro caso el proyecto tiene como nombre tu usuario ("{{ app.user.userName }} ")
-                        </p>
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
-                    </section>
-
-                    <section>
-                        <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
-                            <h3 style="background-color:black; color:white; opacity:0.6;">
-                                ¿Te distes cuenta del mensaje?
-                            </h3>
-                        </section>
-                        <section>
-                            <h3>"Veamos un ejemplo desde 0"</h3>
-                            <p>es decir, creamos la carpeta del proyecto, entramos a la
-                                carpeta del proyecto e inicializamos git</p>
-                        </section>
-                        <section data-background-size="cover"
-                                 data-background="{{ asset('images/course/gif/gitinit.gif') }}">
-                            <br><br><br><br><br>
-                            <ul>
-                                <li><strong>mkdir:</strong> para crear la carpeta</li>
-                                <li><strong>cd:</strong> para cambiar al directorio del proyecto</li>
-                                <li><strong>git init:</strong> para inicializar el proyecto</li>
-                                <li>y allí tenemos el mensaje</li>
-                            </ul>
-                        </section>
-                        <section>
-                            <h2>¿Que acaba de ocurrir?</h2>
-                            <p>
-                                Cuando ejecutamos git init, se creó
-                                un directorio oculto <strong><u>.git</u></strong> en la raiz
-                                de nuestro proyecto que contiene los
-                                metadatos necesarios para seguir los
-                                cambios de nuestro repositorio.
-                            </p>
-                        </section>
-
-                        <section>
-                            <h2>.git</h2>
-                            <p> puedes consultar el contenido del directorio
-                                oculto desde "tu directorio". A lo largo del curso explicaremos su contenido...
-                                no te preocupes</p>
-                        </section>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/gitConfig2.gif') }}">
-                        <h2 style="color:red">Configurar Git</h2>
-                        <p style="color:black">Luego de Instalado, git debe saber <strong>quien eres</strong>
-                            y donde <strong>ubicarte</strong>, para cuando sea hora de registrar los cambios
-                            esa información quede registratada también...<br>Debemos configurar
-                            nuestro nombre y nuestra dirección de correo.
-                        </p>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
-                        <br><br><br><br>
-                        <h3 style="background-color:black; color:white; opacity:0.6;">Espero estes tomando <strong
-                                    style="color:red">nota...</strong>
-                            (esto sale en <strong style="color:red">el quiz)</strong></h3>
-                    </section>
-
-
-                    <section data-state="actividad3" class="fragment fade-up">
-                        <h2>Actividad en la Consola 3</h2>
-                        <h3 class="fragment fade-up" data-autoslide="2500">Configuración inicial de GIT</h3>
-                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-                        <p class="fragment fade-left" data-autoslide="2500">Comando para configurar tu nombre</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
-                                                                                                 style="word-wrap: break-word;">$ git config --global user.name "TuNombre"</code></pre>
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="act3-1done" style="color:greenyellow;" class=""></i>
-                            </div>
-                        </div>
-                        <p class="fragment fade-left" data-autoslide="2500">Luego este comando para configurar tu
-                            email</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
-                                                                                                 style="word-wrap: break-word;">$ git config --global user.email "tuCorreo@tuProveedor.xxx"</code></pre>
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="act3-2done" style="color:greenyellow;" class=""></i>
-                            </div>
-                        </div>
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
-                        <h2>Felicitaciones... Tenemos a git instalado y listo para usar.</h2>
-                    </section>
 
                     <section data-state="qz" data-background="{{ asset('images/course/gif/typing2.gif') }}">
                         <h2 style="background-color: #B0125E;">Ahora a realizar el Quiz</h2>
                     </section>
 
-                    <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
-                        <h2>Felicitaciones... Unidad Terminada.</h2>
-                    </section>
                 </div>
 
             </div>
@@ -878,7 +516,7 @@
     <script src="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/modernizr/modernizr.2.5.3.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/steps/jquery.steps.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/quiz/slickQuiz.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/quiz/master.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
