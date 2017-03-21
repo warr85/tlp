@@ -119,7 +119,9 @@
                             <li class="fragment fade-left" data-autoslide="2500">¿Qué es Controlador de Versiones?</li>
                             <li class="fragment fade-left" data-autoslide="2500">¿Qué es Git?</li>
                             <li class="fragment fade-left" data-autoslide="2500">¿Cómo instalar Git?</li>
-                            <li class="fragment fade-left" data-autoslide="2500">¿Como Configurar Git?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">Crear un proyecto</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Como Inicializar git?</li>
+                            <li class="fragment fade-left" data-autoslide="2500">¿Como configurar Git?</li>
                         </ul>
 
                     </section>
@@ -446,6 +448,76 @@
                         <h2>Felicitaciones... ya escribistes tu primer comando</h2>
                     </section>
 
+                    <section>
+                        <h2> Crear un proyecto </h2>
+                        <p>
+                            Sabiendo que tenemos git instalado, vamos a crear un directorio
+                            donde va a vivir nuestro proyecto.
+                        </p>
+                        <h3>Puedes Elegir como crear el directorio</h3>
+                        <a href="#/22">En la consola</a><br>
+                        <a href="#/23">En el manejador de Archivos</a>
+                    </section>
+
+
+
+                    <section data-state="actividad4">
+                        <h2>Actividad en la Consola 2</h2>
+                        <h3>Crear un directorio en la Consola</h3>
+                        <p class="fragment fade-left" data-autoslide="2500">en estos momentos estás dentro de tu directorio</p>
+                        <p>octonautas/ {{ app.user.username }}</p>
+                        <p class="fragment fade-left" data-autoslide="2500">desde allí, escribe el siguiente comando</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">mkdir nombre_proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="act4done" style="color:greenyellow;" class=""></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-left" data-autoslide="2500">Puedes colocarle el nombre que desees a tu proyecto</p>
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+                    <section data-state="actividad4">
+                        <h2>Actividad en la Consola 2</h2>
+                        <h3>Crear un directorio</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+                        <p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git --version</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="act1done" style="color:greenyellow;" class=""></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-left" data-autoslide="2500">si git está instalado, este comando nos dará
+                            como resultado la versión instalada de git</p>
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
+                        <h2>Felicitaciones, ya tenemos un proyecto.</h2>
+                    </section>
+
+
 
                     <section>
                         <section>
@@ -483,8 +555,21 @@
                         <h2>Actividad en la Consola 2</h2>
                         <h3 class="fragment fade-up" data-autoslide="2500">Adivina que vamos a hacer.....</h3>
                         <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-                        <p class="fragment fade-left" data-autoslide="2500">escribe el comando para inicializar a
-                            GIT</p>
+                        <p class="fragment fade-left" data-autoslide="2500">escribe el comando ingresar a tu proyecto</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ cd nombre_proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="act2done1" style="color:greenyellow;" class=""></i>
+                            </div>
+                        </div>
+
+                        <p>ahora que estamos dentro de tu proyecto, ejecuta</p>
+
                         <div class="row">
                             <div class="col-xs-10">
                                 <a>
@@ -493,14 +578,11 @@
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <i id="act2done" style="color:greenyellow;" class=""></i>
+                                <i id="act2done2" style="color:greenyellow;" class=""></i>
                             </div>
                         </div>
-                        <p class="fragment fade-left" data-autoslide="2500">
-                            Con este comando, le dicimos a git que tenga todo listo para comenzar a realizar seguimiento.
-                            Recuerden que lo primero es estar ubicado dentro de nuestro proyecto, en nuestro caso el proyecto
-                              tiene como nombre tu nombre de usuario ("{{ app.user.userName }} ")
-                        </p>
+
+
                         <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
                                                                                  data-autoslide="1000">En sus marcas</span>
                             <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
@@ -514,8 +596,8 @@
                             </h3>
                         </section>
                         <section>
-                            <h3>"Veamos un ejemplo desde 0"</h3>
-                            <p>comenzando desde la creación del direcotrio del proyecto, hasta
+                            <h3>"Veamos un recuento de lo que hemos hecho"</h3>
+                            <p>comenzando desde la creación del directorio del proyecto, hasta
                             inicializar GIT (en la consola por su puesto...)</p>
                         </section>
                         <section data-background-size="cover"
@@ -768,7 +850,7 @@
         <div class="col-lg-5 acomodar">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Directorio Virtual</h5>
+                    <h5>Manejador de Archivos</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -910,14 +992,40 @@
          * Windows variables.
          */
         window.topDir = '{{ currentDir }}';
+        mkd = '{{ mkdir }}'
         window.currentDir = '{{ currentDir }}';
         window.currentDirName = window.currentDir.split('/').pop();
+        repositorio = '{{ repositorio }}';
+        pathRepo = '{{ pathRepo }}';
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
-        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false};
-        var comandos = {version: false, init: false, name: false, email: false};
+        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false, actividad4:false, actividad5: false};
+        var comandos = {version: false, init: false, name: false, email: false, mkdir: false, cd:false, list:false};
 
+
+        if(mkd) {
+            if (repositorio) {
+                comandos['version'] = true;
+                comandos['init'] = true;
+                comandos['mkdir'] = true;
+                comandos['cd'] = true;
+
+                actividades['actividad0'] = true;
+                actividades['actividad1'] = true;
+                actividades['actividad2'] = true;
+                actividades['actividad4'] = true;
+
+            }else{
+                comandos['version'] = true;
+                comandos['init'] = true;
+                comandos['mkdir'] = true;
+
+                actividades['actividad0'] = true;
+                actividades['actividad1'] = true;
+            }
+        }
+        console.log(actividades);
         jQuery(function ($) {
 
 
@@ -992,85 +1100,127 @@
                     //timeout: 50000,
                     success: function (data) {
                         console.log(data);
-
-                        var pattern = /^set current directory (.+?)$/i;
-                        if (matches = data.salida.match(pattern)) {
-                            console.log(matches);
-                            window.currentDir = matches[1];
-                            window.currentDirName = window.currentDir.split('/').pop() + "/";
-                            $('#currentDirName').text(window.currentDirName);
-                            window.document.title = window.titlePattern.replace('*', window.currentDirName);
-                        } else {
-                            if (data.error === "") {
-                                if (data.comando) {
-                                    //console.log(comandos);
-                                    //console.log(data.comando.match($gitConfigUser));
-                                    if (data.comando.match($comandoGit)) {
-                                        if (data.comando.match($gitVersion)) {
-                                            toggleNav(true);
-                                            $("#act1done").addClass('fa fa-check-circle');
-                                            if (!actividades['actividad1'])
-                                                add_logro("comandos", "comandos1.png");
+                        if(data.error === "") {
+                            var pattern = /^set current directory (.+?)$/i;
+                            if (matches = data.salida.match(pattern)) {
+                                console.log(matches);
+                                window.currentDir = matches[1];
+                                window.currentDirName = window.currentDir.split('/').pop() + "/";
+                                $('#currentDirName').text(window.currentDirName);
+                                window.document.title = window.titlePattern.replace('*', window.currentDirName);
+                                if(comandos['mkdir']){
+                                    comandos['cd'] = true;
+                                    $("#act2done1").addClass('fa fa-check-circle');
+                                }
+                            } else {
+                                if (data.error === "") {
+                                    if (data.comando) {
+                                        console.log(comandos);
+                                        console.log(data.comando.match($mkdir));
+                                        if (data.comando.match($comandoGit)) {
+                                            if (data.comando.match($gitVersion)) {
+                                                toggleNav(true);
+                                                $("#act1done").addClass('fa fa-check-circle');
+                                                if (!actividades['actividad1'])
+                                                    add_logro("comandos", "comandos1.png");
                                                 comandos['version'] = true;
                                                 actividades['actividad1'] = true;
                                                 $("#progressbar").css("width", "35%");
                                                 $("#progressbar").attr("aria-valuenow", "35%");
                                                 $('.stat-percent').html('35%');
 
-                                            //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
-                                        } else if (data.comando.match($gitInit)) {
-                                            if (comandos['version']) {
-                                                $("#act2done").addClass('fa fa-check-circle');
-                                                if (!actividades['actividad2'])
+                                                //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                            } else if (data.comando.match($gitInit)) {
+                                                if ((comandos['version']) && (comandos['cd'])) {
+                                                    $("#act2done2").addClass('fa fa-check-circle');
+                                                    if (!actividades['actividad2'])
+                                                        add_logro("comandos", "comandos1.png");
+                                                    actividades['actividad2'] = true;
+                                                    toggleNav(true);
+                                                    comandos['init'] = true;
+                                                    $("#progressbar").css("width", "45%");
+                                                    $("#progressbar").attr("aria-valuenow", "45%");
+                                                    $('.stat-percent').html('45%');
+                                                } else {
+                                                    screen.append("debes estar ubicado dentro de tu directorio del proyecto");
+                                                }
+                                            }else if (data.comando.match($gitConfigList)){
+                                                if(data.salida.includes("user.name")){
+                                                    comandos['name'] = true;
+                                                    console.log(comandos);
+                                                }
+                                                if(data.salida.includes("user.email")){
+                                                    comandos['email'] = true;
+                                                }
+                                                if((comandos['name']) && (comandos['email'])){
+                                                    actividades['actividad3'] = true;
+                                                }
+                                                console.log(comandos);
+                                                console.log(actividades);
+                                            } else if (data.comando.match($gitConfigUser)) {
+
+                                                if (!comandos['name'])
                                                     add_logro("comandos", "comandos1.png");
-                                                actividades['actividad2'] = true;
-                                                toggleNav(true);
-                                                comandos['init'] = true;
-                                                $("#progressbar").css("width", "45%");
-                                                $("#progressbar").attr("aria-valuenow", "45%");
-                                                $('.stat-percent').html('45%');
+                                                $configUser = true;
+                                                $("#act3-1done").addClass('fa fa-check-circle');
+                                                comandos['name'] = true;
+                                                $("#progressbar").css("width", "55%");
+                                                $("#progressbar").attr("aria-valuenow", "55%");
+                                                $('.stat-percent').html('55%');
                                             } else {
-                                                screen.append("debes verificar primero la instalacion de git con el comando git --version");
+                                                if (!$configUser) {
+                                                    screen.append("debes configuar primero el nombre de usuario");
+                                                }
                                             }
-                                        } else if (data.comando.match($gitConfigUser)) {
 
-                                            if (!comandos['name'])
-                                                add_logro("comandos", "comandos1.png");
-                                            $configUser = true;
-                                            $("#act3-1done").addClass('fa fa-check-circle');
-                                            comandos['name'] = true;
-                                            $("#progressbar").css("width", "55%");
-                                            $("#progressbar").attr("aria-valuenow", "55%");
-                                            $('.stat-percent').html('55%');
+                                            if (data.comando.match($gitConfigMail)) {
+                                                $("#act3-2done").addClass('fa fa-check-circle');
+                                                if (!actividades['actividad3'])
+                                                    add_logro("comandos", "comandos1.png", "bg_logro2.png");
+                                                actividades['actividad3'] = true;
+                                                toggleNav(true);
+                                                comandos['email'] = true;
+                                                $("#progressbar").css("width", "70%");
+                                                $("#progressbar").attr("aria-valuenow", "70%");
+                                                $('.stat-percent').html('70%');
+                                                $("#comandos").addClass("animated bounce infinite text-warning").delay(10000).queue(function (next) {
+                                                    $(this).removeClass("animated bounce infinite");
+                                                    next();
+                                                });
+
+                                            }
+
                                         } else {
-                                            if (!$configUser) {
-                                                screen.append("debes configuar primero el nombre de usuario");
+                                            if (data.comando.match($mkdir)) {
+
+                                                toggleNav(true);
+                                                $("#act4done").addClass('fa fa-check-circle');
+                                                if (!actividades['actividad4'])
+                                                    add_logro("comandos", "comandos1.png");
+                                                comandos['mkdir'] = true;
+                                                actividades['actividad4'] = true;
+                                                $("#progressbar").css("width", "40%");
+                                                $("#progressbar").attr("aria-valuenow", "40%");
+                                                $('.stat-percent').html('40%');
+                                                Reveal.slide(24);
+                                                var state = Reveal.getState();
+                                                Reveal.setState(state);
+
+                                            } else if (data.comando.match($cd)) {
+                                                if (data.salida.match($setCurrent)) {
+                                                    comandos['cd'] = true;
+                                                }
                                             }
+                                            screen.append(data.salida);
                                         }
-
-                                        if (data.comando.match($gitConfigMail)) {
-                                            $("#act3-2done").addClass('fa fa-check-circle');
-                                            if (!actividades['actividad3'])
-                                                add_logro("comandos", "comandos1.png", "bg_logro2.png");
-                                            actividades['actividad3'] = true;
-                                            toggleNav(true);
-                                            comandos['email'] = true;
-                                            $("#progressbar").css("width", "70%");
-                                            $("#progressbar").attr("aria-valuenow", "70%");
-                                            $('.stat-percent').html('70%');
-                                            $("#comandos").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
-                                                $(this).removeClass("animated bounce infinite");
-                                                next();
-                                            });
-
-                                        }
-
                                     }
+                                    screen.append(data.salida);
+                                } else {
+                                    screen.append(data.error);
                                 }
-                                screen.append(data.salida);
-                            } else {
-                                screen.append(data.error);
                             }
+                        }else{
+                            screen.append(data.error);
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -1090,7 +1240,7 @@
 
 
             $('#elfinder').elfinder({
-                url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php') }}",
+                url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php?cmd=ls&target=l1_d3JhbW9uZXM') }}",
                 lang: 'es',
                 height: 250,
                 customData: {user: "wramones"},
@@ -1104,7 +1254,68 @@
                             .fail(function () {
                                 elfinderInstance.exec('open');
                             });
-                    }
+                    },
+                    commandsOptions : {
+                        getfile: {
+                            multiple: true,
+                            folders: true
+                        }
+                    },
+                    /*load: function(event, elfinder){
+                        console.log("init");
+                        console.log(elfinder);
+                        elfinder.trigger("ls", "l1_Lw");
+
+                    },
+                    ls: function(event){
+                        console.log(event);
+
+                    },
+                    open: function(event, manager){
+                        console.log(event);
+                      console.log(manager.fileByName("wramones","l1_Lw"));
+                        for(dir in manager.files()){
+
+                            if((manager.files()[dir].name != window.currentUser) && (manager.files()[dir].name != 'octonautas')){
+                                actividades['actividad0'] = true;
+                                actividades['actividad1'] = true;
+                                actividades['actividad4'] = true;
+                                comandos['mkdir'] = true;
+                                comandos['version'] = true;
+                                console.log(actividades);
+                            }
+                            if(manager.files()[dir].name == ".git"){
+                                actividades['actividad2'] = true;
+                                comandos['init'] = true;
+                                comandos['cd'] = true;
+                            }
+                        }
+                    },*/
+                    add   : function(event) {
+                        console.log(event.data);
+                        if (event.data.added){
+                            if (event.data.added[0].name != "{{ app.user.userName }}") {
+                                console.log("archivo creado");
+
+
+                                if (!actividades['actividad4'])
+                                    add_logro("directorio_virtual", "directorio1.png");
+                                    manejador['crear'] = true;
+                                    actividades['actividad4'] = true;
+
+                                $("#progressbar").css("width", "40%");
+                                $("#progressbar").attr("aria-valuenow", "40%");
+                                $('.stat-percent').html('40%');
+                                Reveal.slide(24);
+                                var state = Reveal.getState();
+                                Reveal.setState(state);
+                            }
+
+                        }
+                    },
+                    enable: function (event){
+                        console.log(event);
+                    },
                 },
                 getFileCallback: function (files, fm) {
                     return false;
@@ -1145,6 +1356,7 @@
 
 
             Reveal.addEventListener('actividad1', function (event) {
+                console.log(actividades);
                 if (!actividades['actividad1']) {
                     toggleNav(false);
                 }
@@ -1158,6 +1370,12 @@
 
             Reveal.addEventListener('actividad3', function (event) {
                 if (!actividades['actividad3']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad4', function (event) {
+                if (!actividades['actividad4']) {
                     toggleNav(false);
                 }
             });
@@ -1228,9 +1446,10 @@
                     }
                 }
 
-                if (event.indexh > 22) {
-                    if (!actividades['actividad2']) {
-                        Reveal.slide(22);
+
+                if (event.indexh > 23) {
+                    if (!actividades['actividad4']) {
+                        Reveal.slide(21);
                         var state = Reveal.getState();
                         Reveal.setState(state);
                         iziToast.error({
@@ -1242,9 +1461,9 @@
                     }
                 }
 
+
                 if (event.indexh > 26) {
-                    alert(event.indexh);
-                    if (!actividades['actividad3']) {
+                    if (!actividades['actividad2']) {
                         Reveal.slide(26);
                         var state = Reveal.getState();
                         Reveal.setState(state);
@@ -1257,13 +1476,30 @@
                     }
                 }
 
-                if (event.indexh == 28) {
+                if (event.indexh > 30) {
+                    if (!actividades['actividad3']) {
+                        Reveal.slide(30);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
+                if (event.indexh == 32) {
+                    if(!actividades['activiad5']){
+                        toggleNav(false);
+                    }
+                    $("#btnQuiz").prop('disabled', false);
+                    $("#btnQuiz").attr('disabled', false);
                     $("#btnQuiz").addClass("animated bounce infinite").delay(5000).queue(function(next){
                         $(this).removeClass("animated bounce infinite");
                         next();
 
-                        $("#btnQuiz").prop('disabled', false);
-                        $("#btnQuiz").attr('disabled', false);
                     });
                 }
 
@@ -1294,6 +1530,8 @@
 
         var $palabraGit = /^git$/g;
         var $comandoGit = /^git+\s+?\w?/g;
+        var $mkdir = /^mkdir+\s+\w+( +\w+)*/g;
+        var $cd = /^cd+\s+\w+( +\w+)*/g;
         var $gitEspacio = /^git+\s/g;
         var $configEspacio = /\bconfig+\s/g;
         var $configGlobal = /\bconfig\s+--global+\s/g;
@@ -1303,6 +1541,7 @@
         var $gitHelp = /^git+\s+\bhelp\s?\w?/g;
         var $gitInit = /^git+\s+\binit/g;
         var $gitConfigUser = /^git+\s+\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
+        var $gitConfigList = /^git+\s+\bconfig\s+--list/g;
         var $gitVersion = /^git+\s+--version$/g;
         var $gitConfigMail = /^git+\s+\bconfig\s+--global+\s+user.email+\s+"?\w{3,}"?/g;
         var $gitConfigEditor = /^git+\s+\bconfig\s+--global+\s+core.editor+\s+"?\w{3,}"?/g;

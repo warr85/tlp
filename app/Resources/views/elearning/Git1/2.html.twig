@@ -114,17 +114,19 @@
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
                                 Se le llama Repositorio Git a la acción de tener la estructura
                                 de archivos <strong>.git </strong> dentro de un
-                                directorio.
+                                directorio.  Pueden notar que dentro de su proyecto tienen un
+                                carpeta que se llama .git.
                             </p>
 
                         </section>
                         <section data-background="{{ asset('images/course/dotGit.png') }}">
-                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Puedes obtener un repositorio de dos maneras:
-                                <ul>
-                                    <li> Inicializandola tu mismo con <strong>git init</strong> (Lo vimos en el módulo pasado)</li>
-                                    <li> Clonando un </strong>repositorio</li> ya existente.</li>
-                                </ul>
+                            <h3 style="color:black;">
+                                ¿Cómo obtenemos un Repositorio GIT?</h3>
+                                <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                    Para que git cree su estructura .git podemos inicializarla
+                                    a través del comando <strong>git init</strong> (Lo vimos en el módulo pasado)
+                                    - o - "Clonando" un proyecto con un </strong>repositorio .git</li> ya existente.
+                                </p>
                             </p>
 
                         </section>
@@ -134,42 +136,98 @@
 
                         <section data-background-size="cover"
                                  data-background="{{ asset('images/course/gif/clonar.gif') }}">
-                            <h2>Clonar un Repositorio</h2>
+                            <h2>¿Clonar un Repositorio?</h2>
 
                         </section>
                         <section>
                             <h2 style="background-color: #3e495f; opacity: 0.6; color:white;">Para clonar un repositorio</h2>
                             <pre ><code class="hljs" style="word-wrap: break-word;">$ git clone [url]</code></pre>
-                            [URL] es la dirección en donde se encuentra alojado el repositorio.
+                            [URL] es la dirección en donde se encuentra alojado el repositorio.  Por ejemplo:
                             <p><pre ><code class="hljs" style="word-wrap: break-word;">$ git clone https://github.com/libgit2/libgit2</code></pre>
                             </p>
-                            <p>con esto git crea el directorio del proyecto, inicializa su estructura
-                                y crea una copia de trabajo con los archivos en su versión más reciente.</p>
+                            <p><strong>Con esto git crea:</strong> la carpeta del proyecto, se inicializa (.git)
+                                y crea una copia de trabajo con los archivos en su versión más reciente. (checkout)</p>
+                            <h3 style="background-color: #3e495f; opacity: 0.6; color:white;">Tranquilo(a) lo explicaremos más adelante</h3>
                         </section>
 
                     </section>
 
-                    <section
-                             data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
-                        <h2 style="background-color:#D33581; opacity:0.8;">Ya sabemos a que llamamos un repositorio.
-                        </h2>
-                        <p>Entonces nuestro proyecto que acabamos de inicializar en el módulo pasado es un repositorio
-                        git.  Continuemos...</p>
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h3 style="background-color:#D33581; opacity:0.8;">
+                            Ya sabemos a que llamamos un repositorio GIT.
+                        </h3>
+                        <p style="background-color:#D33581; opacity:0.8; color:white;">
+                            <strong>Pregunta:</strong> <u>¿Es nuestro directorio del proyecto un Repositorio GIT?</u>
+                        </p>
 
                     </section>
 
 
+                    <section
+                            data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h3 style="background-color:#D33581; opacity:0.8;">Ya sabemos a que llamamos un repositorio.
+                        </h3>
+                        <p style="background-color: #90caf9; opacity:0.8; color: white;">vamos manos a la obra... Pero desde el manejador de archivos</p>
+
+                    </section>
+
 
                     <section data-state="actividad0">
-                        <h3>Vamos a crear un Archivo</h3>
+                        <h3>Crear un archivo</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde el Manejador de Archivos</p>
                         <div class="row">
-                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Click derecho en nuestro directorio virtual</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
-                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Seleccionamos "nuevo archivo de texto"</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
-                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Colocamos de nombre LEEME.txt</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
-                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Editar archivo</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
-                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Escribimos lo que deseen</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
-                        <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Guardar y Salir</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Click en el segundo icono de la barra de menu</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="addDone1" style="color:greenyellow;" class="addDone1"></i>
+                            </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Colocamos el nombre LEEME.txt</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="addDone1" style="color:greenyellow;" class="addDone1"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Editamos nuestro nuevo archivo</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="addDone2" style="color:greenyellow;" class="addDone2"></i>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Escribimos lo que deseemos</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="addDone2" style="color:greenyellow;" class="addDone2"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Guardar y Salir</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="addDone2" style="color:greenyellow;" class="addDone2"></i>
+                            </div>
+                        </div>
+
 
 
                         <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
@@ -177,6 +235,9 @@
                             <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
                                     class="fragment highlight-green">Fuera</span></p>
                     </section>
+
+
+
 
                     <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
                         <h2>Felicitaciones... Creamos un nuevo archivo</h2>
@@ -192,19 +253,20 @@
                     <section data-state="actividad1">
                         <h3>Añadir y Confirmar cambios en GIT</h3>
                         <div class="row">
-                            <div class="col-xs-10 fragment fade-up" data-autoslide="2500">desde la consola le vamos a decir a git que registre todos los cambios</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">desde la consola ingresa a tu proyecto</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">el primer paso es añadir los cambios con:</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                             <div class="row">
                                 <div class="col-xs-10">
                                     <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git add .</code></pre>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ </code></pre>
                                     </a>
                                 </div>
                                 <div class="col-xs-2">
                                     <i id="act1done" style="color:greenyellow;" class=""></i>
                                 </div>
                             </div>
-                            <div class="col-xs-10 fragment fade-up" data-autoslide="2500">El "." es el atajo para decir, añade "todo"</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
-                            <div class="col-xs-10 fragment fade-up" data-autoslide="2500">Luego confirmamos los cambios de forma permanente en el repositorio</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">El "." es el atajo para decir, añade "todos" los cambios que existen en el directorio</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">siguiente paso, confirmar los cambios de forma <strong>permanente</strong> en el repositorio</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                             <div class="row">
                                 <div class="col-xs-10">
                                     <a>
@@ -215,7 +277,7 @@
                                     <i id="act1done" style="color:greenyellow;" class=""></i>
                                 </div>
                             </div>
-                            <div class="col-xs-10 fragment fade-up" data-autoslide="2500">El mensaje debe tener relación con los cambios que hicistes</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">El mensaje es la descripción de los cambios que estás enviando</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                         </div>
 
 
@@ -460,7 +522,7 @@
         <div class="col-lg-5 acomodar">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Directorio Virtual</h5>
+                    <h5>Manejador de Archivos</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -785,6 +847,7 @@
                                 $("#progressbar").css("width", "35%");
                                 $("#progressbar").attr("aria-valuenow", "35%");
                                 $('.stat-percent').html('35%');
+                                $(".addDone1").addClass('fa fa-check-circle');
                             }
 
                         }
@@ -794,7 +857,7 @@
                         if (event.data.changed[0].size > 0){
                             console.log("archivo modificado");
                             toggleNav(true);
-                            $("#act1done").addClass('fa fa-check-circle');
+                            $(".addDone2").addClass('fa fa-check-circle');
                             if (!actividades['actividad0'])
                                 add_logro("directorio_virtual", "directorio1.png");
                             directorio['modificar'] = true;
@@ -811,7 +874,7 @@
                 uiOptions: {
                     toolbar: [
                         // toolbar configuration
-                        ['open', 'edit'],
+                        ['open', 'mkfile', 'edit'],
                         ['home', 'up'],
                         ['info'],
                         ['reload'],

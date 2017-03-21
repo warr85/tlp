@@ -327,7 +327,8 @@ class AjaxController extends Controller {
                     $response->setData(array(
                         'response'      => 'success',
                         'parametros'    => $userCommand,
-                        'salida'         => $salida,                       
+                        'salida'         => $salida,
+                        'error'     => ""
                     ));
                     return $response;                    
                 } else {
@@ -335,7 +336,7 @@ class AjaxController extends Controller {
                     $response->setData(array(
                         'response'      => 'success',
                         'parametros'    => $userCommand,
-                        'salida'         => $salida,                       
+                        'error'         => $salida,
                     ));
                     return $response;  
                 }
@@ -349,17 +350,37 @@ class AjaxController extends Controller {
                 $userCommand = str_replace("--global", "", $userCommand);                
             }
             if(substr( $comando, 0, 3 ) === "git"){
+
                 if(ComandoToca($comando, $parametros['comandos'])){
+                    if(substr( $comando, 0, 8 ) === "git init"){
+                        //var_dump($parametros); exit;
+                        if($parametros['comandos']['cd'] == "false"){
+
+                            $response->setData(array(
+                                'response'      => 'error',
+                                'parametros'    => $userCommand,
+                                'error'         => "<span class='error'>debes estar dentro de tu proyecto para inicializar un repositorio git</span>",
+                                'salida'        => ""
+                            ));
+                            return $response;
+
+                        }
+                    }
                     $userCommand = $this->container->getParameter('git_directory') . $userCommand;
                 }else{
-                    
-                    $response->setData(array(
-                        'response'      => 'error',
-                        'parametros'    => $userCommand,
-                        'error'         => "<span class='error'>Este Comando " . $userCommand . " Todavía no toca utilizarlo</span>",
-                        'salida'        => ""
-                    ));
-                    return $response;
+
+                    if (strpos($comando, '--list') !== false) {
+
+                    }else {
+
+                        $response->setData(array(
+                            'response' => 'error',
+                            'parametros' => $userCommand,
+                            'error' => "<span class='error'>Este Comando " . $userCommand . " Todavía no toca utilizarlo</span>",
+                            'salida' => ""
+                        ));
+                        return $response;
+                    }
                     
                 }
             }
@@ -436,14 +457,15 @@ function searchCommand($userCommand, array $commands, &$found = false, $inValues
 
 function ComandoToca($userCommand, array $orden)
 {    
-    foreach ($orden as $key => $value) {   
+    foreach ($orden as $key => $value) {
        if ($value === 'false'){             
            if (strpos($userCommand, $key) !== false){ return true; }
            else {return false; }
        }else if ($value === 'true'){
            if (strpos($userCommand, $key) !== false){ return true; }
        }
-    }    
+    }
+
     return false;
 }
 

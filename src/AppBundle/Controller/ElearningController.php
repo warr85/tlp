@@ -23,6 +23,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Inscripcion;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Finder\Iterator\RecursiveDirectoryIterator;
 
 
 /**
@@ -98,9 +99,36 @@ class ElearningController extends Controller {
             array('id' => 'ASC')
         );
         $directorio = $this->container->getParameter('octonautas_directory') . $this->getUser()->getUserName();            
-        if(!file_exists($directorio)){
+        if(!file_exists($directorio) && !is_dir($directorio)){
             mkdir($directorio);
         }
+
+
+
+        $it = new \RecursiveDirectoryIterator($directorio);
+        $iterator = new \RecursiveIteratorIterator($it);
+
+        $repositorio = false;
+        $mkdir = false;
+        $pathRepo = "";
+
+        foreach ($iterator as $file) {
+            if($file->isDir()) {
+                $path = strtoupper($file->getRealpath()) ;
+                if (basename($path) != strtoupper($this->getUser()->getUserName()) && basename($path) != strtoupper('octonautas') ) {
+                    if (basename($path) == ".GIT") {
+                        $repositorio = true;
+                        $mkdir = true;
+                        $pathRepo = $file->getRealpath();
+                        break;
+                    }else{
+                        $mkdir = true;
+                    }
+                }
+
+            }
+        }
+       // var_dump($repositorio); exit;
         return $this->render('elearning/' . $inscripcion->getIdCursoGrupo()->getIdCurso()->getNombreCorto() . '/' . $avance .  '.html.twig', array(
             'inscripcion'       => $inscripcion,
             'cursoModulo'       => $cursoModulo,
@@ -112,6 +140,9 @@ class ElearningController extends Controller {
             'currentDirName'    => "octonauta",
             'currentUser'       => $this->getUser()->getUserName(),
             'currentDir'        => $directorio,
+            'mkdir'             => $mkdir,
+            'repositorio'       => $repositorio,
+            'pathRepo'          => $pathRepo,
             'porcentajePxNivel' => $ppn
         ));
         
