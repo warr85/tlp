@@ -652,7 +652,7 @@
                         var urlAvance = $('#url_avance').val();
                         var urlEvaluacion = $('#url_evaluacion').val();
 
-                        add_logro("quiz1", "quiz1.png");
+                        add_logro("quiz" + $("#qnumber").val(), "quiz" + $("#qnumber").val() + ".png");
                         $("#quiz1").addClass("animated bounce infinite text-warning").delay(5000).queue(function(next){
                             $(this).removeClass("animated bounce infinite");
                             next();
@@ -725,7 +725,7 @@
 		                  message: 'debes practicar un poco mas, pero puedes avanzar.',		                  
 		                  position: 'center'
 		              });
-                        add_logro("quiz1", "quiz1.png");
+                        add_logro("quiz" + $("#qnumber").val(), "quiz" + $("#qnumber").val() + ".png");
                         $("#quiz1").addClass("animated bounce infinite text-warning").delay(5000).queue(function(next){
                             $(this).removeClass("animated bounce infinite");
                             next();

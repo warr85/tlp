@@ -646,9 +646,7 @@
 
 
                     <section data-state="actividad3" class="fragment fade-up">
-                        <h2>Actividad en la Consola 3</h2>
-                        <h3 class="fragment fade-up" data-autoslide="2500">Configuración inicial de GIT</h3>
-                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
+                        <h2>Actividad 3 Configurar GIT</h2>
                         <p class="fragment fade-left" data-autoslide="2500">Comando para configurar tu nombre</p>
                         <div class="row">
                             <div class="col-xs-10">
@@ -667,17 +665,25 @@
                             <div class="col-xs-10">
                                 <a>
                                     <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
-                                                                                                 style="word-wrap: break-word;">$ git config --global user.email "tuCorreo@tuProveedor.xxx"</code></pre>
+                                                                                                 style="word-wrap: break-word;">$ git config --global user.email "correo@dominio.xxx"</code></pre>
                                 </a>
                             </div>
                             <div class="col-xs-2">
                                 <i id="act3-2done" style="color:greenyellow;" class=""></i>
                             </div>
                         </div>
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
+                        <p class="fragment fade-left" data-autoslide="2500">si ya tienes configurado git, puedes ejecutar el siguiente comando para listar tu información</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right"><code class="hljs"
+                                                                                                 style="word-wrap: break-word;">$ git config --list"</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="act3-2done" style="color:greenyellow;" class=""></i>
+                            </div>
+                        </div>
                     </section>
 
                     <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
@@ -784,6 +790,7 @@
                 <div class="ibox-content profile-content">
 
                     <div id="slickQuiz">
+                        <input type="hidden" name="qnumber" id="qnumber" value="1">
                         <h1 class="quizName"><!-- where the quiz name goes --></h1>
 
                         <div class="quizArea">
@@ -996,7 +1003,6 @@
         window.currentDir = '{{ currentDir }}';
         window.currentDirName = window.currentDir.split('/').pop();
         repositorio = '{{ repositorio }}';
-        pathRepo = '{{ pathRepo }}';
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
@@ -1145,6 +1151,7 @@
                                                     screen.append("debes estar ubicado dentro de tu directorio del proyecto");
                                                 }
                                             }else if (data.comando.match($gitConfigList)){
+                                                console.log("data.salida: " + data.salida.includes("user.name"));
                                                 if(data.salida.includes("user.name")){
                                                     comandos['name'] = true;
                                                     console.log(comandos);
@@ -1154,6 +1161,7 @@
                                                 }
                                                 if((comandos['name']) && (comandos['email'])){
                                                     actividades['actividad3'] = true;
+                                                    toggleNav(true);
                                                 }
                                                 console.log(comandos);
                                                 console.log(actividades);

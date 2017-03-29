@@ -408,6 +408,9 @@
                                         {% if logroD.id == 2 %}
                                             <input type="hidden" id="quizOpen" value="true"/>
                                         {% endif %}
+                                        {% if logroD.nombreCorto == "commit1" %}
+                                            <input type="hidden" name="comm" id="comm" value="true">
+                                         {% endif %}
                                         <span id="{{ logroD.nombreCorto }}" data-toggle="tooltip" data-placement="top"
                                               title="{{ logroD.nombre }}" class="fa-stack has-badge"
                                               data-count="{{ logroD.badge }}">
@@ -456,6 +459,7 @@
                 <div class="ibox-content profile-content">
 
                     <div id="slickQuiz">
+                        <input type="hidden" name="qnumber" id="qnumber" value="2">
                         <h1 class="quizName"><!-- where the quiz name goes --></h1>
 
                         <div class="quizArea">
@@ -669,7 +673,7 @@
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
-        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false};
+        var actividades = {actividad0: {{ mkdir }}, actividad1: false, actividad2: false, actividad3: false};
         var comandos = {add: false, commit: false};
         var directorio = {crear: false, modificar: false};
 
@@ -900,9 +904,16 @@
 
 
             Reveal.addEventListener('actividad0', function (event) {
+
+                if($("#comm").val() == "true"){
+                    actividades["actividad1"] = true;
+                    actividades["actividad2"] = true;
+                }
                 if (!actividades['actividad0']) {
                     toggleNav(false);
                 }
+
+                alert(actividades["actividad1"]);
             });
 
 

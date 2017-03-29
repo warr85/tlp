@@ -98,6 +98,12 @@ class ElearningController extends Controller {
             array("idCursoModuloTema" => $temaActual->getId()),
             array('id' => 'ASC')
         );
+
+
+        // Manejador de Archivos
+        $repositorio_git = false;
+        $archivo_creado = false;
+        $directorio_creado = false;
         $directorio = $this->container->getParameter('octonautas_directory') . $this->getUser()->getUserName();            
         if(!file_exists($directorio) && !is_dir($directorio)){
             mkdir($directorio);
@@ -105,30 +111,37 @@ class ElearningController extends Controller {
 
 
 
-        $it = new \RecursiveDirectoryIterator($directorio);
-        $iterator = new \RecursiveIteratorIterator($it);
+        if ($handle = opendir($directorio)) {
 
-        $repositorio = false;
-        $mkdir = false;
-        $pathRepo = "";
-
-        foreach ($iterator as $file) {
-            if($file->isDir()) {
-                $path = strtoupper($file->getRealpath()) ;
-                if (basename($path) != strtoupper($this->getUser()->getUserName()) && basename($path) != strtoupper('octonautas') ) {
-                    if (basename($path) == ".GIT") {
-                        $repositorio = true;
-                        $mkdir = true;
-                        $pathRepo = $file->getRealpath();
-                        break;
-                    }else{
-                        $mkdir = true;
-                    }
-                }
+            /* This is the correct way to loop over the directory. */
+            while (false !== ($entry[] = readdir($handle))) {
 
             }
+            closedir($handle);
         }
-       // var_dump($repositorio); exit;
+
+        if($entry[0] != "." || $entry[0] != ".."){
+            $directorio_creado = true;
+            if ($handle = opendir($directorio . "/" . $entry[0] )) {
+
+                /* This is the correct way to loop over the directory. */
+                while (false !== ($entry2[] = $current =  readdir($handle))) {
+                    if($current == ".git"){
+                        $repositorio_git = true;
+                    }
+
+                }
+                closedir($handle);
+            }
+        }
+
+        if(sizeof($entry) >= 5){
+            $archivo_creado = true;
+        }
+
+
+
+        //var_dump($logrosObtenidos); exit;
         return $this->render('elearning/' . $inscripcion->getIdCursoGrupo()->getIdCurso()->getNombreCorto() . '/' . $avance .  '.html.twig', array(
             'inscripcion'       => $inscripcion,
             'cursoModulo'       => $cursoModulo,
@@ -140,9 +153,9 @@ class ElearningController extends Controller {
             'currentDirName'    => "octonauta",
             'currentUser'       => $this->getUser()->getUserName(),
             'currentDir'        => $directorio,
-            'mkdir'             => $mkdir,
-            'repositorio'       => $repositorio,
-            'pathRepo'          => $pathRepo,
+            'mkdir'             => $directorio_creado,
+            'repositorio'       => $repositorio_git,
+            'archivo'           => $archivo_creado,
             'porcentajePxNivel' => $ppn
         ));
         
