@@ -108,57 +108,147 @@
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Cómo saber que contiene cada estructura de los Árboles de git?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section data-background="{{ asset('images/course/treeThree.png') }}" data-background-size="contain">
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Hasta ahora tenemos un repositorio Git <strong>completo</strong>, y archivos dentro de nuestro
-                                proyecto.  Ahora supongamos que necesitamos hacer algunos cambios, añadirlos  y confirmarlos
-                                al repositorio cuando estemos listos.
+                                Tenemos un repositorio Git <strong>completo</strong>  Ahora
+                                veamos como GIT nota, sigue y cataloga dichos cambios en
+                                nuestro repositorio.
                             </p>
 
                         </section>
 
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section data-background="{{ asset('images/course/lifecycle1.png') }}" data-background-size="contain">
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Cada archivo del directorio de trabajo de nuestro proyecto puede estar en uno de estos dos
-                                estados: <strong>bajo seguimiento (tracked)</strong>, o <strong>sin seguimiento (untracked)</strong>.
-                                Los archivos bajo seguimiento son aquellos que hemos envíado al repositorio; pueden estar
-                                sin modificaciones, modificados, o preparados (stage index). Los archivos sin seguimiento
-                                son todos los demás archivos de tu directorio que no hemos preparado ni enviado al
+                                Cada archivo que se encuentra dentro del repositorio,
+                                puede estar en uno de estos dos estados:
+                                <strong>bajo seguimiento (Tracked)</strong>, o
+                                <strong>sin seguimiento (Untracked)</strong>.
+                            </p>
+
+                        </section>
+
+                        <section data-background="{{ asset('images/course/lifecycle1.png') }}" data-background-size="contain">
+                            <h3 style="background-color: #8a6d3b; opacity: 0.8; color:black;">Archivos bajo seguiemiento o Tracked</h3>
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                Son aquellos que hemos añadido y/o envíado al repositorio; Estos archivos bajo seguimiento
+                                pueden estar <strong>sin modificaciones, modificados, o preparados</strong> (stage index).
+                            </p>
+
+                        </section>
+
+                        <section data-background="{{ asset('images/course/lifecycle1.png') }}" data-background-size="contain">
+                            <h3 style="background-color: #8a6d3b; opacity: 0.8; color:black;">Archivos sin seguimiento (Untracked)</h3>
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                Los archivos sin seguimeinto
+                                son todos los demás archivos de tu directorio que NO hemos preparado ni enviado al
                                 repositorio la primera vez.
                             </p>
 
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
-                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                A medida que editas archivos, Git los ve como modificados, porque los has cambiado desde
-                                tu última confirmación. Preparas estos archivos modificados y luego confirmas todos los
-                                cambios que hayas preparado, y el ciclo se repite.
-                                Este proceso queda ilustrado en la Figura 2-1.
-                            </p>
+                        <section data-background="{{ asset('images/course/lifecycle1.png') }}" data-background-size="contain">
+                            <h3>Estado de los Archivos seguidos</h3>
+                            <div>
+                                Cuando git sigue a los archivos, los cataloga de acuerdo a su estado en el repositorio.
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                                              data-toggle="tab">Untracked</a></li>
+                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                                               data-toggle="tab">Unmodified</a></li>
+                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                                               data-toggle="tab">Edited</a></li>
+                                    <li role="presentation"><a href="#mas" aria-controls="messages" role="tab"
+                                                               data-toggle="tab">Staged</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                        Untracked o sin seguimiento es cuando el archivo está en el directorio
+                                        y no le hemos pedido a git que lo sigua a través de un git add.
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="profile">
+                                        Unmodified o sin modificaciones es cuando el archivo está igual tanto en el
+                                        working como en el repositorio. Esto sucede como hacemos un commit
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="messages">
+                                        Edited o modificado es cuando hacemos cabmios a un archivo y enseguida git lo
+                                        reconoce como modificado debido que ya no son iguales los que estan en el working
+                                        con el del repositorio.
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade" id="mas">
+                                        Staged o preparados es cuando añadimos los cambios al stage index a través de un
+                                        git add.
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </section>
+
+                        <section id="vcs-arbol" data-state="videoArbol"
+                                 data-background-video="{{ asset('assets/vendor/moovly/videos/estadosGit.webm') }}">
 
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
-                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                El comando git status es el que nos va a reportar directamente a nosotros
-                                la diferencia entre los tres arboles y el estado de los archivos
-                            </p>
 
-                        </section>
+                    </section>
+
+                    <section >
+                        <h3>Entendimos todo ¿Verdad?</h3>
+
+                    </section>
 
 
-                        </section>
+                    <section data-background="{{ asset('images/course/gif/estasEntendiendo.gif') }}">
+
+                    </section>
+
+                    <section >
+                        <h3>Si puedes leer y entender la siguiente imagen</h3>
+                        <p>Entonces si estamos claros hasta ahora</p>
+
+                    </section>
+
+                    <section data-background="{{ asset('images/course/lifecycle2.png') }}" data-background-size="contain">
+
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/chuckNorris.gif') }}">
+
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/gitStatus.gif') }}">
+                        <h3>Reportando estado en Git</h3>
+                        <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                            La herramienta principal para determinar qué archivos están en cual
+                            de los estados que vimos es el comando git status.
+                        </p>
+
+                    </section>
+
+                    <section >
+                        <h3>Git Status</h3>
+                        <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                            Al ejecutarlo, te muestra que archivos
+                            estan <strong>"Sin seguimiento"</strong>, y/o
+                            <strong>"modificados"</strong> y/o
+                            <strong>"Staged"</strong>. Los archivos que estan en estado <strong>"Sin modificaciones"</strong>
+                            no son mostrados.
+                        </p>
+
+                    </section>
 
 
 
                     <section
                             data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
-                        <h3 style="background-color:#D33581; opacity:0.8;">Veamos que nos tiene que decir git status.
+                        <h3 style="background-color:#D33581; opacity:0.8;">Manos a la obra
                         </h3>
-                        <p style="background-color: #90caf9; opacity:0.8; color: white;">vamos manos a la obra... </p>
-
                     </section>
 
 
@@ -209,21 +299,31 @@
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section>
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Primero dice en que rama estamos (master).  Vamos a estar en master
-                                hasta que lleguemos al módulo de las ramas, por ahora podemos ignorar
-                                esa parte del reporte.
+                                Primero dice que estamos en la <strong>rama master</strong>.
                             </p>
 
                         </section>
 
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section data-background="{{ asset('images/course/gif/donde.gif') }}">
+
+
+                        </section>
+
+                        <section>
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                segundo dice: "nothing to commit, working directory clean".  eso significa que
-                                no hay nada en el stage index y que nuestro working directory y el repositorio
-                                estan en sincronía.
+                                Tranquilo(a) eso lo veremos mas adelante, ignoremosle por ahora
+                            </p>
+
+                        </section>
+
+
+                        <section>
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                segundo dice: <strong>"nothing to commit, working directory clean".</strong>
+                                eso significa que Todos nuestro proyecto está en estado <strong>sin modificaciones.</strong>
                             </p>
 
                         </section>
@@ -328,11 +428,11 @@
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section data-background="{{ asset('images/course/untracked.png') }}" data-background-size="contain">
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                ignoramos el branch master y nos enfocamos en donde dice
-                                que tenemos archivos sin seguimiento y nos lista esos
-                                archivos.  tambien nos recomienda utilizar el git add
+                                ignarando el branch master, nos enfocamos en donde dice
+                                que tenemos archivos <strong>sin seguimiento</strong> y nos
+                                lista esos archivos. tambien nos recomienda utilizar el git add
                                 para comenzar a seguirlos.
                             </p>
 
@@ -384,21 +484,25 @@
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section data-background="{{ asset('images/course/add1.png') }}" data-background-size="contain">
+                            <h3>Nos reporta el Stage Index</h3>
+
+                        </section>
+
+
+                        <section data-background="{{ asset('images/course/add1.png') }}" data-background-size="contain">
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Tenemos de primero una nueva sección "cambios para hacer commit".
-                                esta sección es nuestro stage index; ¿cómo lo sabemos?
-                                Debido a que la recomendación que nos da es "use git reset HEAD"
-                                para sacar del <strong>stage</strong>.  Git sabe que es un
-                                nuevo archivo porque le muestra con new file: archivo1.txt
+                                nos informa que tenemos<strong>"cambios para hacer commit".</strong>
+                                para confirmar o nos dice que usemos
+                                "git reset HEAD" para sacarlos del <strong>stage</strong>. de regreso
+                                al working
                             </p>
 
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section >
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                todavía tenemos archivos sin seguimiento en nuestro working directory
-                                listados con la recomendación de hacer un git add.
+                                y todavía nos informa que tenemos a archivo2 está como "Sin seguimiento"
                             </p>
 
                         </section>
@@ -444,23 +548,23 @@
 
 
                     <section>
-                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}" data-background-image="contain">
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section data-background="{{ asset('images/course/commit1.png') }}">
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                ya no nos muestra la información de archivo1.txt porque en el
-                                working directory y en el repositorio se encuentran en total
-                                sincronía
+                                ya no nos muestra la información de archivo1.txt porque el
+                                working directory y en el repositorio tienen la misma información
+                                de archivo1, es decir, está sin modificaciones
                             </p>
 
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section >
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                sólo nos muestra la información de el archivo que no está
-                                siguiendo.
+                                Git informa de lo que es diferente, no de lo que tiene igual, por
+                                eso sólo vemos que tenemos Archivo2 como sin seguimiento.
                             </p>
 
                         </section>
@@ -520,19 +624,27 @@
 
 
 
-                    <section>
+                    <section >
                         <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/dotGit.png') }}">
+                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}" data-background-image="contain">
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                que nuestro tres árboles están en total sincronía... Felicitaciones
+                                Nuestro directorio está limpio y todos los archivos están en estado
+                                <strong>"Sin modificaciones."</strong>
                             </p>
 
                         </section>
 
                 </section>
+
+
+                    <section data-state="qz"
+                            data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h3 style="background-color:#D33581; opacity:0.8;">Hora del Quiz
+                        </h3>
+                    </section>
 
 
 
@@ -769,7 +881,7 @@
     <script src="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/modernizr/modernizr.2.5.3.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/steps/jquery.steps.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config3.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/quiz/slickQuiz.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/quiz/master.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
@@ -847,7 +959,7 @@
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
-        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false, actividad4: false, actividad5: false};
+        var actividades = {actividad0: false, actividad1: {{ archivo12 }}, actividad2: false, actividad3: false, actividad4: false, actividad5: false};
         var comandos = {status: false, add: false, commit: false, add2: false, commit2: false};
         var directorio = {crear1: false, crear2: false, modificar1: false, modificar2 : false};
 
@@ -950,13 +1062,18 @@
                                                 toggleNav(true);
                                             }else if(!actividades["actividad2"]) {
                                                 if(actividades['actividad1']) {
-                                                    $(".status2").addClass('fa fa-check-circle');
-                                                    add_logro("comandos3", "comandos3.png");
-                                                    $("#progressbar").css("width", "55%");
-                                                    $("#progressbar").attr("aria-valuenow", "55%");
-                                                    $('.stat-percent').html('55%');
-                                                    actividades["actividad2"] = true;
-                                                    toggleNav(true);
+                                                    if (!data.salida.includes("nothing to commit")) {
+                                                        $(".status2").addClass('fa fa-check-circle');
+                                                        add_logro("comandos3", "comandos3.png");
+                                                        $("#progressbar").css("width", "55%");
+                                                        $("#progressbar").attr("aria-valuenow", "55%");
+                                                        $('.stat-percent').html('55%');
+                                                        actividades["actividad2"] = true;
+                                                        toggleNav(true);
+                                                    }else{
+                                                        actividades["actividad2"] = actividades["actividad3"] = actividades["actividad4"] = actividades["actividad5"] = true;
+                                                        toggleNav(true);
+                                                    }
                                                 }
                                             }else if(!actividades["actividad3"]) {
                                                 if (comandos['add']) {

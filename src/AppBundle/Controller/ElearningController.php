@@ -110,19 +110,20 @@ class ElearningController extends Controller {
         }
 
 
-
         if ($handle = opendir($directorio)) {
 
             /* This is the correct way to loop over the directory. */
             while (false !== ($entry[] = readdir($handle))) {
 
             }
+
             closedir($handle);
         }
 
         if($entry[0] != "." || $entry[0] != ".."){
             $directorio_creado = true;
-            if ($handle = opendir($directorio . "/" . $entry[0] )) {
+            $proyect_dir = $directorio . "/" . $entry[0];
+            if ($handle = opendir($proyect_dir )) {
 
                 /* This is the correct way to loop over the directory. */
                 while (false !== ($entry2[] = $current =  readdir($handle))) {
@@ -132,12 +133,23 @@ class ElearningController extends Controller {
 
                 }
                 closedir($handle);
+                $files = scandir($proyect_dir);
             }
         }
-
-        if(sizeof($entry) >= 5){
-            $archivo_creado = true;
+        $cuenta = 0;
+        $leeme_creado = false;  $archivo12 = false;
+        foreach ($files as $archivo){
+            if (stripos($archivo, 'leeme') !== false) {
+                $leeme_creado = true;
+            }
+            if (stripos($archivo, 'archivo') !== false) {
+                $cuenta ++;
+                if($cuenta == 2) {
+                    $archivo12 = true;
+                }
+            }
         }
+        echo $leeme_creado; echo $archivo12;
 
 
 
@@ -155,7 +167,8 @@ class ElearningController extends Controller {
             'currentDir'        => $directorio,
             'mkdir'             => $directorio_creado,
             'repositorio'       => $repositorio_git,
-            'archivo'           => $archivo_creado,
+            'archivo'           => $leeme_creado,
+            'archivo12'         => $archivo12,
             'porcentajePxNivel' => $ppn
         ));
         
