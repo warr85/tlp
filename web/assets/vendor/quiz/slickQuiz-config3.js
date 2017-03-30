@@ -15,67 +15,49 @@ var quizJSON = {
     },
     "questions": [
         { // Question 1 - Multiple Choice, Single True Answer
-            "q": "¿Qué es un Repositorio GIT?",
+            "q": "¿Cuantos árboles maneja la arquitectura de Git?",
             "a": [
-                {"option": "Una medicina para la fiebre",      "correct": false},
-                {"option": "Un directorio con la estructura de git inicializada",     "correct": true},
-                {"option": "el directorio de tu proyecto",      "correct": false},
-                {"option": "un conjunto de archivos modificados",     "correct": false} // no comma here
+                {"option": "Cuatro",      "correct": false},
+                {"option": "Dos",     "correct": false},
+                {"option": "Uno",      "correct": false},
+                {"option": "Tres",     "correct": true} // no comma here
             ],
-            "correct": "<p><span>Correcto!</span> Un repositorio Git es un directorio que contiene la carpeta .git dentro de él.</p>",
-            "incorrect": "<p><span>Uhh no.</span> Un repositorio Git es un directorio que contiene la carpeta .git dentro de él. </p>" // no comma here
+            "correct": "<p><span>Correcto!</span> Correcto: el Working Directory, el Stage Index y el Repositorio.</p>",
+            "incorrect": "<p><span>Uhh no.</span> Recuerda que son tres: el Working Directory, el Stage Index y el Repositorio. </p>" // no comma here
         },
         { // Question 2 - Multiple Choice, Multiple True Answers, Select Any
-            "q": "¿como se puede obtener un repositorio GIT?. debes seleccionar todas las que correspondan",
+            "q": "Cuando uno añade un archivo nuevo a un repositorio Git, ¿Que estatus se le asigna?",
             "a": [
-                {"option": "git --version",               "correct": false},
-                {"option": "git init",   "correct": true},
-                {"option": "git add .",               "correct": false},
-                {"option": "git clone [URL]", "correct": true} // no comma here
+                {"option": "Modificado",               "correct": false},
+                {"option": "Sin Seguimiento",   "correct": true},
+                {"option": "Staged",               "correct": false},
+                {"option": "Sin Modificaciones", "correct": false} // no comma here
             ],
             //"select_any": true,
-            "correct": "<p><span>Excelente!</span> Puedes inicializarlo o puedes clonarlo</p>",
-            "incorrect": "<p><span>Hmmm.... hay que repasar</span> debemos repasar la teoría sobre los repositorios de GIT.</p>" // no comma here
+            "correct": "<p><span>Excelente!</span> Los archivos que nunca han sido preparados, git los cataloga como sin Seguimiento o Untracked</p>",
+            "incorrect": "<p><span>Hmmm.... hay que repasar</span> debemos repasar la teoría sobre los estados de los archivos de GIT.</p>" // no comma here
         },
         { // Question 3 - Multiple Choice, Multiple True Answers, Select All
-            "q": "¿Cual comando añade un archivo al Stage Index?",
+            "q": "¿Que estado tiene un archivo que estaba en el Stage y se ejecutó el comando git commit?",
             "a": [
-                {"option": "git add .",           "correct": false},
-                {"option": "git commit -m 'archivo modificado'", "correct": false},
-                {"option": "git init",  "correct": false},
-                {"option": "git add nombre_archivo", "correct": true} // no comma here
+                {"option": "Ninguno",           "correct": true},
+                {"option": "Modificado'", "correct": false},
+                {"option": "Staged",  "correct": false}
+
             ],
-            "correct": "<p><span>Brillante!</span> ya conoces como utilizar la estructura de tres árboles de git</p>",
-            "incorrect": "<p><span>Incorrecto.</span> Debemos repasar como jugar con la estructura de tres árboles de git.</p>" // no comma here
+            "correct": "<p><span>Brillante!</span> Conoces como Git trabaja y asigna estatus.  No muestra nada ya que ese archivo en el working y el repositorio, tienen la misma información</p>",
+            "incorrect": "<p><span>Incorrecto.</span> debemos repasar la teoría sobre los estados de los archivos de GIT.</p>" // no comma here
         },
         { // Question 4
-            "q": "¿La Arquitectura de tres árboles de git siempre están en sincronía?",
+            "q": "¿Que sucede si un archivo que está en el repositorio es modificado en el working?",
             "a": [
-                {"option": "Si",    "correct": false},
-                {"option": "No",     "correct": true} // no comma here
+                {"option": "Nada",           "correct": false},
+                {"option": "Sin Seguimiento",           "correct": false},
+                {"option": "Modificado",     "correct": true} // no comma here
             ],
             //"select_any": true,
-            "correct": "<p><span>WOW!</span> Felicidades! Son estructuras de archivos porque cada una puede ser diferente en cierto puento e iguales en otro.!</p>",
-            "incorrect": "<p><span>Falla.</span> Lo siento. Son estructuras de archivos porque cada una puede ser diferente en cierto puento e iguales en otro.!</p>" // no comma here
-        },
-        { // Question 5
-            "q": "Para confirmar los cambios del Stage Index al Repositorio ¿cual sería el comando?",
-            "a": [
-                {"option": "git commit -m 'mensaje de los cambios'",    "correct": true},
-                {"option": "git commit .",     "correct": false},
-                {"option": "git confirm -m 'mensaje de los cambios'",      "correct": false},
-            ],
-            "correct": "<p><span>Excelente!</span> Felicitaciones, con git commit -m 'menaje' confirmamos todo de manera permanente al repositorio</p>",
-            "incorrect": "<p><span>Incorrecto.</span> Recuerda que con git commit -m 'menaje' confirmamos todo de manera permanente al repositorio.</p>" // no comma here
-        },
-        { // Question 6
-            "q": "Existe una forma de enviar los cambios de manera directa del working directory al repositorio?",
-            "a": [
-                {"option": "Si",    "correct": true},
-                {"option": "No",     "correct": false} // no comma here
-            ],
-            "correct": "<p><span>Muy Bien!</span> estas muy atento al video, más adelante explicaremos como!</p>",
-            "incorrect": "<p><span>ERRRR!</span>debes estar más atento al vídeo.</p>" // no comma here
+            "correct": "<p><span>WOW!</span> Felicidades! Ya manejas muy bien la teoría de Git</p>",
+            "incorrect": "<p><span>Falla.</span> Lo siento. el Archivo se le asigna el estado de Modificado.!</p>" // no comma here
         }
     ]
 };
