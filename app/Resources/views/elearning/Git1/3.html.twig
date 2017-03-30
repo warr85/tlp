@@ -962,7 +962,7 @@
         var actividades = {actividad0: false, actividad1: {{ archivo12 }}, actividad2: false, actividad3: false, actividad4: false, actividad5: false};
         var comandos = {status: false, add: false, commit: false, add2: false, commit2: false};
         var directorio = {crear1: false, crear2: false, modificar1: false, modificar2 : false};
-
+        console.log(actividades);
         jQuery(function ($) {
 
 
@@ -1046,6 +1046,7 @@
                             $('#currentDirName').text(window.currentDirName);
                             window.document.title = window.titlePattern.replace('*', window.currentDirName);
                         } else {
+                            console.log(actividades);
                             if (data.error === "") {
                                 if (data.comando) {
 
@@ -1062,6 +1063,7 @@
                                                 toggleNav(true);
                                             }else if(!actividades["actividad2"]) {
                                                 if(actividades['actividad1']) {
+                                                    console.log("esto es include: " + data.salida.includes("nothing to commit"));
                                                     if (!data.salida.includes("nothing to commit")) {
                                                         $(".status2").addClass('fa fa-check-circle');
                                                         add_logro("comandos3", "comandos3.png");
@@ -1071,12 +1073,13 @@
                                                         actividades["actividad2"] = true;
                                                         toggleNav(true);
                                                     }else{
-                                                        actividades["actividad2"] = actividades["actividad3"] = actividades["actividad4"] = actividades["actividad5"] = true;
+                                                        //actividades["actividad2"] = actividades["actividad3"] = actividades["actividad4"] = actividades["actividad5"] = true;
                                                         toggleNav(true);
                                                     }
                                                 }
                                             }else if(!actividades["actividad3"]) {
-                                                if (comandos['add']) {
+                                                console.log("no entiendo")
+                                                if (comandos['add'] && actividades['actividad2']) {
                                                     $(".status3").addClass('fa fa-check-circle');
                                                     add_logro("comandos3", "comandos3.png");
                                                     $("#progressbar").css("width", "70%");
@@ -1167,6 +1170,7 @@
 
                                     }
                                     console.log(comandos);
+                                    console.log(actividades);
                                 }
                                 screen.append(data.salida);
                             } else {
@@ -1211,6 +1215,7 @@
                     },
                     add   : function(event) {
                         console.log(event.data);
+                        console.log(actividades);
                         if (event.data.added){
                             if (event.data.added[0].name != "{{ app.user.userName }}") {
                                 console.log("archivo creado");
@@ -1268,6 +1273,7 @@
                                 toggleNav(true);
 
                             }
+                            console.log(actividades);
 
 
 
@@ -1346,25 +1352,21 @@
             });
 
 
-            Reveal.addEventListener('videoArbol', function (event) {
-                    actividades['actividad3'] = true;
-                    $("#btnQuiz").prop('disabled', false);
-                    $("#btnQuiz").attr('disabled', false);
-
-            });
-
 
             Reveal.addEventListener('qz', function (event) {
-                if (!actividades['actividad3']) {
-                    Reveal.slide(11);
+                if (!actividades['actividad5']) {
+                    Reveal.slide(21);
                     var state = Reveal.getState();
                     Reveal.setState(state);
 
                     iziToast.error({
                         title: 'Alto',
-                        message: 'Debes ver el video primero para poder realizar el QUIZ',
+                        message: 'Debes completar todas las actividades para realizar el quiz',
                         position: 'topRight'
                     });
+                }else{
+                    $("#btnQuiz").prop('disabled', false);
+                    $("#btnQuiz").attr('disabled', false);
                 }
             });
 
@@ -1377,23 +1379,9 @@
                 console.log(event.indexh);
 
 
-                if (event.indexh === 18) {
-                    if (!actividades['actividad0']) {
-                        add_logro("conceptos", "conceptos1.png");
-                        actividades['actividad0'] = true;
-                        $("#progressbar").css("width", "25%");
-                        $("#progressbar").attr("aria-valuenow", "25%");
-                        $('.stat-percent').html('25%');
-                        $("#conceptos").addClass("animated bounce text-warning");
 
-                        $("#conceptos").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
-                            $(this).removeClass("animated bounce infinite");
-                            next();
-                        });
-                    }
-                }
 
-                if (event.indexh > 18) {
+                if (event.indexh > 11) {
                     if (!actividades['actividad0']) {
                         Reveal.slide(1);
                         var state = Reveal.getState();
@@ -1411,9 +1399,9 @@
                 }
 
 
-                if (event.indexh > 19) {
+                if (event.indexh > 15) {
                     if (!actividades['actividad1']) {
-                        Reveal.slide(19);
+                        Reveal.slide(12);
                         var state = Reveal.getState();
                         Reveal.setState(state);
 
@@ -1426,10 +1414,39 @@
 
                     }
                 }
+
+                if (event.indexh > 17) {
+                    if (!actividades['actividad2']) {
+                        Reveal.slide(16);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
+                if (event.indexh > 19) {
+                    if (!actividades['actividad3']) {
+                        Reveal.slide(18);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
 
                 if (event.indexh > 22) {
-                    if (!actividades['actividad2']) {
-                        Reveal.slide(22);
+                    if (!actividades['actividad4']) {
+                        Reveal.slide(29);
                         var state = Reveal.getState();
                         Reveal.setState(state);
                         iziToast.error({
@@ -1441,10 +1458,9 @@
                     }
                 }
 
-                if (event.indexh > 26) {
-                    alert(event.indexh);
-                    if (!actividades['actividad3']) {
-                        Reveal.slide(26);
+                if (event.indexh > 24) {
+                    if (!actividades['actividad5']) {
+                        Reveal.slide(31);
                         var state = Reveal.getState();
                         Reveal.setState(state);
                         iziToast.error({
@@ -1455,6 +1471,7 @@
 
                     }
                 }
+
 
 
 
