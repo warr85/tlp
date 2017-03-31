@@ -108,12 +108,17 @@
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Cómo saber que contiene cada estructura de los Árboles de git?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/treeThree.png') }}" data-background-size="contain">
+                        <section >
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Tenemos un repositorio Git <strong>completo</strong>  Ahora
-                                veamos como GIT nota, sigue y cataloga dichos cambios en
-                                nuestro repositorio.
+                                Nosotros ya contamos con un repositorio Git <strong>completo</strong>  Vamos a
+                                ver entonces como es que GIT nota, sigue y cataloga los cambios en los diferentes
+                                árboles.
                             </p>
+
+                        </section>
+
+                        <section data-background="{{ asset('images/course/treeThree.png') }}" data-background-size="contain">
+
 
                         </section>
 
@@ -140,14 +145,14 @@
                         <section data-background="{{ asset('images/course/lifecycle1.png') }}" data-background-size="contain">
                             <h3 style="background-color: #8a6d3b; opacity: 0.8; color:black;">Archivos sin seguimiento (Untracked)</h3>
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Los archivos sin seguimeinto
+                                Los archivos sin seguimiento
                                 son todos los demás archivos de tu directorio que NO hemos preparado ni enviado al
                                 repositorio la primera vez.
                             </p>
 
                         </section>
 
-                        <section data-background="{{ asset('images/course/lifecycle1.png') }}" data-background-size="contain">
+                        <section >
                             <h3>Estado de los Archivos seguidos</h3>
                             <div>
                                 Cuando git sigue a los archivos, los cataloga de acuerdo a su estado en el repositorio.
@@ -213,7 +218,16 @@
 
                     </section>
 
+
+
                     <section data-background="{{ asset('images/course/lifecycle2.png') }}" data-background-size="contain">
+
+                    </section>
+
+                    <section data-state="pregunta1">
+                        <h3>¿Que me dices?</h3>
+                        <a href="#/8">Si, entendí todo hasta ahora</a><br>
+                        <a href="#/2">Necesito repasar nuevamente.</a>
 
                     </section>
 
@@ -430,11 +444,16 @@
 
                         <section data-background="{{ asset('images/course/untracked.png') }}" data-background-size="contain">
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                ignarando el branch master, nos enfocamos en donde dice
+                                ignorando el mensaje de rama master, nos enfocamos en donde dice
                                 que tenemos archivos <strong>sin seguimiento</strong> y nos
                                 lista esos archivos. tambien nos recomienda utilizar el git add
                                 para comenzar a seguirlos.
                             </p>
+
+                        </section>
+
+                        <section data-background="{{ asset('images/course/untracked.png') }}" data-background-size="contain">
+
 
                         </section>
 
@@ -484,19 +503,20 @@
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/add1.png') }}" data-background-size="contain">
+                        <section >
                             <h3>Nos reporta el Stage Index</h3>
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                nos informa que tenemos<strong>"cambios para hacer commit".</strong>
+                                para confirmar o nos dice que usemos
+                                "git reset HEAD" para sacarlos del <strong>stage</strong>. de regreso
+                                al working.
+                            </p>
 
                         </section>
 
 
                         <section data-background="{{ asset('images/course/add1.png') }}" data-background-size="contain">
-                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                nos informa que tenemos<strong>"cambios para hacer commit".</strong>
-                                para confirmar o nos dice que usemos
-                                "git reset HEAD" para sacarlos del <strong>stage</strong>. de regreso
-                                al working
-                            </p>
+
 
                         </section>
 
@@ -552,19 +572,25 @@
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
                         </section>
 
-                        <section data-background="{{ asset('images/course/commit1.png') }}">
+                        <section>
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
                                 ya no nos muestra la información de archivo1.txt porque el
                                 working directory y en el repositorio tienen la misma información
-                                de archivo1, es decir, está sin modificaciones
+                                de archivo1, es decir, pasamos a arhivo1 del index al estado sin
+                                modificaciones confirmando los cambios con un commit.
                             </p>
+
+                        </section>
+
+                        <section data-background="{{ asset('images/course/commit1.png') }}">
+
 
                         </section>
 
                         <section >
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Git informa de lo que es diferente, no de lo que tiene igual, por
-                                eso sólo vemos que tenemos Archivo2 como sin seguimiento.
+                                Git informa de lo que es diferente, no lo que tiene igual, por
+                                eso sólo vemos en el estatus que tenemos Archivo2 como sin seguimiento.
                             </p>
 
                         </section>
@@ -580,7 +606,7 @@
                         <p class="fragment fade-up" data-autoslide="2500">¿lo puedes hacer solito verdad?</p>
                         <div class="row">
                             <div class="col-xs-10">
-                                <p class="fragment fade-up" data-autoslide="2500">Primero lo añades al index con el git add nombre_archivo</p>
+                                <p class="fragment fade-up" data-autoslide="2500">prepara los cambios de archivo2</p>
                             </div>
                             <div class="col-xs-2">
                                 <i id="add2" style="color:greenyellow;" class="add2"></i>
@@ -589,7 +615,7 @@
 
                         <div class="row">
                             <div class="col-xs-10">
-                                <p class="fragment fade-up" data-autoslide="2500">luego revisas el estatus para ver lo que esa en el stage</p>
+                                <p class="fragment fade-up" data-autoslide="2500">revisa el estatus</p>
                             </div>
                             <div class="col-xs-2">
                                 <i id="status5" style="color:greenyellow;" class="status5"></i>
@@ -598,7 +624,7 @@
 
                         <div class="row">
                             <div class="col-xs-10">
-                                <p class="fragment fade-up" data-autoslide="2500">confirmas los cambios con git commit -m "mensaje"</p>
+                                <p class="fragment fade-up" data-autoslide="2500">confirmas los cambios al repositorio</p>
                             </div>
                             <div class="col-xs-2">
                                 <i id="commit2" style="color:greenyellow;" class="commit2"></i>
@@ -607,7 +633,7 @@
 
                         <div class="row">
                             <div class="col-xs-10">
-                                <p class="fragment fade-up" data-autoslide="2500">Finalmente revisamos el estatus de nuestro proyecto</p>
+                                <p class="fragment fade-up" data-autoslide="2500">Revisamos nuevamente el status</p>
                             </div>
                             <div class="col-xs-2">
                                 <i id="status6" style="color:greenyellow;" class="status6"></i>
@@ -637,7 +663,329 @@
 
                         </section>
 
-                </section>
+                    </section>
+
+
+                    <section>
+                        <h2> Sigamos revisando los árboles y los estatus</h2>
+                        <p>Ahora vamos a modificar los archivos para ver como los reporta</p>
+                    </section>
+
+
+
+                    <section data-state="actividad6">
+                        <h3>Modificar Archivos</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Desde nuestro manejador de archivos:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">Edita el contenido de Leeme.txt y Guarda</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="modificar3" style="color:greenyellow;" class="modificar3"></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-up" data-autoslide="2500">Desde la consola Ejecuta:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git status"</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status7" style="color:greenyellow;" class="status7"></i>
+                            </div>
+                        </div>
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section >
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}" data-background-image="contain">
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                Nos muestra que tenemos que leeme.txt está bajo estatus modificado,
+                                git sabe que en el working el archivo está diferente de lo que tiene
+                                en el repositorio.
+                            </p>
+
+                        </section>
+
+                    </section>
+
+
+
+
+                    <section data-state="actividad7">
+                        <h3>Preparar o añadir cambios</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Desde la consola:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">añade los cambios de leeme al stage index</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="add3" style="color:greenyellow;" class="add3"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">Luego revisa el estatus del proyecto</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status8" style="color:greenyellow;" class="status8"></i>
+                            </div>
+                        </div>
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+                    <section >
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}" data-background-image="contain">
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                El archivo está ahora en stage index listo para ser confirmado,
+                                sigue modificado, pero esta vez está listo para confirmar.
+                            </p>
+
+                        </section>
+
+                    </section>
+
+                    <section data-state="actividad8">
+                        <h3>Antes de Confirmar</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Desde nuestro manejador de archivos:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">Edita y Guarda el contende archivo1 y archivo2</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="modificar4" style="color:greenyellow;" class="modificar4"></i>
+                                <i id="modificar5" style="color:greenyellow;" class="modificar5"></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-up" data-autoslide="2500">Desde la consola Ejecuta:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git status"</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status9" style="color:greenyellow;" class="status9"></i>
+                            </div>
+                        </div>
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section >
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}" data-background-image="contain">
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                               Tenemos a leeme en el index y a archivo1 y archivo2 en estatus
+                                modificado en el working directory.  Si queremos agrupar los
+                                cambios de leeme y archivo2 por ejemplo, podemos hacerlo enviando
+                                los cambios de archivo2 al index para que acompañe a leeme.
+                            </p>
+
+                        </section>
+
+                    </section>
+
+
+
+
+                    <section data-state="actividad9">
+                        <h3>Antes de Confirmar</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Desde la consola:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">añade solo los cambios de archivo 2 al index</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="add4" style="color:greenyellow;" class="add4"></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-up" data-autoslide="2500">Desde la consola Ejecuta:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git status"</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status10" style="color:greenyellow;" class="status10"></i>
+                            </div>
+                        </div>
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section >
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}" data-background-image="contain">
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                Tenemos a leeme y a archivo2 en el Stage index.  podemos agrupar
+                                tantos archivos como necesitemos en el stage index para luego
+                                en un solo paquete confirmar esos cambios.
+                            </p>
+
+                        </section>
+
+                    </section>
+
+
+
+
+                    <section data-state="actividad10">
+                        <h3>Confirmar</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Desde la consola:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">Confirma los cambios de leeme y archivo2 al repositorio</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="commit3" style="color:greenyellow;" class="commit3"></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-up" data-autoslide="2500">Desde la consola Ejecuta:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git status"</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status11" style="color:greenyellow;" class="status11"></i>
+                            </div>
+                        </div>
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section >
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}" data-background-image="contain">
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                Ya no nos muestra nada de leeme y archivo2 porque estan en
+                                sincronía (working y repositorio), solo nos muestra que
+                                archivo1 está modificado.
+                            </p>
+
+                        </section>
+
+                    </section>
+
+
+
+                    <section data-state="actividad11">
+                        <h3>Actividad Final</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Desde la consola:</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">Envía archivo1 al Stage Index</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="add5" style="color:greenyellow;" class="add5"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">Confirma los cambios</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="commit4" style="color:greenyellow;" class="commit4"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <p class="fragment fade-up" data-autoslide="2500">Revisa el estado del proyecto</p>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status12" style="color:greenyellow;" class="status12"></i>
+                            </div>
+                        </div>
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section >
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/happyMin.gif') }}" data-background-image="contain">
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                Nuestro directorio está limpio y todos los archivos están en estado
+                                <strong>"Sin modificaciones."</strong>
+                            </p>
+
+                        </section>
+
+                    </section>
+
+
 
 
                     <section data-state="qz"
@@ -959,9 +1307,10 @@
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
-        var actividades = {actividad0: false, actividad1: {{ archivo12 }}, actividad2: false, actividad3: false, actividad4: false, actividad5: false};
-        var comandos = {status: false, add: false, commit: false, add2: false, commit2: false};
-        var directorio = {crear1: false, crear2: false, modificar1: false, modificar2 : false};
+        var actividades = {actividad0: false, actividad1: {{ archivo12 }}, actividad2: false, actividad3: false, actividad4: false, actividad5: false , actividad6: false , actividad7: false , actividad8: false , actividad9: false , actividad10: false , actividad11: false};
+        var comandos = {status: false, add: false, commit: false, add2: false, commit2: false, add3:false, add4:false, commit3:false, commit4:false};
+        var directorio = {crear1: false, crear2: false, modificar1: false, modificar2 : false, modificar3:false, modificar4:false, modificar5:false};
+        var pregunta= {1: false};
         console.log(actividades);
         jQuery(function ($) {
 
@@ -1113,6 +1462,60 @@
                                                     toggleNav(true);
 
                                                 }
+                                            }else if(!actividades["actividad6"]) {
+                                                if (directorio['modificar3']) {
+                                                    $(".status7").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    $("#progressbar").css("width", "85%");
+                                                    $("#progressbar").attr("aria-valuenow", "85%");
+                                                    actividades["actividad6"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad7"]) {
+                                                if (comandos['add3']) {
+                                                    $(".status8").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    $("#progressbar").css("width", "85%");
+                                                    $("#progressbar").attr("aria-valuenow", "85%");
+                                                    actividades["actividad7"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad8"]) {
+                                                if (directorio['modificar4'] && directorio['modificar5']) {
+                                                    $(".status9").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    $("#progressbar").css("width", "85%");
+                                                    $("#progressbar").attr("aria-valuenow", "85%");
+                                                    actividades["actividad8"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad9"]) {
+                                                if (comandos['add4']) {
+                                                    $(".status10").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    $("#progressbar").css("width", "85%");
+                                                    $("#progressbar").attr("aria-valuenow", "85%");
+                                                    actividades["actividad9"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad10"]) {
+                                                if (comandos['commit3']) {
+                                                    $(".status11").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    $("#progressbar").css("width", "85%");
+                                                    $("#progressbar").attr("aria-valuenow", "85%");
+                                                    actividades["actividad10"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad11"]) {
+                                                if (comandos['commit4']) {
+                                                    $(".status12").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    $("#progressbar").css("width", "85%");
+                                                    $("#progressbar").attr("aria-valuenow", "85%");
+                                                    actividades["actividad11"] = true;
+                                                    toggleNav(true);
+                                                }
                                             }
 
                                             //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
@@ -1135,6 +1538,36 @@
                                                 $("#progressbar").attr("aria-valuenow", "80%");
                                                 $('.stat-percent').html('80%');
                                                 comandos['add2'] = true;
+
+                                            }
+
+                                            if(!actividades['actividad7'] && actividades['actividad6']) {
+                                                $(".add3").addClass('fa fa-check-circle');
+                                                add_logro("comandos2", "comandos2.png");
+                                                $("#progressbar").css("width", "80%");
+                                                $("#progressbar").attr("aria-valuenow", "80%");
+                                                $('.stat-percent').html('80%');
+                                                comandos['add3'] = true;
+
+                                            }
+
+                                            if(!actividades['actividad9'] && actividades['actividad8']) {
+                                                $(".add4").addClass('fa fa-check-circle');
+                                                add_logro("comandos2", "comandos2.png");
+                                                $("#progressbar").css("width", "80%");
+                                                $("#progressbar").attr("aria-valuenow", "80%");
+                                                $('.stat-percent').html('80%');
+                                                comandos['add4'] = true;
+
+                                            }
+
+                                            if(!actividades['actividad11'] && actividades['actividad10']) {
+                                                $(".add5").addClass('fa fa-check-circle');
+                                                add_logro("comandos2", "comandos2.png");
+                                                $("#progressbar").css("width", "80%");
+                                                $("#progressbar").attr("aria-valuenow", "80%");
+                                                $('.stat-percent').html('80%');
+                                                comandos['add5'] = true;
 
                                             }
 
@@ -1164,6 +1597,25 @@
 
                                             }
 
+                                            if(!actividades['actividad10'] && comandos['add4']) {
+                                                $(".commit3").addClass('fa fa-check-circle');
+                                                add_logro("comandos2", "comandos2.png");
+                                                $("#progressbar").css("width", "95%");
+                                                $("#progressbar").attr("aria-valuenow", "95%");
+                                                $('.stat-percent').html('95%');
+                                                comandos['commit3'] = true;
+
+                                            }
+                                            if(!actividades['actividad11'] && comandos['add5']) {
+                                                $(".commit4").addClass('fa fa-check-circle');
+                                                add_logro("comandos2", "comandos2.png");
+                                                $("#progressbar").css("width", "95%");
+                                                $("#progressbar").attr("aria-valuenow", "95%");
+                                                $('.stat-percent').html('95%');
+                                                comandos['commit4'] = true;
+
+                                            }
+
 
 
                                         }
@@ -1171,6 +1623,7 @@
                                     }
                                     console.log(comandos);
                                     console.log(actividades);
+                                    console.log(directorio);
                                 }
                                 screen.append(data.salida);
                             } else {
@@ -1245,9 +1698,12 @@
                         }
                     },
                     change   : function(event) {
+                        //contador porque entra dos veces y debo vigilar al
+                        //editar el archivo1 y 2
+
                         console.log(event.data);
                         if (event.data.changed[0].size > 0){
-                            console.log("archivo modificado");
+                            console.log("modificando");
                             if(!directorio['modificar1'] && directorio['crear1']){
                                 console.log("archivo1 modificado");
                                 $(".modificar1").addClass('fa fa-check-circle');
@@ -1273,6 +1729,47 @@
                                 toggleNav(true);
 
                             }
+
+                            if(directorio['modificar2'] && !directorio['modificar3'] && actividades['actividad5']) {
+                                console.log("leeme modificado");
+                                $(".modificar3").addClass('fa fa-check-circle');
+                                add_logro("directorio_virtual", "directorio1.png");
+                                directorio['modificar3'] = true;
+                                $("#progressbar").css("width", "50%");
+                                $("#progressbar").attr("aria-valuenow", "50%");
+                                $('.stat-percent').html('50%');
+
+                            }
+
+                            if(directorio['modificar4'] && !directorio['modificar5']) {
+                                if(entrada == 2) {
+                                    console.log("archivo2 modificado");
+                                    $(".modificar5").addClass('fa fa-check-circle');
+                                    add_logro("directorio_virtual", "directorio1.png");
+                                    directorio['modificar5'] = true;
+                                    $("#progressbar").css("width", "50%");
+                                    $("#progressbar").attr("aria-valuenow", "50%");
+                                    $('.stat-percent').html('50%');
+                                }else{
+                                    entrada = 2;
+                                }
+
+                            }
+
+                            if(directorio['modificar3'] && !directorio['modificar4'] && actividades['actividad7'] && !actividades['actividad8']) {
+                                console.log("archivo1 modificado");
+                                entrada = 1;
+                                $(".modificar4").addClass('fa fa-check-circle');
+                                add_logro("directorio_virtual", "directorio1.png");
+                                directorio['modificar4'] = true;
+                                $("#progressbar").css("width", "50%");
+                                $("#progressbar").attr("aria-valuenow", "50%");
+                                $('.stat-percent').html('50%');
+
+                            }
+
+
+
                             console.log(actividades);
 
 
@@ -1308,7 +1805,14 @@
                 }
             });
 
+            Reveal.addEventListener('pregunta1', function (event) {
 
+
+                if (!pregunta[1]) {
+                    toggleNav(false);
+                }
+
+            });
 
 
             Reveal.addEventListener('actividad0', function (event) {
@@ -1377,11 +1881,17 @@
 
 
                 console.log(event.indexh);
+                if (event.indexh == 8) {
+                    if (!pregunta[1]) {
+                       toggleNav(true);
+                       pregunta[1] = true;
+                    }
+
+                }
 
 
 
-
-                if (event.indexh > 11) {
+                if (event.indexh > 13) {
                     if (!actividades['actividad0']) {
                         Reveal.slide(1);
                         var state = Reveal.getState();
@@ -1399,38 +1909,24 @@
                 }
 
 
-                if (event.indexh > 15) {
-                    if (!actividades['actividad1']) {
-                        Reveal.slide(12);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-
-                    }
-                }
-
                 if (event.indexh > 17) {
-                    if (!actividades['actividad2']) {
-                        Reveal.slide(16);
+                    if (!actividades['actividad1']) {
+                        Reveal.slide(14);
                         var state = Reveal.getState();
                         Reveal.setState(state);
+
                         iziToast.error({
                             title: 'No te adelantes tan rápido',
                             message: 'es importante navegar por todas las láminas para cumplir con las actividades',
                             position: 'topRight'
                         });
+
 
                     }
                 }
 
                 if (event.indexh > 19) {
-                    if (!actividades['actividad3']) {
+                    if (!actividades['actividad2']) {
                         Reveal.slide(18);
                         var state = Reveal.getState();
                         Reveal.setState(state);
@@ -1443,10 +1939,9 @@
                     }
                 }
 
-
-                if (event.indexh > 22) {
-                    if (!actividades['actividad4']) {
-                        Reveal.slide(29);
+                if (event.indexh > 21) {
+                    if (!actividades['actividad3']) {
+                        Reveal.slide(20);
                         var state = Reveal.getState();
                         Reveal.setState(state);
                         iziToast.error({
@@ -1458,9 +1953,38 @@
                     }
                 }
 
+
                 if (event.indexh > 24) {
+                    if (!actividades['actividad4']) {
+                        Reveal.slide(23);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
+                if (event.indexh > 26) {
                     if (!actividades['actividad5']) {
-                        Reveal.slide(31);
+                        Reveal.slide(25);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
+                if (event.indexh > 27) {
+                    if (!actividades['actividad6']) {
+                        Reveal.slide(26);
                         var state = Reveal.getState();
                         Reveal.setState(state);
                         iziToast.error({
@@ -1512,7 +2036,7 @@
         var $gitInit = /^git+\s+\binit/g;
         var $gitStatus = /^git+\s+\bstatus/g;
         var $gitAdd = /^git+\s+\badd\s+./g;
-        var $gitCommit = /^git+\s+\bcommit\s+-m\s+"\w+( +\w+)*"/g;
+        var $gitCommit = /^git+\s+\bcommit\s+-m\s+"[a-zA-ZáéíóúAÉÍÓÚÑñ0-9]+( +[a-zA-ZáéíóúAÉÍÓÚÑñ0-9]?.+[a-zA-ZáéíóúAÉÍÓÚÑñ0-9])*"/g;
         var $gitConfigUser = /^git+\s+\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
         var $gitVersion = /^git+\s+--version$/g;
         var $gitConfigMail = /^git+\s+\bconfig\s+--global+\s+user.email+\s+"?\w{3,}"?/g;
