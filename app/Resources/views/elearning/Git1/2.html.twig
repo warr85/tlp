@@ -1084,7 +1084,7 @@
         var $gitHelp = /^git+\s+\bhelp\s?\w?/g;
         var $gitInit = /^git+\s+\binit/g;
         var $gitAdd = /^git+\s+\badd\s+./g;
-        var $gitCommit = /^git+\s+\bcommit\s+-m\s+"\w+( +\w+)*"/g;
+        var $gitCommit = /^git+\s+\bcommit\s+-m\s+"[a-zA-ZáéíóúAÉÍÓÚÑñ0-9]+( +[a-zA-ZáéíóúAÉÍÓÚÑñ0-9]?.+[a-zA-ZáéíóúAÉÍÓÚÑñ0-9])*"/g;
         var $gitConfigUser = /^git+\s+\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
         var $gitVersion = /^git+\s+--version$/g;
         var $gitConfigMail = /^git+\s+\bconfig\s+--global+\s+user.email+\s+"?\w{3,}"?/g;
