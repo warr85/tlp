@@ -1,6 +1,7 @@
 /web/uploads/
 /web/assets/vendor/moovly/videos/*
 /web/*.php
+/web/images/course/gif/*
 /web/error_log
 /web/assets/vendor/elfinder/octonautas/*
 /app/bootstrap.php.cache
