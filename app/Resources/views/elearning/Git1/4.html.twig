@@ -111,7 +111,16 @@
 
                         </section>
                         <section >
-                            <h2 style="background-color:#D33581; opacity:0.8;">Hemos confirmado varios cambios con Git commit</h2>
+                            <h2 style="background-color:#D33581; opacity:0.8;">
+                                git log
+                            </h2>
+                            <p>
+                                El propósito de cualquier controlador de versioens es registrar los cambios en el código.
+                                esto te da el poder de revisar quien contribuyó en donde en la historia del poryecto,
+                                saber en donde se reportaron errores y revertir cambios problematicos.  Pero tener todos
+                                estos super poderes al alcance no sirve de nada si no sabemos consultar el historial de
+                                cambios.  y es aquí donde comienza este tema.
+                            </p>
                         </section>
 
 
@@ -440,8 +449,10 @@
                     </section>
 
                     <section>
-                        <p>para usar la ayuda, basta con escribir el comando git help seguido
-                        del nombre del comando que necesitamos ayuda</p>
+                        <p>
+                            hay formas de alterar la salida o lo que muestra el comando git log.
+                            podemos ver todas esas formas usando la ayuda que tiene git.
+                        </p>
 
                     </section>
 
@@ -493,8 +504,13 @@
                         </section>
 
                         <section >
-                            <p>son muchas opciones como podemos ver, aquí sólo vamos a
-                            explorar algunas de ellas.</p>
+                            <p>
+                                Entonces a través de estas opciones y parametros podemos formatear como se
+                                muestra cada confirmación y filtrar cuantas confirmaciones queremos que
+                                se muestren.  Estas dos habilidades juntas nos dan el super poder de regresar
+                                en el tiempo y encontrar, recuperar, modificar y eliminar cualquier
+                                información que necesitemos.
+                            </p>
 
                         </section>
 
@@ -790,7 +806,7 @@
                 <div class="ibox-content profile-content">
 
                     <div id="slickQuiz">
-                        <input type="hidden" name="qnumber" id="qnumber" value="3">
+                        <input type="hidden" name="qnumber" id="qnumber" value="4">
                         <h1 class="quizName"><!-- where the quiz name goes --></h1>
 
                         <div class="quizArea">
@@ -926,7 +942,7 @@
     <script src="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/modernizr/modernizr.2.5.3.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/steps/jquery.steps.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config3.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config4.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/quiz/slickQuiz.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/quiz/master.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendor/iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
@@ -1239,118 +1255,11 @@
                                 elfinderInstance.exec('open');
                             });
                     },
-                    init : function(event){
-                        console.log(event);
-                    },
                     add   : function(event) {
-                        console.log(event.data);
-                        console.log(actividades);
-                        if (event.data.added){
-                            if (event.data.added[0].name != "{{ app.user.userName }}") {
-                                console.log("archivo creado");
 
-
-                                if (!actividades['actividad1'] && (!directorio['crear1'] || !directorio['crear2'] ))
-                                    console.log("archivo 1 creado");
-                                    add_logro("directorio_virtual", "directorio1.png");
-
-                                if(directorio['crear1'] && !directorio['crear2']){
-                                    console.log("archivo 2 creado");
-                                    directorio['crear2'] = true;
-                                    $("#progressbar").css("width", "45%");
-                                    $("#progressbar").attr("aria-valuenow", "45%");
-                                    $('.stat-percent').html('45%');
-                                }
-                                    if (!directorio['crear1']){
-                                        $(".crear1").addClass('fa fa-check-circle');
-                                        directorio['crear1'] = true;
-                                        $("#progressbar").css("width", "35%");
-                                        $("#progressbar").attr("aria-valuenow", "35%");
-                                        $('.stat-percent').html('35%');
-                                    }
-
-                            }
-
-                        }
                     },
                     change   : function(event) {
-                        //contador porque entra dos veces y debo vigilar al
-                        //editar el archivo1 y 2
 
-                        console.log(event.data);
-                        if (event.data.changed[0].size > 0){
-                            console.log("modificando");
-                            if(!directorio['modificar1'] && directorio['crear1']){
-                                console.log("archivo1 modificado");
-                                $(".modificar1").addClass('fa fa-check-circle');
-                                add_logro("directorio_virtual", "directorio1.png");
-                                directorio['modificar1'] = true;
-                                $("#progressbar").css("width", "40%");
-                                $("#progressbar").attr("aria-valuenow", "40%");
-                                $('.stat-percent').html('40%');
-                                $(".modificar1").addClass('fa fa-check-circle');
-
-                            }
-
-                            if(!directorio['modificar2'] && directorio['crear2'] && !actividades['actividad1']) {
-                                console.log("archivo2 modificado");
-                                $(".modificar2").addClass('fa fa-check-circle');
-                                add_logro("directorio_virtual", "directorio1.png");
-                                directorio['modificar2'] = true;
-                                actividades['actividad1'] = true;
-                                $("#progressbar").css("width", "50%");
-                                $("#progressbar").attr("aria-valuenow", "50%");
-                                $('.stat-percent').html('50%');
-                                $(".modificar2").addClass('fa fa-check-circle');
-                                toggleNav(true);
-
-                            }
-
-                            if(directorio['modificar2'] && !directorio['modificar3'] && actividades['actividad5']) {
-                                console.log("leeme modificado");
-                                $(".modificar3").addClass('fa fa-check-circle');
-                                add_logro("directorio_virtual", "directorio1.png");
-                                directorio['modificar3'] = true;
-                                $("#progressbar").css("width", "50%");
-                                $("#progressbar").attr("aria-valuenow", "50%");
-                                $('.stat-percent').html('50%');
-
-                            }
-
-                            if(directorio['modificar4'] && !directorio['modificar5']) {
-                                if(entrada == 2) {
-                                    console.log("archivo2 modificado");
-                                    $(".modificar5").addClass('fa fa-check-circle');
-                                    add_logro("directorio_virtual", "directorio1.png");
-                                    directorio['modificar5'] = true;
-                                    $("#progressbar").css("width", "50%");
-                                    $("#progressbar").attr("aria-valuenow", "50%");
-                                    $('.stat-percent').html('50%');
-                                }else{
-                                    entrada = 2;
-                                }
-
-                            }
-
-                            if(directorio['modificar3'] && !directorio['modificar4'] && actividades['actividad7'] && !actividades['actividad8']) {
-                                console.log("archivo1 modificado");
-                                entrada = 1;
-                                $(".modificar4").addClass('fa fa-check-circle');
-                                add_logro("directorio_virtual", "directorio1.png");
-                                directorio['modificar4'] = true;
-                                $("#progressbar").css("width", "50%");
-                                $("#progressbar").attr("aria-valuenow", "50%");
-                                $('.stat-percent').html('50%');
-
-                            }
-
-
-
-                            console.log(actividades);
-
-
-
-                        }
                     }
                 },
                 getFileCallback: function (files, fm) {
@@ -1434,8 +1343,8 @@
 
 
             Reveal.addEventListener('qz', function (event) {
-                if (!actividades['actividad5']) {
-                    Reveal.slide(21);
+                if (!actividades['actividad6']) {
+                    Reveal.slide(10);
                     var state = Reveal.getState();
                     Reveal.setState(state);
 
@@ -1457,17 +1366,8 @@
 
 
                 console.log(event.indexh);
-                if (event.indexh == 8) {
-                    if (!pregunta[1]) {
-                       toggleNav(true);
-                       pregunta[1] = true;
-                    }
 
-                }
-
-
-
-                if (event.indexh > 13) {
+                if (event.indexh > 4) {
                     if (!actividades['actividad0']) {
                         Reveal.slide(1);
                         var state = Reveal.getState();
@@ -1485,7 +1385,7 @@
                 }
 
 
-                if (event.indexh > 17) {
+                if (event.indexh > 15) {
                     if (!actividades['actividad1']) {
                         Reveal.slide(14);
                         var state = Reveal.getState();
@@ -1501,9 +1401,38 @@
                     }
                 }
 
-                if (event.indexh > 19) {
+                if (event.indexh > 16) {
                     if (!actividades['actividad2']) {
-                        Reveal.slide(18);
+                        Reveal.slide(15);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
+                if (event.indexh > 18) {
+                    if (!actividades['actividad3']) {
+                        Reveal.slide(17);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+                    }
+                }
+
+
+                if (event.indexh > 20) {
+                    if (!actividades['actividad4']) {
+                        Reveal.slide(19);
                         var state = Reveal.getState();
                         Reveal.setState(state);
                         iziToast.error({
@@ -1516,37 +1445,8 @@
                 }
 
                 if (event.indexh > 21) {
-                    if (!actividades['actividad3']) {
-                        Reveal.slide(20);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
-
-
-                if (event.indexh > 24) {
-                    if (!actividades['actividad4']) {
-                        Reveal.slide(23);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
-
-                if (event.indexh > 26) {
                     if (!actividades['actividad5']) {
-                        Reveal.slide(25);
+                        Reveal.slide(21);
                         var state = Reveal.getState();
                         Reveal.setState(state);
                         iziToast.error({
@@ -1558,9 +1458,9 @@
                     }
                 }
 
-                if (event.indexh > 27) {
+                if (event.indexh == 23) {
                     if (!actividades['actividad6']) {
-                        Reveal.slide(26);
+                        Reveal.slide(21);
                         var state = Reveal.getState();
                         Reveal.setState(state);
                         iziToast.error({
