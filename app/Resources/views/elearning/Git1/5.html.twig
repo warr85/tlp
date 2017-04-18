@@ -111,7 +111,7 @@
 
 
                     <section data-state="actividad0">
-                        <h3>Git Log</h3>
+                        <h3>Modificar archivo</h3>
                         <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde el manejador de Archivos</p>
                         <p class="fragment fade-up" data-autoslide="2500">Botón derecho del ratón sobre archivo1.txt</p>
                         <p class="fragment fade-up" data-autoslide="2500">Seleccionamos editar archivo</p>
@@ -200,11 +200,16 @@
                         </section>
 
                         <section data-background="{{ asset('images/course/gif/gitStatus.gif') }}">
-                            <h2 style="background-color:#D33581; opacity:0.8;">Sale que hay un archivo modificado. y esta es tu reacción</h2>
+                            <h2 style="background-color:#D33581; opacity:0.8;">Muestra un archivo modificado.</h2>
                         </section>
 
                         <section data-background="{{ asset('images/course/gif/scared-o.gif') }}">
-                            <h2 style="background-color:#D33581; opacity:0.8;">¿Archivo modificado...? no me acuerdo</h2>
+
+                        </section>
+
+                        <section >
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Archivo Modificado?</h2>
+                            <p>No recuerdo que fue lo que hice... ¿Que hago?</p>
                         </section>
 
 
@@ -217,18 +222,19 @@
                         </section>
 
                         <section >
-                            <h2>Existe una salvación</h2>
-                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                            <h2 style="background-color:#D33581; opacity:0.8;">Existe una salvación</h2>
+                            <p>
                                 git tiene un comando para refrescarte la memoria y decirte
-                                que fue lo que cambió en ese archivo.
+                                que fue lo que cambió en ese archivo o en todos los que estén
+                                en el estatus de modificado.
                             </p>
 
                         </section>
 
                         <section >
-                            <h2>git diff</h2>
+                            <h2 style="background-color:#D33581; opacity:0.8;">git diff</h2>
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                nos muestra que es lo diferente, así que...
+                                Así se llama el comando que te da los superpoderes de recordar...
                             </p>
 
                         </section>
@@ -244,7 +250,7 @@
 
 
                     <section data-state="actividad1">
-                        <h3>Git Log</h3>
+                        <h3>Git diff</h3>
                         <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde la consola</p>
                         <p class="fragment fade-up" data-autoslide="2500">Veamos que es lo que ha cambiado con el comando</p>
                         <div class="row">
@@ -382,212 +388,47 @@
 
                         <section>
                             <p>
-                                nos muestra que ha cambiado primero en un archivo y luego en el
-                                otro.  Si hay 1000 archivos modificados, te los listará todos
-                                pero tu puedes especificar sólo el o los que necesites
-                                añadiendo el nombre del archivo al comando git diff.
+                                nos muestra cada archivo que se encuentre en estado de modificado,
+                                uno por uno, con cada una de las diferencias entre el árbol del
+                                working directory y el del repositorio.
                             </p>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/rileyRemenber.gif') }}">
+
+                        </section>
+
+                        <section>
+                            <p style="background-color:#D33581; opacity:0.8;">
+                                Ahora si recordamos... Felicidad nuevamente...
+                            </p>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/insideOutHappy.gif') }}">
+
                         </section>
 
 
                     </section>
 
 
-                    <section>
-                        <p>En segundo lugar vemos que tiene el Author de la confirmación.  Podemos notar
-                        que esa información es tomada de la configuración de git que hicimos en el tema1.</p>
-                    </section>
-
-                    <section>
-                        <p>Luego tenemos la fecha exacta en que se generó la confirmación</p>
-                    </section>
-
-                   <section>
-                    <section>
-                        <p>Por último el mensaje que describe lo que hace esa confirmación.</p>
-                    </section>
-
-                    <section>
-                            <p>Aquí quiero hacer otra pausa... desde que comenzamos a confirmar,
-                            he repetido que el mensaje a confirmar debe ser afín con los cambios
-                            ¿verdad?</p>
-                        <p>espero no hayas escrito mensajes sólo por escribir.</p>
-
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/noPendiente.gif') }}">
-
-                    </section>
-
-                    <section>
-                        <p>Existen buenas prácticas a la hora de escribir el mensaje
-                        de un commit.</p>
-
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/noMeDijistes.gif') }}">
-
-                    </section>
-
-                    <section>
-                        <p>
-                            No te enojes... la idea es aprender poco a poco y no hacerlo tan
-                            aburrido con tanta teoría, jajajajajajajaja.  Aquí van las buenas
-                            prácticas.  Así que a tomar notas
-                        </p>
-
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
-
-                    </section>
-
-                    <section>
-                        <p>1. La primera linea del mensaje debe ser corta y explicar en menos
-                        de 50 Caracteres, los cambios que estas confirmando</p>
-
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/estasEntendiendo.gif') }}">
-                        <h2>¿Primera Línea...?  ¿Hay mas Líneas?</h2>
-                    </section>
 
 
-                    <section>
-                        <p>Si... puede haber mensajes multiliniales.  el caso aplica para
-                        aquellos mensajes que no puedas resumir en 50 caracteres y
-                        debas extender la explicación de los cambios.</p>
+                    <section data-state="actividad3">
+                        <h3>añadir al Stage</h3>
 
-                    </section>
-
-                    <section>
-                        <p>En ese caso, cada línea de la descripción extendia no debe
-                            pasar los 72 caracteres.</p>
-
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/estasEntendiendo.gif') }}">
-                        <h2>¿50 Caracters...?  ¿72 Caracteres?</h2>
-                    </section>
-
-                    <section>
-                        <p>La razón de esto es debido a que no sabemos que editor de
-                        texto va a usar la persona o las personas en tu grupo de trabajo
-                        colaborativo y los mensajes pueden verse truncados.  Entonces de
-                        manera mas universal, los mensajes con esos limites van a poder
-                        verse bien en la mayoría de los editores</p>
-
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/chuckNorris.gif') }}">
-                        <h2>Excelente</h2>
-                    </section>
-
-                    <section>
-                        <p>Los mensajes debe escribirse en tiempo presente, no en tiempo Pasado</p>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/donde.gif') }}">
-
-                    </section>
-
-                    <section>
-                        <p>Se trata de lo que el o los cambios hacen, no se trata de lo que
-                        tu como desarrollador hicistes.  Esa es una gran diferencia. Por ejemplo;
-                        deberia escribirse "arregla un error" y no deberia ser: "Arreglé un error"</p>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
-
-                        <h2>¿Algo más?</h2>
-                    </section>
-
-                    <section>
-                        <p>Si.  También puedes crear tus propias reglas para hacer los mensajes
-                        de los commits.  por ejemplo si estas modificando archivos .css o .js puedes
-                        escribir en corchetes las extensiones: "[css, js] mensaje del commit"</p>
-                    </section>
-
-                    <section>
-                        <p>o crear identificadores de seguimiento de cambios: "#89601: mensaje"</p>
-                    </section>
-
-                    <section data-background="{{ asset('images/course/gif/takingNote.gif') }}">
-
-                        <h2>¿Todavía falta más?</h2>
-                    </section>
-
-                    <section>
-                        <p>Ya para finalizar... los mensajes deben ser claros y DESCRIPTIVOS</p>
-                    </section>
-
-                    <section>
-                        <p>no debes escribir "acomoda un detalle"<br> debe ser:<br>
-                            "Añade el > faltante en la sección de encabezado del HTML"
-                        </p>
-                    </section>
-
-                    <section>
-                        <p>
-                            otro mas ejemplo sería:<br>
-                            malo: "Actualiza el código del ingreso de sesión".<br>
-                            bueno: "Añade la autenticación con la API de Twitter"
-                        </p>
-                    </section>
-
-                    <section>
-                        <p>
-                            un Ejemplo Multilinea sería: <br>
-                            <p>
-                                #12598: corrige un error al cerrar sesion<br><br>
-                                Cuando se cierra la sesión desde el administrador, no<br>
-                                se podía inicar sesión en otra área debido a que quedaba<br>
-                                alamacenado en memoria el identificador. Este parche<br>
-                                corrige el error al cambiar el identificador en memoria<br>
-                                a null cuando se hace un cierre de sesión.
-
-                            </p>
-                        </p>
-                    </section>
-                   </section>
-
-                    <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
-
-                        <h2></h2>
-                    </section>
-
-                    <section>
-                        <p>
-                            hay formas de alterar la salida o lo que muestra el comando git log.
-                            podemos ver todas esas formas usando la ayuda que tiene git.
-                        </p>
-
-                    </section>
-
-
-
-                    <section
-                            data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
-                        <h2>Nuevamente Manos a la obra</h2>
-
-                    </section>
-
-
-                    <section data-state="help">
-                        <h3>Git Help</h3>
-                        <p class="fragment fade-up" data-autoslide="2500">Desde nuestra consola de comandos</p>
-                        <p class="fragment fade-up" data-autoslide="2500">escribimos el comando que nos muestra la ayuda</p>
+                        <p class="fragment fade-up" data-autoslide="2500">Ahora ya con nuestros recuerdos de regreso,</p>
+                        <p class="fragment fade-up" data-autoslide="2500">vamos a enviar todos los cambios al stage,</p>
                         <div class="row">
                             <div class="col-xs-10">
                                 <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git help log</code></pre>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git add .</code></pre>
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <i  style="color:greenyellow;" class="addDone1"></i>
+                                <i id="addDone1" style="color:greenyellow;" class="addDone1"></i>
                             </div>
                         </div>
-
 
 
                         <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
@@ -598,74 +439,162 @@
 
 
 
+                    <section >
+                        <h2 style="background-color:#D33581; opacity:0.8;">
+                            Nuevamente...
+                        </h2>
+                        <p>
+                            dejastes sola la computadora...
+                        </p>
+                    </section>
 
-                    <section>
-                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
-                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos mostŕo?</h2>
-                        </section>
 
-                        <section data-background="{{ asset('images/course/gif/benefits.gif') }}">
-                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                Todas las opciones que podemos usar con el comando git log. Son muchas verdad
-                            </p>
 
-                        </section>
+                    <section data-background="{{ asset('images/course/gif/dancing.gif') }}">
+                        <h2 style="background-color:#D33581; opacity:0.8;">Salistes a Bailar</h2>
+                    </section>
 
-                        <section >
-                            <p>
-                                Entonces a través de estas opciones y parametros podemos formatear como se
-                                muestra cada confirmación y filtrar cuantas confirmaciones queremos que
-                                se muestren.  Estas dos habilidades juntas nos dan el super poder de regresar
-                                en el tiempo y encontrar, recuperar, modificar y eliminar cualquier
-                                información que necesitemos.
-                            </p>
+                    <section data-background="{{ asset('images/course/gif/vacation.gif') }}">
+                        <h2 style="background-color:#D33581; opacity:0.8;">Te fuistes de vacaciones</h2>
+                    </section>
 
-                        </section>
+                    <section data-background="{{ asset('images/course/gif/oficios.gif') }}">
+                        <h2 style="background-color:#D33581; opacity:0.8;">Estás haciendo labores hogareñas</h2>
+                    </section>
+
+                    <section data-background="{{ asset('images/course/gif/movieNight.gif') }}">
+                        <h2 style="background-color:#D33581; opacity:0.8;">Salistes a ver una Película</h2>
+                    </section>
+
+
+
+                    <section data-state="actividad4">
+                        <h3>Lo Normal: Verificar estatus</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">regresas a la computadora,</p>
+                        <p class="fragment fade-up" data-autoslide="2500">y verficas el estatus</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git status</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="addDone1" style="color:greenyellow;" class="addDone1"></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section data-background="{{ asset('images/course/gif/scared-o.gif') }}">
+
+                    </section>
+
+
+                    <section >
+                        <h2 style="background-color:#D33581; opacity:0.8;">¿archivos en el Stage...?</h2>
+                        <p>No recuerdo... ¿que fue lo que coloqué allí?... </p>
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/rileyRemenber.gif') }}">
+
+                    </section>
+
+
+
+                    <section >
+                        <h2 style="background-color:#D33581; opacity:0.8;">Recuerdas el git diff</h2>
+                    </section>
+
+
+                    <section data-state="actividad5">
+                        <h3>git diff</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Para recordar los cambios, ejecutas el git diff</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git diff</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="addDone1" style="color:greenyellow;" class="addDone1"></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section data-background="{{ asset('images/course/gif/spongebobbreathing.gif') }}">
+                        <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                            No sale nada.... nada ....
+                        </p>
+
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/panic.gif') }}">
 
 
                     </section>
 
 
                     <section >
-                        <p>cuando hay muchas confirmaciones, la lista que despliega el comando
-                        es muy larga.  Nosotros podemos decirle al comando cuantas confirmaciones
-                        queremos que nos regrese</p>
-
-                    </section>
-
-                    <section data-state="actividad1">
-                        <h3>Opción -n </h3>
-
-                        <p class="fragment fade-up" data-autoslide="2500">con el comando git log y la opción -n podemo decirle a git cuantas confirmaciones queremos que nos muestre</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git log -n 1</code></pre>
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="addDone1" style="color:greenyellow;" class="addDone2"></i>
-                            </div>
-                        </div>
-
-
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
+                        <h2 style="background-color:#D33581; opacity:0.8;">Tranquilo (a) ... "Que no panda el cunico" </h2>
                     </section>
 
 
 
-                    <section data-state="actividad2">
-                        <h3>Opción --author </h3>
+                    <section >
+                        <h2 style="background-color:#D33581; opacity:0.8;">Existe otra salvación</h2>
+                        <p>
+                            git diff tiene una opción para refrescarte la memoria y decirte
+                            que fue lo que cambió en ese archivo o en todos los que estén
+                            en el estatus de staged.
+                        </p>
 
-                        <p class="fragment fade-up" data-autoslide="2500">con la opción de --author podemos decirle a git que sólo queremos las confirmaciones</p>
-                        <p class="fragment fade-up" data-autoslide="2500">realizadas por un determinado author</p>
+                    </section>
+
+
+                    <section >
+                        <h2 style="background-color:#D33581; opacity:0.8;">git diff --staged</h2>
+                        <p>
+                            git diff tiene una opción para refrescarte la memoria y decirte
+                            que fue lo que cambió en ese archivo o en todos los que estén
+                            en el estatus de staged.
+                        </p>
+
+                    </section>
+
+
+
+
+
+
+
+                    <section data-state="actividad6">
+                        <h3>git diff --staged </h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">con la opción de --stage podemos decirle a git diff que</p>
+                        <p class="fragment fade-up" data-autoslide="2500">nos muestre las diferencias entre el stage index y el repositorio</p>
                         <div class="row">
                             <div class="col-xs-10">
                                 <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git log --author=nombre</code></pre>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git diff --staged</code></pre>
                                 </a>
                             </div>
                             <div class="col-xs-2">
@@ -688,131 +617,14 @@
                         </section>
 
                         <section >
-                            <h3>Nos reporta sólo el último commit que realizamos</h3>
+                            <h3>Uffff... ya recordamos las diferencias que habían</h3>
 
                         </section>
 
-                    </section>
+                        <section data-background="{{ asset('images/course/gif/rileyRemenber.gif') }}">
 
+                        </section>
 
-                    <section data-state="actividad3">
-                        <h3>Opción --since</h3>
-
-                        <p class="fragment fade-up" data-autoslide="2500">Podemos pedirle que nos muestre las confirmaciones desde una fecha en específico hasta el presente</p>
-                        <p class="fragment fade-up" data-autoslide="2500">El comando recibe las fechas empezando por el año, luego el mes y de último el día</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git log --since="2017-01-01"</code></pre>
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="commit1" style="color:greenyellow;" class="addDone3"></i>
-                            </div>
-                        </div>
-                        <p class="fragment fade-up" data-autoslide="2500">El comando nos regresa las confirmaciones a partir del primero de Enero del 2017 hasta el presente</p>
-
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
-                    </section>
-
-
-
-
-                    <section data-state="actividad4">
-                        <h3>Opción --until</h3>
-
-                        <p class="fragment fade-up" data-autoslide="2500">Hace lo contrario del --since</p>
-                        <p class="fragment fade-up" data-autoslide="2500">nos va a mostrar los commits desde el inicio hasta cuando le inidquemos</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git log --until="2017-05-30"</code></pre>
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="commit1" style="color:greenyellow;" class="addDone3"></i>
-                            </div>
-                        </div>
-                        <p class="fragment fade-up" data-autoslide="2500">El comando nos regresa las confirmaciones existentes desde el inicio hasta el 30 de Mayo del 2017</p>
-
-
-
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
-                    </section>
-
-
-
-                    <section data-state="actividad5">
-                        <h3>Opción --grep</h3>
-
-                        <p class="fragment fade-up" data-autoslide="2500">Si estás buscando un commit por el mensaje, </p>
-                        <p class="fragment fade-up" data-autoslide="2500">nos va a mostrar los commits desde el inicio hasta cuando le inidquemos</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git log --until="2017-05-30"</code></pre>
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="commit1" style="color:greenyellow;" class="addDone3"></i>
-                            </div>
-                        </div>
-                        <p class="fragment fade-up" data-autoslide="2500">El comando nos regresa las confirmaciones existentes desde el inicio hasta el 30 de Mayo del 2017</p>
-
-
-
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
-                    </section>
-
-
-
-                    <section data-state="actividad6">
-                        <h3>Multiples opciones</h3>
-
-                        <p class="fragment fade-up" data-autoslide="2500">Esta vez te toca a tí.</p>
-                        <p class="fragment fade-up" data-autoslide="2500">¿Sabías que puedes utilizar multiples opciones en el mismo comando?</p>
-                        <p class="fragment fade-up" data-autoslide="2500">Si es posible, por eso te voy a solicitar lo siguiente:</p>
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <p class="fragment fade-up" data-autoslide="2500">Obten el commit desde hace 2 meses hasta el mes pasado</p>
-                                <p class="fragment fade-up" data-autoslide="2500">creado por ti</p>
-                                <p class="fragment fade-up" data-autoslide="2500">que sea el sólo el primero que encuentre</p>
-                                <p class="fragment fade-up" data-autoslide="2500">que contenga archivo1 en el texto.</p>
-                            </div>
-                            <div class="col-xs-2">
-                                <i id="addDone6" style="color:greenyellow;" class="addDone6"></i>
-                            </div>
-                        </div>
-                        <p class="fragment fade-up" data-autoslide="2500">Debes hacerlo en un solo comando.</p>
-
-
-
-                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
-                                                                                 data-autoslide="1000">En sus marcas</span>
-                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
-                                    class="fragment highlight-green">Fuera</span></p>
-                    </section>
-
-
-
-                    <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
-                        <h2 style="background-color:#D33581; opacity:0.8;">Excelente</h2>
-                    </section>
-
-
-                    <section data-state="qz"
-                            data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
-                        <h3 style="background-color:#D33581; opacity:0.8;">Hora del Quiz
-                        </h3>
                     </section>
 
 
@@ -1129,7 +941,7 @@
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
         var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false, actividad4: false, actividad5: false , actividad6: false };
-        var comandos = {log: false, log1: false, log2: false, log3: false, log4: false, log5:false, log6:false };
+        var comandos = {status: false, diff: false, status2: false, diff2: false, add:false };
         console.log(actividades);
         jQuery(function ($) {
 
@@ -1219,106 +1031,92 @@
                                 if (data.comando) {
 
                                     if (data.comando.match($comandoGit)) {
-                                        if (data.comando.match($gitLog)) {
+                                        if (data.comando.match($gitStatus)) {
                                             if(!actividades["actividad0"]) {
                                                 $(".addDone0").addClass('fa fa-check-circle');
                                                 add_logro("comandos3", "comandos3.png");
-                                                comandos['log'] = true;
+                                                comandos['status'] = true;
                                                 $("#progressbar").css("width", "20%");
                                                 $("#progressbar").attr("aria-valuenow", "20%");
                                                 $('.stat-percent').html('20%');
                                                 actividades["actividad0"] = true;
                                                 toggleNav(true);
-                                            }else if(!actividades["actividad1"]) {
-                                                if(actividades['actividad0']) {
-                                                    console.log("esto es include: " + data.salida.includes("nothing to commit"));
-                                                    if (data.comando.includes("-n")) {
-                                                        $(".addDone1").addClass('fa fa-check-circle');
-                                                        add_logro("comandos3", "comandos3.png");
-                                                        $("#progressbar").css("width", "55%");
-                                                        $("#progressbar").attr("aria-valuenow", "55%");
-                                                        $('.stat-percent').html('55%');
-                                                        actividades["actividad1"] = true;
-                                                        comandos['log1'] == true;
-                                                        toggleNav(true);
-                                                    }else{
-                                                        //actividades["actividad2"] = actividades["actividad3"] = actividades["actividad4"] = actividades["actividad5"] = true;
-                                                        toggleNav(true);
-                                                    }
-                                                }
                                             }else if(!actividades["actividad2"]) {
-                                                if(actividades['actividad1']) {
-                                                    if (data.comando.includes("--author")) {
-                                                        $(".addDone2").addClass('fa fa-check-circle');
-                                                        add_logro("comandos3", "comandos3.png");
-                                                        $("#progressbar").css("width", "55%");
-                                                        $("#progressbar").attr("aria-valuenow", "55%");
-                                                        $('.stat-percent').html('55%');
-                                                        actividades["actividad2"] = true;
-                                                        comandos['log2'] == true;
-                                                        toggleNav(true);
-                                                    }
-
-                                                }
-                                            }else if(!actividades["actividad3"]) {
-                                                if(actividades['actividad2']) {
-                                                    if (data.comando.includes("--since")) {
-                                                        $(".addDone3").addClass('fa fa-check-circle');
-                                                        add_logro("comandos3", "comandos3.png");
-                                                        $("#progressbar").css("width", "55%");
-                                                        $("#progressbar").attr("aria-valuenow", "55%");
-                                                        $('.stat-percent').html('55%');
-                                                        actividades["actividad3"] = true;
-                                                        comandos['log4'] == true;
-                                                        toggleNav(true);
-                                                    }
-
-                                                }
+                                                $(".status2").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status2'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
                                             }else if(!actividades["actividad4"]) {
-                                                if(actividades['actividad3']) {
-                                                    if (data.comando.includes("--until")) {
-                                                        $(".addDone4").addClass('fa fa-check-circle');
-                                                        add_logro("comandos3", "comandos3.png");
-                                                        $("#progressbar").css("width", "55%");
-                                                        $("#progressbar").attr("aria-valuenow", "55%");
-                                                        $('.stat-percent').html('55%');
-                                                        actividades["actividad4"] = true;
-                                                        comandos['log5'] == true;
-                                                        toggleNav(true);
-                                                    }
-
-                                                }
-                                            }else if(!actividades["actividad5"]) {
-                                                if(actividades['actividad4']) {
-                                                    if (data.comando.includes("--grep")) {
-                                                        $(".addDone5").addClass('fa fa-check-circle');
-                                                        add_logro("comandos3", "comandos3.png");
-                                                        $("#progressbar").css("width", "55%");
-                                                        $("#progressbar").attr("aria-valuenow", "55%");
-                                                        $('.stat-percent').html('55%');
-                                                        actividades["actividad5"] = true;
-                                                        comandos['log6'] == true;
-                                                        toggleNav(true);
-                                                    }
-
-                                                }
-                                            }else if(!actividades["actividad6"]) {
-                                                if(actividades['actividad5']) {
-                                                    if (data.comando.includes("--until") && (data.comando.includes("--since")) && (data.comando.includes("-n")) && (data.comando.includes("--author")) && (data.comando.includes("--grep")) ) {
-                                                        $(".addDone6").addClass('fa fa-check-circle');
-                                                        add_logro("comandos3", "comandos3.png");
-                                                        $("#progressbar").css("width", "55%");
-                                                        $("#progressbar").attr("aria-valuenow", "55%");
-                                                        $('.stat-percent').html('55%');
-                                                        actividades["actividad6"] = true;
-                                                        comandos['log7'] == true;
-                                                        toggleNav(true);
-                                                    }
-
-                                                }
+                                                $(".status3").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status3'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad4"] = true;
+                                                toggleNav(true);
                                             }
 
                                             //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                        }else if (data.comando.match($gitDiff)) {
+                                            if(!actividades["actividad1"]) {
+                                                $(".addDone0").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['diff'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad1"] = true;
+                                                toggleNav(true);
+                                            }else if(!actividades["actividad2"]) {
+                                                if(comandos['status2']) {
+                                                    $(".diff2").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['diff2'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                    actividades["actividad2"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad5"]) {
+                                                if(comandos['status3']) {
+                                                    $(".diff3").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['diff3'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                    actividades["actividad5"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad6"]) {
+                                                if(comandos['diff3']) {
+                                                    $(".diff4").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['diff4'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                    actividades["actividad6"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }
+
+                                        }else if (data.comando.match($gitAdd)) {
+                                            if(!actividades["actividad3"]) {
+                                                $(".add1").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['add'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad3"] = true;
+                                                toggleNav(true);
+                                            }
+
                                         }
 
                                     }
@@ -1493,92 +1291,7 @@
                 }
 
 
-                if (event.indexh > 15) {
-                    if (!actividades['actividad1']) {
-                        Reveal.slide(14);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
 
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-
-                    }
-                }
-
-                if (event.indexh > 16) {
-                    if (!actividades['actividad2']) {
-                        Reveal.slide(15);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
-
-                if (event.indexh > 18) {
-                    if (!actividades['actividad3']) {
-                        Reveal.slide(17);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
-
-
-                if (event.indexh > 20) {
-                    if (!actividades['actividad4']) {
-                        Reveal.slide(19);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
-
-                if (event.indexh > 21) {
-                    if (!actividades['actividad5']) {
-                        Reveal.slide(21);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
-
-                if (event.indexh == 23) {
-                    if (!actividades['actividad6']) {
-                        Reveal.slide(21);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
 
 
 
@@ -1617,6 +1330,7 @@
         var $configUserMail = /\b\s+user.email+\s/g;
         var $respuesta = /\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
         var $gitHelp = /^git+\s+\bhelp\s?\w?/g;
+        var $gitDiff = /^git+\s+\bdiff\s?\w?/g;
         var $gitLog = /^git+\s+\blog\s?\w?/g;
         var $gitInit = /^git+\s+\binit/g;
         var $gitStatus = /^git+\s+\bstatus/g;
