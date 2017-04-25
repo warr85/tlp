@@ -267,7 +267,7 @@
 
 
                     <section data-state="actividad2">
-                        <h3>Git Log</h3>
+                        <h3>Eliminar</h3>
                         <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde el manejador de Archivos</p>
                         <p class="fragment fade-up" data-autoslide="2500">Botón derecho del ratón sobre borrar1.txt</p>
                         <p class="fragment fade-up" data-autoslide="2500"></p>
@@ -1215,9 +1215,9 @@
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
-        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false, actividad4: false, actividad5: false , actividad6: false };
-        var comandos = {status: false, add: false, commit: false };
-        var directorio = {crear1: false, crear2: false, modificar1: false, modificar2 : false, borrar1:false, borrar2: false};
+        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false, actividad4: false, actividad5: false , actividad6: false,  actividad7: false, actividad8: false, actividad9: false, actividad10: false};
+        var comandos = {status: false, add: false, commit: false, status2:false, rm:false, status3:false, commit2:false, rm2:false, status4:false, commit3:false, status5:false, status6:false, mv:false, status7:false, mv2:false, status8:false, commit4:false  };
+        var directorio = {crear1: false, crear2: false, modificar1: false, modificar2 : false, borrar1:false, borrar2: false, crear3:false};
         console.log(actividades);
         jQuery(function ($) {
 
@@ -1324,21 +1324,14 @@
                                                     $("#progressbar").attr("aria-valuenow", "20%");
                                                     $('.stat-percent').html('20%');
                                                     actividades['actividad2'] = true;
+                                                    actividades['actividad3'] = true;
                                                     toggleNav(true);
                                                 }
-                                            }else if(!actividades["actividad3"]  && comandos['add2']) {
-                                                $(".status3").addClass('fa fa-check-circle');
-                                                add_logro("comandos3", "comandos3.png");
-                                                comandos['status3'] = true;
-                                                $("#progressbar").css("width", "20%");
-                                                $("#progressbar").attr("aria-valuenow", "20%");
-                                                $('.stat-percent').html('20%');
-                                                actividades["actividad3"] = true;
-                                                toggleNav(true);
                                             }else if(!actividades["actividad4"]  && comandos['rm']) {
                                                 $(".status4").addClass('fa fa-check-circle');
                                                 add_logro("comandos3", "comandos3.png");
                                                 comandos['status4'] = true;
+                                                comandos['status3'] = true;
                                                 $("#progressbar").css("width", "20%");
                                                 $("#progressbar").attr("aria-valuenow", "20%");
                                                 $('.stat-percent').html('20%');
@@ -1383,7 +1376,7 @@
                                                 $("#progressbar").css("width", "20%");
                                                 $("#progressbar").attr("aria-valuenow", "20%");
                                                 $('.stat-percent').html('20%');
-                                                actividades["actividad8"] = true;
+                                                actividades["actividad9"] = true;
                                                 toggleNav(true);
                                             }
 
@@ -1396,15 +1389,6 @@
                                                 $("#progressbar").css("width", "20%");
                                                 $("#progressbar").attr("aria-valuenow", "20%");
                                                 $('.stat-percent').html('20%');
-                                            }else if(!actividades["actividad3"] && actividades['actividad2']) {
-                                                if(comandos['status2']) {
-                                                    $(".add2").addClass('fa fa-check-circle');
-                                                    add_logro("comandos3", "comandos3.png");
-                                                    comandos['add2'] = true;
-                                                    $("#progressbar").css("width", "20%");
-                                                    $("#progressbar").attr("aria-valuenow", "20%");
-                                                    $('.stat-percent').html('20%');
-                                                }
                                             }else if(!actividades["actividad4"]) {
                                                 if(comandos['status4']) {
                                                     $(".add3").addClass('fa fa-check-circle');
@@ -1436,7 +1420,7 @@
                                                 actividades["actividad1"] = true;
                                                 toggleNav(true);
                                             }else if(!actividades["actividad4"]) {
-                                                if(comandos['add3']) {
+                                                if(comandos['status4']) {
                                                     $(".commit2").addClass('fa fa-check-circle');
                                                     add_logro("comandos3", "comandos3.png");
                                                     comandos['commit2'] = true;
@@ -1488,6 +1472,7 @@
                                             }
 
                                         }else if (data.comando.match($gitMv)) {
+                                            console.log("entra en mv");
                                             if(!actividades["actividad8"] && actividades['actividad7']) {
                                                 $(".mv1").addClass('fa fa-check-circle');
                                                 add_logro("comandos3", "comandos3.png");
@@ -1509,6 +1494,7 @@
                                     }
                                     console.log(comandos);
                                     console.log(actividades);
+                                    console.log(directorio);
                                 }
                                 screen.append(data.salida);
                             } else {
@@ -1551,14 +1537,16 @@
                     add   : function(event) {
                         console.log(event.data);
                         console.log(actividades);
+                        console.log(directorio);
                         if (event.data.added){
                             if (event.data.added[0].name != "{{ app.user.userName }}") {
                                 console.log("archivo creado");
 
 
-                                if (!actividades['actividad1'] && (!directorio['crear1'] || !directorio['crear2'] ))
+                                if (!actividades['actividad1'] && (!directorio['crear1'] || !directorio['crear2'] )) {
                                     console.log("archivo borrar 1 creado");
-                                add_logro("directorio_virtual", "directorio1.png");
+                                    add_logro("directorio_virtual", "directorio1.png");
+                                }
 
                                 if(directorio['crear1'] && !directorio['crear2']){
                                     console.log("archivo borrar 2 creado");
@@ -1586,6 +1574,21 @@
                                     $('.stat-percent').html('35%');
                                 }
 
+
+                                if (event.data.removed ){
+                                    if(!actividades['actividad6'] && actividades['actividad5']){
+                                        console.log("renombrado1");
+                                        directorio['renombrado1'] = true;
+                                        $("#progressbar").css("width", "50%");
+                                        $("#progressbar").attr("aria-valuenow", "50%");
+                                        $('.stat-percent').html('50%');
+                                        $(".renombrar1").addClass('fa fa-check-circle');
+                                        add_logro("directorio_virtual", "directorio1.png");
+
+
+                                    }
+                                }
+
                             }
 
                         }
@@ -1595,7 +1598,7 @@
                         //editar el archivo1 y 2
 
                         console.log(event.data);
-                        if (event.data.changed[0].size > 0){
+                        if (event.data.changed[0].size != 0){
                             console.log("modificando");
                             if(!directorio['modificar1'] && directorio['crear1']){
                                 console.log("archivo borrar1 modificado");
@@ -1622,21 +1625,11 @@
                                 toggleNav(true);
 
                             }
-
-
-
-
-
-                            console.log(actividades);
-
-
-
                         }
 
-                        if (event.data.removed[0].size > 0){
+                        if (event.data.removed){
                             console.log("eliminado");
                             if(actividades['actividad0'] && actividades['actividad1']  && !actividades['actividad2']){
-
 
                                 if(directorio['borrar1'] && !directorio['borrar2']){
                                     console.log("borrado2");
@@ -1664,18 +1657,6 @@
 
                         }
 
-                        if (event.data.removed[0].size > 0  && event.data.added[0].size > 0  ){
-                            if(!actividades['actividad6'] && actividades['actividad5']){
-                                console.log("renombrado1");
-                                directorio['renombrado1'] = true;
-                                $("#progressbar").css("width", "50%");
-                                $("#progressbar").attr("aria-valuenow", "50%");
-                                $('.stat-percent').html('50%');
-                                $(".renombrar1").addClass('fa fa-check-circle');
-
-
-                            }
-                        }
 
                     }
                 },
@@ -1753,6 +1734,39 @@
 
             Reveal.addEventListener('actividad5', function (event) {
                 if (!actividades['actividad5']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad6', function (event) {
+                if (!actividades['actividad6']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad7', function (event) {
+                if (!actividades['actividad7']) {
+                    toggleNav(false);
+                }
+            });
+
+
+            Reveal.addEventListener('actividad8', function (event) {
+                if (!actividades['actividad8']) {
+                    toggleNav(false);
+                }
+            });
+
+
+            Reveal.addEventListener('actividad9', function (event) {
+                if (!actividades['actividad9']) {
+                    toggleNav(false);
+                }
+            });
+
+
+            Reveal.addEventListener('actividad10', function (event) {
+                if (!actividades['actividad10']) {
                     toggleNav(false);
                 }
             });
@@ -1844,7 +1858,7 @@
         var $gitDiff = /^git+\s+\bdiff\s?\w?/g;
         var $gitLog = /^git+\s+\blog\s?\w?/g;
         var $gitRm = /^git+\s+\brm\s\w/g;
-        var $gitMv = /^git+\s+\bmv\s\w\s\w/g;
+        var $gitMv = /^git+\s+\bmv+\s+[a-zA-ZáéíóúAÉÍÓÚÑñ0-9.]+\s+[a-zA-ZáéíóúAÉÍÓÚÑñ0-9.]{1,}/g;
         var $gitInit = /^git+\s+\binit/g;
         var $gitStatus = /^git+\s+\bstatus/g;
         var $gitAdd = /^git+\s+\badd\s+./g;
