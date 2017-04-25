@@ -1,0 +1,2032 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/bombillo.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/reveal.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/css/theme/moon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/revealjs/lib/css/zenburn.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-ui/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/elfinder.full.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/elfinder/css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetAlert/sweetalert.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/animate/animate.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/slickQuiz.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/quiz/master.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/steps/jquery.steps.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/iziToast/dist/css/iziToast.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/moovly/css/videojs/video-js.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/moovly/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/git.css') }}" >
+
+
+{% endblock %}
+
+{% block tituloCurso  %} Bienvenido a tu curso: {{ inscripcion.idCursoGrupo.idCurso.nombre }} {% endblock %}
+
+{% block mainTitle %}
+    <div class="row wrapper border-bottom white-bg page-heading" id="tour1">
+
+        <div class="col-sm-4">
+            <ol class="breadcrumb">
+                <li>
+
+                    <h4><img id="guardado" src="{{ asset('images/course/lightbulbOn6.png') }}" width="36px"/><img
+                                id="loadingBulb" src="{{ asset('images/course/bulb.gif') }}" width="36px"/> Progreso del
+                        Curso</h4>
+                </li>
+
+
+                <li class="tooltip-demo" id="tour2">
+                    {% for temas in cursoModulo.temas %}
+                        {% if temas.orden < avance %}
+                            <a class="fa fa-github fa-2x encendido" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
+                        {% elseif temas.orden == avance %}
+                            <a class="fa fa-github fa-2x current" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
+                        {% elseif temas.orden > avance %}
+                            <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"
+                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
+                        {% endif %}
+                    {% endfor %}
+
+
+                </li>
+            </ol>
+        </div>
+        <div class="col-sm-8">
+            <div class="title-action">
+                <a href="#" class="btn btn-primary startTour">Tour por mi aula virtual</a>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+
+
+{% block body %}
+
+
+
+    <div class="row">
+        <div class="col-lg-7" style="height:400px" id="tour3">
+
+            <div class="reveal">
+
+                <!-- Any section element inside of this container is displayed as a slide -->
+                <div class="slides">
+                    <section data-background-image="{{ asset('images/course/bg_git.jpg') }}">
+                        <h1>GIT</h1>
+                        <h3>Eliminar y Renombrar Archivos</h3>
+                        <p>
+                            <small>Creado por <a href="www.tecnolineaparaguana.com.ve">Wilmer Ramones</a> / <a
+                                        href="http://twitter.com/wramonesr">@wramonesr</a></small>
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>Objetivos de Este módulo:</h3>
+                        <ul>
+                            <li class="fragment fade-left" data-autoslide="2500">borrar archivos desde el manejador</li>
+                            <li class="fragment fade-left" data-autoslide="2500">ver como git trata esos archivos</li>
+                            <li class="fragment fade-left" data-autoslide="2500">añadir esos cambios al stage y al repositorio</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Example of nested vertical slides -->
+
+                    <section
+                            data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h3 style="background-color:#D33581; opacity:0.8;">Manos a la obra
+                        </h3>
+                    </section>
+
+
+                    <section data-state="actividad0">
+                        <h3>Crear dos archivo más</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde el Manejador de Archivos</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Click en el segundo icono de la barra de menu</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="addDone1" style="color:greenyellow;" class="addDone1"></i>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Colocamos el nombre borrar1.txt</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="crear1" style="color:greenyellow;" class="crear1"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Editamos nuestro nuevo archivo</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="modificar1" style="color:greenyellow;" class="modificar1"></i>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Repetimos el proceso añadiendo borrar2.txt</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="modificar2" style="color:greenyellow;" class="modificar2"></i>
+                            </div>
+                        </div>
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+                    <section>
+                        <section>
+                            <h2>¿Que sucede si presionamos git status?</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/iKnow.gif') }}">
+
+                        </section>
+
+                        <section>
+                            <h2>Correcto, git status informa que tenemos 2 archivos nuevos que git no está
+                            siguiendo... </h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/donde.gif') }}">
+
+                            <p style="background-color:#D33581; opacity:0.8;">hasta aquí git no puede hacer nada, porque no le hemos dicho
+                            que los siga... así que vamos a hacerlo... vamos a presentarselos a git</p>
+
+                        </section>
+
+
+
+
+                    </section>
+
+                    <section
+                            data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h3 style="background-color:#D33581; opacity:0.8;">Manos a la obra
+                        </h3>
+                    </section>
+
+
+                    <section data-state="actividad1">
+                        <h3>Añadir y confirmar</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde la consola</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">ya debimos haber consultado el estatus del proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status1" style="color:greenyellow;" class="status1"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">añadimos todos los archivos al stage</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="add1" style="color:greenyellow;" class="add1"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">confirmamos al repositorio con un mensaje</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="commit1" style="color:greenyellow;" class="commit1"></i>
+                            </div>
+                        </div>
+
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2>Felicitaciones... Nuevos archivos... </h2>
+                    </section>
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">Ahora que git los sigue... ¿Que hacemos?</h2>
+                        </section>
+
+
+
+                        <section>
+                            <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                                Vamos a eliminar el archivo borrar1.txt desde el manejador de archivos
+                                para ver como git trata a los archivos que está siguiendo y son eliminados
+                            </p>
+
+                        </section>
+
+                    </section>
+
+
+
+                    <section data-state="actividad2">
+                        <h3>Git Log</h3>
+                        <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde el manejador de Archivos</p>
+                        <p class="fragment fade-up" data-autoslide="2500">Botón derecho del ratón sobre borrar1.txt</p>
+                        <p class="fragment fade-up" data-autoslide="2500"></p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Seleccionamos eliminar archivo</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="borrar1" style="color:greenyellow;" class="borrar1"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">consulta el estatus del proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i  style="color:greenyellow;" class="status2"></i>
+                            </div>
+                        </div>
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos muestró?</h2>
+                        </section>
+
+                        <section>
+                            <p>
+                                Wow... enseguida git se da cuenta que tiene algo en el repositorio
+                                que ahora no existe en el working... y muestra que el archivo ha sido
+                                eliminado
+                            </p>
+                        </section>
+
+
+
+                        <section>
+                            <p style="background-color:#D33581; opacity:0.8;">
+                                Vamos a añadir esos cambios para explicar por qué hicimos
+                                una eliminación en nuestro proyecto..
+                            </p>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/insideOutHappy.gif') }}">
+
+                        </section>
+
+
+                    </section>
+
+
+
+
+                    <section data-state="actividad3">
+                        <h3>añadir al Stage</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">vamos a enviar todos los cambios al stage,</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git add .</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="add2" style="color:greenyellow;" class="add2"></i>
+                            </div>
+                        </div>
+
+                        <p class="fragment fade-up" data-autoslide="2500">consultamos el estatus del proyecto</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git status</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status3" style="color:greenyellow;" class="status3"></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿No añadió los cambios?</h2>
+                        </section>
+
+                        <section data-background="{{ asset('images/course/gif/panic.gif') }}">
+
+                        </section>
+
+
+
+                        <section>
+                            <p style="background-color:#D33581; opacity:0.8;">
+                                Tranquilo... respira... respira... se me había olvidado decirte que
+                                git add solo añade archivos nuevos y modificaciones a los archivos,
+                                no añade eliminaciones... para eso está otro comando
+                            </p>
+                        </section>
+
+
+                        <section >
+                            <h2 style="background-color:#D33581; opacity:0.8;">git rm</h2>
+                            <p>
+                                rm viene de la abreviación de remove en inglés y sirve para eliminar
+                                archivos de nuestro proyecto.
+                            </p>
+                        </section>
+
+
+
+                    </section>
+
+
+                    <section data-state="actividad4">
+                        <h3>git rm</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Ejecutamos el siguiente comando para eliminar borrar1.txt</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git rm borrar1.txt</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="rm1" style="color:greenyellow;" class="rm1"></i>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">consultamos el estatus del proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status4" style="color:greenyellow;" class="status4"></i>
+                            </div>
+                        </div>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Notamos lo genial del comando git rm que envía los cambios de una vez al stage</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">por lo que hacemos una confirmacion con un mensaje</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="commit2" style="color:greenyellow;" class="commit2"></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+
+
+
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2 style="background-color:#D33581; opacity:0.8;">Borramos nuestro primer archivo con git</h2>
+                    </section>
+
+
+
+                    <section >
+                        <h2 style="background-color:#D33581; opacity:0.8;">¿notastes que el comando git rm elimina el archivo y envía los cambios
+                        al stage?</h2>
+                    </section>
+
+
+                    <section >
+                        <h2>
+                           Podemos ahorrarnos el paso de eliminar del manejador de archivos y dejar que
+                            git se encarge de todo.
+                        </h2>
+                    </section>
+
+
+                    <section data-state="actividad5">
+                        <h3>git rm 2</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Ejecutamos el siguiente comando para eliminar borrar2.txt</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git rm borrar2.txt</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="rm2" style="color:greenyellow;" class="rm2"></i>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">consultamos el estatus del proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status5" style="color:greenyellow;" class="status5"></i>
+                            </div>
+                        </div>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Notamos lo genial del comando git rm que envía los cambios de una vez al stage</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">por lo que hacemos una confirmacion con un mensaje</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="commit3" style="color:greenyellow;" class="commit3"></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section data-background="{{ asset('images/course/gif/chuckNorris.gif') }}">
+                        <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
+                            todo en tan sólo dos pasos... Excelente.
+                        </p>
+
+                    </section>
+
+
+
+                    <section >
+                        <h2 style="background-color:#D33581; opacity:0.8;">Reorganizar</h2>
+                        <p>
+                            Que pasa si queremos reorganizar nuestro proyecto, es decir,
+                            cambiar de nombres ciertos archivos o crear carpetas para
+                            agrupar archivos comunes y git ya los tiene guardado con
+                            los nombres originales... bueno vamos a probar...
+                        </p>
+
+                    </section>
+
+
+                    <section data-state="actividad6">
+                        <h3>renombrar archivo </h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">desde el manejador de archivos</p>
+                        <p class="fragment fade-up" data-autoslide="2500">colocate con un click del mouse sobre archivo1.txt</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">Presiona F2 y cambia el nombre a primario.txt</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="renombrar1" style="color:greenyellow;" class="renombrar1"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">consulta el estatus del proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status6" style="color:greenyellow;" class="status6"></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+
+
+                        <section data-background="{{ asset('images/course/gif/dejamePensar.gif') }}">
+
+                        </section>
+
+                        <section>
+                            <h2>
+                                ¿Dos archivos? ¿uno eliminado? y ¿otro sin seguimiento?
+                            </h2>
+                        </section>
+
+
+                        <section>
+                            <h2>
+                                si, así es como lo ve git, desde el repositorio el ve que tiene un
+                                archivo1.txt que ahora no está en el working y de paso nota que hay
+                                un primario.txt que nunca ha tenido en el repositorio, por eso es que
+                                ve dos archivos.
+                            </h2>
+                        </section>
+
+
+                        <section>
+                            <h2>
+                                ahora fijate que pasa si añades esos cambios al Stage index
+                            </h2>
+                        </section>
+
+
+                    </section>
+
+
+
+
+                    <section data-state="actividad7">
+                        <h3>enviar al index </h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">desde la consola</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">añade todos los cambios al Stage index</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="add4" style="color:greenyellow;" class="add4"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">consulta el estatus del proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status7" style="color:greenyellow;" class="status7"></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+
+
+                        <section data-background="{{ asset('images/course/gif/dejamePensar.gif') }}">
+
+                        </section>
+
+                        <section>
+                            <h2>
+                                Ahora como git sigue al archivo, lo compara con los que ya tiene
+                                y entonces se da cuenta que es exactamente igual a archivo1.txt
+                                y coloca que lo que estamos haciendo es un renombre... el estatus
+                                es renombrado..
+                            </h2>
+                        </section>
+
+
+                        <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">git si es maravilloso ¿verdad?</h2>
+                        </section>
+
+
+                        <section>
+                            <h2>
+                               Pero git tambien tiene una funcion que renombra y mueve
+                                los archivos de una vez por nosotros sin necesidad de ir
+                                al manejador de archivox
+                            </h2>
+                        </section>
+
+
+                        <section >
+                            <h2 style="background-color:#D33581; opacity:0.8;">git mv</h2>
+                            <p>
+                                mv viene de la abreviación de move en inglés y sirve para mover archivos
+                                y renombrarlos que es otra manera de moverlos, moverlos de nombre en este
+                                caso....
+                            </p>
+                        </section>
+
+
+
+
+                    </section>
+
+
+                    <section data-state="actividad8">
+                        <h3>git rm</h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Ejecutamos el siguiente comando para renombrar archivo2.txt</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git mv archivo2.txt secundario.txt</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="mv1" style="color:greenyellow;" class="mv1"></i>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">consultamos el estatus del proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status8" style="color:greenyellow;" class="status8"></i>
+                            </div>
+                        </div>
+
+                        <p class="fragment fade-up" data-autoslide="2500">Notamos lo genial del comando git mv también envía los cambios al stage</p>
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+
+
+                        <section data-background="{{ asset('images/course/gif/dejamePensar.gif') }}">
+
+                        </section>
+
+                        <section>
+                            <h2>
+                               Vemos que de una vez cambia el nombre del archivo y lo envía al
+                                Stage index para que git se de cuenta de los cambios y sepa
+                                que es un renombre.
+                            </h2>
+                        </section>
+
+
+                        <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">git si es maravilloso ¿verdad?</h2>
+                        </section>
+
+
+                        <section>
+                            <h2>
+                                También podemos cambiar la ubicación de nuestros archivos. vamos a
+                                crear una carpeta nueva en nuestro proyecto y con este comando vamos
+                                a colocarla allí
+                            </h2>
+                        </section>
+
+
+
+                    </section>
+
+
+
+                    <section data-state="actividad9">
+                        <h3>mover archivo </h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">desde el manejador de archivos</p>
+                        <p class="fragment fade-up" data-autoslide="2500">colocate en un espacio en blanco en donde están tus archivos</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">click derecho del mouse y selecciona nueva carpeta asignando nombre</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="crear3" style="color:greenyellow;" class="crear3"></i>
+                            </div>
+                        </div>
+
+                        <p class="fragment fade-up" data-autoslide="2500">desde la consola</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git mv leeme.txt directorio/leeme.txt</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="mv2" style="color:greenyellow;" class="mv2"></i>
+                            </div>
+                        </div>
+                        <p class="fragment fade-up" data-autoslide="2500">donde directorio es el nombre de tu carpeta.</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">consultamos el estatus del proyecto</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="status9" style="color:greenyellow;" class="status9"></i>
+                            </div>
+                        </div>
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+
+                    <section>
+                        <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">¿Que nos reportó?</h2>
+                        </section>
+
+
+
+                        <section data-background="{{ asset('images/course/gif/dejamePensar.gif') }}">
+
+                        </section>
+
+                        <section>
+                            <h2>
+                                que todos los archivos los trata como renombrados... todos
+                                estan en el stage como renombrados... excelente.
+                            </h2>
+                        </section>
+
+
+                        <section data-background="{{ asset('images/course/gif/clapMin.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">git si es maravilloso ¿verdad?</h2>
+                        </section>
+
+
+                        <section>
+                            <h2>
+                                ahora para dejar nuestro working limpio vamos a realizar una ultima
+                                actividad
+                            </h2>
+                        </section>
+
+
+
+                    </section>
+
+
+                    <section data-state="actividad9">
+                        <h3>commit </h3>
+
+                        <p class="fragment fade-up" data-autoslide="2500">desde la consola</p>
+                        <p class="fragment fade-up" data-autoslide="2500">envia los cambios al repositorio con un mensaje</p>
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">envia los cambios al repositorio con un mensaje</code></pre>
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <i id="commit4" style="color:greenyellow;" class="commit4"></i>
+                            </div>
+                        </div>
+
+
+
+
+                        <p class="fragment fade-down" data-autoslide="500"><span class="fragment highlight-red"
+                                                                                 data-autoslide="1000">En sus marcas</span>
+                            <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
+                                    class="fragment highlight-green">Fuera</span></p>
+                    </section>
+
+
+                    <section data-background="{{ asset('images/course/gif/happyMin.gif') }}">
+                        <h2 style="background-color:#D33581; opacity:0.8;">Felicitaciones</h2>
+                    </section>
+
+
+                    <section data-state="qz"
+                             data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
+                        <h3 style="background-color:#D33581; opacity:0.8;">Hora del Quiz
+                        </h3>
+                    </section>
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-5">
+            <ul class="stat-list">
+                <li>
+
+                    <small>Progreso de este nivel</small>
+                    <div class="stat-percent">0%</div>
+                    <div class="progress progress-mini">
+                        <div id="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                             style="width: 10%;" class="progress-bar"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            Logros disponibles en este Nivel:
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="tooltip-demo">
+                                {% set contadorObtenidos = 0 %}
+                                {% for logroD in logrosDisponibles %}
+                                    {% set obtenido = false %}
+                                    {% for logroO in logrosObtenidos %}
+                                        {% if logroO.idCursoModuloTemaLogro.id == logroD.id %}
+                                            {% set contadorObtenidos = contadorObtenidos + 1 %}
+                                            {% set obtenido = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if not obtenido %}
+                                        <span id="{{ logroD.nombreCorto }}" data-toggle="tooltip" data-placement="top"
+                                              title="{{ logroD.nombre }}" class="fa-stack has-badge"
+                                              data-count="{{ logroD.badge }}">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    {% else %}
+                                        {% if logroD.id == 2 %}
+                                            <input type="hidden" id="quizOpen" value="true"/>
+                                        {% endif %}
+                                        {% if logroD.nombreCorto == "commit1" %}
+                                            <input type="hidden" name="comm" id="comm" value="true">
+                                         {% endif %}
+                                        <span id="{{ logroD.nombreCorto }}" data-toggle="tooltip" data-placement="top"
+                                              title="{{ logroD.nombre }}" class="fa-stack has-badge"
+                                              data-count="{{ logroD.badge }}">
+                                            <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if contadorObtenidos > 0 %}
+                                    <input type="hidden" id="contadorObtenidos" value="{{ contadorObtenidos }}"/>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+
+
+        <div class="col-lg-5 acomodar">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Mis Evaluaciones</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#">Config option 1</a>
+                            </li>
+                            <li><a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content profile-content">
+
+                    <div id="slickQuiz">
+                        <input type="hidden" name="qnumber" id="qnumber" value="6">
+                        <h1 class="quizName"><!-- where the quiz name goes --></h1>
+
+                        <div class="quizArea">
+                            <div class="quizHeader">
+                                <!-- where the quiz main copy goes -->
+
+                                <a class="button_quiz startQuiz" id="btnQuiz" href="#">Comenzar Quiz!</a>
+
+                            </div>
+
+                            <!-- where the quiz gets built -->
+                        </div>
+
+                        <div class="quizResults">
+                            <h3 class="quizScore">Tus Puntos: <span><!-- where the quiz score goes --></span></h3>
+
+                            <h3 class="quizLevel"><strong>Nivel:</strong> <span><!-- where the quiz ranking level goes --></span>
+                            </h3>
+                            <a class="next_class btn btn-success" id="next_class"
+                               href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance + 1 }) }}">siguiente
+                                Clase!</a>
+                            <input id="inscripcion" type="hidden" value="{{ inscripcion.id }}"/>
+                            <input id="url_exp" type="hidden" value="{{ url('gamificacion_add_xp') }}"/>
+                            <input id="url_logro" type="hidden" value="{{ url('gamificacion_add_logro') }}"/>
+                            <input id="url_avance" type="hidden" value="{{ url('ajax_avance') }}"/>
+                            <input id="tema_actual" type="hidden" value="{{ temaActual.id }}"/>
+                            <input id="url_evaluacion" type="hidden" value="{{ url('ajax_evaluacion') }}"/>
+                            <div class="quizResultsCopy">
+                                <!-- where the quiz result copy goes -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!--row -->
+
+
+
+    <div class="row">
+        <div class="col-lg-7 acomodar" id="tour4">
+
+            <div class="window" id="console-panel">
+                <div class="topbar">
+                    <div class="icons">
+                        <div class="close"></div>
+                        <div class="hide"></div>
+                        <div class="maximize"></div>
+                    </div>
+                    <p class="wtitle">Terminal</p>
+                </div>
+
+                <pre id="preConsole"></pre>
+                <form id="console">
+                    <div id="currentDirName">{{ currentDirName }}/</div>
+                    <div>{{ currentUser }}$></div>
+                    <div id="command"><input id="inputConsole" type="text" value="" autocomplete="off"></div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-5 acomodar">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Manejador de Archivos</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#">Config option 1</a>
+                            </li>
+                            <li><a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content profile-content">
+
+                    <div id="elfinder"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="flipbook-viewport">
+                    <div class="container">
+                        <div class="flipbook">
+                            <div style="background-image:url({{ asset('images/books/1.jpg') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/2.png') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/3.jpg') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/4.jpg') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/5.jpg') }})"></div>
+                            <div style="background-image:url({{ asset('images/books/1.jpg') }})"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/vendor/elfinder/js/elfinder.full.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/elfinder/js/i18n/elfinder.es.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('assets/vendor/revealjs/lib/js/head.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/revealjs/js/reveal.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/sweetAlert/sweetalert.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('assets/vendor/bootstrapTour/bootstrap-tour.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/modernizr/modernizr.2.5.3.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/steps/jquery.steps.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz-config5.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/slickQuiz.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/quiz/master.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/moovly/js/videojs/video.js') }}" type="text/javascript"></script>
+
+
+
+
+    <script type="text/javascript">
+
+
+        /**
+         *  History of commands.
+         */
+        (function ($) {
+            var maxHistory = 100;
+            var position = -1;
+            var currentCommand = '';
+            var addCommand = function (command) {
+                var ls = localStorage['commands'];
+                var commands = ls ? JSON.parse(ls) : [];
+                if (commands.length > maxHistory) {
+                    commands.shift();
+                }
+                commands.push(command);
+                localStorage['commands'] = JSON.stringify(commands);
+            };
+            var getCommand = function (at) {
+                var ls = localStorage['commands'];
+                var commands = ls ? JSON.parse(ls) : [];
+                if (at < 0) {
+                    position = at = -1;
+                    return currentCommand;
+                }
+                if (at >= commands.length) {
+                    position = at = commands.length - 1;
+                }
+                return commands[commands.length - at - 1];
+            };
+
+            $.fn.history = function () {
+                var input = $(this);
+                input.keydown(function (e) {
+                    var code = (e.keyCode ? e.keyCode : e.which);
+
+                    if (code == 38) { // Up
+                        if (position == -1) {
+                            currentCommand = input.val();
+                        }
+                        input.val(getCommand(++position));
+                        return false;
+                    } else if (code == 40) { // Down
+                        input.val(getCommand(--position));
+                        return false;
+                    } else {
+                        position = -1;
+                    }
+                });
+
+                return input;
+            };
+
+            $.fn.addHistory = function (command) {
+                addCommand(command);
+            };
+        })(jQuery);
+
+
+        /**
+         * Windows variables.
+         */
+        window.topDir = '{{ currentDir }}';
+        window.currentDir = '{{ currentDir }}';
+        window.currentDirName = window.currentDir.split('/').pop();
+        window.currentUser = "{{ app.user.username }}";
+        window.titlePattern = "* — console";
+        window.document.title = window.titlePattern.replace('*', window.currentDirName);
+        var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false, actividad4: false, actividad5: false , actividad6: false };
+        var comandos = {status: false, add: false, commit: false };
+        var directorio = {crear1: false, crear2: false, modificar1: false, modificar2 : false, borrar1:false, borrar2: false};
+        console.log(actividades);
+        jQuery(function ($) {
+
+
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: false,
+                center: true,
+                autoSlideStoppable: false,
+                slideNumber: false,
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/lib/js/classList.js') }}", condition: function () {
+                        return !document.body.classList;
+                    }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/markdown/marked.js') }}", condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/markdown/markdown.js') }}",
+                        condition: function () {
+                            return !!document.querySelector('[data-markdown]');
+                        }
+                    },
+                    {
+                        src: "{{ asset('assets/vendor/revealjs/plugin/highlight/highlight.js') }}",
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    },
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/zoom-js/zoom.js') }}", async: true},
+                    {src: "{{ asset('assets/vendor/revealjs/plugin/notes/notes.js') }}", async: true}
+                ]
+            });
+
+
+            var $configUser = false;
+            var screen = $('#preConsole');
+            var input = $('#inputConsole').focus();
+            var form = $('#console');
+
+            input.history();
+
+            form.submit(function () {
+
+
+                var command = $.trim(input.val());
+                if (command == '') {
+                    return false;
+                }
+
+                $("<code id='preCode'>" + window.currentDirName + "&nbsp;" + window.currentUser + "$&nbsp;" + command + "</code><br>").appendTo(screen);
+
+                //scroll();
+                input.val('');
+                form.hide();
+                input.addHistory(command);
+                var data3 = {command: command, cd: window.currentDir, user: window.currentUser, comandos: comandos};
+                $.ajax({
+                    method: "GET",
+                    url: "{{ url('ajax_console') }}",
+                    async: true,
+                    cache: false,
+                    data: data3,
+                    //timeout: 50000,
+                    success: function (data) {
+                        console.log(data);
+
+                        var pattern = /^set current directory (.+?)$/i;
+                        if (matches = data.salida.match(pattern)) {
+                            console.log(matches);
+                            window.currentDir = matches[1];
+                            window.currentDirName = window.currentDir.split('/').pop() + "/";
+                            $('#currentDirName').text(window.currentDirName);
+                            window.document.title = window.titlePattern.replace('*', window.currentDirName);
+                        } else {
+                            console.log(actividades);
+                            if (data.error === "") {
+                                if (data.comando) {
+
+                                    if (data.comando.match($comandoGit)) {
+                                        if (data.comando.match($gitStatus)) {
+                                            if(!actividades["actividad1"]) {
+                                                $(".estatus1").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                            }else if(!actividades["actividad2"]) {
+                                                if(directorio['borrar1']) {
+                                                    $(".status2").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['status2'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                    actividades['actividad2'] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad3"]  && comandos['add2']) {
+                                                $(".status3").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status3'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad3"] = true;
+                                                toggleNav(true);
+                                            }else if(!actividades["actividad4"]  && comandos['rm']) {
+                                                $(".status4").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status4'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                            }else if(!actividades["actividad5"]  && comandos['rm2']) {
+                                                $(".status5").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status5'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                            }else if(!actividades["actividad6"]  && directorio['renombrado1']) {
+                                                $(".status6").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status6'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad6"] = true;
+                                                toggleNav(true);
+                                            }else if(!actividades["actividad7"]  && comandos['add4']) {
+                                                $(".status7").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status7'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad7"] = true;
+                                                toggleNav(true);
+                                            }else if(!actividades["actividad8"]  && comandos['mv']) {
+                                                $(".status8").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status8'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad8"] = true;
+                                                toggleNav(true);
+                                            }else if(!actividades["actividad9"]  && comandos['mv2']) {
+                                                $(".status9").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['status9'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad8"] = true;
+                                                toggleNav(true);
+                                            }
+
+                                            //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
+                                        }else if (data.comando.match($gitAdd)) {
+                                            if(!actividades["actividad1"]) {
+                                                $(".add1").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['add'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                            }else if(!actividades["actividad3"] && actividades['actividad2']) {
+                                                if(comandos['status2']) {
+                                                    $(".add2").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['add2'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                }
+                                            }else if(!actividades["actividad4"]) {
+                                                if(comandos['status4']) {
+                                                    $(".add3").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['add3'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                }
+                                            }else if(!actividades["actividad7"]) {
+                                                if(comandos['status6']) {
+                                                    $(".add4").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['add4'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                }
+                                            }
+
+                                        }else if (data.comando.match($gitCommit)) {
+                                            if(!actividades["actividad1"]) {
+                                                $(".commit1").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['commit'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                                actividades["actividad1"] = true;
+                                                toggleNav(true);
+                                            }else if(!actividades["actividad4"]) {
+                                                if(comandos['add3']) {
+                                                    $(".commit2").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['commit2'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                    actividades["actividad4"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad5"]) {
+                                                if(comandos['status5']) {
+                                                    $(".commit3").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['commit3'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                    actividades["actividad5"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }else if(!actividades["actividad10"]) {
+                                                if(comandos['status9']) {
+                                                    $(".commit4").addClass('fa fa-check-circle');
+                                                    add_logro("comandos3", "comandos3.png");
+                                                    comandos['commit4'] = true;
+                                                    $("#progressbar").css("width", "20%");
+                                                    $("#progressbar").attr("aria-valuenow", "20%");
+                                                    $('.stat-percent').html('20%');
+                                                    actividades["actividad10"] = true;
+                                                    toggleNav(true);
+                                                }
+                                            }
+
+                                        }else if (data.comando.match($gitRm)) {
+                                            if(!actividades["actividad4"] && actividades['actividad3']) {
+                                                $(".rm").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['rm'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                            }else if(!actividades["actividad5"] && actividades['actividad4']) {
+                                                $(".rm2").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['rm2'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                            }
+
+                                        }else if (data.comando.match($gitMv)) {
+                                            if(!actividades["actividad8"] && actividades['actividad7']) {
+                                                $(".mv1").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['mv'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                            }else if(!actividades["actividad9"] && directorio['crear3']) {
+                                                $(".mv2").addClass('fa fa-check-circle');
+                                                add_logro("comandos3", "comandos3.png");
+                                                comandos['mv2'] = true;
+                                                $("#progressbar").css("width", "20%");
+                                                $("#progressbar").attr("aria-valuenow", "20%");
+                                                $('.stat-percent').html('20%');
+                                            }
+
+                                        }
+
+                                    }
+                                    console.log(comandos);
+                                    console.log(actividades);
+                                }
+                                screen.append(data.salida);
+                            } else {
+                                screen.append(data.error);
+                            }
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(errorThrown, textStatus, XMLHttpRequest);
+
+                        //setTimeout(waitForMsg, 300000);
+
+                    },
+                    complete: function () {
+                        form.show();
+                        $('#inputConsole').focus();
+                    }
+
+                });
+                return false;
+            });
+
+
+            $('#elfinder').elfinder({
+                url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php') }}",
+                lang: 'es',
+                height: 250,
+                customData: {user: "wramones"},
+                handlers: {
+                    dblclick: function (event, elfinderInstance) {
+                        event.preventDefault();
+                        elfinderInstance.exec('getfile')
+                            .done(function () {
+                                elfinderInstance.exec('quicklook');
+                            })
+                            .fail(function () {
+                                elfinderInstance.exec('open');
+                            });
+                    },
+                    add   : function(event) {
+                        console.log(event.data);
+                        console.log(actividades);
+                        if (event.data.added){
+                            if (event.data.added[0].name != "{{ app.user.userName }}") {
+                                console.log("archivo creado");
+
+
+                                if (!actividades['actividad1'] && (!directorio['crear1'] || !directorio['crear2'] ))
+                                    console.log("archivo borrar 1 creado");
+                                add_logro("directorio_virtual", "directorio1.png");
+
+                                if(directorio['crear1'] && !directorio['crear2']){
+                                    console.log("archivo borrar 2 creado");
+                                    directorio['crear2'] = true;
+                                    $("#progressbar").css("width", "45%");
+                                    $("#progressbar").attr("aria-valuenow", "45%");
+                                    $('.stat-percent').html('45%');
+                                }
+
+                                if(!directorio['crear3'] && actividades['actividad7']){
+                                    if (event.data.added[0].mime == "directory") {
+                                        console.log("directorio1 creado");
+                                        directorio['crear3'] = true;
+                                        $("#progressbar").css("width", "45%");
+                                        $("#progressbar").attr("aria-valuenow", "45%");
+                                        $('.stat-percent').html('45%');
+                                    }
+                                }
+
+                                if (!directorio['crear1']){
+                                    $(".crear1").addClass('fa fa-check-circle');
+                                    directorio['crear1'] = true;
+                                    $("#progressbar").css("width", "35%");
+                                    $("#progressbar").attr("aria-valuenow", "35%");
+                                    $('.stat-percent').html('35%');
+                                }
+
+                            }
+
+                        }
+                    },
+                    change   : function(event) {
+                        //contador porque entra dos veces y debo vigilar al
+                        //editar el archivo1 y 2
+
+                        console.log(event.data);
+                        if (event.data.changed[0].size > 0){
+                            console.log("modificando");
+                            if(!directorio['modificar1'] && directorio['crear1']){
+                                console.log("archivo borrar1 modificado");
+                                $(".modificar1").addClass('fa fa-check-circle');
+                                add_logro("directorio_virtual", "directorio1.png");
+                                directorio['modificar1'] = true;
+                                $("#progressbar").css("width", "40%");
+                                $("#progressbar").attr("aria-valuenow", "40%");
+                                $('.stat-percent').html('40%');
+                                $(".modificar1").addClass('fa fa-check-circle');
+
+                            }
+
+                            if(!directorio['modificar2'] && directorio['crear2'] && !actividades['actividad1']) {
+                                console.log("archivo borrar2 modificado");
+                                $(".modificar2").addClass('fa fa-check-circle');
+                                add_logro("directorio_virtual", "directorio1.png");
+                                directorio['modificar2'] = true;
+                                actividades['actividad0'] = true;
+                                $("#progressbar").css("width", "50%");
+                                $("#progressbar").attr("aria-valuenow", "50%");
+                                $('.stat-percent').html('50%');
+                                $(".modificar2").addClass('fa fa-check-circle');
+                                toggleNav(true);
+
+                            }
+
+
+
+
+
+                            console.log(actividades);
+
+
+
+                        }
+
+                        if (event.data.removed[0].size > 0){
+                            console.log("eliminado");
+                            if(actividades['actividad0'] && actividades['actividad1']  && !actividades['actividad2']){
+
+
+                                if(directorio['borrar1'] && !directorio['borrar2']){
+                                    console.log("borrado2");
+                                    directorio['borrar2'] = true;
+                                    add_logro("directorio_virtual", "directorio1.png");
+                                    $("#progressbar").css("width", "50%");
+                                    $("#progressbar").attr("aria-valuenow", "50%");
+                                    $('.stat-percent').html('50%');
+                                    $(".borrar2").addClass('fa fa-check-circle');
+
+                                }
+
+
+                                if(!directorio['borrar1']){
+                                    console.log("borrado1");
+                                    directorio['borrar1'] = true;
+                                    add_logro("directorio_virtual", "directorio1.png");
+                                    $("#progressbar").css("width", "50%");
+                                    $("#progressbar").attr("aria-valuenow", "50%");
+                                    $('.stat-percent').html('50%');
+                                    $(".borrar1").addClass('fa fa-check-circle');
+
+                                }
+                            }
+
+                        }
+
+                        if (event.data.removed[0].size > 0  && event.data.added[0].size > 0  ){
+                            if(!actividades['actividad6'] && actividades['actividad5']){
+                                console.log("renombrado1");
+                                directorio['renombrado1'] = true;
+                                $("#progressbar").css("width", "50%");
+                                $("#progressbar").attr("aria-valuenow", "50%");
+                                $('.stat-percent').html('50%');
+                                $(".renombrar1").addClass('fa fa-check-circle');
+
+
+                            }
+                        }
+
+                    }
+                },
+                getFileCallback: function (files, fm) {
+                    return false;
+                },
+                uiOptions: {
+                    toolbar: [
+                        // toolbar configuration
+                        ['open', 'mkfile', 'edit'],
+                        ['home', 'up'],
+                        ['info'],
+                        ['reload'],
+                        ['quicklook'],
+                        ['view'],
+                        ['help']
+                    ]
+                },
+                contextmenu: {
+                    // navbarfolder menu
+                    navbar: ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+                    // current directory menu
+                    cwd: ['back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
+                    // current directory file menu
+                    files: [
+                        'open', 'quicklook', '|',
+                        'rm', '|', 'edit', 'rename', 'info'
+                    ]
+                }
+            });
+
+            Reveal.addEventListener('pregunta1', function (event) {
+
+
+                if (!pregunta[1]) {
+                    toggleNav(false);
+                }
+
+            });
+
+
+            Reveal.addEventListener('actividad0', function (event) {
+
+
+                if (!actividades['actividad0']) {
+                    toggleNav(false);
+                }
+
+            });
+
+
+            Reveal.addEventListener('actividad1', function (event) {
+                if (!actividades['actividad1']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad2', function (event) {
+                if (!actividades['actividad2']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad3', function (event) {
+                if (!actividades['actividad3']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad4', function (event) {
+                if (!actividades['actividad4']) {
+                    toggleNav(false);
+                }
+            });
+
+            Reveal.addEventListener('actividad5', function (event) {
+                if (!actividades['actividad5']) {
+                    toggleNav(false);
+                }
+            });
+
+
+
+            Reveal.addEventListener('qz', function (event) {
+                if (!actividades['actividad6']) {
+                    Reveal.slide(10);
+                    var state = Reveal.getState();
+                    Reveal.setState(state);
+
+                    iziToast.error({
+                        title: 'Alto',
+                        message: 'Debes completar todas las actividades para realizar el quiz',
+                        position: 'topRight'
+                    });
+                }else{
+                    $("#btnQuiz").prop('disabled', false);
+                    $("#btnQuiz").attr('disabled', false);
+                }
+            });
+
+            //Debo estar pendiente si pasa a la lamina 15 sin hacer el ejercicio,
+            //devolverlo a la 14
+            Reveal.addEventListener('slidechanged', function (event) {
+                // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+
+
+                console.log(event.indexh);
+
+                if (event.indexh > 30) {
+                    if (!actividades['actividad0']) {
+                        Reveal.slide(1);
+                        var state = Reveal.getState();
+                        Reveal.setState(state);
+
+                        iziToast.error({
+                            title: 'No te adelantes tan rápido',
+                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
+                            position: 'topRight'
+                        });
+
+
+                    }
+
+                }
+
+
+
+
+
+
+
+            });
+
+
+        });
+        $("#btnQuiz").prop('disabled', true);
+        $("#btnQuiz").attr('disabled', 'disabled');
+
+        $("#btnQuiz").click(function () {
+            var $open = $("#quizOpen").val();
+            if ($open) {
+                $("#btnQuiz").prop('disabled', false);
+                $("#btnQuiz").attr('disabled', false);
+            } else {
+                var isDisabled = $('#btnQuiz').is('[disabled=disabled]');
+                if (isDisabled) {
+                    iziToast.error({
+                        title: 'Quiz todavía bloqueado',
+                        message: 'Para desbloquearlo, debes obtener los dos primeros logros de este nivel',
+                        position: 'topRight'
+                    });
+                }
+            }
+
+        });
+
+        var $palabraGit = /^git$/g;
+        var $comandoGit = /^git+\s+?\w?/g;
+        var $gitEspacio = /^git+\s/g;
+        var $configEspacio = /\bconfig+\s/g;
+        var $configGlobal = /\bconfig\s+--global+\s/g;
+        var $configUserName = /\bconfig\s+--global+\s+user.name+\s/g;
+        var $configUserMail = /\b\s+user.email+\s/g;
+        var $respuesta = /\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
+        var $gitHelp = /^git+\s+\bhelp\s?\w?/g;
+        var $gitDiff = /^git+\s+\bdiff\s?\w?/g;
+        var $gitLog = /^git+\s+\blog\s?\w?/g;
+        var $gitRm = /^git+\s+\brm\s\w/g;
+        var $gitMv = /^git+\s+\bmv\s\w\s\w/g;
+        var $gitInit = /^git+\s+\binit/g;
+        var $gitStatus = /^git+\s+\bstatus/g;
+        var $gitAdd = /^git+\s+\badd\s+./g;
+        var $gitCommit = /^git+\s+\bcommit\s+-m\s+"[a-zA-ZáéíóúAÉÍÓÚÑñ0-9.]+( +[a-zA-Záéíó.úAÉÍÓÚÑñ0-9]?.+[a-zA-ZáéíóúAÉÍÓÚÑñ0-9.])*"/g;
+        var $gitConfigUser = /^git+\s+\bconfig\s+--global+\s+user.name+\s+"?\w{3,}"?/g;
+        var $gitVersion = /^git+\s+--version$/g;
+        var $gitConfigMail = /^git+\s+\bconfig\s+--global+\s+user.email+\s+"?\w{3,}"?/g;
+        var $gitConfigEditor = /^git+\s+\bconfig\s+--global+\s+core.editor+\s+"?\w{3,}"?/g;
+        var $gitConfigColor = /^git+\s+\bconfig\s+--global+\s+color.ui+\s+"?\w{3,}"?/g;
+        var $gitConfigLineAuto = /^git+\s+\bconfig\s+--global+\s+core.autocrlf+\s+input/g;
+        var $gitConfigLineSafe = /^git+\s+\bconfig\s+--global+\s+core.safecrlf+\s+true/g;
+        var $gitConfigList = /^git+\s+\bconfig\s+--list/g;
+        var $c = 0;
+        var name = "";
+        var email = "";
+
+
+        $(document).ready(function () {
+
+
+            videojs.options.flash.swf = "{{ asset('assets/vendor/moovly/js/videojs/video-js.swf') }}";
+            //alert(videojs);
+            $contador = $("#contadorObtenidos").val();
+            //alert($contador);
+            for (var $i = 0; $i < $contador; $i++) {
+                $('.progress-bar').css('width', $contador * 30 + '%');
+                $('.stat-percent').html($contador * 30 + '%');
+                $('.progress-bar').attr('aria-valuenow', $contador * 30);
+            }
+
+            $("#wizard").steps();
+
+            // Instance the tour
+            var tour = new Tour({
+                steps: [{
+                    title: "Bienvenido",
+                    content: "¿Es la primera vez que ingresas verdad? Pues Entonces <strong>¡Bienvenido!</strong>  A través de esta guía te enseñaremos como está distribuida <i>Tu aula virtual</i> para que comiences de una vez a encender tu conocimiento.<br><br> Puedes utilizar las teclas de navegación izquiera y derecha para desplazarte a lo largo del tour. <br><br><img src='{{ asset('images/course/left-right-arrows.png') }}' alt='An opening code bracket' />",
+                    placement: "bottom",
+                    backdrop: true,
+                    backdropContainer: '#wrapper',
+                    orphan: true,
+                },
+                    {
+                        element: "#tour1",
+                        title: "¿En donde estoy?",
+                        content: "Contiene el titulo del curso y en que módulo/clase te encuentras, cuantas has aprobado y cuanto te falta para culminar.",
+                        placement: "bottom",
+                        backdrop: true,
+                        backdropContainer: '#wrapper',
+                    },
+                    {
+                        element: "#tour2",
+                        title: "Módulos del Curso",
+                        content: "Contiene en amarillo tu ubicación actual, en negro lo que falta y en azul lo que has completado.  <strong>Si pasas sobre ellos</strong>, podrás ver el título del módulo",
+                        placement: "bottom",
+                        onShown: function (tour) {
+                            $('body').addClass('tour-open');
+                        },
+                        onHidden: function (tour) {
+                            $('body').removeClass('tour-close');
+                        }
+                    },
+                    {
+                        element: "#tour3",
+                        title: "Clase Virtual",
+                        content: "En esta sección podrás disfrutar de una manera siempre interactiva de la clase correspondiente al módulo donde estás ubicado.  siempre estarán disponibles para ti para cuando las necesites.",
+                        placement: "right",
+                        backdrop: true,
+                        backdropContainer: '#wrapper'
+                    },
+                    {
+                        element: "#tour4",
+                        title: "Área de Trabajo",
+                        content: "Aquí es donde nos ensuciaremos las manos y encenderemos nuestros conocimientos, colocando manos a la obra sobre los aprendido en la clase virtual.",
+                        placement: "left",
+                        backdrop: true,
+                        backdropContainer: '#wrapper'
+                    }
+                ]
+            });
+
+            // Initialize the tour
+            tour.init();
+
+            $('.startTour').click(function () {
+                tour.restart();
+
+                // Start the tour
+                // tour.start();
+            });
+
+        });
+
+
+        $(document).keydown(function (e) {
+
+            var previous = 37, next = 39;
+
+            switch (e.keyCode) {
+                case previous:
+
+                    $('.flipbook').turn('previous');
+
+                    break;
+                case next:
+
+                    $('.flipbook').turn('next');
+
+                    break;
+            }
+
+        });
+
+        function loadApp() {
+
+            // Create the flipbook
+
+
+            $('.flipbook').turn({
+                // Width
+
+                width: 822,
+                // Height
+
+                height: 600,
+                // Elevation
+
+                elevation: 10,
+                // Enable gradients
+
+                gradients: false,
+                // Auto center this flipbook
+
+                autoCenter: true
+
+            });
+        }
+
+        // Load the HTML4 version if there's not CSS transform
+
+        yepnope({
+            test: Modernizr.csstransforms,
+            yep: ['{{ asset("assets/vendor/turnjs/turn.js") }}'],
+            nope: ['{{ asset("assets/vendor/turnjs/turn.html4.min.js") }}'],
+            both: ['{{ asset("assets/vendor/turnjs/basic.css") }}'],
+            complete: loadApp
+        });
+
+
+        var $loading = $('#loadingBulb').hide();
+        var $guardado = $('#guardado').show();
+        $(document)
+            .ajaxStart(function () {
+                $guardado.hide();
+                $loading.show();
+            })
+            .ajaxStop(function () {
+                $loading.hide();
+                $guardado.show();
+            });
+
+
+        $(window).load(function (e) {
+            $("#inputConsole").click();
+        });
+
+
+        function toggleNav(b) {
+            Reveal.configure({
+                controls: b,
+                progress: b,
+                keyboard: b,
+                overview: b,
+                touch: b
+            });
+        }
+
+
+
+
+    </script>
+
+
+
+{% endblock %}
