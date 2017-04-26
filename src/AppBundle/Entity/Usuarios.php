@@ -65,7 +65,7 @@ class Usuarios implements UserInterface, \Serializable
     /**
      * @var \AppBundle\Entity\CursoNivel
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\CursoNivel", inversedBy="usuarios")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CursoNivel", inversedBy="usuarios")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_curso_nivel", referencedColumnName="id", nullable=true)
      * })

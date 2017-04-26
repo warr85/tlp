@@ -52,7 +52,7 @@ class CursoNivel
     private $sobreNombre;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Usuarios", mappedBy="idCursoNivel", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Usuarios", mappedBy="idCursoNivel", cascade={"all"})
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $usuarios;

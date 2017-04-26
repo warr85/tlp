@@ -26,7 +26,8 @@ class PortalController extends Controller
         $form->handleRequest($request);
        
         if ($form->isSubmitted() && $form->isValid()) {
-               
+            $login->setExperiencia(0);
+            $login->setIdCursoNivel($this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById(1));
                 $login->setPlainPassword($login->getPassword());
                 $password = $this->get('security.password_encoder')
                     ->encodePassword($login, $login->getPlainPassword()); //encripta la contraseña
