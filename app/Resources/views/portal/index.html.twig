@@ -219,7 +219,7 @@
                                           {{curso.descripcion}}
 
                                       </p>
-                                      <a href="#" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
+                                      <a href="{{ path("curso_comprar_new", { 'id': curso.id }) }}" class="btn btn-primary">Comprar!</a> <a href="#" class="btn btn-default">más información</a>
                                   </div>
                                   <div class="ratings">
                                       <p class="pull-right">15 reseñas</p>
