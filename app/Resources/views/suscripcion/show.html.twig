@@ -47,11 +47,9 @@
                                     <strong>Datos del Cliente:</strong>: {{ suscripcion.idInscripcion.idUsuario.username }}<br/>
                                 {% endif %}
                                 <strong>Curso:</strong>: {{ suscripcion.idInscripcion.idCursoGrupo.idCurso.nombre }}<br/>
-                                <strong>Inversión:</strong>: <span class="text-navy">Bsf. {{ suscripcion.idCostoCursoModulo.costo }}</span>
-                                <p class="m-t">
-                                    {{ suscripcion.idInscripcion.idCursoGrupo.idCurso.descripcion }}
+                                <strong>Inversión:</strong>: <span class="text-navy">Bsf. {{ suscripcion.idCostoCursoModulo.costo }}</span><br>
+                                <strong>Descripción:</strong>:{{ suscripcion.idInscripcion.idCursoGrupo.idCurso.descripcion }}
 
-                                </p>
 
                             </div>
 
@@ -113,13 +111,15 @@
 
                                         </div>
                             {% endif %}
-                            {% elseif is_granted('ROLE_ADMIN') and suscripcion.idBanco %}
+                                {% endif %}
+                            {% if is_granted('ROLE_ADMIN') and suscripcion.idBanco %}
                                 <div class="col-md-4">
                                     <div class="row">
                                         <h2>Datos del Pago</h2>
                                         <strong>Tipo de Pago:</strong> {{ suscripcion.idFormaPago }}<br>
                                         <strong>Banco:</strong> {{ suscripcion.idBanco.nombre }}<br>
-                                        <strong>N° de Referencia:</strong>{{ suscripcion.referencia }}
+                                        <strong>N° de Referencia:</strong>{{ suscripcion.referencia }}<br>
+                                        <strong>Fecha de pago:</strong>{{ suscripcion.fechaPago | date('d-m-y H:i:s') }}
                                     </div>
 
                                 </div>
@@ -218,6 +218,14 @@
             var aprobar = $(this).data("aprobar");
             $.get(url, { id: id, aprobar:aprobar }, function(data) {
                 $button.button('reset');
+                iziToast.warning({
+                    title: 'Pago enviado',
+                    message: 'Tu pago ha sido enviado',
+                    icon: 'fa fa-user-plus',
+                    transitionIn: 'bounceInUp',
+                    position: 'center'
+                });
+
             });
         });
 
