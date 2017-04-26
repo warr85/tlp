@@ -150,14 +150,37 @@ class InscripcionController extends Controller
      */
     public function showSuscripcionAction( Suscripcion $suscripcion)
     {
+
+        // Crea el objeto MP
+        /*$mp = $this->get('grunch_mercadopago')->getMp();
+        // Crea un token
+        $token = $mp->get_access_token();
+        $preference_data = array(
+            "items" => array(
+                array(
+                    "id" => "ID-FNMT-GIT",
+                    "title" => "Fundamentos de GIT",
+                    "quantity" => 1,
+                    "picture_url" => "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
+                    "description" => "Item description",
+                    "currency_id" => "VEF", // Available currencies at: https://api.mercadopago.com/currencies
+                    "unit_price" => 6000
+                )
+            )
+        );
+        $preference = $mp->create_preference($preference_data);*/
+
         $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
         $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
+        $bancos = $this->getDoctrine()->getRepository("AppBundle:Banco")->findAll();
         $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
         $form = $this->createForm('AppBundle\Form\SuscripcionType');
         return $this->render('suscripcion/show.html.twig', array(
             'suscripcion'   => $suscripcion,
             'form'          => $form->createView(),
-            'porcentajePxNivel' => $ppn
+            'porcentajePxNivel' => $ppn,
+            'bancos'    => $bancos,
+            //'mercado'       => $preference
         ));
     }
 
@@ -225,5 +248,22 @@ class InscripcionController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+
+
+    /**
+     * Displays a form to edit an existing Suscripcion entity.
+     *
+     * @Route("/suscripcion/pago/credito", name="mercado_pago")
+     * @Method({"GET", "POST"})
+     */
+    public function mercadoPagoAction( Request $request)
+    {
+
+        print_r ($preference);
+
+
+        var_dump($token); exit;
     }
 }

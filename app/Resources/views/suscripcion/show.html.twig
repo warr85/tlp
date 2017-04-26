@@ -54,28 +54,64 @@
                                 </p>
 
                             </div>
+
                             {% if is_granted('ROLE_CLIENTE') %}
                             {% if suscripcion.idEstatus.id == 2 %}
-                            <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                {% form_theme form 'bootstrap_3_layout.html.twig' %}
-                                                {{ form_start(form, {'action': path('suscripcion_edit', {'id': suscripcion.id}), 'method': 'POST'}) }}
-                                                {{ form_widget(form) }}
 
+
+
+
+                                        <div class="x_content col-lg-8">
+
+                                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                                <!-- required for floating -->
+                                                <!-- Nav tabs -->
+                                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                                    <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Métodos</a>
+                                                    </li>
+                                                    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Transferencia</a>
+                                                    </li>
+                                                    <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Tarjeta Crédito</a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <button class="btn btn-primary" type="submit">Informar Pago</button>
-                                        </div>
-                                    </div>
-                                {{ form_end(form) }}
+                                            <div id="myTabContent" class="tab-content">
+                                                <!-- Tab panes -->
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active"  id="tab_content1">
+                                                        <p class="lead">Métodos de Pago</p>
+                                                        <p>Para tu comodidad tenemos métodos de pago desde la
+                                                            comodidad de tu hogar, puedes elegir entre hacer una
+                                                            transferencia o pagar con Tarjeta de Crédito..</p>
+                                                    </div>
+                                                    <div class="tab-pane"  id="tab_content2">
+                                                        <p class="lead">Transferencia.</p>
+                                                        <div class="form-group">
+                                                            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                                                            {{ form_start(form, {'action': path('suscripcion_edit', {'id': suscripcion.id}), 'method': 'POST'}) }}
+                                                            {{ form_widget(form) }}
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <button class="btn btn-primary" type="submit">Informar Pago</button>
+                                                                </div>
+                                                            </div>
+                                                            {{ form_end(form) }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane"  id="tab_content3">
+                                                        <p class="lead">Tarjeta Crédito</p>.
+                                                        {#{{ dump(mercado.response.init_point) }}#}
+                                                        {#<a class="btn btn-primary" href="{{ mercado.response.sandbox_init_point }}">Pagar T. Crédito</a>#}
 
-                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
                             {% endif %}
                             {% elseif is_granted('ROLE_ADMIN') and suscripcion.idBanco %}
                                 <div class="col-md-4">
@@ -111,81 +147,51 @@
 
         </div>
         <div class="col-md-3">
-
+            {% for banco in bancos %}
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Cart Summary</h5>
+                    <h5>{{ banco.nombre }}</h5>
                 </div>
                 <div class="ibox-content">
                             <span>
-                                Total
+                                Datos de la Cuenta
                             </span>
-                    <h2 class="font-bold">
-                        $390,00
-                    </h2>
+                    <h4 class="font-bold">
+                        {{ banco.descripcion | raw }}
+                    </h4>
 
                     <hr/>
                     <span class="text-muted small">
-                                *For United States, France and Germany applicable sales tax will be applied
+                                *Para Transferencias desde otros bancos, se debe esperar al proximo día hábil para
+                        confirmar la transferencia.
                             </span>
-                    <div class="m-t-sm">
+                    {#<div class="m-t-sm">
                         <div class="btn-group">
                             <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
                             <a href="#" class="btn btn-white btn-sm"> Cancel</a>
                         </div>
-                    </div>
+                    </div>#}
                 </div>
             </div>
-
+            {% endfor %}
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Support</h5>
+                    <h5>Contáctanos</h5>
                 </div>
                 <div class="ibox-content text-center">
 
 
 
-                    <h3><i class="fa fa-phone"></i> +43 100 783 001</h3>
+                    <h3><i class="fa fa-phone"></i> +58 414 6952657</h3>
                     <span class="small">
-                                Please contact with us if you have any questions. We are avalible 24h.
+                                Contáctanos de Lunes a Sábado de 8:00 am hasta 4:00pm.
                             </span>
 
 
                 </div>
             </div>
 
-            <div class="ibox">
-                <div class="ibox-content">
 
-                    <p class="font-bold">
-                        Other products you may be interested
-                    </p>
-
-                    <hr/>
-                    <div>
-                        <a href="#" class="product-name"> Product 1</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div>
-                        <a href="#" class="product-name"> Product 2</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
 
         </div>
     </div>

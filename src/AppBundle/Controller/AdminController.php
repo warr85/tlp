@@ -47,7 +47,8 @@ class AdminController extends Controller {
         $cuenta = count($notificaciones);
         return $this->render('admin/index.html.twig', array(
             'cuenta' => $cuenta,
-            'notificaciones' => $notificaciones
+            'notificaciones' => $notificaciones,
+            'porcentajePxNivel' => 0
         ));
         
     }

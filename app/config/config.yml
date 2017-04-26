@@ -74,3 +74,8 @@ vich_uploader:
         course_image:
             uri_prefix:         /images/course
             upload_destination: %kernel.root_dir%/../web/images/course
+
+grunch_mercadopago:
+    client_id: 161073156528055
+    client_secret: QDVn8rh3ZsWF3LAfSigNMuWrEKtm9Auj
+    sandbox: true
