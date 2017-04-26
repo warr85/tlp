@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Curso;
+use AppBundle\Entity\CursoGrupo;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -38,26 +40,30 @@ class InscripcionController extends Controller
     /**
      * Creates a new Inscripcion entity.
      *
-     * @Route("/new", name="curso_comprar_new")
+     * @Route("/new/{id}", name="curso_comprar_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Curso $curso, Request $request)
     {
         $inscripcion = new Inscripcion();
         $avance = new CursoAvance();
         $suscripcion = new Suscripcion();
+        $grupos = $this->getDoctrine()->getRepository("AppBundle:CursoGrupo")->findBy(array(
+           'idCurso' => $curso->getId()
+        ));
         
-        $form = $this->createForm('AppBundle\Form\InscripcionType', $inscripcion);
+        $form = $this->createForm('AppBundle\Form\InscripcionType', $inscripcion, array(
+            'grupos' => $grupos
+        ));
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            
             $inscripcion->setIdUsuario($this->getUser());
             $avance->setIdInscripcion($inscripcion);
             $avance->setIdEstatus($this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(1));
-            $curso = $inscripcion->getIdCursoGrupo()->getIdCurso();
-            $cursoModulo = $this->getDoctrine()->getRepository('AppBundle:CursoModulo')->findOneBy(array(               
+            $cursoModulo = $this->getDoctrine()->getRepository('AppBundle:CursoModulo')->findOneBy(array(
                 'idCurso'   => $curso,
                 'orden'     => 1
             ));
@@ -73,14 +79,14 @@ class InscripcionController extends Controller
             $suscripcion->setIdEstatus($em->getRepository('AppBundle:Estatus')->findOneById(2));
             $suscripcion->setIdCostoCursoModulo($cursoModulo->getIdCostoCursoModulo());
             $suscripcion->setIdFormaPago($em->getRepository('AppBundle:FormaPago')->findOneById(1));
-            
+
             $em->persist($avance);
             $em->persist($suscripcion);
             $em->persist($inscripcion);
-                           
+
             $em->flush();
-            
-            
+
+
 
             return $this->redirectToRoute('curso_comprar_show', array('id' => $inscripcion->getId()));
         }

@@ -1,16 +1,67 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent()}}
+    <style>
+
+    </style>
+    <link href="{{ asset('bundles/AppBundle/css/portal.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/animate/animate.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/iziToast/dist/css/iziToast.min.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Inscripcion creation</h1>
+    {% block principal %}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <section id="area-principal">
+            <div class="container">
 
-    <ul>
-        <li>
-            <a href="{{ path('curso_comprar_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+                <div class="col-md-12">
+                    {% for type, flash_messages in app.session.flashBag.all %}
+                        {% for flash_message in flash_messages %}
+                            <input type="hidden"  id="flash" value="{{ flash_message }}">
+                        {% endfor %}
+                    {% endfor %}
+                    <h1 class="title"><img class="encabezado" src="{{ asset('bundles/AppBundle/images/portal/encabezado.png') }}" /></h1>
+                    <h2 class="subtitle"><i class="fa fa-lightbulb-o fa-2x yellow"></i>¡Enciende Tu Conocimiento!</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <img class=" animated fadeInLeft mascot" src="{{ asset('bundles/AppBundle/images/portal/teclin-portal1.png') }}" alt="">
+
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12 animated fadeInRight delay-0-5 text-justify">
+                        <p>Somos una empresa que nace en la virtualidad y
+                            que te ofrece la mejor forma de capacitarte en
+                            línea en las áreas de las Tecnologías de
+                            Información y Comunicación a tu propio ritmo y de
+                            una forma 100% interactiva.</p>
+                        <a href="#cursos" class="btn btn-common btn-lg">Ver cursos</a>
+                        <a href="#pie" class="btn btn-primary btn-lg">Saber más</a>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInLeft delay-1 ">
+                        <br>
+                        {% for message in app.session.flashBag.get('notice') %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {%endfor %}
+
+                        {% for message in app.session.flashBag.get('danger') %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {%endfor %}
+
+                        {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        {% endblock %}
 {% endblock %}
