@@ -88,7 +88,7 @@ class InscripcionController extends Controller
 
 
 
-            return $this->redirectToRoute('curso_comprar_show', array('id' => $inscripcion->getId()));
+            return $this->redirectToRoute('estudiante_homepage');
         }
 
         return $this->render('inscripcion/new.html.twig', array(
