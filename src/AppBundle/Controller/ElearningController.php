@@ -52,9 +52,8 @@ class ElearningController extends Controller {
 
         if(!$inscripcion){
             $this->addFlash('warning', 'debes tener un curso inscrito para poder ingresar al área de estudiante');
-            return $this->redirectToRoute('homepage');
+            return $this->render('portal/index.html.twig');
         }
-
         $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
         $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
         $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
@@ -81,7 +80,7 @@ class ElearningController extends Controller {
      * @return Response
      */
     public function cursoProgramacionAction(Inscripcion $inscripcion, $avance ){
-        
+
         $tema = $inscripcion->getAvances()->first();
         //echo $this->getUser()->getIdCursoNivel()->getId(); exit;
         $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
@@ -94,7 +93,10 @@ class ElearningController extends Controller {
         ));
 
         $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
-        $logrosObtenidos = $em->getRepository("AppBundle:UsuariosLogros")->findByIdEstatus(5);
+        $logrosObtenidos = $em->getRepository("AppBundle:UsuariosLogros")->findBy(array(
+            'idUsuario' => $this->getUser()->getId(),
+            'idEstatus' => 5
+        ));
         $logrosDisponibles = $em->getRepository("AppBundle:CursoModuloTemaLogro")->findBy(
             array("idCursoModuloTema" => $temaActual->getId()),
             array('id' => 'ASC')
@@ -105,7 +107,7 @@ class ElearningController extends Controller {
         $repositorio_git = false;
         $archivo_creado = false;
         $directorio_creado = false;
-        $directorio = $this->container->getParameter('octonautas_directory') . $this->getUser()->getUserName();            
+        $directorio = $this->container->getParameter('octonautas_directory') . $this->getUser()->getUserName();
         if(!file_exists($directorio) && !is_dir($directorio)){
             mkdir($directorio);
         }
