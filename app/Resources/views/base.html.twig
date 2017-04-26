@@ -41,7 +41,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             {% if app.user %}
                                 <li><a href="#">Bienvenido {{ app.user.username }}!</a></li>
-                                <li><a href="{{ path('estudiante_homepage') }}"><i class ="fa fa-power-off"></i> Ingresar</a> </li>
+                                <li><a href="{{ path('estudiante_homepage') }}"><i class ="fa fa-power-off"></i> Área de estudiante</a> </li>
                                 <li><a href="{{ path('logout') }}"><i class ="fa fa-close"></i> Cerrar Sesión</a></li>
                             {% else %}
                             <li><a href="{{ path('login') }}"><i class="fa fa-user"></i> Ingresar</a></li>
