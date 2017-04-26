@@ -1251,7 +1251,7 @@
                 url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php?cmd=ls&target=l1_d3JhbW9uZXM') }}",
                 lang: 'es',
                 height: 250,
-                customData: {user: "wramones"},
+                customData: {user: "{{ app.user }}"},
                 handlers: {
                     dblclick: function (event, elfinderInstance) {
                         event.preventDefault();

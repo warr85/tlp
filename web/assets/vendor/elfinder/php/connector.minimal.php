@@ -100,7 +100,7 @@ $opts = array(
 		array(
 			'driver'        => 'LocalFileSystem',           // driver for accessing file system (REQUIRED)
 			'path'          => __DIR__ . '/../../../../../../octonautas/' ,
-                        'startPath'     => $_GET['user'],
+            'startPath'     => $_GET['user'],
 			'URL'           => dirname($_SERVER['PHP_SELF']) . '../../../../octonautas/' . $_GET['user'], // URL to files (REQUIRED)
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
 			'uploadAllow'   => array('image', 'text/plain'),// Mimetype `image` and `text/plain` allowed to upload
