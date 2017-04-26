@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Estatus
  *
- * @ORM\Table(name="inscripcion")
+ * @ORM\Table(name="inscripcion", uniqueConstraints={@ORM\UniqueConstraint(name="uq_curso_grupo_usuario", columns={"id_curso_grupo", "id_usuario"})}, indexes={@ORM\Index(name="fki_cursos_grupos", columns={"id_curso_grupo"})}))
  * @ORM\Entity
  */
 class Inscripcion
