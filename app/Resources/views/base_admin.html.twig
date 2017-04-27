@@ -9,6 +9,7 @@
             <link rel="stylesheet" href="{{asset('assets/vendor/font-awesome/css/font-awesome.min.css')}}" />           
             <link rel="stylesheet" href="{{ asset('assets/vendor/animate/animate.min.css') }}"  />
             <link rel="stylesheet" href="{{ asset('bundles/AppBundle/css/admin.css') }}"  />
+            <link rel="stylesheet" href="{{ asset('assets/vendor/avatar-letter/avatar.min.css') }}"  />
 
             <style>
 
@@ -76,7 +77,7 @@
                     margin: 4px;
                     border-radius: 50%;
                     width: 42px;
-                    height: 42px;
+                    height: 41px;
                     overflow: hidden;
                     z-index: 100;
                 }
@@ -915,7 +916,7 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
                                     <div id="progress" class="avatar-container" data="{{ porcentajePxNivel }}">
-                                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/_shahedk/128.jpg" alt="" class="avatar"/>
+                                        <i class="avatar avatar-color-12 avatar-letter-w"></i>
                                     </div><!--.avatar-container-->
                                     <div class="profile-details">
                                         {{ app.user }}
