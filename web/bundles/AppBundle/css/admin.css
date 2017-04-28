@@ -8174,6 +8174,509 @@ body.md-skin {
   position: fixed;
   display: none;
 }
+
+/* Progres bar values */
+
+#progress[data="1"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(93.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-2 {*/
+#progress[data="2"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(97.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-3 {*/
+#progress[data="3"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(100.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-4 {*/
+#progress[data="4"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(104.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-5 {*/
+#progress[data="5"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(108deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-6 {*/
+#progress[data="6"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(111.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-7 {*/
+#progress[data="7"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(115.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-8 {*/
+#progress[data="8"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(118.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-9 {*/
+#progress[data="9"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(122.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-10 {*/
+#progress[data="10"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(126deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-11 {*/
+#progress[data="11"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(129.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-12 {*/
+#progress[data="12"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(133.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-13 {*/
+#progress[data="13"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(136.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-14 {*/
+#progress[data="14"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(140.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-15 {*/
+#progress[data="15"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(144deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-16 {*/
+#progress[data="16"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(147.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-17 {*/
+#progress[data="17"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(151.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-18 {*/
+#progress[data="18"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(154.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-19 {*/
+#progress[data="19"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(158.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-20 {*/
+#progress[data="20"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(162deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-21 {*/
+#progress[data="21"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(165.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-22 {*/
+#progress[data="22"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(169.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-23 {*/
+#progress[data="23"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(172.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-24 {*/
+#progress[data="24"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(176.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-25 {*/
+#progress[data="25"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(180deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-26 {*/
+#progress[data="26"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(183.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-27 {*/
+#progress[data="27"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(187.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-28 {*/
+#progress[data="28"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(190.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-29 {*/
+#progress[data="29"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(194.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-30 {*/
+#progress[data="30"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(198deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-31 {*/
+#progress[data="31"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(201.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-32 {*/
+#progress[data="32"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(205.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-33 {*/
+#progress[data="33"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(208.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-34 {*/
+#progress[data="34"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(212.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-35 {*/
+#progress[data="35"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(216deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-36 {*/
+#progress[data="36"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(219.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-37 {*/
+#progress[data="37"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(223.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-38 {*/
+#progress[data="38"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(226.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-39 {*/
+#progress[data="39"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(230.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-40 {*/
+#progress[data="40"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(234deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-41 {*/
+#progress[data="41"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(237.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-42 {*/
+#progress[data="42"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(241.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-43 {*/
+#progress[data="43"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(244.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-44 {*/
+#progress[data="44"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(248.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-45 {*/
+#progress[data="45"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(252deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-46 {*/
+#progress[data="46"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(255.6deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-47 {*/
+#progress[data="47"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(259.2deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-48 {*/
+#progress[data="48"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(262.8deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-49 {*/
+#progress[data="49"] {
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%, transparent), linear-gradient(266.4deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-50 {*/
+#progress[data="50"] {
+  background-image: linear-gradient(-90deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-51 {*/
+#progress[data="51"] {
+  background-image: linear-gradient(-86.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-52 {*/
+#progress[data="52"] {
+  background-image: linear-gradient(-82.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-53 {*/
+#progress[data="53"] {
+  background-image: linear-gradient(-79.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-54 {*/
+#progress[data="54"] {
+  background-image: linear-gradient(-75.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-55 {*/
+#progress[data="55"] {
+  background-image: linear-gradient(-72deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-56 {*/
+#progress[data="56"] {
+  background-image: linear-gradient(-68.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-57 {*/
+#progress[data="57"] {
+  background-image: linear-gradient(-64.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-58 {*/
+#progress[data="58"] {
+  background-image: linear-gradient(-61.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-59 {*/
+#progress[data="59"] {
+  background-image: linear-gradient(-57.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-60 {*/
+#progress[data="60"] {
+  background-image: linear-gradient(-54deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-61 {*/
+#progress[data="61"] {
+  background-image: linear-gradient(-50.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-62 {*/
+#progress[data="62"] {
+  background-image: linear-gradient(-46.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-63 {*/
+#progress[data="63"] {
+  background-image: linear-gradient(-43.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-64 {*/
+#progress[data="64"] {
+  background-image: linear-gradient(-39.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-65 {*/
+#progress[data="65"] {
+  background-image: linear-gradient(-36deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-66 {*/
+#progress[data="66"] {
+  background-image: linear-gradient(-32.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-67 {*/
+#progress[data="67"] {
+  background-image: linear-gradient(-28.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-68 {*/
+#progress[data="68"] {
+  background-image: linear-gradient(-25.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-69 {*/
+#progress[data="69"] {
+  background-image: linear-gradient(-21.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-70 {*/
+#progress[data="70"] {
+  background-image: linear-gradient(-18deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-71 {*/
+#progress[data="71"] {
+  background-image: linear-gradient(-14.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-72 {*/
+#progress[data="72"] {
+  background-image: linear-gradient(-10.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-73 {*/
+#progress[data="73"] {
+  background-image: linear-gradient(-7.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-74 {*/
+#progress[data="74"] {
+  background-image: linear-gradient(-3.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-75 {*/
+#progress[data="75"] {
+  background-image: linear-gradient(0deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-76 {*/
+#progress[data="76"] {
+  background-image: linear-gradient(3.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-77 {*/
+#progress[data="77"] {
+  background-image: linear-gradient(7.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-78 {*/
+#progress[data="78"] {
+  background-image: linear-gradient(10.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-79 {*/
+#progress[data="79"] {
+  background-image: linear-gradient(14.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-80 {*/
+#progress[data="80"] {
+  background-image: linear-gradient(18deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-81 {*/
+#progress[data="81"] {
+  background-image: linear-gradient(21.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-82 {*/
+#progress[data="82"] {
+  background-image: linear-gradient(25.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-83 {*/
+#progress[data="83"] {
+  background-image: linear-gradient(28.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-84 {*/
+#progress[data="84"] {
+  background-image: linear-gradient(32.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-85 {*/
+#progress[data="85"] {
+  background-image: linear-gradient(36deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-86 {*/
+#progress[data="86"] {
+  background-image: linear-gradient(39.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-87 {*/
+#progress[data="87"] {
+  background-image: linear-gradient(43.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-88 {*/
+#progress[data="88"] {
+  background-image: linear-gradient(46.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-89 {*/
+#progress[data="89"] {
+  background-image: linear-gradient(50.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-90 {*/
+#progress[data="90"] {
+  background-image: linear-gradient(54deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-91 {*/
+#progress[data="91"] {
+  background-image: linear-gradient(57.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-92 {*/
+#progress[data="92"] {
+  background-image: linear-gradient(61.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-93 {*/
+#progress[data="93"] {
+  background-image: linear-gradient(64.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-94 {*/
+#progress[data="94"] {
+  background-image: linear-gradient(68.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-95 {*/
+#progress[data="95"] {
+  background-image: linear-gradient(72deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-96 {*/
+#progress[data="96"] {
+  background-image: linear-gradient(75.6deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-97 {*/
+#progress[data="97"] {
+  background-image: linear-gradient(79.2deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-98 {*/
+#progress[data="98"] {
+  background-image: linear-gradient(82.8deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-99 {*/
+#progress[data="99"] {
+  background-image: linear-gradient(86.4deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+/*  .p-100 {*/
+#progress[data="100"] {
+  background-image: linear-gradient(90deg, #0af 50%, transparent 50%, transparent), linear-gradient(270deg, #0af 50%, #ccc 50%, #ccc);
+}
+
+
 @media (min-width: 768px) {
   #page-wrapper {
     position: inherit;
