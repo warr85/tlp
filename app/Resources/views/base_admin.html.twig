@@ -967,7 +967,46 @@
 
                     </nav>
                 </div>
-                 {% block mainTitle %} {% endblock %}
+
+                <div class="row wrapper border-bottom white-bg page-heading" id="tour1">
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb">
+                            <li>
+
+                                <h4> Progreso del Curso</h4>
+                            </li>
+
+
+                            <li class="tooltip-demo" id="tour2">
+                                {% for temas in cursoModulo.temas %}
+                                    {% if temas.orden < avance %}
+                                        <a class="fa fa-github fa-2x encendido" data-toggle="tooltip" data-placement="top"
+                                           title="{{ temas.orden }}: {{ temas.idTema.nombre }}"> . .</a>
+                                    {% elseif temas.orden == avance %}
+                                        <a class="fa fa-github fa-2x current" data-toggle="tooltip" data-placement="top"
+                                           title="{{ temas.orden }}: {{ temas.idTema.nombre }}">. .</a>
+                                    {% elseif temas.orden > avance %}
+                                        <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"
+                                           title="{{ temas.orden }}: {{ temas.idTema.nombre }}">. .</a>
+                                    {% endif %}
+                                {% endfor %}
+                                <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"
+                                   title="Cierre"></a>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="title-action">
+                            <a href="#" class="btn btn-primary startTour">Tour por mi aula virtual</a>
+                        </div>
+                    </div>
+
+
+                </div>
+                 {% block mainTitle %}
+
+                 {% endblock %}
 
                 <div class="wrapper wrapper-content">
                     {% block body %} {% endblock %}

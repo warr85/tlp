@@ -29,47 +29,6 @@
 
 {% block tituloCurso  %} Bienvenido a tu curso: {{ inscripcion.idCursoGrupo.idCurso.nombre }} {% endblock %}
 
-{% block mainTitle %}
-    <div class="row wrapper border-bottom white-bg page-heading" id="tour1">
-
-        <div class="col-sm-4">
-            <ol class="breadcrumb">
-                <li>
-
-                    <h4><img id="guardado" src="{{ asset('images/course/lightbulbOn6.png') }}" width="36px"/><img
-                                id="loadingBulb" src="{{ asset('images/course/bulb.gif') }}" width="36px"/> Progreso del
-                        Curso</h4>
-                </li>
-
-
-                <li class="tooltip-demo" id="tour2">
-                    {% for temas in cursoModulo.temas %}
-                        {% if temas.orden < avance %}
-                            <a class="fa fa-github fa-2x encendido" data-toggle="tooltip" data-placement="top"
-                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
-                        {% elseif temas.orden == avance %}
-                            <a class="fa fa-github fa-2x current" data-toggle="tooltip" data-placement="top"
-                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
-                        {% elseif temas.orden > avance %}
-                            <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"
-                               title="{{ temas.orden }}: {{ temas.idTema.nombre }}"></a>
-                        {% endif %}
-                    {% endfor %}
-
-
-                </li>
-            </ol>
-        </div>
-        <div class="col-sm-8">
-            <div class="title-action">
-                <a href="#" class="btn btn-primary startTour">Tour por mi aula virtual</a>
-            </div>
-        </div>
-
-
-    </div>
-
-{% endblock %}
 
 
 
