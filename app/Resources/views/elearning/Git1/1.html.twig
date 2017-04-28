@@ -541,7 +541,7 @@
                             </div>
                         </div>
 
-                        <p>ahora que estamos dentro de tu proyecto, ejecuta</p>
+                        <p class="fragment fade-left" data-autoslide="2500">ahora que estamos dentro de tu proyecto, ejecuta</p>
 
                         <div class="row">
                             <div class="col-xs-10">
@@ -1089,7 +1089,7 @@
                                 window.document.title = window.titlePattern.replace('*', window.currentDirName);
                                 if(comandos['mkdir']){
                                     comandos['cd'] = true;
-                                    $("#act2done1").addClass('fa fa-check-circle');
+                                    $("#act2done1").addClass('animated bounceInLeft fa fa-check-circle');
                                 }
                             } else {
                                 if (data.error === "") {
@@ -1099,7 +1099,7 @@
                                         if (data.comando.match($comandoGit)) {
                                             if (data.comando.match($gitVersion)) {
                                                 toggleNav(true);
-                                                $("#act1done").addClass('fa fa-check-circle');
+                                                $("#act1done").addClass('animated bounceInLeft fa fa-check-circle');
                                                 if (!actividades['actividad1'])
                                                     add_logro("comandos", "comandos1.png");
                                                 comandos['version'] = true;
@@ -1143,7 +1143,7 @@
                                                 if (!comandos['name'])
                                                     add_logro("comandos", "comandos1.png");
                                                 $configUser = true;
-                                                $("#act3-1done").addClass('fa fa-check-circle');
+                                                $("#act3-1done").addClass('animated bounceInLeft fa fa-check-circle');
                                                 comandos['name'] = true;
                                                 $("#progressbar").css("width", "55%");
                                                 $("#progressbar").attr("aria-valuenow", "55%");
@@ -1155,7 +1155,7 @@
                                             }
 
                                             if (data.comando.match($gitConfigMail)) {
-                                                $("#act3-2done").addClass('fa fa-check-circle');
+                                                $("#act3-2done").addClass('animated bounceInLeft fa fa-check-circle');
                                                 if (!actividades['actividad3'])
                                                     add_logro("comandos", "comandos1.png", "bg_logro2.png");
                                                 actividades['actividad3'] = true;
@@ -1175,7 +1175,7 @@
                                             if (data.comando.match($mkdir)) {
 
                                                 toggleNav(true);
-                                                $("#act4done").addClass('fa fa-check-circle');
+                                                $("#act4done").addClass('animated bounceInLeft  fa fa-check-circle');
                                                 if (!actividades['actividad4'])
                                                     add_logro("comandos", "comandos1.png");
                                                 comandos['mkdir'] = true;
@@ -1472,7 +1472,7 @@
                 }
 
                 if (event.indexh == 32) {
-                    if(!actividades['activiad5']){
+                    if(!actividades['actividad5']){
                         toggleNav(false);
                     }
                     $("#btnQuiz").prop('disabled', false);
