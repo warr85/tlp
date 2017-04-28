@@ -153,7 +153,7 @@ class ElearningController extends Controller {
                 }
             }
         }
-        echo $leeme_creado; echo $archivo12;
+
 
 
 
