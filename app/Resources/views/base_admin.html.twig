@@ -825,11 +825,7 @@
                         </div>
                         <ul class="nav navbar-top-links navbar-right">
 
-                            <li>
-                                <a href="{{ path('logout') }}">
-                                    <i class="fa fa-sign-out"></i> Cerrar Sesión
-                                </a>
-                            </li>
+
                             <li class="dropdown">
                                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                                     <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
@@ -955,7 +951,7 @@
                                     <li class="divider"></li>
                                     <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                                    <li><a href="{{ path('logout') }}">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                                 </ul>
                             </li>
 
