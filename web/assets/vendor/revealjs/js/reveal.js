@@ -68,7 +68,7 @@
 			keyboardCondition: null,
 
 			// Enable the slide overview mode
-			overview: true,
+			overview: false,
 
 			// Vertical centering of slides
 			center: true,
