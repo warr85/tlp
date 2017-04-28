@@ -122,8 +122,10 @@ class ElearningController extends Controller {
 
             closedir($handle);
         }
+        $directorio_creado = false;
+        $files = array();
 
-        if($entry[0] != "." || $entry[0] != ".."){
+        if($entry[0] != "." && $entry[0] != ".."){
             $directorio_creado = true;
             $proyect_dir = $directorio . "/" . $entry[0];
             if ($handle = opendir($proyect_dir )) {
