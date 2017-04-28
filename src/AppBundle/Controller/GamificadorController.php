@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 /**
  * Gamificador controller.
  *
- * @Route("/admin/gestion/gamificacion")
+ * @Route("/gestion/gamificacion")
  */
 class GamificadorController extends Controller
 {
