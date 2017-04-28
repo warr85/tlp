@@ -912,7 +912,7 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
                                     <div id="progress" class="avatar-container" data="{{ porcentajePxNivel }}">
-                                        <i class="avatar avatar-color-12 avatar-letter-w"></i>
+                                        <i class="avatar avatar-color-12 avatar-letter-{{ app.user | first }}"></i>
                                     </div><!--.avatar-container-->
                                     <div class="profile-details">
                                         {{ app.user }}
@@ -967,7 +967,7 @@
 
                     </nav>
                 </div>
-
+                {% if (app.request.attributes.get('_route') == 'estudiante_curso_programacion') %}
                 <div class="row wrapper border-bottom white-bg page-heading" id="tour1">
 
                     <div class="col-sm-6">
@@ -1004,6 +1004,7 @@
 
 
                 </div>
+                {% endif %}
                  {% block mainTitle %}
 
                  {% endblock %}
