@@ -20,66 +20,10 @@
                     padding-bottom: 0px;
                 }
 
-                .navbar-login-session
-                {
-                    padding: 10px;
-                    padding-bottom: 0px;
-                    padding-top: 0px;
-                }
 
                 .icon-size
                 {
                     font-size: 87px;
-                }
-
-
-                .avatar-container {
-
-                    position: relative;
-                    float: left;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    height: 50px;
-                    width: 50px;
-                    padding: 0;
-                    margin: 0;
-                    border: none;
-                    background-color: black;
-                    cursor: pointer;
-                    margin-top: 0px;
-                    margin-right: 5px;
-                }
-
-                .avatar-container::before {
-                    content: attr(data) "%";
-                    display: block;
-                    opacity: 0;
-                    width: 40px;
-                    height: 20px;
-                    font-size: 20px;
-                    text-align: center;
-                    line-height: 20px;
-                    position: absolute;
-                    left: 0;
-                    right: 0;
-                    top: 0;
-                    bottom: 0;
-                    margin: auto;
-                    z-index: 200;
-                    transition: opacity .3s;
-                }
-                .avatar-container:hover::before {
-                    opacity: 1;
-                }
-
-                .avatar {
-
-                    margin: 4px;
-                    border-radius: 50%;
-                    width: 42px;
-                    height: 41px;
-                    overflow: hidden;
-                    z-index: 100;
                 }
 
                 #progress[data="1"] {
@@ -909,16 +853,20 @@
                             </li>
 
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-
+                                <a class="dropdown-toggle" style="padding-bottom: 0px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <div class="row">
+                                        <div class="col-sm-3">
                                     <div id="progress" class="avatar-container" data="{{ porcentajePxNivel }}">
                                         <i class="avatar avatar-color-12 avatar-letter-{{ app.user | first }}"></i>
                                     </div><!--.avatar-container-->
+                                        </div>
+                                        <div class="col-sm-9">
                                     <div class="profile-details">
-                                        {{ app.user }}
+                                        {{ app.user }}<br>
                                         <span class="badge badge-primary">Nivel: <span id="nivel_usuario">{{ app.user.idCursoNivel.id }}</span> Exp.: <span id="exp_usuario">{{ app.user.experiencia }}</span> </span>
                                     </div>
-
+                                        </div>
+                                    </div>
 
 
 
