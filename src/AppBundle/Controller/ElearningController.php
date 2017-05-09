@@ -159,7 +159,7 @@ class ElearningController extends Controller {
 
 
 
-        //var_dump($logrosObtenidos); exit;
+
         return $this->render('elearning/' . $inscripcion->getIdCursoGrupo()->getIdCurso()->getNombreCorto() . '/' . $avance .  '.html.twig', array(
             'inscripcion'       => $inscripcion,
             'cursoModulo'       => $cursoModulo,

@@ -982,7 +982,7 @@
         var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false, actividad4:false, actividad5: false};
         var comandos = {version: false, init: false, name: false, email: false, mkdir: false, cd:false, list:false};
 
-
+        console.log(mkd);
         if(mkd) {
             if (repositorio) {
                 comandos['version'] = true;
@@ -1000,8 +1000,9 @@
                 comandos['init'] = true;
                 comandos['mkdir'] = true;
 
-                actividades['actividad0'] = true;
-                actividades['actividad1'] = true;
+                actividades['actividad0'] = true; //conceptos
+                actividades['actividad1'] = true; //git --version
+                actividades['actividad4'] = true; //mkdir
             }
         }
         console.log(actividades);
