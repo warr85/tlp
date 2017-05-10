@@ -1,0 +1,166 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/AppBundle/css/module-colors-background.css') }}" rel="stylesheet">
+    <style>
+
+
+
+
+
+        .accomplishments__badge.is-disabled {
+            color: #999999;
+            cursor: not-allowed;
+        }
+
+        .accomplishments__badge.is-disabled:before {
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
+            text-align: center;
+            width: 1em;
+            color: black;
+            content: "\f023";
+            font-size: 60px;
+            left: 50%;
+            opacity: 0.6;
+            pointer-events: none;
+            position: absolute;
+            top: 30px;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-transition: 0.15s ease-in-out;
+            transition: 0.15s ease-in-out;
+            -webkit-transition-property: opacity, -webkit-transform;
+            transition-property: opacity, -webkit-transform;
+            transition-property: transform, opacity;
+            transition-property: transform, opacity, -webkit-transform;
+            z-index: 1
+        }
+
+
+        .accomplishments__badge.is-disabled:hover img {
+            -webkit-filter: none;
+            filter: none;
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+        .accomplishments__badge.is-disabled:hover:before {
+            opacity: 0;
+            -webkit-transform: translate(-50%, 10%);
+            transform: translate(-50%, 10%)
+        }
+        .accomplishments__badge.is-disabled img {
+            opacity: 0.6;
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+            -webkit-transition: 0.15s ease-in-out;
+            transition: 0.15s ease-in-out;
+            -webkit-transition-property: opacity, -webkit-transform;
+            transition-property: opacity, -webkit-transform;
+            transition-property: transform, opacity;
+            transition-property: transform, opacity, -webkit-transform
+        }
+        .ie9 .accomplishments__badge.is-disabled img {
+            -webkit-filter: none;
+            filter: none
+        }
+        .accomplishments__badge img
+         {
+            height: 125px;
+            width: 125px
+        }
+    </style>
+{% endblock %}
+
+{% block mainTitle %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+
+        <div class="col-sm-4">
+            <h2>Mis logros</h2>
+            {#<ol class="breadcrumb">
+                <li>
+                    <a href="index.html">Estatus suscripción</a>
+                </li>
+                <li class="active">
+                    <strong>{{ suscripcion.idEstatus }}</strong>
+                </li>
+            </ol>#}
+        </div>
+
+        <div class="col-sm-8">
+            <div class="title-action">
+                <a href="" class="btn btn-primary">This is action area</a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+        {% for inscripcion in inscripciones | sort %}
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ inscripcion.idCursoGrupo.idCurso.id }}">
+                                LOGROS: {{ inscripcion.idCursoGrupo.idCurso.nombre }}
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse{{ inscripcion.idCursoGrupo.idCurso.id }}" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            {% for modulos in inscripcion.idCursoGrupo.idCurso.modulos | sort %}
+                                <div class="col-sm-12">
+                                {% for temas in modulos.temas | sort %}
+                                    {% for logro in temas.logros | sort(temas.orden) %}
+                                        {% set achieved = false %}
+                                        {% for obtenido in logrosObtenidos %}
+                                                {% if logro.id == obtenido.idCursoModuloTemaLogro.id %}
+                                                    {% set achieved = true %}
+                                                {% endif %}
+                                        {% endfor %}
+                                        <div class="col-sm-3 ">
+                                            <div class="ibox">
+                                                <div class="ibox-content product-box">
+                                                    <div class="product-imitation accomplishments__badge {% if not achieved %} is-disabled  {% endif %}">
+                                                        <img src="{% if not achieved %} {{ asset('images/svg/blurBadge.png') }} {% else %} {{ asset('images/badge/') ~ logro.imagen   }} {% endif %}">
+                                                    </div>
+                                                    <div class="product-desc">
+
+                                                        <small class="text-muted">Tema: {{ logro.idCursoModuloTema.idTema.nombre }}</small>
+                                                        <a href="#" class="product-name">{{ logro.nombre }}</a>
+                                                        <div class="small m-t-xs">
+                                                            {{ logro.descripcion }}
+                                                        </div>
+                                                        <div class="m-t text-righ">
+                                                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock %}

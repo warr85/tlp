@@ -53,7 +53,7 @@ class CursoModulo
     
     
     /**
-     * @var \AppBundle\Entity\Costo
+     * @var \AppBundle\Entity\CostoCursoModulo
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CostoCursoModulo")
      * @ORM\JoinColumns({

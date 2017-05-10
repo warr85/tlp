@@ -107,9 +107,16 @@ class CursoModuloTemaLogro
     /**
      * @var string
      *
-     * @ORM\Column(name="imagen", type="string", length=255, nullable=false, options={"comment" = "imagen fontawesome del logro"})
+     * @ORM\Column(name="imagen", type="string", length=255, nullable=false, options={"comment" = "nombre de la imagen en el directorio"})
      */
     private $imagen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fontawesome", type="string", length=100, nullable=true, options={"comment" = "imagen fontawesome del logro"})
+     */
+    private $fontawesome;
     
     
     
@@ -359,5 +366,29 @@ class CursoModuloTemaLogro
     public function getPeriodoTiempo()
     {
         return $this->periodoTiempo;
+    }
+
+    /**
+     * Set fontawesome
+     *
+     * @param string $fontawesome
+     *
+     * @return CursoModuloTemaLogro
+     */
+    public function setFontawesome($fontawesome)
+    {
+        $this->fontawesome = $fontawesome;
+
+        return $this;
+    }
+
+    /**
+     * Get fontawesome
+     *
+     * @return string
+     */
+    public function getFontawesome()
+    {
+        return $this->fontawesome;
     }
 }

@@ -76,15 +76,7 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-pie-chart"></i> <span class="nav-label">Mis Logros</span><span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li><a href="form_basic.html">Basic form</a></li>
-                                <li><a href="form_advanced.html">Advanced Plugins</a></li>
-                                <li><a href="form_wizard.html">Wizard</a></li>
-                                <li><a href="form_file_upload.html">File Upload</a></li>
-                                <li><a href="form_editors.html">Text Editor</a></li>
-                                <li><a href="form_markdown.html">Markdown</a></li>
-                            </ul>
+                            <a href="{{ path('estudiante_logros') }}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Mis Logros</span></a>
                         </li>
                         {% if is_granted('ROLE_ADMIN') %}
                             <li {% if (app.request.attributes.get('_route') == 'admin_gestion_cursos_index')or  (app.request.attributes.get('_route') == 'admin_gestion_modulos_index') or  (app.request.attributes.get('_route') == 'admin_gestion_temas_index') %} class="active" {% endif %} >

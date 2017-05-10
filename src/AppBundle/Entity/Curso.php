@@ -34,7 +34,7 @@ class Curso
     
     
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(name="descripcion", type="text", nullable=false, options={"comment" = "Nombre del Curso"})
      */

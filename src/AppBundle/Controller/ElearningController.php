@@ -72,6 +72,52 @@ class ElearningController extends Controller {
         ));
         
     }
+
+
+
+    /**
+     * @Route("/logros", name="estudiante_logros")
+     * @return Response
+     */
+    public function logrosAction(){
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $inscripciones = $em->getRepository('AppBundle:Inscripcion')->findBy(array(
+            'idUsuario'  => $this->getUser()
+        ));
+
+
+
+        if(!$inscripciones){
+            $this->addFlash('warning', 'debes tener un curso inscrito para poder ingresar al área de estudiante');
+            return $this->render('portal/index.html.twig');
+        }
+
+
+
+        $logrosObtenidos = $em->getRepository("AppBundle:UsuariosLogros")->findBy(array(
+            'idUsuario' => $this->getUser()->getId(),
+            'idEstatus' => 5
+        ));
+
+
+        $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
+        $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
+        $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
+        //Para saber en que parte del curso se encuentra esta inscripcion
+
+        $notificaciones = 0; $cuenta = 0;
+        return $this->render('estudiante/logros.html.twig', array(
+            'inscripciones' => $inscripciones,
+            'notificaciones' => $notificaciones,
+            'cuenta'        => $cuenta,
+            'porcentajePxNivel' => $ppn,
+            'logrosObtenidos' => $logrosObtenidos,
+        ));
+
+    }
     
     
     /**
@@ -87,10 +133,13 @@ class ElearningController extends Controller {
         $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
         $em = $this->getDoctrine()->getManager();
         $cursoModulo = $em->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
+
         $temaActual = $em->getRepository('AppBundle:CursoModuloTema')->findOneBy(array(
            'idCursoModulo'  => $cursoModulo,
             'orden'         => $avance
         ));
+
+
 
         $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
         $logrosObtenidos = $em->getRepository("AppBundle:UsuariosLogros")->findBy(array(

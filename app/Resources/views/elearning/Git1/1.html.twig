@@ -709,7 +709,7 @@
                                               title="{{ logroD.nombre }}" class="fa-stack has-badge"
                                               data-count="{{ logroD.badge }}">
                                             <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                            <i class="{{ logroD.fontawesome }} fa-stack-1x fa-inverse"></i>
                                         </span>
                                     {% else %}
                                         {% if logroD.id == 2 %}
@@ -719,7 +719,7 @@
                                               title="{{ logroD.nombre }}" class="fa-stack has-badge"
                                               data-count="{{ logroD.badge }}">
                                             <i class="fa fa-circle fa-stack-2x text-warning"></i>
-                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                            <i class="{{ logroD.fontawesome }} fa-stack-1x fa-inverse"></i>
                                         </span>
                                     {% endif %}
                                 {% endfor %}
