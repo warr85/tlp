@@ -259,14 +259,14 @@
                                             <div class="row">
                                                 <div class="col-lg-4">
                                                     <p class="text-center">
-                                                        <span class="glyphicon glyphicon-user icon-size"></span>
+                                                        <i style="width: 80px; height: 80px; line-height: 90px; font-size: 60px;!important " class="avatar avatar-color-12 avatar-letter-{{ app.user | first }}"></i>
                                                     </p>
                                                 </div>
                                                 <div class="col-lg-8">
-                                                    <p class="text-left"><strong>Salman Khan</strong></p>
-                                                    <p class="text-left small">crazytodevelop@@gmail.com</p>
+                                                    <p class="text-left"><strong>{{ app.user }}</strong></p>
+                                                    <p class="text-left small">{{ app.user.email }}</p>
                                                     <p class="text-left">
-                                                        <a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
+                                                        <a href="#" class="btn btn-primary btn-block btn-sm">Perfil</a>
                                                     </p>
                                                 </div>
                                             </div>
