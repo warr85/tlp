@@ -46,16 +46,19 @@
                     </h5>
                 </div>
                 <div class="ibox-content">
+
                     {% for inscripcion in inscripciones %}
+                        {% set porcentaje = (avance.idCursoModuloTema.idTema.id * 100) / avance.idCursoModuloTema.idCursoModulo.temas.count %}
                         {% for suscripcion in inscripcion.suscripciones %}
                             {% if suscripcion.idEstatus.id == 7 %}
                                 <div>
                                     <div>
                                         <a href="{{ path('estudiante_curso_programacion', { 'id': inscripcion.id, 'avance': avance.idCursoModuloTema.orden }) }}"><span> {{ inscripcion.idCursoGrupo.idCurso.nombre }} </span></a>
-                                        <small class="pull-right">10/100 %</small>
+                                        <small class="pull-right">{{ porcentaje | round }}/100 %</small>
                                     </div>
                                     <div class="progress progress-small">
-                                        <div style="width: 10%;" class="progress-bar"></div>
+
+                                        <div style="width: {{ porcentaje | round }}%;" class="progress-bar"></div>
                                     </div>
 
                                 </div>
