@@ -48,7 +48,7 @@
                 <div class="ibox-content">
 
                     {% for inscripcion in inscripciones %}
-                        {% set porcentaje = (avance.idCursoModuloTema.idTema.id * 100) / avance.idCursoModuloTema.idCursoModulo.temas.count %}
+                        {% set porcentaje = ((avance.idCursoModuloTema.idTema.id * 100) / avance.idCursoModuloTema.idCursoModulo.temas.count ) - 7 %}
                         {% for suscripcion in inscripcion.suscripciones %}
                             {% if suscripcion.idEstatus.id == 7 %}
                                 <div>

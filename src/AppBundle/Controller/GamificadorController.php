@@ -80,6 +80,7 @@ class GamificadorController extends Controller
             $serializer = new Serializer($normalizers, $encoders);
         $usuario = $this->getDoctrine()->getRepository("AppBundle:Usuarios")->findOneById($this->getUser());
         if($usuario){
+            $levelUp = false;
             $parametros = $request->query->all();
             $exp = $parametros['experience'];
             
@@ -118,7 +119,7 @@ class GamificadorController extends Controller
             }else {
                 if (($nivel) && ($nivel->getNombre() != $usuario->getIdCursoNivel()->getNombre())) {
 
-
+                    $levelUp = true;
                     $usuario->setIdCursoNivel($nivel);
                     $usuario->setExperiencia($exp);
                     if($proximoNivel) {
@@ -146,7 +147,8 @@ class GamificadorController extends Controller
                 'response' => 'success',
                 'avatar'    => $avatar,
                 'nivel' => $usuario->getIdCursoNivel()->getId(),
-                'exp'   => $usuario->getExperiencia()
+                'exp'   => $usuario->getExperiencia(),
+                'levelUp'   => $levelUp
             ));
             return $response;
             
@@ -235,7 +237,6 @@ class GamificadorController extends Controller
                                 return $response;
                             }
                         }else{
-
                             $insLogro = new UsuariosLogros();
                             $insLogro->setContador($cantidad);
                             $insLogro->setIdCursoModuloTemaLogro($logros);

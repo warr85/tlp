@@ -54,9 +54,12 @@ class ElearningController extends Controller {
             $this->addFlash('warning', 'debes tener un curso inscrito para poder ingresar al área de estudiante');
             return $this->render('portal/index.html.twig');
         }
-        $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
-        $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
-        $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
+        $ppn = 0;
+        if($this->getUser()->getExperiencia() > 0) {
+            $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
+            $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
+            $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1), 0);
+        }
         //Para saber en que parte del curso se encuentra esta inscripcion
         $avance = $em->getRepository('AppBundle:CursoAvance')->findOneBy(array(
            'idInscripcion'  => $inscripcion,
@@ -129,8 +132,12 @@ class ElearningController extends Controller {
 
         $tema = $inscripcion->getAvances()->first();
         //echo $this->getUser()->getIdCursoNivel()->getId(); exit;
-        $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
-        $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
+        $ppn = 0;
+        if($this->getUser()->getExperiencia() > 0) {
+            $currentLevel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($this->getUser()->getIdCursoNivel()->getId());
+            $proximoNivel = $this->getDoctrine()->getRepository("AppBundle:CursoNivel")->findOneById($currentLevel->getId() + 1);
+            $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1), 0);
+        }
         $em = $this->getDoctrine()->getManager();
         $cursoModulo = $em->getRepository('AppBundle:CursoModulo')->findOneByIdCurso($inscripcion->getIdCursoGrupo()->getIdCurso());
 
@@ -141,7 +148,7 @@ class ElearningController extends Controller {
 
 
 
-        $ppn = round((($this->getUser()->getExperiencia() - $this->getUser()->getIdCursoNivel()->getExperienciaNecesaria()) * 100) / ($proximoNivel->getExperienciaNecesaria() - 1),0) ;
+
         $logrosObtenidos = $em->getRepository("AppBundle:UsuariosLogros")->findBy(array(
             'idUsuario' => $this->getUser()->getId(),
             'idEstatus' => 5
@@ -153,6 +160,7 @@ class ElearningController extends Controller {
 
 
         // Manejador de Archivos
+        $leeme_creado = "false";
         $repositorio_git = false;
         $archivo_creado = false;
         $directorio_creado = false;
@@ -191,7 +199,7 @@ class ElearningController extends Controller {
             }
         }
         $cuenta = 0;
-        $leeme_creado = false;
+
         $archivo12 = "false";
         foreach ($files as $archivo){
             if (stripos(strtoupper($archivo), strtoupper('leeme')) !== false) {

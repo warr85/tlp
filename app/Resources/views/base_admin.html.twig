@@ -423,6 +423,7 @@
                         method: "GET",
                         url: $('#url_exp').val(),
                         data: datos,
+                        async: false,
                         //timeout: 50000,
                         success: function (data) {
                             console.log(data);
@@ -430,6 +431,27 @@
                             $("#progress1").attr("data", data.avatar);
                             $("#nivel_usuario").html(data.nivel);
                             $("#exp_usuario").html(data.exp);
+                            if(data.levelUp == true){
+                                swal({
+                                    imageUrl: '../../../../../../images/course/modal/levelUp.png',
+                                    padding: 30,
+                                    imageWidth: 160,
+                                    imageHeight: 160,
+                                    showCloseButton: true,
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                    animation: false,
+                                    customClass: 'animated tada',
+                                    background: 'url(../../../../../../images/course/og_bg.jpg)'
+                                }).then(
+                                    function () {
+                                    },
+                                    // handling the promise rejection
+                                    function (dismiss) {
+
+                                    }
+                                );
+                            }
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
                             console.log(errorThrown, textStatus, XMLHttpRequest);
@@ -450,6 +472,7 @@
                         method: "GET",
                         url: $('#url_logro').val(),
                         data: datos,
+                        async: false,
                         //timeout: 50000,
                         success: function (data) {
                             console.log("esto es data:");

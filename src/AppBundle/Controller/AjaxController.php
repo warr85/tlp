@@ -19,6 +19,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Inscripcion;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -172,11 +173,16 @@ class AjaxController extends Controller {
             $normalizers = array(new ObjectNormalizer());
  
             $serializer = new Serializer($normalizers, $encoders);
- 
+
             $em = $this->getDoctrine()->getManager();
             $parametros = $request->query->all();
+            $inscripcion = $this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findOneById($parametros['inscripcion']);
             
-            $avance = $em->getRepository("AppBundle:CursoAvance")->findOneByIdCursoModuloTema($parametros['tema']);
+            $avance = $em->getRepository("AppBundle:CursoAvance")->findOneBy(array(
+                'idCursoModuloTema' => $parametros['tema'],
+                'idInscripcion'     => $inscripcion
+            ));
+
             $evaluacion = $em->getRepository("AppBundle:CursoAvanceEvaluacion")->findOneByIdCursoAvance($avance);
             $idCursoModuloTemaEvaluacion = $em->getRepository("AppBundle:CursoModuloTemaEvaluacion")->findOneByIdCursoModuloTema($parametros["tema"]);
             if(!$evaluacion){
