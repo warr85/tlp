@@ -32,13 +32,12 @@
     </head>
     <body {% if (app.request.attributes.get('_route') == 'estudiante_curso_programacion') %} class="mini-navbar" {% endif %} >
         <div id="wrapper">
-
             <nav class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav metismenu" id="side-menu">
                         <li class="nav-header">
                             <div class="dropdown profile-element"> <span>
-                                    <div id="progress" class="avatar-container" data="{{ porcentajePxNivel }}">
+                                    <div id="progress1"  class="avatar-container">
                                         <i class="avatar avatar-color-12 avatar-letter-{{ app.user | first }}"></i>
                                     </div><!--.avatar-container-->
                                 </span>
@@ -428,6 +427,7 @@
                         success: function (data) {
                             console.log(data);
                             $("#progress").attr("data", data.avatar);
+                            $("#progress1").attr("data", data.avatar);
                             $("#nivel_usuario").html(data.nivel);
                             $("#exp_usuario").html(data.exp);
                         },
