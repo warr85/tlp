@@ -421,7 +421,7 @@
                         <h2>Felicitaciones... ya escribistes tu primer comando</h2>
                     </section>
 
-                    <section>
+                    <section data-state="cual">
                         <h2> Crear un proyecto </h2>
                         <p>
                             Sabiendo que tenemos git instalado, vamos a crear un directorio
@@ -459,22 +459,24 @@
                                                                                  data-autoslide="1000">En sus marcas</span>
                             <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
                                     class="fragment highlight-green">Fuera</span></p>
+                        <a href="#/21">Volver a la pregunta</a>
                     </section>
 
                     <section data-state="actividad4">
-                        <h2>Actividad en la Consola 2</h2>
+                        <h2>Actividad Manejador de archivos</h2>
                         <h3>Crear un directorio</h3>
-                        <p class="fragment fade-up" data-autoslide="2500">En el terminal o consola</p>
-                        <p class="fragment fade-left" data-autoslide="2500">escribe el siguiente comando</p>
+                        <p class="fragment fade-up" data-autoslide="2500">En el manejador de archivos virtual</p>
+                        <p class="fragment fade-left" data-autoslide="2500">asegura que estés dentro de tu carpeta <strong>{{ app.user }} </strong></p>
+                        <p class="fragment fade-left" data-autoslide="2500">Luego presiona el segundo botón del menú ("crear carpeta")</p>
                         <div class="row">
                             <div class="col-xs-10">
                                 <a>
                                     <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs"
-                                                                                                 style="word-wrap: break-word;">$ git --version</code></pre>
+                                                                                                 style="word-wrap: break-word;">Coloca el nombre a tu proyecto</code></pre>
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <i id="act1done" style="color:greenyellow;" class=""></i>
+                                <i id="newmkdir" style="color:greenyellow;" class="newmkdir"></i>
                             </div>
                         </div>
                         <p class="fragment fade-left" data-autoslide="2500">si git está instalado, este comando nos dará
@@ -483,6 +485,7 @@
                                                                                  data-autoslide="1000">En sus marcas</span>
                             <span class="fragment highlight-blue" data-autoslide="1000">Listos</span> <span
                                     class="fragment highlight-green">Fuera</span></p>
+                        <a href="#/21">Volver a la pregunta</a>
                     </section>
 
 
@@ -981,7 +984,7 @@
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
         var actividades = {actividad0: false, actividad1: false, actividad2: false, actividad3: false, actividad4:false, actividad5: false};
         var comandos = {version: false, init: false, name: false, email: false, mkdir: false, cd:false, list:false};
-
+        var archivo = { mkdir:false, file1:false, file2:false };
         console.log(mkd);
         if(mkd) {
             if (repositorio) {
@@ -1088,7 +1091,7 @@
                                 window.currentDirName = window.currentDir.split('/').pop() + "/";
                                 $('#currentDirName').text(window.currentDirName);
                                 window.document.title = window.titlePattern.replace('*', window.currentDirName);
-                                if(comandos['mkdir']){
+                                if(comandos['mkdir'] || archivo['mkdir']){
                                     comandos['cd'] = true;
                                     $("#act2done1").addClass('animated bounceInLeft fa fa-check-circle');
                                 }
@@ -1279,11 +1282,19 @@
                             if (event.data.added[0].name != "{{ app.user.userName }}") {
                                 console.log("archivo creado");
 
-
-                                if (!actividades['actividad4'])
+                                if (event.data.added[0].mime  =="directory") {
                                     add_logro("directorio_virtual", "directorio1.png");
-                                    manejador['crear'] = true;
+                                    archivo['mkdir'] = true;
+                                    comandos['mkdir'] = true;
                                     actividades['actividad4'] = true;
+                                    $("#newmkdir").addClass('animated bounceInLeft fa fa-check-circle');
+
+                                    toggleNav(true);
+                                }else if (!actividades['actividad4']) {
+                                    add_logro("directorio_virtual", "directorio1.png");
+                                    archivo['file1'] = true;
+                                    actividades['actividad4'] = true;
+                                }
 
                                 $("#progressbar").css("width", "40%");
                                 $("#progressbar").attr("aria-valuenow", "40%");
@@ -1305,7 +1316,7 @@
                 uiOptions: {
                     toolbar: [
                         // toolbar configuration
-                        ['open', 'edit'],
+                        ['open', 'mkdir', 'edit'],
                         ['home', 'up'],
                         ['info'],
                         ['reload'],
@@ -1316,12 +1327,12 @@
                 },
                 contextmenu: {
                     // navbarfolder menu
-                    navbar: ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+                    navbar: ['open', 'mkdir', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
                     // current directory menu
                     cwd: ['back', '|', 'mkdir', 'mkfile', 'paste', '|', 'info'],
                     // current directory file menu
                     files: [
-                        'open', 'quicklook', '|',
+                        'open', 'mkdir', 'quicklook', '|',
                         'rm', '|', 'edit', 'rename', 'info'
                     ]
                 }
@@ -1334,6 +1345,12 @@
                 if (!actividades['actividad0']) {
                     toggleNav(false);
                 }
+            });
+
+
+            Reveal.addEventListener('cual', function (event) {
+
+                    toggleNav(false);
             });
 
 

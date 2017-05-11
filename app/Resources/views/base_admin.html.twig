@@ -311,10 +311,10 @@
                             <li class="tooltip-demo" id="tour2">
                                 {% for temas in cursoModulo.temas %}
                                     {% if temas.orden < avance %}
-                                        <a class="fa fa-github fa-2x" style="background-color: darkgreen;" data-toggle="tooltip" data-placement="top"
+                                        <a class="fa fa-github fa-2x" style="color: orangered;" data-toggle="tooltip" data-placement="top"
                                            title="{{ temas.orden }}: {{ temas.idTema.nombre }}"> . .</a>
                                     {% elseif temas.orden == avance %}
-                                        <a class="fa fa-github fa-2x current" data-toggle="tooltip" data-placement="top"
+                                        <a class="fa fa-github fa-2x" style="color: steelblue;" data-toggle="tooltip" data-placement="top"
                                            title="{{ temas.orden }}: {{ temas.idTema.nombre }}">. .</a>
                                     {% elseif temas.orden > avance %}
                                         <a class="fa fa-github fa-2x" data-toggle="tooltip" data-placement="top"
