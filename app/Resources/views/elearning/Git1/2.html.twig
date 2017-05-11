@@ -64,6 +64,11 @@
 
 
                     <section>
+
+                        <section data-background="{{ asset('images/course/gif/earthRotation.gif') }}">
+                            <h2 style="background-color:#D33581; opacity:0.8;">Recuerda utilizar barra espaciadora para pasar por todas las láminas</h2>
+                        </section>
+
                         <section data-background="{{ asset('images/course/gif/thinking.gif') }}">
                             <h2 style="background-color:#D33581; opacity:0.8;">¿Repositorio Git?</h2>
                         </section>
@@ -122,15 +127,16 @@
 
                     <section
                             data-background="http://3.bp.blogspot.com/-b_ZCZTZvScM/VV516MMUb4I/AAAAAAAAIUI/Gb2-LSHfA0o/s1600/uwhgGVt.gif">
-                        <h3 style="background-color:#D33581; opacity:0.8;">Ya sabemos a que llamamos un repositorio.
+                        <h3 style="background-color:#D33581; opacity:0.8;">Si, si es un repositorio GIT.
                         </h3>
-                        <p style="background-color: #90caf9; opacity:0.8; color: white;">vamos manos a la obra... Pero desde el manejador de archivos</p>
+                        <p style="background-color: #90caf9; opacity:0.8; color: white;">vamos manos a la obra... <strong>Pero desde el manejador de archivos</strong></p>
 
                     </section>
 
 
                     <section data-state="actividad0">
-                        <h3>Crear un archivo</h3>
+                        {% if archivo %} {% set done = 'animated bounceInLeft fa fa-check-circle' %} {% endif %}
+                        <h3>Crear un archivo <i style="color:greenyellow;" class= "{{ done }}"></i></h3>
                         <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde el Manejador de Archivos</p>
                         <div class="row">
                             <div class="col-xs-10">
@@ -139,7 +145,7 @@
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <i id="addDone1" style="color:greenyellow;" class="addDone1"></i>
+                                <i id="addDone1" style="color:greenyellow;" class="addDone1 {{ done }}"></i>
                             </div>
                         </div>
 
@@ -150,7 +156,7 @@
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <i id="addDone1" style="color:greenyellow;" class="addDone1"></i>
+                                <i id="addDone1" style="color:greenyellow;" class="addDone1  {{ done }}"></i>
                             </div>
                         </div>
                         <div class="row">
@@ -160,7 +166,7 @@
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <i id="addDone2" style="color:greenyellow;" class="addDone2"></i>
+                                <i id="addDone2" style="color:greenyellow;" class="addDone2  {{ done }}"></i>
                             </div>
                         </div>
 
@@ -171,7 +177,7 @@
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <i id="addDone2" style="color:greenyellow;" class="addDone2"></i>
+                                <i id="addDone2" style="color:greenyellow;" class="addDone2  {{ done }}"></i>
                             </div>
                         </div>
                         <div class="row">
@@ -181,7 +187,7 @@
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <i id="addDone2" style="color:greenyellow;" class="addDone2"></i>
+                                <i id="addDone2" style="color:greenyellow;" class="addDone2  {{ done }}"></i>
                             </div>
                         </div>
 
@@ -208,33 +214,40 @@
 
 
                     <section data-state="actividad1">
-                        <h3>Añadir y Confirmar cambios en GIT</h3>
+
+                        <h3>Añadir y Confirmar cambios en GIT <i id="confirmado" style="color:greenyellow;" class= ""></i></h3></h3>
                         <div class="row">
-                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">desde la consola ingresa a tu proyecto</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
-                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">el primer paso es añadir los cambios con:</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                             <div class="row">
                                 <div class="col-xs-10">
                                     <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ </code></pre>
+                                        <pre class="fragment fade-right" data-autoslide="2500">desde la consola ingresa a tu proyecto<code class="hljs" style="word-wrap: break-word;">$ cd nombre_proyecto</code></pre>
                                     </a>
                                 </div>
                                 <div class="col-xs-2">
-                                    <i id="act1done" style="color:greenyellow;" class=""></i>
+                                    <i id="cd" style="color:greenyellow;" class="cd confirmado"></i>
                                 </div>
                             </div>
-                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">El "." es el atajo para decir, añade "todos" los cambios que existen en el directorio</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
-                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">siguiente paso, confirmar los cambios de forma <strong>permanente</strong> en el repositorio</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                             <div class="row">
                                 <div class="col-xs-10">
                                     <a>
-                                    <pre class="fragment fade-right" data-autoslide="2500"><code class="hljs" style="word-wrap: break-word;">$ git commit -m "mensaje"</code></pre>
+                                    <pre class="fragment fade-right" data-autoslide="2500">Luego Ejecutamos<code class="hljs" style="word-wrap: break-word;">$ git add . </code></pre>
                                     </a>
                                 </div>
                                 <div class="col-xs-2">
-                                    <i id="act1done" style="color:greenyellow;" class=""></i>
+                                    <i id="add" style="color:greenyellow;" class="add confirmado"></i>
                                 </div>
                             </div>
-                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">El mensaje es la descripción de los cambios que estás enviando</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="row">
+                                <div class="col-xs-10">
+                                    <a>
+                                    <pre class="fragment fade-right" data-autoslide="2500">confirmar los cambios de forma <strong>permanente</strong><code class="hljs" style="word-wrap: break-word;">$ git commit -m "mensaje"</code></pre>
+                                    </a>
+                                </div>
+                                <div class="col-xs-2">
+                                    <i id="commit" style="color:greenyellow;" class="commit confirmado"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">"mensaje" es una breve descripción de los cambios que estás haciendo.  espera unas láminas y entenderemos todo</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                         </div>
 
 
@@ -251,8 +264,10 @@
                     <section>
                         <h2>El trabajo con Git</h2>
                         <p>
-                            Casi siempre esta va a ser nuestra forma de trabajar los cambios en
-                            nuestro proyecto a través de Git:
+                            Básicamente los comandos que ejecutamos representan el 80% del
+                            flujo de trabajo con git: creamos un archivo, lo modificamos,
+                            añadimos el archivo y/o los cambios (git add) y finalmente
+                            los confirmamos al repositorio (git commit)
                         </p>
 
                         <div class="row">
@@ -296,7 +311,7 @@
                     <section>
 
                         <section>
-                            <p>Para descubrir que fue lo que hicimos al registrar los cambios
+                            <p>Para encender nuestros conocimientos sobre lo que ejecutamos,
                                 (<strong>git add .</strong>) y confirmarlos (<strong>git commit</strong>), tenemos que
                             entender la arquitectura y el flujo trabajo de GIT. El siguiente
                             video explica de manera no tan aburrida (espero...) dicha arquitectura</p>
@@ -335,7 +350,7 @@
                     <div class="stat-percent">0%</div>
                     <div class="progress progress-mini">
                         <div id="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                             style="width: 10%;" class="progress-bar"></div>
+                             style="width: 0%;" class="progress-bar"></div>
                     </div>
                 </li>
                 <li>
@@ -359,7 +374,7 @@
                                               title="{{ logroD.nombre }}" class="fa-stack has-badge"
                                               data-count="{{ logroD.badge }}">
                                             <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                            <i class="{{ logroD.fontawesome }} fa-stack-1x fa-inverse"></i>
                                         </span>
                                     {% else %}
                                         {% if logroD.id == 2 %}
@@ -372,7 +387,7 @@
                                               title="{{ logroD.nombre }}" class="fa-stack has-badge"
                                               data-count="{{ logroD.badge }}">
                                             <i class="fa fa-circle fa-stack-2x text-warning"></i>
-                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                            <i class="{{ logroD.fontawesome }} fa-stack-1x fa-inverse"></i>
                                         </span>
                                     {% endif %}
                                 {% endfor %}
@@ -630,8 +645,15 @@
         window.currentUser = "{{ app.user.username }}";
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
-        var actividades = {actividad0: {{ mkdir }}, actividad1: false, actividad2: false, actividad3: false};
-        var comandos = {add: false, commit: false};
+        $comm = false;
+        alert($("#comm").val());
+        if ($("#comm").val()){
+            $comm = true;
+            $("#confirmado").addClass('animated bounceInLeft fa fa-check-circle');
+            $(".confirmado").addClass('animated bounceInLeft fa fa-check-circle');
+        }
+        var actividades = {actividad0: {{ archivo }}, actividad1: $comm, actividad2: false, actividad3: false};
+        var comandos = {mkdir: {{ mkdir }}, add: $comm, commit: $comm};
         var directorio = {crear: false, modificar: false};
 
         jQuery(function ($) {
@@ -716,6 +738,10 @@
                             window.currentDirName = window.currentDir.split('/').pop() + "/";
                             $('#currentDirName').text(window.currentDirName);
                             window.document.title = window.titlePattern.replace('*', window.currentDirName);
+                            if(comandos['mkdir'] || archivo['mkdir']){
+                                comandos['cd'] = true;
+                                $(".cd").addClass('animated bounceInLeft fa fa-check-circle');
+                            }
                         } else {
                             if (data.error === "") {
                                 if (data.comando) {
@@ -723,7 +749,7 @@
                                     console.log("Esto es match: " + data.comando.match($gitCommit));
                                     if (data.comando.match($comandoGit)) {
                                         if (data.comando.match($gitAdd)) {
-                                            $("#act3done").addClass('fa fa-check-circle');
+                                            $(".add").addClass('animated bounceInLeft fa fa-check-circle');
                                             if (!actividades['actividad1'])
                                                 add_logro("comandos2", "comandos2.png");
                                             comandos['add'] = true;
@@ -734,10 +760,14 @@
                                             //$("#reto1").val("Correcto, si tenemos Git instalado y nos especifica el número de versión que tenemos instalada.")
                                         } else if (data.comando.match($gitCommit)) {
                                             if (comandos['add']) {
-                                                $("#act4done").addClass('fa fa-check-circle');
+                                                $(".commit").addClass('animated bounceInLeft fa fa-check-circle');
                                                 if (!actividades['actividad1']) {
                                                     add_logro("comandos2", "comandos2.png");
-                                                    add_logro("commit1", "commit1.png")
+                                                    add_logro("commit1", "commit1.png");
+                                                    $("#commit1").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
+                                                        $(this).removeClass("animated bounce infinite");
+                                                        next();
+                                                    });
                                                 }
                                                 actividades['actividad1'] = true;
                                                 toggleNav(true);
@@ -779,7 +809,7 @@
                 url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php') }}",
                 lang: 'es',
                 height: 250,
-                customData: {user: "wramones"},
+                customData: {user: "{{ app.user }}"},
                 handlers: {
                     dblclick: function (event, elfinderInstance) {
                         event.preventDefault();
@@ -870,7 +900,6 @@
                     toggleNav(false);
                 }
 
-                alert(actividades["actividad1"]);
             });
 
 
@@ -924,84 +953,26 @@
                 console.log(event.indexh);
 
 
-                if (event.indexh === 18) {
-                    if (!actividades['actividad0']) {
-                        add_logro("conceptos", "conceptos1.png");
-                        actividades['actividad0'] = true;
-                        $("#progressbar").css("width", "25%");
-                        $("#progressbar").attr("aria-valuenow", "25%");
-                        $('.stat-percent').html('25%');
-                        $("#conceptos").addClass("animated bounce text-warning");
+                if (event.indexh === 13) {
+                        $("#progressbar").css("width", "100%");
+                        $("#progressbar").attr("aria-valuenow", "100%");
+                        $('.stat-percent').html('100%');
 
-                        $("#conceptos").addClass("animated bounce infinite text-warning").delay(10000).queue(function(next){
+                }
+
+                if (event.indexh === 14) {
+                    if (actividades['actividad0'] && actividades['actividad1'] ){
+                        $("#btnQuiz").addClass("animated bounce infinite text-warning").delay(5000).queue(function(next){
                             $(this).removeClass("animated bounce infinite");
                             next();
                         });
                     }
-                }
 
-                if (event.indexh > 18) {
-                    if (!actividades['actividad0']) {
-                        Reveal.slide(1);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-
-                    }
 
                 }
 
 
-                if (event.indexh > 19) {
-                    if (!actividades['actividad1']) {
-                        Reveal.slide(19);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
 
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-
-                    }
-                }
-
-                if (event.indexh > 22) {
-                    if (!actividades['actividad2']) {
-                        Reveal.slide(22);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
-
-                if (event.indexh > 26) {
-                    alert(event.indexh);
-                    if (!actividades['actividad3']) {
-                        Reveal.slide(26);
-                        var state = Reveal.getState();
-                        Reveal.setState(state);
-                        iziToast.error({
-                            title: 'No te adelantes tan rápido',
-                            message: 'es importante navegar por todas las láminas para cumplir con las actividades',
-                            position: 'topRight'
-                        });
-
-                    }
-                }
 
 
 
@@ -1022,7 +993,7 @@
                 if (isDisabled) {
                     iziToast.error({
                         title: 'Quiz todavía bloqueado',
-                        message: 'Para desbloquearlo, debes obtener los dos primeros logros de este nivel',
+                        message: 'Para desbloquearlo, debes obtener los tres logros de este nivel',
                         position: 'topRight'
                     });
                 }
@@ -1217,7 +1188,7 @@
 
 
 
-
+console.log(actividades);
     </script>
 
 

@@ -194,7 +194,7 @@ class ElearningController extends Controller {
         $leeme_creado = false;
         $archivo12 = "false";
         foreach ($files as $archivo){
-            if (stripos($archivo, 'leeme') !== false) {
+            if (stripos(strtoupper($archivo), strtoupper('leeme')) !== false) {
                 $leeme_creado = true;
             }
             if (stripos($archivo, 'archivo') !== false) {
