@@ -54,6 +54,13 @@ class Usuarios implements UserInterface, \Serializable
 
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\UsuariosLogros", mappedBy="idUsuario", cascade={"all"})
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $logros;
+
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="experiencia", type="integer", nullable=true, options={"comment" = "Experiencia Acumulada del participante en esa inscripcion"})
@@ -385,4 +392,38 @@ class Usuarios implements UserInterface, \Serializable
 
 
 
+
+    /**
+     * Add logro
+     *
+     * @param \AppBundle\Entity\UsuariosLogros $logro
+     *
+     * @return Usuarios
+     */
+    public function addLogro(\AppBundle\Entity\UsuariosLogros $logro)
+    {
+        $this->logros[] = $logro;
+
+        return $this;
+    }
+
+    /**
+     * Remove logro
+     *
+     * @param \AppBundle\Entity\UsuariosLogros $logro
+     */
+    public function removeLogro(\AppBundle\Entity\UsuariosLogros $logro)
+    {
+        $this->logros->removeElement($logro);
+    }
+
+    /**
+     * Get logros
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLogros()
+    {
+        return $this->logros;
+    }
 }

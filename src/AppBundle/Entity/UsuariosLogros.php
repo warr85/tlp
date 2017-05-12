@@ -74,7 +74,7 @@ class UsuariosLogros
     /**
      * @var \AppBundle\Entity\Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuarios")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuarios", inversedBy="logros")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_inscripcion", referencedColumnName="id", nullable=false)
      * })

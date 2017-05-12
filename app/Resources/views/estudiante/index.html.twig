@@ -150,21 +150,25 @@
                     </h5>
                 </div>
                 <div class="ibox-content">
-
-                    <button class="btn btn-warning dim" type="button"><i class="fa fa-git"></i></button>
-                    <button class="btn btn-success dim" type="button"><i class="fa fa-html5"></i></button>
-
-
+                    <div class="tooltip-demo">
+                    {% for inscripcion in inscripciones %}
+                        {% for logro in inscripcion.idUsuario.logros %}
+                            <button type="button" class="btn btn-warning dim" data-toggle="tooltip" data-placement="bottom"
+                                    title="{{ logro.idCursoModuloTemaLogro.nombre }}"><i class="{{ logro.idCursoModuloTemaLogro.fontawesome }}"></i></button>
+                        {% endfor %}
+                    {% endfor %}
+                    </div>
                 </div>
             </div>
 
 
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Certificados
+                    <h5>Certificados / insignias
                         <small> Tus Cursos Terminados.</small>
                     </h5>
                 </div>
+
                 <div class="ibox-content">
 
                     <div class="tooltip-demo">
