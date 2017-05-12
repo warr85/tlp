@@ -136,7 +136,7 @@
 
                     <section data-state="actividad0">
                         {% set done = "" %}
-                        {% if archivo %} {% set done = 'animated bounceInLeft fa fa-check-circle' %} {% endif %}
+                        {% if archivo == 'true' %} {% set done = 'animated bounceInLeft fa fa-check-circle' %} {% endif %}
                         <h3>Crear un archivo <i style="color:greenyellow;" class= "{{ done }}"></i></h3>
                         <p class="fragment fade-up" data-autoslide="2500">Ingresa a tu proyecto desde el Manejador de Archivos</p>
                         <div class="row">
@@ -248,7 +248,7 @@
                                     <i id="commit" style="color:greenyellow;" class="commit confirmado"></i>
                                 </div>
                             </div>
-                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">"mensaje" es una breve descripción de los cambios que estás haciendo.  espera unas láminas y entenderemos todo</div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
+                            <div class="col-xs-12 fragment fade-up" data-autoslide="2500">"mensaje" es una breve descripción de los cambios que estás haciendo.  Generalmente su usa como mensaje "commit inicial" o "Primer Commit" cuando es el primero </div><div class="col-xs-2"><i id="act1done" style="color:greenyellow;" class=""></i></div>
                         </div>
 
 
@@ -313,7 +313,7 @@
 
                         <section>
                             <p>Para encender nuestros conocimientos sobre lo que ejecutamos,
-                                (<strong>git add .</strong>) y confirmarlos (<strong>git commit</strong>), tenemos que
+                                (<strong>git add .</strong>) y confirmamos (<strong>git commit</strong>), tenemos que
                             entender la arquitectura y el flujo trabajo de GIT. El siguiente
                             video explica de manera no tan aburrida (espero...) dicha arquitectura</p>
                         </section>
@@ -647,7 +647,6 @@
         window.titlePattern = "* — console";
         window.document.title = window.titlePattern.replace('*', window.currentDirName);
         $comm = false;
-        alert($("#comm").val());
         if ($("#comm").val()){
             $comm = true;
             $("#confirmado").addClass('animated bounceInLeft fa fa-check-circle');
@@ -741,6 +740,7 @@
                             window.document.title = window.titlePattern.replace('*', window.currentDirName);
                             if(comandos['mkdir'] || archivo['mkdir']){
                                 comandos['cd'] = true;
+                                add_logro("comandos2", "comandos2.png");
                                 $(".cd").addClass('animated bounceInLeft fa fa-check-circle');
                             }
                         } else {

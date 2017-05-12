@@ -496,6 +496,10 @@
                                     function (dismiss) {
                                         toggleNav(true);
                                         add_experience("15", "Logro Desbloqueado");
+                                        $("#" + datos.corto).addClass("animated bounce infinite text-warning").delay(10000).queue(function (next) {
+                                            $(this).removeClass("animated bounce infinite");
+                                            next();
+                                        });
                                         iziToast.show({
                                             color: 'dark',
                                             title: '+15 Puntos',

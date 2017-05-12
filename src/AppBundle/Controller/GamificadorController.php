@@ -182,7 +182,12 @@ class GamificadorController extends Controller
                 $parametros = $request->query->all();
                 $corto = $parametros["corto"];
                 $badge = $parametros["badge"];
-                $bg = "bg_logro_" . $badge;
+
+                if (strpos($badge, 'comandos') !== false) {
+                    $bg = "bg_logro_comandos.png";
+                }else{
+                    $bg = "bg_logro_" . $badge;
+                }
                 $image =  '../../../../../../images/badge/'  . $badge;
                 $fondo = '../../../../../../images/course/' . $bg;
                // $corto = "conceptos";
