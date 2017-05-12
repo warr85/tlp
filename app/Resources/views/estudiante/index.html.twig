@@ -152,9 +152,13 @@
                 <div class="ibox-content">
                     <div class="tooltip-demo">
                     {% for inscripcion in inscripciones %}
-                        {% for logro in inscripcion.idUsuario.logros %}
-                            <button type="button" class="btn btn-warning dim" data-toggle="tooltip" data-placement="bottom"
+                        {% for logro in inscripcion.idUsuario.logros | sort %}
+                            {% if logro.idEstatus.id == 5 %}
+                                {% if loop.index > loop.length / 2 %}
+                                    <button type="button" class="btn btn-warning dim" data-toggle="tooltip" data-placement="bottom"
                                     title="{{ logro.idCursoModuloTemaLogro.nombre }}"><i class="{{ logro.idCursoModuloTemaLogro.fontawesome }}"></i></button>
+                                {% endif %}
+                        {% endif %}
                         {% endfor %}
                     {% endfor %}
                     </div>
