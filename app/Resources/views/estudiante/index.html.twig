@@ -115,6 +115,7 @@
                                 <a href="profile.html" class="pull-left">
                                     <i class="fa fa-2x fa-list-ul">&nbsp;</i>
                                 </a>
+                                {% if inscripcion.avances.last.evaluaciones.count > 0 %}
                                 <div class="media-body ">
                                     <a class="pull-right">
                                         {{ inscripcion.avances.last.evaluaciones.last.resultados.last.resultado }} / {{ inscripcion.avances.last.evaluaciones.last.resultados.last.idCursoAvanceEvaluacion.idCursoModuloTemaEvaluacion.ponderacion }}   <br>
@@ -127,6 +128,7 @@
                                     <small class="text-muted"> {{ inscripcion.avances.last.evaluaciones.last.resultados.last.fechaResultado | date('d-m-Y H:i:s') }}</small>
 
                                 </div>
+                                {% endif %}
                             </div>
 
 

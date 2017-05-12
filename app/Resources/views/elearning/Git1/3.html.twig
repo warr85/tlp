@@ -418,7 +418,7 @@
 
 
                     <section data-state="actividad3">
-                        <h3>Git add 1</h3>
+                        <h3>Git add archivo1.txt</h3>
 
                         <p class="fragment fade-up" data-autoslide="2500">escribimos el comando para añadir sólo al archivo1.txt</p>
                         <div class="row">
@@ -530,10 +530,9 @@
 
                         <section>
                             <p style="background-color: #8a6d3b; opacity: 0.8; color:black;">
-                                ya no nos muestra la información de archivo1.txt porque el
-                                working directory y en el repositorio tienen la misma información
-                                de archivo1, es decir, pasamos a arhivo1 del index al estado sin
-                                modificaciones confirmando los cambios con un commit.
+                                No nos muestra la información de archivo1.txt debido a
+                                que son identicos tanto en el working directory como en
+                                el repositorio.  Git no muestra lo que está igual.
                             </p>
 
                         </section>
@@ -992,7 +991,7 @@
                                               title="{{ logroD.nombre }}" class="fa-stack has-badge"
                                               data-count="{{ logroD.badge }}">
                                             <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                            <i class="{{ logroD.fontawesome }} fa-stack-1x fa-inverse"></i>
                                         </span>
                                     {% else %}
                                         {% if logroD.id == 2 %}
@@ -1005,7 +1004,7 @@
                                               title="{{ logroD.nombre }}" class="fa-stack has-badge"
                                               data-count="{{ logroD.badge }}">
                                             <i class="fa fa-circle fa-stack-2x text-warning"></i>
-                                            <i class="fa fa-{{ logroD.imagen }} fa-stack-1x fa-inverse"></i>
+                                            <i class="{{ logroD.fontawesome }} fa-stack-1x fa-inverse"></i>
                                         </span>
                                     {% endif %}
                                 {% endfor %}
@@ -1479,7 +1478,7 @@
 
                                                 if(!actividades['actividad3'] && (!comandos['add'])) {
                                                     $(".add1").addClass('fa fa-check-circle');
-                                                    add_logro("comandos2", "comandos2.png");
+                                                    add_logro("comandos3", "comandos3.png");
                                                     comandos['add'] = true;
                                                     $("#progressbar").css("width", "55%");
                                                     $("#progressbar").attr("aria-valuenow", "55%");
@@ -1489,7 +1488,7 @@
 
                                             if(!actividades['actividad5'] && actividades['actividad3']) {
                                                 $(".add2").addClass('fa fa-check-circle');
-                                                add_logro("comandos2", "comandos2.png");
+                                                add_logro("comandos3", "comandos3.png");
                                                 $("#progressbar").css("width", "80%");
                                                 $("#progressbar").attr("aria-valuenow", "80%");
                                                 $('.stat-percent').html('80%');
@@ -1499,7 +1498,7 @@
 
                                             if(!actividades['actividad7'] && actividades['actividad6']) {
                                                 $(".add3").addClass('fa fa-check-circle');
-                                                add_logro("comandos2", "comandos2.png");
+                                                add_logro("comandos3", "comandos3.png");
                                                 $("#progressbar").css("width", "80%");
                                                 $("#progressbar").attr("aria-valuenow", "80%");
                                                 $('.stat-percent').html('80%');
@@ -1509,7 +1508,7 @@
 
                                             if(!actividades['actividad9'] && actividades['actividad8']) {
                                                 $(".add4").addClass('fa fa-check-circle');
-                                                add_logro("comandos2", "comandos2.png");
+                                                add_logro("comandos3", "comandos3.png");
                                                 $("#progressbar").css("width", "80%");
                                                 $("#progressbar").attr("aria-valuenow", "80%");
                                                 $('.stat-percent').html('80%');
@@ -1519,7 +1518,7 @@
 
                                             if(!actividades['actividad11'] && actividades['actividad10']) {
                                                 $(".add5").addClass('fa fa-check-circle');
-                                                add_logro("comandos2", "comandos2.png");
+                                                add_logro("comandos3", "comandos3.png");
                                                 $("#progressbar").css("width", "80%");
                                                 $("#progressbar").attr("aria-valuenow", "80%");
                                                 $('.stat-percent').html('80%');
@@ -1535,7 +1534,7 @@
                                             console.log(comandos);
                                             if(!actividades['actividad4'] && (comandos['add'])) {
                                                 $(".commit1").addClass('fa fa-check-circle');
-                                                add_logro("comandos2", "comandos2.png");
+                                                add_logro("comandos3", "comandos3.png");
                                                 comandos['commit'] = true;
                                                 $("#progressbar").css("width", "85%");
                                                 $("#progressbar").attr("aria-valuenow", "85%");
@@ -1545,7 +1544,7 @@
 
                                             if(!actividades['actividad5'] && comandos['add2']) {
                                                 $(".commit2").addClass('fa fa-check-circle');
-                                                add_logro("comandos2", "comandos2.png");
+                                                add_logro("comandos3", "comandos3.png");
                                                 $("#progressbar").css("width", "95%");
                                                 $("#progressbar").attr("aria-valuenow", "95%");
                                                 $('.stat-percent').html('95%');
@@ -1555,7 +1554,7 @@
 
                                             if(!actividades['actividad10'] && comandos['add4']) {
                                                 $(".commit3").addClass('fa fa-check-circle');
-                                                add_logro("comandos2", "comandos2.png");
+                                                add_logro("comandos3", "comandos3.png");
                                                 $("#progressbar").css("width", "95%");
                                                 $("#progressbar").attr("aria-valuenow", "95%");
                                                 $('.stat-percent').html('95%');
@@ -1564,7 +1563,7 @@
                                             }
                                             if(!actividades['actividad11'] && comandos['add5']) {
                                                 $(".commit4").addClass('fa fa-check-circle');
-                                                add_logro("comandos2", "comandos2.png");
+                                                add_logro("comandos3", "comandos3.png");
                                                 $("#progressbar").css("width", "95%");
                                                 $("#progressbar").attr("aria-valuenow", "95%");
                                                 $('.stat-percent').html('95%');
@@ -1607,7 +1606,7 @@
                 url: "{{ asset('assets/vendor/elfinder/php/connector.minimal.php') }}",
                 lang: 'es',
                 height: 250,
-                customData: {user: "wramones"},
+                customData: {user: "{{ app.user }}"},
                 handlers: {
                     dblclick: function (event, elfinderInstance) {
                         event.preventDefault();
