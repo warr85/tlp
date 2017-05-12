@@ -106,20 +106,25 @@
                         <small> Resultados.</small>
                     </h5>
                 </div>
+                {% for inscripcion in inscripciones %}
                 <div class="ibox-content">
                     <div>
                         <div class="feed-activity-list">
 
                             <div class="feed-element">
                                 <a href="profile.html" class="pull-left">
-                                    <i class="fa fa-2x fa-html5">&nbsp;</i>
+                                    <i class="fa fa-2x fa-list-ul">&nbsp;</i>
                                 </a>
                                 <div class="media-body ">
-                                    <a class="pull-right">10/10 <br>
+                                    <a class="pull-right">
+                                        {{ inscripcion.avances.last.evaluaciones.last.resultados.last.resultado }} / {{ inscripcion.avances.last.evaluaciones.last.resultados.last.idCursoAvanceEvaluacion.idCursoModuloTemaEvaluacion.ponderacion }}   <br>
                                         <small class="text-muted">Excelente</small>
                                     </a>
-                                    <strong> Introducción a GIT</strong> Curso de GIT. <br>
-                                    <small class="text-muted"> Today 5:60 pm - 12.06.2014</small>
+                                    <strong>
+                                        {{ inscripcion.idCursoGrupo.idCurso.nombre }}:
+                                    </strong>
+                                        {{ inscripcion.avances.last.evaluaciones.last.resultados.last.idCursoAvanceEvaluacion.idCursoModuloTemaEvaluacion.idTipoEvaluacion.nombre }} - {{ inscripcion.avances.last.evaluaciones.last.resultados.last.idCursoAvanceEvaluacion.idCursoModuloTemaEvaluacion.idCursoModuloTema.idTema.nombre }}<br>
+                                    <small class="text-muted"> {{ inscripcion.avances.last.evaluaciones.last.resultados.last.fechaResultado | date('d-m-Y H:i:s') }}</small>
 
                                 </div>
                             </div>
@@ -130,6 +135,7 @@
 
                     </div>
                 </div>
+                {% endfor %}
             </div>
 
 
